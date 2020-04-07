@@ -1,3 +1,29 @@
 % kapitel2.tex
-\chapter{Das zweite Kapitel}
+\chapter{Grundlagen}
 \label{chapter:kap2}
+
+\section{Definitionen}
+
+Zeitreihen, Anomalien,...
+
+\section{Datensatz}
+
+Der dieser Arbeit zugrundeliegende Datensatz besteht aus 66 Millionen Spannungswerten. Diese teilen sich auf 17 dreiphasigen Zeitreihen, die sich über einen Zeitraum von bis zu 7 Monaten erstrecken und mit einer Auflösung von einem Messwert pro  10 Sekunden pro Phase
+erhoben wurden. Die Zeitreihen zeichnen sich alle durch unterschiedliche Volatilität, sowie unterschiedlich frequenten Messlücken aus. 
+\\
+Der Datensatz enthält 5 Klassen von Anomalien:
+\begin{itemize} % [noitemsep]
+\renewcommand\labelitemi{--}
+\item Punkte deren Spannung stark von ihrem Vorgänger abweicht
+\item Punkte mit hohem zeitlichen Abstand von ihren Nachbarpunkten
+\item Punkte deren Spannung stark von der Spannung der anderen beiden Phasen abweicht
+\item Punkte deren Spannung stark von dem momentanen Spannungsdurchschnitt aller Stationen abweicht
+\item Punkte deren Spannung sich von der saisonal erwarteten Spannung unterscheidet
+\end{itemize}
+Alle Anomalien im Datensatz sind als solche markiert. 
+
+\section{Robust Random Cut Forests}
+
+Robus Random Cut Forests (RRCF) sind...
+
+\section{Verfahren 2}

@@ -1,5 +1,24 @@
 % einleitung.tex
 \chapter{Einleitung}
 \section{Motivation und Hintergrund}
-Eine Referenz~\cite{AggarwalV88}.
+%Eine Referenz~\cite{AggarwalV88}.
+\subsection{Daten aus der Niederspannung}
+Das deutsche Verteilnetz wurde ursprünglich mit dem Ziel gebaut, den in Großkraftwerken
+produzierten Strom und über das Transportnetz in die einzelnen Regionen Deutschlands transportiert wird, regional an die Endkunden (sowohl Industrie- und Gewerbekunden als auch
+Haushalte) zu verteilen. Das Verteilnetz ist dabei baumartig strukturiert und besteht aus der Hochspannungsebene die den Übergabepunkt des Transportnetz enthält und sich hin zur Mittelspannungsebene, Niederspannungsebene und schließlich den Endkunden verzweigt. \\
+Mit zunehmender Integration von Erneuerbaren Energien wie Wind- und PV-Anlagen in die
+Mittel- und Niederspannungsebene steigt auch die Dynamik in den unteren Spannungsebenen.
+Lastflüsse die vorher stets von oben (Hochspannung) nach unten (Mittel-, Niederspannung)
+gerichtet waren, kehren sich in Teilen um und können zu einer lokal höheren Auslastung des
+Netzes führen. Hinzu kommen neue Verbraucher wie z.B. Elektrofahrzeuge die insbesondere in
+den frühen Abendstunden und über die Nacht verteilt das Netz stärker belasten. \\
+Um diese Effekte erkennen und analysieren zu können, müssen die Niederspannungsebene
+zunächst messtechnisch erfasst werden. Die Firma PPC baut ein Messgerät, welches sich in
+Ortsnetzstationen (Übergabepunkt von Mittel- zu Niederspannung) einbauen lässt und dort
+eine dreiphasige Spannungsmessung durchführen kann. Zusätzlich verfügt das Messgerät über
+eine Kommunikationsanbindung mit der sich die Daten abrufen und an einem zentralen Punkt
+aggregieren und auswerten lassen.
+\subsection{Anomaliererkennung auf Zeitreihen}
+Anomalieerkennung ist ein weitreichendes Forschungsgebiet, welches ...
 \section{Aufbau der Arbeit}
+In dieser Arbeit werden zuerst in Kapitel 2 die Grundsätze von Zeitreihenanomalieerkennung, sowie die zwei in ihr eingesetzten Verfahren "Robust Random Cut Forest", und "One Dimensional Support Vector Machine" erläutert. In Kapitel 3 wird auf die im Rahmen dieser Arbeit angewendete Implementierung und deren Ergebnisse eingegangen. In Kapitel 5 werden, auf der Basis dieser Ergebnisse, die beiden implementierten Verfahren miteinander verglichen.

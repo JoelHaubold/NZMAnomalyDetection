@@ -4,11 +4,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import rrcf
+from pandas import DataFrame
+
+from src.anomaly_thresholds import AThreshold
 
 rrcf_directory = Path("../../rrcf")
 pickle_directory = Path("../../pickles")
-num_trees = 5000
-tree_size = 2000
+num_trees = 100
+tree_size = 5000
 shingle_size = None
 streaming = True
 codisp_filename = f"Shingle{shingle_size}_TreeN{num_trees}_TreeS{tree_size}Streaming{streaming}"
@@ -117,7 +120,7 @@ def analyse_station_phase(df_p, station_name):
     forest = []
 
     # Construct forest
-    if streaming:
+    if not streaming:
         while len(forest) < num_trees:
             print(len(forest))
             indices = np.random.choice(num_points, size=sample_size_range, replace=False)
@@ -139,8 +142,15 @@ def analyse_station_phase(df_p, station_name):
         avg_codisp /= n_owning_trees
     else:
         avg_codisp = {}
+        print(df_p)
         streaming_points = df_p.to_numpy()
+        print(streaming_points)
+        for _ in range(num_trees):
+            tree = rrcf.RCTree()
+            forest.append(tree)
         for index, point in enumerate(streaming_points):
+            if index % 1000 == 0:
+                print(index)
             for tree in forest:
                 # If tree is above permitted size...
                 if len(tree.leaves) > tree_size:
@@ -151,12 +161,44 @@ def analyse_station_phase(df_p, station_name):
                 # Compute codisp on the new point...
                 new_codisp = tree.codisp(index)
                 # And take the average over all trees
-                if not index in avg_codisp:
+                if index not in avg_codisp:
                     avg_codisp[index] = 0
                 avg_codisp[index] += new_codisp / num_trees
 
     # Save Codisp
     avg_codisp.to_json(sdp_directory / "codisp")
+    return avg_codisp
+
+
+def get_test_pickle(df_p, codisp=None):
+    test_pickle = 'NW000000000000000000000NBSNST0888'
+    plot_dir = test_pickle + "phase_dif"
+    if codisp is None:
+        codisp = pd.read_json(f"../../rrcf/{plot_dir}/{codisp_filename}/codisp", typ ='series')
+    df_c = df_p[['phase_dif']]
+    df_c['codisp'] = codisp.values
+    return df_c
+
+
+rel_cod_thresholds = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+min_cod_thresholds = [0]  # [0, 50, 100]
+max_cod_thresholds = [-1]  # [-1, 1000, 50]
+
+
+def get_f_value(df_c: DataFrame, rel_cod_threshold, min_cod_threshold, max_cod_threshold, a_threshold: AThreshold):
+    abs_codisp = df_c['codisp'].copy()
+    if max_cod_threshold > 0:
+        abs_codisp.clip(upper=max_cod_threshold, inplace=True)
+    max_cod = max(abs_codisp.values.max(), min_cod_threshold)
+    abs_codisp = ((abs_codisp.values - abs_codisp.values.min()) / (
+            max_cod - abs_codisp.values.min()))
+    nmbr_true_pos = df_c[(abs_codisp > rel_cod_threshold) & (df_c[a_threshold.name] > a_threshold.value)].shape[0]
+    recall = nmbr_true_pos / df_c[df_c[a_threshold.name] > a_threshold.value].shape[0]
+    precision = nmbr_true_pos / df_c[abs_codisp > rel_cod_threshold].shape[0]
+    f1 = 2 * recall*precision / (recall+precision)
+    f0_5 = 1.25 * recall*precision / (recall+(0.25*precision))
+    f2 = 5 * recall*precision / (recall+(4*precision))
+    return f1, f0_5, f2, precision, recall
 
 
 def main():
@@ -170,11 +212,22 @@ def main():
     df_p = df_phases[0].rename(columns={"Value":"p1"})
     df_p['p2'] = df_phases[1].Value
     df_p['p3'] = df_phases[2].Value
-    # analyse_station_phase(df_p, plot_dir)
+    codisp = analyse_station_phase(df_p[['phase_dif']], plot_dir)
     s_codisp = pd.read_json(Path(f"../../rrcf/{plot_dir}/{codisp_filename}/codisp"), typ='series')
-    old_string =f"Shingle{shingle_size}_TreeN{num_trees}_TreeS{tree_size}"
-    ns_codisp = pd.read_json(Path(f"../../rrcf/{plot_dir}/{old_string}/codisp"), typ='series')
-    plot_phase_dif(df_p, ns_codisp, s_codisp, plot_dir)
+    df_c = df_p
+    df_c['codisp'] = s_codisp.values
+    print(codisp_filename)
+    maxf = 0
+    for rel_cod_t in rel_cod_thresholds:
+        for min_cod in min_cod_thresholds:
+            for max_cod in max_cod_thresholds:
+                f1, f0_5, f2, precision, recall = get_f_value(df_c, rel_cod_t, min_cod, max_cod, AThreshold.phase_dif)
+                maxf = max(f1, f0_5, f2, maxf)
+                print(f"{rel_cod_t}, {min_cod}, {max_cod}: {f1}, {f0_5}, {f2}, {precision}, {recall}")
+    print(maxf)
+    # old_string =f"Shingle{shingle_size}_TreeN{num_trees}_TreeS{tree_size}"
+    # ns_codisp = pd.read_json(Path(f"../../rrcf/{plot_dir}/{old_string}/codisp"), typ='series')
+    # plot_phase_dif(df_p, ns_codisp, s_codisp, plot_dir)
 
 
 if __name__ == '__main__':

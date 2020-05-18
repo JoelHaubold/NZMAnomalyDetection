@@ -10,8 +10,8 @@ from src.anomaly_thresholds import AThreshold
 
 rrcf_directory = Path("../../rrcf")
 pickle_directory = Path("../../pickles")
-num_trees = 100
-tree_size = 5000
+num_trees = 200
+tree_size = 10000
 shingle_size = None
 streaming = True
 codisp_filename = f"Shingle{shingle_size}_TreeN{num_trees}_TreeS{tree_size}Streaming{streaming}"

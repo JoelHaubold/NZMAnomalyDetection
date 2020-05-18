@@ -1,0 +1,17 @@
+\select@language {english}
+\select@language {english}
+\select@language {german}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}
+\contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
+\contentsline {subsection}{\numberline {1.1.1}Daten aus der Niederspannung}{1}
+\contentsline {subsection}{\numberline {1.1.2}Anomaliererkennung auf Zeitreihen}{1}
+\contentsline {section}{\numberline {1.2}Aufbau der Arbeit}{2}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}
+\contentsline {section}{\numberline {2.1}Notationen}{3}
+\contentsline {section}{\numberline {2.2}Zeitreihenanomalieerkennung}{3}
+\contentsline {section}{\numberline {2.3}Anomalierkennung durch Random Forests}{3}
+\contentsline {chapter}{\numberline {A}Weitere Informationen}{5}
+\contentsline {chapter}{Abbildungsverzeichnis}{7}
+\contentsline {chapter}{Algorithmenverzeichnis}{9}
+\contentsline {chapter}{Literaturverzeichnis}{11}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{11}

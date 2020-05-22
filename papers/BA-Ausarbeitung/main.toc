@@ -1,6 +1,6 @@
-\select@language {english}
-\select@language {english}
-\select@language {german}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {german}{}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}
 \contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
 \contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
@@ -8,10 +8,23 @@
 \contentsline {section}{\numberline {1.2}Aufbau der Arbeit}{2}
 \contentsline {chapter}{\numberline {2}Grundlagen}{3}
 \contentsline {section}{\numberline {2.1}Notationen}{3}
-\contentsline {section}{\numberline {2.2}Zeitreihenanomalieerkennung}{3}
-\contentsline {section}{\numberline {2.3}Anomalierkennung durch Random Forests}{3}
-\contentsline {chapter}{\numberline {A}Weitere Informationen}{5}
-\contentsline {chapter}{Abbildungsverzeichnis}{7}
-\contentsline {chapter}{Algorithmenverzeichnis}{9}
-\contentsline {chapter}{Literaturverzeichnis}{11}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{11}
+\contentsline {section}{\numberline {2.2}Anomalien}{3}
+\contentsline {subsection}{\numberline {2.2.1}Komplikationen}{3}
+\contentsline {subsubsection}{Kontextabh\IeC {\"a}ngigkeit}{4}
+\contentsline {subsubsection}{Duplikate}{4}
+\contentsline {subsubsection}{Rauschen}{5}
+\contentsline {subsubsection}{Mehrdimensionalit\IeC {\"a}t}{5}
+\contentsline {section}{\numberline {2.3}Anomalieerkennung durch maschinelles Lernen}{6}
+\contentsline {subsection}{\numberline {2.3.1}\IeC {\"U}berwachtes und un\IeC {\"u}berwachtes Lernen}{6}
+\contentsline {subsubsection}{Un\IeC {\"u}berwachtes Lernen}{6}
+\contentsline {subsubsection}{\IeC {\"U}berwachtes Lernen}{6}
+\contentsline {subsection}{\numberline {2.3.2}Robustheit}{6}
+\contentsline {subsection}{\numberline {2.3.3}Streaming Data}{6}
+\contentsline {subsection}{\numberline {2.3.4}Kriterien zur Performancebeurteilung}{6}
+\contentsline {subsection}{\numberline {2.3.5}F-Measure}{6}
+\contentsline {section}{\numberline {2.4}Anomalierkennung durch Random Forests}{6}
+\contentsline {chapter}{\numberline {A}Weitere Informationen}{7}
+\contentsline {chapter}{Abbildungsverzeichnis}{9}
+\contentsline {chapter}{Algorithmenverzeichnis}{11}
+\contentsline {chapter}{Literaturverzeichnis}{13}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{13}

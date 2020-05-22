@@ -1,24 +1,74 @@
+%!TeX root=../main.tex
 % kapitel2.tex
 \chapter{Grundlagen}
 \label{chapter:grundlagen}
 
 \section{Notationen}
-Die in dieser Arbeit verwendeten Notationen sind:
+Die in dieser Arbeit verwendeten Notationen lehnen sich an die in dem Papier \cite{guha2016rrcfTheory} verwendeten an:
 
 \begin{itemize}
 \item :DDDDD
 \end{itemize}
 
-\section{Zeitreihenanomalieerkennung}
+\section{Anomalien}
 
-\subsection{Anomalie}
-In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Outlier bezeichnet, falls er die Kompläxität des Datensatzes überdurchschnittlich gegenüber den anderen Punkten  erhöht.
+ % Define dimensions of Z; Move Usefulness to Introduction
+In einem gegebenen Datensatz $Z$ an Punkten, wird einer dieser Punkte $x \in Z$ als Outlier bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von den Punkten $Z  - \{x\}$ unterscheidet. Seien $Y$ alle anomalen Punkte aus $Z$. Ein Modell welches $Z$ darstellt ist entsprechend wesentlich komplexer als ein Modell welches $Z-Y$, also nur die nicht-normalen \textit{Inliners} von $Z$ darstellt.  Wie stark sich $x$ in seinen Merkmalen von anderen Punkten in $Z$ unterscheiden muss, beziehungsweise wie stark $x$ die Komplexität des Modells von $Z$ erhöht, damit $x$ als Anomalie gesehen wird ist hängt oft von der jeweiligen Zielsetzung ab.\\
+Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
+Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
+\begin{figure}[]
+\centering
+\includegraphics[width=0.5\textwidth]{bilder/anomaly_chandola.png}
+\caption{Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \protect\cite{chandola2009anomaly}}
+\label{image-dup}
+\end{figure}
+\\
+\subsection{Komplikationen}
+Die Diversität von möglichen Datensätzen und deren Merkmalen macht es generell nicht möglich,  ein allgemeines Vorgehen für die Erkennung von Anomalien zu bestimmen. Dazu kommen mögliche Eigenschaften die dies weiterhin erschweren, oder es bestimmten Vorgehen sogar unmöglich machen, Anomalie von Inliner zu unterscheiden. Ein Überblick über einige dieser ist hier aufgeführt:
 
-\subsection{•} 
+\subsubsection{Kontextabhängigkeit}
+Es ist zu beachten das bei zwei anomalen Punkten nicht die gleichen Grenzwerte für die einzelnen Merkwerte gelten müssen, es kommt vielmehr auf die Kombination der Merkmale an. Ein einfaches Beispiel ist ein über die Zeit stetig zunehmender Messwert. Ein Punkt dessen Wert zu Beginn aus der Zeitreihe nach oben ausreißt, ist wahrscheinlich anomal. Die Punkte die später durch den Trend der Zeitreihe diesen Wert überschreiten, sind deswegen aber nicht zwingend selber anomal, noch invalidieren sie den Status des Ausreißers als Anomalie. \cite{changing_d_tan2011fast}
 
-Definition Anomalie
-Definition Zeitreihe
-Besondere Eigenschaften
+\subsubsection{Duplikate}
+Erschwerend für die Anomalieerkennung kann es sein falls sich mehrere Anomalien eines Datensatzes ähneln, wie in Abbildung \ref{image-dup}. Während sich die Punkte in $O_3$ eindeutig von den beiden Inliner-Punktegruppen $N_1$ und $N_2$ abgrenzen, so haben sie alleinstehend betrachtet dennoch untereinander eine starke Ähnlichkeit., ein Modell des dargestellten Datensatzes vereinfacht sich durch die einzelne Entfernung eines Punktes aus $O_3$ nicht. \cite{guha2016rrcfTheory} Sollen die Punkte in $O_3$ von einem Anomalieerkennungsverfahren als Anomalie eingestuft werden, so muss entweder dem Verfahren mitgeteilt werden das Inliner Ähnlichkeiten zu den Punkten in $N_1$ und $N_2$ haben müssen, oder es muss so kalibriert werden, dass eine Ansammlung von 7 ähnlichen Punkten noch nicht als Inlinergruppe gesehen wird. Mehr dazu in Sektion \ref{sec-supervised}
+
+\subsubsection{Rauschen}
+Je nach generierenden Prozess des Datensatzes kann es sein das in diesem neben der zu beobachtenden Größe, weitere Punkte aufgenommen werden, welche sich in ihren Merkmalen stark von den Inlinern unterscheiden, aber nicht von Relevanz für den Beobachter des Prozesses sind. \cite{aggarwal2015outlier}
+\begin{figure}[]
+\centering
+\includegraphics[width=0.75\textwidth]{bilder/noise_aggarwal.png}
+\caption{Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Inlinergruppen und einem anomalen Punkt $A$. Quelle: \protect\cite{aggarwal2015outlier}} %TODO: Annahme das es zwei Inlinergruppen gibt? Deutsche Beschreibung
+\label{image-noise}
+\end{figure}
+In den beiden Abbildungen \ref{image-noise} ist die Schwierigkeit die Rauschen bei der Anomalieerkennung mit sich bringt zu sehen. In Abbildung \ref{image-noise} (a) ist der Punkt A offensichtlich anomal. In \ref{image-noise} (b) könnte dieser allerdings Teil des Rauschens sein. Um den Punkt A als anomal markieren zu können, aber nicht den Rest des uninteressanten Rauschens, muss dem Anomalieerkennungsverfahren mitgeteilt werden das Punkte mit seinen Merkmalen  als anomal gelten.
+
+\subsubsection{Mehrdimensionalität} % TODO: Formularisch darstellen
+Hat der zu untersuchende Datensatz eine hohe Dimensionalität in seinen Merkmalen, führt dies zu weiteren Problemen bei der Anomalieerkennung. Mit zunehmender Anzahl an Merkmalsdimensionen erhöhen sich die möglichen Kombinationen an Dimensionen auf denen nach anomalen Merkmalen gesucht werden kann exponentiell, womit der Aufwand der Anomalieerkennung ansteigen kann. Weiterhin führt diese Zunahme der möglichen Dimensionskombinationen auf denen gesucht werden kann, dass es immer wahrscheinlicher wird, für jeden Punkt mindestens eine solche Kombination zu finden, dass er auf dieser anomal ist. Umgekehrt wird es mit zunehmenden Dimensionen, auf denen man nach anomalen Ausprägungen suchen kann, schwieriger die relevanten Dimensionen zu finden. Es entsteht effektiv ein Rauschen, da die relevanten Dimensionen gegenüber den nicht relevanten untergehen.
+\cite{erfani2016high_d}
+
+
+
+
+\section{Anomalieerkennung durch maschinelles Lernen}
+Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen. Dabei eignen sich nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen. 
+
+\subsection{Überwachtes und unüberwachtes Lernen}
+\label{sec-supervised}
+Generell lassen sich alle maschinellen Lernverfahren durch maschinelles Lernen in zwei Bereiche teilen: %gupda!!!!
+\subsubsection{Unüberwachtes Lernen}
+\subsubsection{Überwachtes Lernen}
+
+\subsection{Robustheit}
+ Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomalien im Trainingsdatensatzes und gegenüber ungewollten Unterschieden zwischen dem Trainingsdatensatz und dem Testdatensatz. Weiterhin kann ein Anomalieerkennungsverfahren besonders Robust gegenüber einer Eigenschaft von Datensätzen, wie zum Beispiel Rauschen oder Mehrdimensionalität, sein, die sich allgemein negativ auf die Performance von auf ihrem Datensatz ausgeführten Algorithmen auswirkt.
+
+\subsection{Streaming Data}
+
+
+Space Time Anpassung des Modells, Live Ergebnisse
+
+\subsection{Kriterien zur Performancebeurteilung}
+
+\subsection{F-Measure}
 
 \section{Anomalierkennung durch Random Forests}
 

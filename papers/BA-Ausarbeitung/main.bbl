@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+
+\bibitem{aggarwal2015outlier}
+{\sc Aggarwal, Charu~C}: {\em Outlier analysis}.
+\newblock \Btxinlong{}\ {\em Data mining}. Springer, 2015.
+
+\bibitem{chandola2009anomaly}
+{\sc Chandola, Varun}, {\sc Arindam Banerjee} \btxandlong{}\ {\sc Vipin Kumar}:
+  {\em Anomaly detection: A survey}.
+\newblock ACM computing surveys (CSUR), 41(3):1--58, 2009.
+
+\bibitem{erfani2016high_d}
+{\sc Erfani, Sarah~M}, {\sc Sutharshan Rajasegarar}, {\sc Shanika Karunasekera}
+  \btxandlong{}\ {\sc Christopher Leckie}: {\em High-dimensional and
+  large-scale anomaly detection using a linear one-class SVM with deep
+  learning}.
+\newblock Pattern Recognition, 58:121--134, 2016.
+
+\bibitem{guha2016rrcfTheory}
+{\sc Guha, Sudipto}, {\sc Nina Mishra}, {\sc Gourav Roy} \btxandlong{}\ {\sc
+  Okke Schrijvers}: {\em Robust random cut forest based anomaly detection on
+  streams}.
+\newblock \Btxinlong{}\ {\em International conference on machine learning},
+  \btxpageslong{}\ 2712--2721, 2016.
+
+\bibitem{changing_d_tan2011fast}
+{\sc Tan, Swee~Chuan}, {\sc Kai~Ming Ting} \btxandlong{}\ {\sc Tony~Fei Liu}:
+  {\em Fast anomaly detection for streaming data}.
+\newblock \Btxinlong{}\ {\em Twenty-Second International Joint Conference on
+  Artificial Intelligence}, 2011.
+
+\end{thebibliography}

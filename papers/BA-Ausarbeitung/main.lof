@@ -1,6 +1,8 @@
-\select@language {english}
-\select@language {english}
-\select@language {german}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {german}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \cite {chandola2009anomaly}\relax }}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Inlinergruppen und einem anomalen Punkt $A$. Quelle: \cite {aggarwal2015outlier}\relax }}{5}
 \addvspace {10\p@ }

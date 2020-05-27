@@ -22,25 +22,27 @@ RRCF wird zur Analyse des dieser Arbeit zugrunde legendem Datensatzes benutzt, d
 Parallel zu anderen Forest-Ansätzen aus dem Gebiet des maschinellen Lernens, besteht ein RRCF aus mehreren unabhängigen \textbf{Robust Random Cut Trees} (RRCT):
 
 \subsubsection{Definition 1} Ein RRCT wird über ein Datensatz $S$ mit $j$ Dimensionen wie folgt generiert:
+\label{sssec:rrcfdef1}
 \begin{enumerate}
-\item Wähle eine Dimension $i$ aus den $j$ Dimensionen. Dabei hat jede Dimension eine Wahrscheinlichkeit proportional zu $\dfrac{l_i}{\Sigma_j l_i}$, mit $l_i = max_{x\in S} x_i - min_{x \in S} x_i$ ausgewählt zu werden.
-\item Wähle $X_i ~ Uniform[min_{x \in S} x_i, max_{x \in S} x_i]$
-\item Teile $S$ in $S_1 = \{ x | x \in S, x_i \leq X_i \}$ und $S_2 = S \backslash S_1$ und fahre rekursiv auf $S_1$ und $S_2$ fort, solange $|S_1| > 1$ beziehungsweise $|S_2| > 1$.
+\item Wähle eine Dimension $i$ aus den $j$ Dimensionen. Dabei hat jede Dimension eine Wahrscheinlichkeit proportional zu $\dfrac{l_i}{\Sigma_j l_i}$, mit $l_i = \max_{x\in S} x_i - \min_{x \in S} x_i$ ausgewählt zu werden.
+\item Wähle $X_i \sim \textnormal{Uniform}[\min_{x \in S} x_i, \max_{x \in S} x_i]$
+\item Teile $S$ in $S_1 = \{ x \mid x \in S, x_i \leq X_i \}$ und $S_2 = S \setminus S_1$ und fahre rekursiv auf $S_1$ und $S_2$ fort, solange $\vert S_1\vert > 1$ beziehungsweise $\vert S_2\vert > 1$.
 \end{enumerate}
 %Referenziere Grundlagen, hier evtl eine Tabelle als Beispiel, ?Isolation Forest als Referenz?
-In Schritt 1 wird die Dimension ausgewählt über die der Datensatz bei der Konstruktion des Baumes getrennt wird. Ein wichtiger Unterschied bei der Konstruktion eines RRCT zu der Konstruktion eines Baumes in einem Isolation Forest, wie in \cite{liu2012isolation}, ist dabei, dass die zur Trennung genutzte Dimension $i$ nicht Uniform über alle Dimensionen $j$ ausgewählt wird. Stattdessen werden die Dimensionen proportional dazu wie stark die Werte der einzelnen Punkte sich in ihnen unterscheiden gewichtet.
+In Schritt 1 wird die Dimension ausgewählt über die der Datensatz bei der Konstruktion des Baumes getrennt wird. Ein wichtiger Unterschied bei der Konstruktion eines RRCT zu der Konstruktion eines Baumes in einem Isolation Forest, wie in \cite{liu2012isolation}, ist dabei, dass die zur Trennung genutzte Dimension $i$ nicht Uniform über alle Dimensionen $j$ ausgewählt wird. Stattdessen werden die Dimensionen proportional dazu wie stark die Werte der einzelnen Punkte sich in den Dimensionen unterscheiden gewichtet. \\
+Als Beispiel würden in dem Datensatz von Tabelle \ref{tab:table1} bei dem ersten Durchlauf der Baumkonstruktion die Dimensionen 1, 2 und 3 mit einer jeweiligen Wahrscheinlichkeit von $\frac{1}{7}$, $\frac{2}{7}$ und $\frac{4}{7}$, als die Dimension über die in Schritt 3 geteilt wird, ausgewählt werden.
 
-\begin{table}[h!]
+\begin{table}%[h]
   \begin{center}
-    \caption{Your first table.}
+    \caption{Ein Beispiel Datensatz über 3 Dimensionen mit numerischen Werten mit $S={x, y, z}$ sowie die von \textbf{Definition 1} in Schritt 1 berechnete Wahrscheinlichkeit das $S$ über die jeweilige Dimension als nächstes in Schritt 3 geteilt wird}
     \label{tab:table1}
-    \begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-      \textbf{Value 1} & \textbf{Value 2} & \textbf{Value 3}\\
-      $\alpha$ & $\beta$ & $\gamma$ \\
+    \begin{tabular}{c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+      \textbf{Dimension} & \textbf{x} & \textbf{y} & \textbf{z} & $\frac{l_i}{\Sigma_j l_i}$\\
+      %$\alpha$ & $\beta$ & $\gamma$ \\
       \hline
-      1 & 1110.1 & a\\
-      2 & 10.1 & b\\
-      3 & 23.113231 & c\\
+      1 & 5 & 10 & 6 & $\frac{5}{35}$\\
+      2 & 2 & 8 & 12& $\frac{10}{35}$\\
+      3 & 25 & 5 & 5& $\frac{20}{35}$\\
     \end{tabular}
   \end{center}
 \end{table}
@@ -51,6 +53,6 @@ In Schritt 2 wird darauf analog zum Isolation Forest Verfahren ein Trennwert $X_
 In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten.
 %Distanzbeweis aus paper
 \subsection{RRCF Instandhaltung}
-In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal{T}(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können.
+In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal{T}(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können. 
 
 \subsubsection{Theorem 2}

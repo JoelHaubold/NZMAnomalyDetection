@@ -4,6 +4,17 @@
 {\sc Aggarwal, Charu~C}: {\em Outlier analysis}.
 \newblock \Btxinlong{}\ {\em Data mining}. Springer, 2015.
 
+\bibitem{ahmed2016surveyatypes}
+{\sc Ahmed, Mohiuddin}, {\sc Abdun~Naser Mahmood} \btxandlong{}\ {\sc Jiankun
+  Hu}: {\em A survey of network anomaly detection techniques}.
+\newblock Journal of Network and Computer Applications, 60:19--31, 2016.
+
+\bibitem{bartos2019rrcfImpl}
+{\sc Bartos, Matthew}, {\sc Abhiram Mullapudi} \btxandlong{}\ {\sc Sara
+  Troutman}: {\em rrcf: Implementation of the Robust Random Cut Forest
+  algorithm for anomaly detection on streams}.
+\newblock Journal of Open Source Software, 4(35):1336, 2019.
+
 \bibitem{chandola2009anomaly}
 {\sc Chandola, Varun}, {\sc Arindam Banerjee} \btxandlong{}\ {\sc Vipin Kumar}:
   {\em Anomaly detection: A survey}.
@@ -22,6 +33,18 @@
   streams}.
 \newblock \Btxinlong{}\ {\em International conference on machine learning},
   \btxpageslong{}\ 2712--2721, 2016.
+
+\bibitem{gupta2013outlier}
+{\sc Gupta, Manish}, {\sc Jing Gao}, {\sc Charu~C Aggarwal} \btxandlong{}\ {\sc
+  Jiawei Han}: {\em Outlier detection for temporal data: A survey}.
+\newblock IEEE Transactions on Knowledge and Data Engineering,
+  26(9):2250--2267, 2013.
+
+\bibitem{liu2012isolation}
+{\sc Liu, Fei~Tony}, {\sc Kai~Ming Ting} \btxandlong{}\ {\sc Zhi-Hua Zhou}:
+  {\em Isolation-based anomaly detection}.
+\newblock ACM Transactions on Knowledge Discovery from Data (TKDD), 6(1):1--39,
+  2012.
 
 \bibitem{changing_d_tan2011fast}
 {\sc Tan, Swee~Chuan}, {\sc Kai~Ming Ting} \btxandlong{}\ {\sc Tony~Fei Liu}:

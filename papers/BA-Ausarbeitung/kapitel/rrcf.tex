@@ -1,0 +1,56 @@
+%!TeX root=../main.tex
+% rrcf.tex
+\chapter{Robust Random Cut Forest}
+\label{chapter:rrcf}
+
+In diesem Kapitel wird einer der beiden auf unserem Datensatz angewendeten Verfahren, der \textbf{Robust Random Cut Forest} (von hier an RRCF) wie in  \cite{guha2016rrcfTheory}, zuerst in seinen Grundzügen beschrieben und darauf wird auf die im unterlegenen Theoreme eingegangen.
+
+\section{Vorteile von RRCF} % Einleitung zu Bedarf des Datensatzes hier vor, oder ans Ende des Kapitels packen, oder in das nächste Kapitel so das dies ein reines Theorykapitel wird, oder Datensatz unabhängig beschreiben
+
+RRCF wird zur Analyse des dieser Arbeit zugrunde legendem Datensatzes benutzt, da dass Verfahren eine Reihe von Vorteilen besitzt \cite{bartos2019rrcfImpl}:
+\begin{itemize}
+\item \textit{Anwendbarkeit auf Streaming-Daten}: Neue Datenpunkte können in die konstruierten Bäume eingegliedert werden ohne das diese neu aufgebaut werden müssen.
+\item \textit{Geeignet für hoch dimensionale Daten}: Die angewandte Baumstruktur ist sehr geeignet für das aufnehmen von hochdimensionalen Daten. Da der Algorithmus zwischen wichtigen und unwichtigen Dimensionen unterscheiden kann, wird auch der Einfluss von solchen unwichtigen Dimensionen eingeschränkt.
+\item \textit{Robust gegenüber Duplikaten}: Duplikate
+\item \textit{Ausgabe in vorm einer Bewertung}: Eine Bewertende Ausgabe ist nützlich, da
+\end{itemize} 
+
+\section{RRCF Theory}
+
+\subsection{RRCF Aufbau}
+
+Parallel zu anderen Forest-Ansätzen aus dem Gebiet des maschinellen Lernens, besteht ein RRCF aus mehreren unabhängigen \textbf{Robust Random Cut Trees} (RRCT):
+
+\subsubsection{Definition 1} Ein RRCT wird über ein Datensatz $S$ mit $j$ Dimensionen wie folgt generiert:
+\begin{enumerate}
+\item Wähle eine Dimension $i$ aus den $j$ Dimensionen. Dabei hat jede Dimension eine Wahrscheinlichkeit proportional zu $\dfrac{l_i}{\Sigma_j l_i}$, mit $l_i = max_{x\in S} x_i - min_{x \in S} x_i$ ausgewählt zu werden.
+\item Wähle $X_i ~ Uniform[min_{x \in S} x_i, max_{x \in S} x_i]$
+\item Teile $S$ in $S_1 = \{ x | x \in S, x_i \leq X_i \}$ und $S_2 = S \backslash S_1$ und fahre rekursiv auf $S_1$ und $S_2$ fort, solange $|S_1| > 1$ beziehungsweise $|S_2| > 1$.
+\end{enumerate}
+%Referenziere Grundlagen, hier evtl eine Tabelle als Beispiel, ?Isolation Forest als Referenz?
+In Schritt 1 wird die Dimension ausgewählt über die der Datensatz bei der Konstruktion des Baumes getrennt wird. Ein wichtiger Unterschied bei der Konstruktion eines RRCT zu der Konstruktion eines Baumes in einem Isolation Forest, wie in \cite{liu2012isolation}, ist dabei, dass die zur Trennung genutzte Dimension $i$ nicht Uniform über alle Dimensionen $j$ ausgewählt wird. Stattdessen werden die Dimensionen proportional dazu wie stark die Werte der einzelnen Punkte sich in ihnen unterscheiden gewichtet.
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Your first table.}
+    \label{tab:table1}
+    \begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+      \textbf{Value 1} & \textbf{Value 2} & \textbf{Value 3}\\
+      $\alpha$ & $\beta$ & $\gamma$ \\
+      \hline
+      1 & 1110.1 & a\\
+      2 & 10.1 & b\\
+      3 & 23.113231 & c\\
+    \end{tabular}
+  \end{center}
+\end{table}
+
+
+In Schritt 2 wird darauf analog zum Isolation Forest Verfahren ein Trennwert $X_i$ uniform aus der Wertespanne aller Datenpunkte der jeweiligen Dimension gewählt.
+
+In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten.
+%Distanzbeweis aus paper
+\subsection{RRCF Instandhaltung}
+In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal{T}(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können.
+
+\subsubsection{Theorem 2}

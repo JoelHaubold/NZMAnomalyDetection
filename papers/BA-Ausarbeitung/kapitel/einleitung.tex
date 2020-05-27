@@ -2,12 +2,18 @@
 % einleitung.tex
 \chapter{Einleitung}
 \section{Motivation und Hintergrund}
-%Eine Referenz~\cite{AggarwalV88}.
 
 \subsection{Anomaliererkennung auf Zeitreihen}
-Anomalieerkennung ist ein weitreichendes Forschungsgebiet, welches seit langem XDDDD
+Anomalieerkennung auf Zeitreihen ist ein weitreichendes Forschungsgebiet, sowohl an der großen Zahl möglicher Vorgehensweise gemessen, als auch and der Vielfalt der Anwendungsgebiete. \cite{gupta2013outlier} Einige Beispiele für den Nutzen den die Erkennung von Anomalien darstellt sind:
+\begin{itemize}
+\item Finanzmärkte: Abrupte Einbrüche im Finanzmarkt müssen möglichst Frühzeitig erkannt werden um sich ausbreitenden Schaden zu verhindern oder einzudämmen.
+\item Benutzerhandlungen: Zeichnen sich Auffälligkeiten im Verhalten eines Benutzers ab so kann dies auf Situationen mit Handlungsbedarf hindeuten. So kann zum Beispiel etwaigen ungewollten Eingriffen in ein Computersystem entgegengewirkt werden.
+\item Biologische Daten: Zwar nicht direkt Zeitabhängig so können bestimmte biologische Forschungsprozesse, wie das platzieren einzelner Aminosäuren, analog zu temporalen Daten mit Methoden zur Zeitreihenanomalieerkennung unterstützt werden.
+\item Sensordaten: Viele physikalischen Anwendungen wird deren Verlauf anhand umfassender Sensordaten überwacht. Die hohe Quantität an Daten die kontinuierlich erfasst werden, macht es unmöglich diese alle per Hand auszuwerten und so kann automatisierte Anomalieerkenung dazu genutzt werden Ereignisse und Zusammenhänge in diesen Daten zu entdecken die ansonsten unbemerkt geblieben wären.
+\end{itemize}
+Diese Arbeit beschäftigt sich spezifisch mit dem folgend erläuterten Sensordatensatz, auf dem sie zwei Unterschiedliche Methoden miteinander vergleicht. 
 
-\subsection{Daten aus der Niederspannung}
+\subsection{Analyse des Niederspannungsnetzes}
 Das deutsche Verteilnetz wurde ursprünglich mit dem Ziel gebaut, den in Großkraftwerken
 produzierten Strom und über das Transportnetz in die einzelnen Regionen Deutschlands transportiert wird, regional an die Endkunden (sowohl Industrie- und Gewerbekunden als auch
 Haushalte) zu verteilen. Das Verteilnetz ist dabei baumartig strukturiert und besteht aus der Hochspannungsebene die den Übergabepunkt des Transportnetz enthält und sich hin zur Mittelspannungsebene, Niederspannungsebene und schließlich den Endkunden verzweigt. \\
@@ -20,7 +26,14 @@ den frühen Abendstunden und über die Nacht verteilt das Netz stärker belasten
 Um diese Effekte erkennen und analysieren zu können, müssen die Niederspannungsebene
 zunächst messtechnisch erfasst werden. Die Firma PPC hat ein Messgerät entwickelt, welches sich in Ortsnetzstationen (Übergabepunkt von Mittel- zu Niederspannung) einbauen lässt und dort eine dreiphasige Spannungsmessung durchführen kann. Zusätzlich verfügt das Messgerät über
 eine Kommunikationsanbindung mit der sich die Daten abrufen und an einem zentralen Punkt
-aggregieren und auswerten lassen.
+aggregieren und auswerten lassen. Eine Teilmenge dieser Daten sind nun Bestand dieser Arbeit.
+
+\subsubsection{Datensatz}
+
+Maybe here???
+
+
+
 
 \section{Aufbau der Arbeit}
-In dieser Arbeit werden zuerst in Kapitel 2 die Grundsätze von Zeitreihenanomalieerkennung, sowie die zwei in ihr eingesetzten Verfahren "Robust Random Cut Forest", und "One Dimensional Support Vector Machine" erläutert. In Kapitel 3 wird auf die im Rahmen dieser Arbeit angewendete Implementierung und deren Ergebnisse eingegangen. In Kapitel 5 werden, auf der Basis dieser Ergebnisse, die beiden implementierten Verfahren miteinander verglichen.
+In dieser Arbeit werden zuerst in Kapitel 2 die Grundsätze von Anomalieerkennung und mögliche Komplikationen die sie mit sich bring erläutert. In Kapitel 3 werden die zwei in der Arbeit eingesetzten Verfahren "Robust Random Cut Forest", und "One Dimensional Support Vector Machine" erläutert. In Kapitel 4 wird auf die im Rahmen dieser Arbeit angewendete Implementierung und deren Ergebnisse eingegangen, sowie wie diese Ergebnisse geneinander Abschneiden. In Kapitel 5 wird, auf Basis dieser Ergebnisse, ein Fazit gezogen.

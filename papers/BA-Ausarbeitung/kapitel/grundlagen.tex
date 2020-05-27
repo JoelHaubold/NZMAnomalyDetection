@@ -14,15 +14,22 @@ Die in dieser Arbeit verwendeten Notationen lehnen sich an die in dem Papier \ci
 
  % Define dimensions of Z; Move Usefulness to Introduction
 In einem gegebenen Datensatz $Z$ an Punkten, wird einer dieser Punkte $x \in Z$ als Outlier bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von den Punkten $Z  - \{x\}$ unterscheidet. Seien $Y$ alle anomalen Punkte aus $Z$. Ein Modell welches $Z$ darstellt ist entsprechend wesentlich komplexer als ein Modell welches $Z-Y$, also nur die nicht-normalen \textit{Inliners} von $Z$ darstellt.  Wie stark sich $x$ in seinen Merkmalen von anderen Punkten in $Z$ unterscheiden muss, beziehungsweise wie stark $x$ die Komplexität des Modells von $Z$ erhöht, damit $x$ als Anomalie gesehen wird ist hängt oft von der jeweiligen Zielsetzung ab.\\
-Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
-Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
+%Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
+%Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
 \begin{figure}[]
 \centering
 \includegraphics[width=0.5\textwidth]{bilder/anomaly_chandola.png}
 \caption{Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \protect\cite{chandola2009anomaly}}
 \label{image-dup}
 \end{figure}
-\\
+\subsection{Anomalytypen} %Change Examples?
+Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich von den Inlinern abheben in drei Klassen unterteilen: \cite{ahmed2016surveyatypes}
+\begin{itemize}
+\item \textit{Punktanomalien}: Wenn ein Datenpunkt sich stark von den normalen Merkmalsausprägungen im Datenset unterscheidet. Beispielsweise wäre bei Beobachtung des Kraftstoffverbrauchs pro Tag eines Autos ein Verbrauch von 50 Litern, mit einem normalen Verbrauch von 5 Litern pro Tag eine Punktanomalie
+\item \textit{Kontextanomalien}: Wenn ein Datenpunkt in einem bestimmten Kontext in seinem Datensatz hervorsticht. Zum Beispiel können bei der Anomalieerkennung auf den Ausgaben einer Person, überdurchschnittlich hohe Ausgaben hohe Ausgaben an einem Feiertag normal sein, im Kontext eines Arbeitstages allerdings eine Anomalie darstellen.
+\item \textit{Kollektivanomalien}: Wenn mehrere, über ein oder mehrere ihrer Merkmale zusammenhängende Datenpunkte, welche alleine keine Besonderheit darstellen würden, zusammen eine Anomalie darstellen. Beispielsweise sind bei einem Elektrokardiogramm (EKG) einzelne niedrige Werte Teil einer Inlinergruppe, eine Reihe lange zeitlich aufeinanderfolgender Werte allerdings ist eine Anomalie.
+\end{itemize}
+
 \subsection{Komplikationen}
 Die Diversität von möglichen Datensätzen und deren Merkmalen macht es generell nicht möglich,  ein allgemeines Vorgehen für die Erkennung von Anomalien zu bestimmen. Dazu kommen mögliche Eigenschaften die dies weiterhin erschweren, oder es bestimmten Vorgehen sogar unmöglich machen, Anomalie von Inliner zu unterscheiden. Ein Überblick über einige dieser ist hier aufgeführt:
 
@@ -54,9 +61,25 @@ Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Date
 
 \subsection{Überwachtes und unüberwachtes Lernen}
 \label{sec-supervised}
-Generell lassen sich alle maschinellen Lernverfahren durch maschinelles Lernen in zwei Bereiche teilen: %gupda!!!!
-\subsubsection{Unüberwachtes Lernen}
+Generell lassen sich zur Anomalieerkennung angewandte maschinelle Lernverfahren in zwei Bereiche teilen, überwachtes und unüberwachtes Lernen: %gupda!!!!
 \subsubsection{Überwachtes Lernen}
+Überwachtes Lernen
+
+\subsubsection{Unüberwachtes Lernen}
+
+\subsection{Input und Output von Anomalieerkennungsverfahren}
+
+Weiter Unterscheidungen lassen sich über Anomalieerkennungsverfahren darin machen, in welcher Form der Input auf Anomalien untersucht wird, und in Welcher Form das Anomalieerkennungsverfahren seine Ergebnisse ausgibt.
+
+\subsubsection{Arten von zu analysierenden Dateninstanzen}
+Auch darin in welcher Form die Anomalien erkannt werden sollen unterscheiden sich die möglichen Verfahren. Je nach Zielsetzung kann in einer Zeitreihe nach einzelnen oder Sequenzen von anomalen Datenpunkten gesucht, oder es können Zeitabschnitte nach Auffälligkeiten miteinander verglichen werden. Anders mag es auch von Nutzen seien, ganze Zeitreihen aus einer Gruppe von Zeitreihen als anomal zu bestimmen. \cite{gupta2013outlier}  
+
+\subsubsection{Ergebnisse des Anomalieerkennungsverfahren}
+Das Ergebnis eines Anomalieerkennungsverfahrens, stellt die Beurteilung des Verfahrens gegenüber den eingegebenen Datensatz dar, ob die Eingabe oder die Elemente die diese ausmacht anomal oder nicht sind, beziehungsweise um welche Art von Anomalie es sich handelt. Allgemein kann man zwischen zwei Ausgabearten der Ergebnisse unterscheiden: \cite{ahmed2016surveyatypes}
+\begin{itemize}
+\item \textit{Bewertung}: Bei bewertenden Anomalieerkennungsverfahren wird jeder zu bewertenden Dateninstanz, ein Wert zugeordnet, dessen Größe darstellt wie sicher sich das Verfahren ist, ob die Instanz eine Anomalie ist. Entweder werden diese Werte dann einer genaueren Betrachtung unterzogen, oder es wird eine Grenze festgelegt, ab welchen Wert eine Dateninstanz als Anomalie interpretiert wird.
+\item \textit{Kennzeichnung}: Bei einem kennzeichnenden Anomalieerkennungsverfahren bestimmt das Verfahren im Alleingang, ob eine Dateninstanz eine Anomalie ist oder nicht, beziehungsweise zu welcher Anomalieklasse es gehört.
+\end{itemize}
 
 \subsection{Robustheit}
  Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomalien im Trainingsdatensatzes und gegenüber ungewollten Unterschieden zwischen dem Trainingsdatensatz und dem Testdatensatz. Weiterhin kann ein Anomalieerkennungsverfahren besonders Robust gegenüber einer Eigenschaft von Datensätzen, wie zum Beispiel Rauschen oder Mehrdimensionalität, sein, die sich allgemein negativ auf die Performance von auf ihrem Datensatz ausgeführten Algorithmen auswirkt.
@@ -70,5 +93,5 @@ Space Time Anpassung des Modells, Live Ergebnisse
 
 \subsection{F-Measure}
 
-\section{Anomalierkennung durch Random Forests}
+\section{Arten von Anomalieerkennungsverfahren}
 

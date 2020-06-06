@@ -17,24 +17,25 @@ RRCF wird zur Analyse des dieser Arbeit zugrunde legendem Datensatzes benutzt, d
 
 \section{RRCF Theory}
 
+Der RRCF ähnelt vielerlei einem Isolation Forest, was seinen Aufbau als binären Baum, sowie dem Vorgehen beim Löschen und hinzufügen von einzelnen Knoten angeht.
+
 \subsection{RRCF Aufbau}
-
 Parallel zu anderen Forest-Ansätzen aus dem Gebiet des maschinellen Lernens, besteht ein RRCF aus mehreren unabhängigen \textbf{Robust Random Cut Trees} (RRCT):
-
-\subsubsection{Definition 1} Ein RRCT wird über ein Datensatz $S$ mit $j$ Dimensionen wie folgt generiert:
-\label{sssec:rrcfdef1}
+\begin{definition}[RRCT]\label{def:rrcfdef1}
+Ein RRCT wird über ein Datensatz $S$ mit $j$ Dimensionen wie folgt generiert:
 \begin{enumerate}
 \item Wähle eine Dimension $i$ aus den $j$ Dimensionen. Dabei hat jede Dimension eine Wahrscheinlichkeit proportional zu $\dfrac{l_i}{\Sigma_j l_i}$, mit $l_i = \max_{x\in S} x_i - \min_{x \in S} x_i$ ausgewählt zu werden.
 \item Wähle $X_i \sim \textnormal{Uniform}[\min_{x \in S} x_i, \max_{x \in S} x_i]$
 \item Teile $S$ in $S_1 = \{ x \mid x \in S, x_i \leq X_i \}$ und $S_2 = S \setminus S_1$ und fahre rekursiv auf $S_1$ und $S_2$ fort, solange $\vert S_1\vert > 1$ beziehungsweise $\vert S_2\vert > 1$.
 \end{enumerate}
+\end{definition}
 %Referenziere Grundlagen, hier evtl eine Tabelle als Beispiel, ?Isolation Forest als Referenz?
 In Schritt 1 wird die Dimension ausgewählt über die der Datensatz bei der Konstruktion des Baumes getrennt wird. Ein wichtiger Unterschied bei der Konstruktion eines RRCT zu der Konstruktion eines Baumes in einem Isolation Forest, wie in \cite{liu2012isolation}, ist dabei, dass die zur Trennung genutzte Dimension $i$ nicht Uniform über alle Dimensionen $j$ ausgewählt wird. Stattdessen werden die Dimensionen proportional dazu wie stark die Werte der einzelnen Punkte sich in den Dimensionen unterscheiden gewichtet. \\
 Als Beispiel würden in dem Datensatz von Tabelle \ref{tab:table1} bei dem ersten Durchlauf der Baumkonstruktion die Dimensionen 1, 2 und 3 mit einer jeweiligen Wahrscheinlichkeit von $\frac{1}{7}$, $\frac{2}{7}$ und $\frac{4}{7}$, als die Dimension über die in Schritt 3 geteilt wird, ausgewählt werden.
 
 \begin{table}%[h]
   \begin{center}
-    \caption{Ein Beispiel Datensatz über 3 Dimensionen mit numerischen Werten mit $S={x, y, z}$ sowie die von \textbf{Definition 1} in Schritt 1 berechnete Wahrscheinlichkeit das $S$ über die jeweilige Dimension als nächstes in Schritt 3 geteilt wird}
+    \caption{Ein Beispiel Datensatz über 3 Dimensionen mit numerischen Werten mit $S={x, y, z}$ sowie die von Definition \ref{def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit das $S$ über die jeweilige Dimension als nächstes in Schritt 3 geteilt wird}
     \label{tab:table1}
     \begin{tabular}{c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
       \textbf{Dimension} & \textbf{x} & \textbf{y} & \textbf{z} & $\frac{l_i}{\Sigma_j l_i}$\\
@@ -50,9 +51,195 @@ Als Beispiel würden in dem Datensatz von Tabelle \ref{tab:table1} bei dem erste
 
 In Schritt 2 wird darauf analog zum Isolation Forest Verfahren ein Trennwert $X_i$ uniform aus der Wertespanne aller Datenpunkte der jeweiligen Dimension gewählt.
 
-In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten.
-%Distanzbeweis aus paper
-\subsection{RRCF Instandhaltung}
-In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal{T}(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können. 
+In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten.//
+Ein so fertig konstruierter RRCT, hat als seine Blätter genau alle Punkte aus $S$ und als seine Knoten die in den rekursiven Durchläufen bestimmten Schnittpunkte und die jeweils zugehörige Dimension mithilfe derer $S$ geteilt wurde.
 
-\subsubsection{Theorem 2}
+\subsection{Distanzbeibehaltung bei RRCT Konstruktion}
+
+Damit ein RRCF zur Anomalieerkennung eingesetzt werden kann, muss gezeigt werden, dass die RRCTs in der er die Punkte des zu untersuchenden Datensatzes auf eine Art speichert, die die Distanz zwischen den Punkten Beibehält. Ein Datenpunkt der sich im Datensatz anomal abzeichnet muss, auch in einem aus diesem Datensatz gebauten RRCT als anomal erkennbar sein. Dies ist gegeben durch \cite{guha2016rrcfTheory}:
+
+\begin{theorem}[Distanzbeibehaltung]\label{theo:distance}
+Sei ein RRCT $\mathcal{T}$ über einen Datensatz $S$ mit $d$ Dimensionen konstruiert. Sei das Gewicht eines Knotens von $\mathcal{T}$ die Summe der Länge der Kanten der minimal begrenzenden Box der diesem Knoten untergeordneten Punkte $\sum_i l_i$, und sei die Baumdistanz zwischen zwei Knoten $u, v \in S$ das Gewicht des letzten gemeinsamen Vorfahrens von $u$ und $v$.
+Dann ist die Baumdistanz von $u$ und $v$ mindestens $L_1(u,v)$ und in Erwartung maximal ein Vielfaches von $L_1(u,v)$ um den Faktor:
+\begin{align}
+\mathcal O(d \log{\frac{|S|}{L_1(u,v)}})
+\end{align}
+\end{theorem}
+
+\subsubsection{Beweis von Theorem \ref{theo:distance}}
+\begin{lemma} \label{lem:tren}
+Die Wahrscheinlichkeit das $u$ und $v$ durch die erste Partition von $S$ getrennt werden ist:
+\begin{align}
+\frac{1}{P(S)}\sum_i|u_i-v_i|
+\end{align}
+\end{lemma}
+$P(S)$ entspricht der Summe der Länge aller Wertespannen $l_i$ in denen in Schritt 1 und 2 von Theorem \ref{def:rrcfdef1} ein Schnittpunkt gewählt wird. $\sum_i|u_i-v_i|$ entspricht der Summe der Wertespannen, auf denen die Wahl eines Schnittpunktes $u$ und $v$ trennen würde. Das Lemma folgt.
+\par
+
+
+\subsection{RRCF Instandhaltung}
+In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal T(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können. //
+
+\subsubsection{Löschen eizelner Punkte} %Move to Implementation and reference here? Reference Binary Tree Operations
+Soll ein Punkt $u$ aus dem Baum $\mathcal T$ gelöscht werden, so muss lediglich der Elternknoten $k$ von $u$, welcher die Trennung mithilfe der $u$ isoliert wurde darstellt, mit gelöscht werden, und der Elternknoten von $k$ bekommt als neues Kind, dass nun verwaiste Kind von $k$. Siehe Bild ???
+
+
+\begin{theorem}[Konsistenz der inneren Probabilität]\label{theo:wahrsch}
+Sei ein RRCT $\mathcal T$ welcher über einen Datensatz $S$ konstruiert wurde. Wird ein Punkt $u \in S$ wie oben skizziert gelöscht, so hat der daraus resultierende Baum die gleiche Probabilität gegenüber über welche Dimensionen $\mathcal T$ bei seiner Konstruktion partitioniert wird, wie ein RRCT der über $S - {u}$ konstruiert wurde. Parallel dazu hat ein RRCT der über $S \cup \{v\}$ mit $v \notin S$ konstruiert wird, die gleiche Probabilität wie der RRCT der aus dem hinzufügen von $v$ zu $\mathcal{T}$ resultiert
+\end{theorem}
+
+Dieses natürliche Verhalten gegenüber dem hinzufügen und löschen von Punkten des RRCF Verfahrens, setzt es von vielen anderen Partitionierungsverfahren ab \cite{guha2016rrcfTheory}, insbesondere auch von anderen Baum konstruierenden Anomalieerkennungsverfahren Verfahren wie das Isolation Forest Verfahren, welche die über die zu partitionierende Dimension uniform-zufällig auswählen. Dies zeigt sich durch folgendes Beispiel:
+
+\subsubsection{Unterschiede beim Löschen eines Punktes}
+
+Beispiel mit Bild pro Fall 4+2 :)\medbreak
+Die so ermöglichten dynamischen Änderungen an den durch das RRCF Verfahren konstruierten Bäumen, ermöglicht unter anderem die effiziente Anomalieerkennung auf gestreamten Daten, da die neu eintreffenden  Punkte in die bestehenden Bäume mit eingefügt werden können, anstatt das diese von Grund auf neu gebaut werden müssten.
+
+\begin{theorem}[Die RRCT Konstruktion ist Stichproben unabhängig]\label{theo:proben}
+Sei $S$ eine Stichprobe eines Datensatzes. Es kann ein RRCF über $S$ gebildet werden, selbst wenn $S$ dynamisch aktualisiert wird.
+\end{theorem}
+Das Theorem folt aus den bisher definierten. Theorem \ref{theo:distance} sagt aus, dass der RRCT die in $S$ gegebenen Abstände beibehält. Jedes auf $S$ angewendete Stichprobenverfahren, welches die gewünschten Zusammenhänge beibehält, kann dementsprechend auch in einem RRCT abgebildet werden. Mit Theorem \ref{theo:wahrsch} ist der Prozess der RRCT Konstruktion unabhängig von den angewendeten Stichprobenverfahren. Soll beispielsweise eine Stichprobe von $S$ der Größe $\rho|S|$, mit $\rho < 1$ uniform-zufällig erstellt werden, so müssen kann entweder ein RRCT über $\rho|S|$ uniform-zufällig ausgewählte Punkte von $S$ konstruiert werden, oder es können $|S|-\rho|S|$ Punkte uniform-zufällig bestimmte Punkte aus einem bestehenden RRCT über $S$ gelöscht werden. Beide Vorgehensweisen resultieren in den selben Probabilitäten, gegenüber der Struktur und den ausgewählten Dimensionen über die die Stichprobe partitioniert wurde, für den resultierenden Baum. Parallel dazu kann jedes weiter Stichprobenverfahren vor oder auch abhängig von der Größe des resultierenden Baumes nach der Konstruktion des RRCT angewandt werden. Es folgt:
+
+\begin{theorem}\label{theo:downs}
+Existiert ein Verfahren welches eine Stichprobe des Datensatzes $S$ per Downsampling erstellt dann existiert für jede Downsampling Rate ein Algorithmus der einen RRCT über die Stichprobe erzeugt indem er Punkte aus dem RRCT über $S$ löscht.
+\end{theorem}
+Somit ist es möglich die Menge an Punkten mit der ein RRCF konstruiert wurde, nach seiner Konstruktion anzupassen. Aus Theorem \ref{theo:proben} ergibt sich weiterhin:
+
+\begin{theorem}\label{theo:change}% In grundlagen erklären das Forest über Expectations funktioniert
+Sei ein RRCT über einen Datensatz $S$ konstruiert. Sei $u \notin S$. Da wir effizient den RRCT über $S \cup \{p\}$ konstruieren können indem wir $u$ zu $\mathcal{T}(S)$ hinzufügen, können wir effizient den erwarteten Effekt von $u$ auf die Platzierung der anderen Punkte in $S$ bestimmen, sowie die erwartete Tiefe die $u$ in $\mathcal{T}(S \cup \{u\})$ hat. 
+\end{theorem}
+Diese Möglichkeit, kontrafaktische Fragen gegenüber dem Einfügen von $u$ in $\mathcal{T}(S)$ effizient zu beantworten, eignet sich Intuitiv der Anomalieerkennung. So kann entweder die erwartete Tiefe von $u$ bestimmt werden, um über Theorem \ref{theo:distance} den Grad der Normalität von $u$ abzuschätzen, oder es kann der Unterschied den $u$ zwischen $\mathcal{T}(S)$ und $\mathcal{T}(S \cup \{u\})$ erzeugt, bemessen werden. Eine konkrete Metrik dazu wird in der nächsten Sektion in Form des $Codisplacements (CoDisps)$ vorgestellt.
+
+\section{Anomalieerkennung über RRCF}
+
+Um zu spezifizieren wie genau ein anomaler Punkt in einem $RRCF$ erkannt wird, sei hier auf das Beispiel in Kapitel \ref{chapter:grundlagen}, der Menge bestehend aus schwarzen Kugeln und Würfeln, sowie einer grünen Kugel, zurückgegriffen. Hier lassen sich 2 Arten der Anomalieausprägung definieren:
+\begin{enumerate}
+\item Eine Anomalie ist einfach zu beschreiben, die grüne Kugel unterscheidet sich zwar nicht im Merkmal der Länge, aber im Merkmal der Farbe stark von den anderen Objekten der Menge. Ihre Unterscheidung von der Menge ist leicht abzugrenzen. Diese Kategorisierung ist die in Kapitel \ref{chapter:grundlagen} verwendete.
+\item Die Existenz einer Anomalie in einer Menge, macht es schwieriger diese Menge zu beschreiben. So müssen die Objekte der Menge nun nicht mehr nur noch nach Form, sondern auch nach Farbe differenziert werden. Der Fokus einer Beschreibung wird von einer Mehrzahl der Objekte zu einem einzigem verschoben.
+\end{enumerate}
+Die beiden Anomalieausprägungen folgen auseinander. Das eine Anomalie über ihr hervorstechendes Merkmal einfach zu beschreiben ist, ist äquivalent  dazu, dass die Beschreibung der Merkmale einer Menge einfacher wäre, würde diese Anomalie mit ihrem besonderen Merkmal beziehungsweise ihrem besonders ausgeprägtem Merkmal nicht existieren.
+
+Der RRCF Algorithmus versucht die in Punkt 2 definierte, durch einen Punkt erzeugte Verschiebung ($Disp$) zu bestimmen. Dazu wird zuerst die Komplexität eines RRCTs definiert, um eine exakte Relation über den Effekt der im RRCT untergebrachten Punkte auf die Komplexität von diesem zu bestimmen.
+
+\subsection{Modellkomplexität eines RRCT}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=140 pt]{bilder/rrcf_model_compl.png}
+\caption{Ein Teilbaum $T_1$ über die Menge $S_1$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_1$ in zwei Teilemengen da. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \protect\cite{guha2016rrcfTheory}}
+\label{image:rrcf_model_compl}
+\end{figure}
+
+Sei jedem Zweig in einem RRCT ein Bit zugeordnet. Ein linker Zweig wird durch das Bit 0 und ein rechter Zweig durch das Bit 1 gekennzeichnet. Der Platz von jedem Punkt $x$ in einem RRCT ist dann in diesem eindeutig durch die Folge an Bits entlang der Zweige von der Wurzel zu dem Punkt $x$, bestimmt. Siehe Abbildung \ref{image:rrcf_model_compl}, wo der Platz von $x$ in $T$ durch die Bitfolge $q_0,...,q_r,0,1$ definiert ist. Es bietet sich die folgende Definition \ref{def:modelkomp} der Modellkomplexität eines RRCTs an:
+\begin{definition}[Tiefe eines Punktes in $x$] \label{def:tiefe}
+Gegeben sei ein Satz an Punkten $S$ und sei $T = \mathcal{T}(S)$ ein RRCT über S. Sei ein Punkt $x \in S$, mit der zugehörigen Bitfolge $b$. Dann sei:
+\begin{align} \label{ali:tiefe}
+f(x,S,T) = |b|
+\end{align}
+die Tiefe von $x$ in $T$.
+
+\end{definition}
+Die Tiefe eines Knotens eines Binärbaumes entspricht der Anzahl der Zweige zwischen ihm und der Wurzel. Da sich pro Zweig ein Bit in der zugeordneten Bitfolge eines Knotens eines RRCTs ergibt, folgt die Gleichung \ref{ali:tiefe}.
+\begin{definition}[Modellkomplexität] \label{def:modelkomp}
+Gegeben sei ein Satz an Punkten $S$ und sei $T = \mathcal{T}(S)$ ein RRCT über S. Sei $f(x,S,T)$ mit $x \in S$ die Tiefe des Punktes $x$ in $T$. Dann ist die Modellkomplexität von T: 
+\begin{align}
+|M(T)| = \sum_{x\in S} f(x,S,T) \label{ali:mcomp1}
+\end{align}
+\end{definition}
+
+Die definierte Modellkomplexität $|M(T)|$ entspricht somit der Summe der Länge der Bitfolgen aller Punkte in dem RRCT $T$. Anomalien in einem Datensatz sorgen somit für eine höhere Modellkomplexität, da diese nach \ref{theo:wahrsch},  durch ihre Hervorstechenden Merkmale früh im RRCT Konstruktionsprozess isoliert werden, die restlichen Punkte also einen gebündelt einen weiteren Zweig herunter schickt.
+% Move Lemma über Displacementanzahl hierher
+\subsection{Verschiebung der Modellkomplexität durch einen Punkt $\textbf{x}$}
+
+Parallel zu der Modellkomplexität $|M(T)|$ ist die Modellkomplexität des RRCTs $T' = \mathcal{T}(S-\{x\})$, also des RRCTs der aus der Entfernung des Punktes $x$ aus dem RRCT $T$ nach Theorem \ref{theo:wahrsch} gegeben durch:
+\begin{align}
+|M(T')| = \sum_{x\in S - \{x\}} f(x,S - \{x\},T) \label{ali:mcomp2}
+\end{align} 
+
+Der Effekt den $x$ auf die Modellkomplexität von $T$ hat ist demnach:
+\begin{align}\label{ali:m_dif}
+|M(T)| - |M(T')|
+\end{align}
+Dabei ist zu beachten das der Term \ref{ali:m_dif} nur für den Effekt gilt den $x$ auf $|M(T)|$ hat, da nach Theorem \ref{theo:wahrsch} mit gegebenen $T$ und $x$ der durch das Entfernen von $x$ aus $T$ produzierte RRCT $T'$ deterministisch bestimmt ist. Umgekehrt kann aber jeder einzelne $T'$ aus beliebig vielen möglichen $T$ und $x$ hergeleitet werden, es handelt sich um eine viele-zu-einem Beziehung. Somit trifft der Term \ref{ali:m_dif} keine Aussage über den Effekt den $x$ in $T'$ haben würde.
+
+Ausgeweitet auf alle möglichen RRCTs $T = \mathcal{S}$ und allen möglichen $T = \mathcal{S - \{x\}}$ ergibt sich für die erwartete Verschiebung der Modellkomplexität, die $x$ im durchschnitt in allen $T$ verursacht:
+
+
+\begin{align}
+\mathbb{E}_{T} [ |M(T)| ]  -  \mathbb{E}_{T'} [|M(T')|] &=
+ \sum_{T} \sum_{y\in S} \mathbb{P}r[T] f(y,S,T)  \nonumber \\
+ &\qquad-\sum_{T'} \sum_{y\in S-\{x\}}\mathbb{P}r[T']f(y,S-\{x\},T')\label{ali:m_comp1} \\ 
+ &=  \sum_{T} \sum_{y\in S - \{x\}} \mathbb{P}r[T] f(y,S,T) \nonumber \\
+ &\qquad-\sum_{T'} \sum_{y\in S-\{x\}} \mathbb{P}r[T'] f(y,S-\{x\},T') \nonumber \\ 
+ &\qquad+ \sum_{T}\mathbb{P}r[T] f(x,S,T) \label{ali:m_comp2} \\
+ &= \sum_{T}\sum_{y\in S- \{x\}} \mathbb{P}r[T]\Big(f(y,S,T)-f(y,S-\{x\},T')\Big) \nonumber \\
+  &\qquad+ \sum_{T}\mathbb{P}r[T] f(x,S,T) \label{ali:m_comp3}
+\end{align}
+
+Der Term \ref{ali:m_comp1} ergibt sich aus \ref{def:modelkomp} und entspricht der  durchschnittlichen Modellkomplexität aller über nach Definition \ref{def:rrcfdef1} konstruierten RRCTs $T$ und $T'$. In dem Term \ref{ali:m_comp2} ist die durchschnittliche Modellkomplexität des Punktes $x$ getrennt von der des Rest des Baumes dargestellt. Wie oben dargestellt ist nach \ref{theo:wahrsch} mit gegebenen $T$ und $x$, das Resultat $T'$ der Entfernung des Punktes $x$ aus $T$ deterministisch gegeben und es gilt somit:
+\begin{align}
+\sum_{T'} \sum_{y\in S-\{x\}} \mathbb{P}r[T'] f(y,S-\{x\},T') = \sum_{T} \sum_{y\in S-\{x\}} \mathbb{P}r[T'] f(y,S-\{x\},T')
+\end{align}
+Woraus der Term \ref{ali:m_comp3} folgt und sich folgende Definition gibt:
+
+\begin{definition}[Verschiebung ($Displacement$) eines Punktes] \label{def:dif}
+Sei ein Satz an Punkten $S$ und sei ein Punkt $x \in S$. Seien $T = \mathcal{T}(S)$ und $T' = \mathcal{T}(S- \{x\})$ RRCTs über S. Die bitweise Verschiebung die der Punkt $x$ im RRCT $T$ verursacht ist:
+\begin{align}
+Disp(x,S) = \sum_{T}\sum_{y\in S- \{x\}} \mathbb{P}r[T]\Big(f(y,S,T)-f(y,S-\{x\},T')\Big) 
+\end{align}
+\end{definition}
+
+Zu bemerken gilt, dass die totale durch $x$ durchnitlisch verursachte Vergrößerung der Modellkomplexität gegeben ist durch:
+\begin{align}
+\mathbb{E}_{T} [ |M(T)| ]  -  \mathbb{E}_{T'} [|M(T')|] = Disp(x,S) + \sum_{T}\mathbb{P}r[T] f(x,S,T)
+\end{align} 
+, also der Summe der Bits die zu der Bit-Repräsentation der Punkte $y \in S-\{x\}$ durch $x$ hinzukommen, plus der Bits die $x$ selbst darstellen.
+Der Fokus der Anomalieerkennung durch RRCFs liegt demnach auf der Erkennung eines Steigens der Komplexität des Datensatzes den ein Punkt des Datensatzes hervorruft, anstatt auf das Hervorstechen des Punktes an sich.
+Die Benutzung des Wortes Verschiebung, ergibt lässt sich über folgendes Lemma herleiten:
+\begin{lemma} \label{lem:verschiebung} % Move to section before this?
+Die in durch einen Punkt $x \in S$ verursachte Verschiebung in einem RRCT $T = \mathcal{T}$ entspricht der Menge an Punkten, die Geschwister von $x$ sind 
+\end{lemma}
+
+\paragraph{Beweis Lemma \ref{lem:verschiebung}}
+Orientiert an Abbildung \ref{image:rrcf_model_compl}, ist die Bitrepräsentation jedes Punktes in $c$, also jedes Punktes welcher in dem Baum $T$ ein Geschwister von $x$ ist, gegeben durch:
+\begin{align}
+q_0,...,q_r,0,0,...
+\end{align}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=140 pt]{bilder/rrcf_model_compl2.png}
+\caption{Ein Teilbaum $T_2$ über die Menge $S_2$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_2$ in zwei Teilemengen da. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \protect\cite{guha2016rrcfTheory}}
+\label{image:rrcf_model_compl2}
+\end{figure}
+
+Repräsentiert in Abbildung \ref{image:rrcf_model_compl2}, welche den Teilbaum darstellt der sich aus dem Entfernen von $x$ aus dem in \ref{image:rrcf_model_compl} dargestellten RRCT ergibt, fällt durch das Entfernen nach\ref{theo:wahrsch}, von $x$ aus $T$ ein Knoten auf dem Pfad der Wurzel von $T$ zu den Punkten in dem Bereich $c$ weg, womit sich für diese eine neue Bitepräsentation gibt:
+\begin{align}
+q_0,...,q_r,0,...
+\end{align}
+Da der Pfad von der Wurzel von $T$, zu allen Knoten außerhalb des Bereiches $c$ durch das Löschen von $x$ unverändert bleibt, ergibt sich beziehend auf die Definition \ref{def:tiefe}, für den Effekt von $x$ auf die Länge der Bitrepräsentation jedes anderen Punktes in $T$:  
+
+\begin{equation}
+f(y,S,T) - f(y,S-\{x\},T') = \begin{cases}
+      1, &  y \in c \\
+      0, & \text{otherwise}
+    \end{cases}
+\end{equation}
+
+Es folgt für die Verschiebung von $x$ in einem gegeben Baum $T$:
+
+\begin{align}
+Disp_T(x,S) = |c|
+\end{align}
+
+\subsection{Codisp}
+
+
+Definition \ref{def:dif} bietet eine Möglichkeit der Anomaliedefinition. Diese ist allerdings stark anfällig gegenüber Duplikaten, wie in Sektion \ref{sec:komp} definiert. 
+
+\begin{figure}[]
+\centering
+\includegraphics[width=200 pt]{bilder/anomaly_chandola.png}
+\caption{Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \protect\cite{chandola2009anomaly}}
+\label{image:rrcf_model_compl2}
+\end{figure}

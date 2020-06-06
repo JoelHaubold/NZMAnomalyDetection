@@ -1,0 +1,6 @@
+Figur in rrcf wiederholen? (Seite an Seite zu Figur b)
+Bilder aus Papers leicht verändern?
+
+Todo:
+Nur die Biträpresentation der Punkte in S werden für die Modellkomplexität verwendet
+Bild von Baum mit Duplikaten

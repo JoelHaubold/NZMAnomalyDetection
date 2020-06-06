@@ -1,9 +1,15 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \cite {chandola2009anomaly}\relax }}{4}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Inlinergruppen und einem anomalen Punkt $A$. Quelle: \cite {aggarwal2015outlier}\relax }}{5}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ein Teilbaum $T_1$ \IeC {\"u}ber die Menge $S_1$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_1$ in zwei Teilemengen da. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \cite {guha2016rrcfTheory}\relax }}{14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ein Teilbaum $T_2$ \IeC {\"u}ber die Menge $S_2$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_2$ in zwei Teilemengen da. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \cite {guha2016rrcfTheory}\relax }}{17}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \cite {chandola2009anomaly}\relax }}{18}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

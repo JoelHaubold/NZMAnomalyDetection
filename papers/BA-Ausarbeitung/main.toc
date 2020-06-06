@@ -1,6 +1,6 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}
 \contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
 \contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
@@ -21,23 +21,33 @@
 \contentsline {subsubsection}{\IeC {\"U}berwachtes Lernen}{6}
 \contentsline {subsubsection}{Un\IeC {\"u}berwachtes Lernen}{6}
 \contentsline {subsection}{\numberline {2.3.2}Input und Output von Anomalieerkennungsverfahren}{6}
-\contentsline {subsubsection}{Arten von zu analysierenden Dateninstanzen}{6}
+\contentsline {subsubsection}{Arten von zu analysierenden Dateninstanzen}{7}
 \contentsline {subsubsection}{Ergebnisse des Anomalieerkennungsverfahren}{7}
 \contentsline {subsection}{\numberline {2.3.3}Robustheit}{7}
 \contentsline {subsection}{\numberline {2.3.4}Streaming Data}{7}
-\contentsline {subsection}{\numberline {2.3.5}Kriterien zur Performancebeurteilung}{7}
-\contentsline {subsection}{\numberline {2.3.6}F-Measure}{7}
-\contentsline {section}{\numberline {2.4}Arten von Anomalieerkennungsverfahren}{7}
+\contentsline {subsection}{\numberline {2.3.5}Kriterien zur Performancebeurteilung}{8}
+\contentsline {subsection}{\numberline {2.3.6}F-Measure}{8}
+\contentsline {section}{\numberline {2.4}Arten von Anomalieerkennungsverfahren}{8}
 \contentsline {chapter}{\numberline {3}Robust Random Cut Forest}{9}
 \contentsline {section}{\numberline {3.1}Vorteile von RRCF}{9}
 \contentsline {section}{\numberline {3.2}RRCF Theory}{9}
 \contentsline {subsection}{\numberline {3.2.1}RRCF Aufbau}{9}
-\contentsline {subsubsection}{Definition 1}{9}
-\contentsline {subsection}{\numberline {3.2.2}RRCF Instandhaltung}{10}
-\contentsline {subsubsection}{Theorem 2}{10}
-\contentsline {chapter}{\numberline {A}Weitere Informationen}{11}
-\contentsline {chapter}{Abbildungsverzeichnis}{13}
-\contentsline {chapter}{Tabellenverzeichnis}{15}
-\contentsline {chapter}{Algorithmenverzeichnis}{17}
-\contentsline {chapter}{Literaturverzeichnis}{19}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{19}
+\contentsline {subsection}{\numberline {3.2.2}Distanzbeibehaltung bei RRCT Konstruktion}{11}
+\contentsline {subsubsection}{Beweis von Theorem \ref {theo:distance}}{11}
+\contentsline {subsection}{\numberline {3.2.3}RRCF Instandhaltung}{11}
+\contentsline {subsubsection}{L\IeC {\"o}schen eizelner Punkte}{11}
+\contentsline {subsubsection}{Unterschiede beim L\IeC {\"o}schen eines Punktes}{12}
+\contentsline {section}{\numberline {3.3}Anomalieerkennung \IeC {\"u}ber RRCF}{13}
+\contentsline {subsection}{\numberline {3.3.1}Modellkomplexit\IeC {\"a}t eines RRCT}{14}
+\contentsline {subsection}{\numberline {3.3.2}Verschiebung der Modellkomplexit\IeC {\"a}t durch einen Punkt $\textbf {x}$}{15}
+\contentsline {paragraph}{Beweis Lemma \ref {lem:verschiebung}}{16}
+\contentsline {subsection}{\numberline {3.3.3}Codisp}{17}
+\contentsline {chapter}{\numberline {4}Support Vector Machine}{19}
+\contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{21}
+\contentsline {chapter}{\numberline {6}Fazit}{23}
+\contentsline {chapter}{\numberline {A}Weitere Informationen}{25}
+\contentsline {chapter}{Abbildungsverzeichnis}{27}
+\contentsline {chapter}{Tabellenverzeichnis}{29}
+\contentsline {chapter}{Algorithmenverzeichnis}{31}
+\contentsline {chapter}{Literaturverzeichnis}{33}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{33}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  6 JUN 2020 13:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  8 JUN 2020 11:44
 entering extended mode
 **./main.tex
 (main.tex
@@ -714,12 +714,9 @@ LaTeX Warning: Unused global option(s):
     [color].
 
 (main.aux (kapitel/titelseite.aux) (kapitel/einleitung.aux)
-(kapitel/grundlagen.aux) (kapitel/rrcf.aux
-
-LaTeX Warning: Label `image:rrcf_model_compl2' multiply defined.
-
-) (kapitel/svm.aux) (kapitel/tests.aux) (kapitel/fazit.aux) (kapitel/anhang.aux
-) (kapitel/erklaerung.aux))
+(kapitel/grundlagen.aux) (kapitel/rrcf.aux) (kapitel/svm.aux)
+(kapitel/tests.aux) (kapitel/fazit.aux) (kapitel/anhang.aux)
+(kapitel/erklaerung.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -972,88 +969,99 @@ Package pdftex.def Info: bilder/rrcf_model_compl2.png  used on input line 211.
 on input line 211.
 Package pdftex.def Info: Requested size: 140.0pt x 159.86887pt on input line 21
 1.
-[16]
+[16] [17 <./bilder/rrcf_model_compl2.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 240.
+               Default added (so using `tbp') on input line 243.
 
 File: bilder/anomaly_chandola.png Graphic file (type png)
 <use bilder/anomaly_chandola.png>
-Package pdftex.def Info: bilder/anomaly_chandola.png  used on input line 242. o
-n input line 242.
+Package pdftex.def Info: bilder/anomaly_chandola.png  used on input line 245. o
+n input line 245.
 Package pdftex.def Info: Requested size: 200.0pt x 168.63445pt on input line 24
+5.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 250.
+
+<bilder/rrcfDupli.png, id=105, 295.1025pt x 544.0325pt>
+File: bilder/rrcfDupli.png Graphic file (type png)
+<use bilder/rrcfDupli.png>
+Package pdftex.def Info: bilder/rrcfDupli.png  used on input line 252. on input
+ line 252.
+Package pdftex.def Info: Requested size: 100.0pt x 184.34601pt on input line 25
 2.
-) [17 <./bilder/rrcf_model_compl2.png>] [18]
+
+Underfull \vbox (badness 4254) has occurred while \output is active []
+
+ [18 <./bilder/rrcfDupli.png>] [19]) [20]
 \openout2 = `kapitel/svm.aux'.
 
  (kapitel/svm.tex
 Kapitel 4.
-) [19
+) [21
 
 
 
 ]
 \openout2 = `kapitel/tests.aux'.
 
- (kapitel/tests.tex [20
+ (kapitel/tests.tex [22
 
 
 
 ]
 Kapitel 5.
-) [21]
+) [23]
 \openout2 = `kapitel/fazit.aux'.
 
- (kapitel/fazit.tex [22
+ (kapitel/fazit.tex [24
 
 
 
 ]
 Kapitel 6.
-) [23]
+) [25]
 \openout2 = `kapitel/anhang.aux'.
 
- (kapitel/anhang.tex [24
+ (kapitel/anhang.tex [26
 
 
 
 ]
 Anhang A.
-) [25] [26
+) [27] [28
 
 
 ] (main.lof)
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
- [27] [28
+ [29] [30
 
 ] (main.lot)
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [29
+ [31
 
-] [30
+] [32
 
 ] (main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [31
+ [33
 
-] [32
-
-]
-(main.bbl) [33
+] [34
 
 ]
+(main.bbl [35
+
+]) [36]
 \openout2 = `kapitel/erklaerung.aux'.
 
- (kapitel/erklaerung.tex [34
-
-
-])
+ (kapitel/erklaerung.tex)
 Underfull \hbox (badness 10000) in paragraph at lines 4--40
 
  []
@@ -1073,7 +1081,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
 
  []
 
-[35] [36
+[37
+
+
+] [38
 
 
 ]
@@ -1083,51 +1094,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
  (main.aux (kapitel/titelseite.aux) (kapitel/einleitung.aux)
 (kapitel/grundlagen.aux) (kapitel/rrcf.aux) (kapitel/svm.aux)
 (kapitel/tests.aux) (kapitel/fazit.aux) (kapitel/anhang.aux)
-(kapitel/erklaerung.aux))
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+(kapitel/erklaerung.aux)) ) 
 Here is how much of TeX's memory you used:
- 6835 strings out of 493312
- 99345 string characters out of 3138899
- 188978 words of memory out of 3000000
- 10115 multiletter control sequences out of 15000+200000
+ 6851 strings out of 493312
+ 99613 string characters out of 3138899
+ 189006 words of memory out of 3000000
+ 10130 multiletter control sequences out of 15000+200000
  31933 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,41p,1211b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-eccc1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
-ec\dpi600\ecrm1000.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
-\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts
-\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX
-\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\joelh\AppData\Lo
-cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\joelh\
-AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk> <C:\Us
-ers\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsl1095.
-pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\ecrm1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
-\ec\dpi600\ecbx1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\font
-s\pk\ljfour\jknappen\ec\dpi600\ecss1095.pk> <C:\Users\joelh\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1200.pk> <C:\Users\joelh\AppData\L
-ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecsx1200.pk> <C:\Users\joelh
-\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1440.pk><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (40 pages, 615753 bytes).
+ <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\l
+jfour\jknappen\ec\dpi600\eccc1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\
+fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\joelh\AppData\Local\M
+iKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\joelh\AppDa
+ta\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\j
+oelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <
+C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx
+1440.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\d
+pi600\ecbx2074.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
+appen\ec\dpi600\ecsl1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\
+ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9
+\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\joelh\AppData\Local\
+MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\joelh\AppD
+ata\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1095.pk> <C:\Users\
+joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1200.pk> 
+<C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecs
+x1200.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
+dpi600\ecss1440.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (42 pages, 645472 bytes).
 PDF statistics:
- 821 PDF objects out of 1000 (max. 8388607)
+ 834 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

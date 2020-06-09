@@ -42,12 +42,14 @@
 \contentsline {subsection}{\numberline {3.3.2}Verschiebung der Modellkomplexit\IeC {\"a}t durch einen Punkt $\textbf {x}$}{15}
 \contentsline {paragraph}{Beweis Lemma \ref {lem:verschiebung}}{16}
 \contentsline {subsection}{\numberline {3.3.3}Codisp}{17}
-\contentsline {chapter}{\numberline {4}Support Vector Machine}{19}
-\contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{21}
-\contentsline {chapter}{\numberline {6}Fazit}{23}
-\contentsline {chapter}{\numberline {A}Weitere Informationen}{25}
-\contentsline {chapter}{Abbildungsverzeichnis}{27}
-\contentsline {chapter}{Tabellenverzeichnis}{29}
-\contentsline {chapter}{Algorithmenverzeichnis}{31}
-\contentsline {chapter}{Literaturverzeichnis}{33}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{33}
+\contentsline {subsubsection}{Robustheit gegen\IeC {\"u}ber Duplikaten}{18}
+\contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{20}
+\contentsline {chapter}{\numberline {4}Support Vector Machine}{21}
+\contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{23}
+\contentsline {chapter}{\numberline {6}Fazit}{25}
+\contentsline {chapter}{\numberline {A}Weitere Informationen}{27}
+\contentsline {chapter}{Abbildungsverzeichnis}{29}
+\contentsline {chapter}{Tabellenverzeichnis}{31}
+\contentsline {chapter}{Algorithmenverzeichnis}{33}
+\contentsline {chapter}{Literaturverzeichnis}{36}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{36}

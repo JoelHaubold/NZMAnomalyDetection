@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{aggarwal2015outlier}
 {\sc Aggarwal, Charu~C}: {\em Outlier analysis}.
@@ -31,6 +31,13 @@
 {\sc Guha, Sudipto}, {\sc Nina Mishra}, {\sc Gourav Roy} \btxandlong{}\ {\sc
   Okke Schrijvers}: {\em Robust random cut forest based anomaly detection on
   streams}.
+\newblock \Btxinlong{}\ {\em International conference on machine learning},
+  \btxpageslong{}\ 2712--2721, 2016.
+
+\bibitem{guha2016rrcfSup}
+{\sc Guha, Sudipto}, {\sc Nina Mishra}, {\sc Gourav Roy} \btxandlong{}\ {\sc
+  Okke Schrijvers}: {\em Supporting Information for: Robust random cut forest
+  based anomaly detection on streams}.
 \newblock \Btxinlong{}\ {\em International conference on machine learning},
   \btxpageslong{}\ 2712--2721, 2016.
 

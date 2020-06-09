@@ -3,7 +3,7 @@
 \chapter{Robust Random Cut Forest}
 \label{chapter:rrcf}
 
-In diesem Kapitel wird einer der beiden auf unserem Datensatz angewendeten Verfahren, der \textbf{Robust Random Cut Forest} (von hier an RRCF) wie in  \cite{guha2016rrcfTheory}, zuerst in seinen Grundzügen beschrieben und darauf wird auf die im unterlegenen Theoreme eingegangen.
+In diesem Kapitel wird einer der beiden auf unserem Datensatz angewendeten Verfahren, der \textbf{Robust Random Cut Forest} (von hier an RRCF) wie in  \cite{guha2016rrcfTheory} und \cite{guha2016rrcfSup}, zuerst in seinen Grundzügen beschrieben und darauf wird auf die im unterlegenen Theoreme eingegangen.
 
 \section{Vorteile von RRCF} % Einleitung zu Bedarf des Datensatzes hier vor, oder ans Ende des Kapitels packen, oder in das nächste Kapitel so das dies ein reines Theorykapitel wird, oder Datensatz unabhängig beschreiben
 
@@ -51,7 +51,7 @@ Als Beispiel würden in dem Datensatz von Tabelle \ref{tab:table1} bei dem erste
 
 In Schritt 2 wird darauf analog zum Isolation Forest Verfahren ein Trennwert $X_i$ uniform aus der Wertespanne aller Datenpunkte der jeweiligen Dimension gewählt.
 
-In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten.//
+In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten. \\
 Ein so fertig konstruierter RRCT, hat als seine Blätter genau alle Punkte aus $S$ und als seine Knoten die in den rekursiven Durchläufen bestimmten Schnittpunkte und die jeweils zugehörige Dimension mithilfe derer $S$ geteilt wurde.
 
 \subsection{Distanzbeibehaltung bei RRCT Konstruktion}
@@ -235,11 +235,68 @@ Disp_T(x,S) = |c|
 \subsection{Codisp}
 
 
-Definition \ref{def:dif} bietet eine Möglichkeit der Anomaliedefinition. Diese ist allerdings stark anfällig gegenüber Duplikaten, wie in Sektion \ref{sec:komp} definiert. 
+Definition \ref{def:dif} bietet eine Möglichkeit der Anomaliedefinition. Diese ist allerdings stark anfällig gegenüber Duplikaten, wie in Sektion \ref{sec:komp} definiert. Enthält die oben definierte Menge an Objekten 2 grüne Kugeln, so würde das Entfernen einer Kugel die Komplexität der Beschreibung der Menge nicht wesentlich vereinfachen. Ein genaueres Beispiel ergibt sich wie folgt:
 
+ Bei dem durch Abbildung \ref{image:dup-rrcf} dargestellten Datensatz $S$, würde ein auf diesem konstruierten RRCT die Punkte $o_1$ und $o_2$, basierend auf Theorem \ref{theo:distance}, aufgrund ihrer hohen Distanz $L_1$ zu allen anderen Punkten des Datensatzes wahrscheinlich schnell isolieren. $Disp(o_1,S)$ sowie $Disp(o_2,S)$ wäre, aufgrund ihrer somit folgenden hohen Anzahl an Punkten in Geschwisterknoten, ebenfalls hoch im Vergleich zu den Punkten in $N_1$ und $N_2$. Die Punkte in $O_3$ würde in Erwartung, aufgrund ihrer hohen Distanz $L1$, ebenfalls schnell von allen Punkten nicht in $O_3$ getrennt werden. Aufgrund ihrer geringen Distanz $L1$ untereinander würde die dafür verantwortliche Partitionierung, in Erwartung alle Punkte in $O_3$, nach Schritt 3 der Definition \ref{def:rrcfdef1} in eine Teilmenge partitionieren. In Erwartung ergibt sich ein RRCT wie in Abbildung \ref{image:dup-rrcf}. %RRCT mit o1 und o3
+ Da jedes Blatt, welches einen Punkt von $O_3$ enthält, eine geringe Anzahl an Blättern hat die von seinem Geschwisterknoten abstammen, ist somit $Disp(o_3,S)$ für alle $o_3 \in O_3$ gering. Die Punkte $O_3$ können über Definition \ref{def:dif} nicht als Anomalie erkannt werden.
+ 
 \begin{figure}[]
 \centering
 \includegraphics[width=200 pt]{bilder/anomaly_chandola.png}
 \caption{Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \protect\cite{chandola2009anomaly}}
-\label{image:rrcf_model_compl2}
+\label{image:dup-rrcf}
 \end{figure}
+
+\begin{figure}[]
+\centering
+\includegraphics[width=100 pt]{bilder/rrcfDupli.png}
+\caption{Ein Teilbaum, welcher }
+\label{image:dup-rrcf-tree}
+\end{figure}
+
+\subsubsection{Robustheit gegenüber Duplikaten}
+Um über die Modellkomplexität einen anomalen Punkt $x \in S$ als solchen zu erkennen selbst wenn $S$ Duplikate oder Beinah-Duplikate von $x$ enthält, muss demnach das Vergleichsmodell betrachtet werden, bei dem ein Set an Punkten $C$, mit $x \in C$ entfernt wurden. Analog zu Term \ref{ali:m_comp3} ergibt sich für den erwarteten durchschnittlichen Unterschied in der Modellkomplexität aller RRCTs $T = \mathcal{T}(S)$ und $T'' = \mathcal{T}(S - C)$:
+\begin{align}
+\mathbb{E}_{T} [ |M(T)| ]  -  \mathbb{E}_{T'} [|M(T'')|] &= Disp(C,S) + \sum_{T}\sum_{y \in C}\mathbb{P}r[T] f(y,S,T)
+\end{align}
+
+, wobei $Disp(C,S)$ der erwarteten Bit-Verschiebung, die die Punkte $C$ im Durchschnitt über alle $T$ verursachen entspricht:
+\begin{align} \label{ali:difc}
+Disp(C,S) &= \sum_{T}\sum_{y \in S - C}\mathbb{P}r[T] \Big(f(y,S,T) - f(y,S - C,T'')\Big)
+\end{align}
+
+
+Die Bit-Verschiebung von $x$ entspricht damit, basierend auf Term \ref{ali:difc} und der Annahme, dass alle Punkte in $C$ die gleiche Bit-Verschiebung zugeschrieben werden sollte, da es sich bei diesen in Erwartung um Duplikate oder Beinah-Duplikate von $x$ handelt,  $Disp(C,S)/|C|$.
+Dementsprechend wäre eine Methodik C zu wählen die Ermittlung des folgenden Maximums: 
+\begin{align} \label{ali:difcmax}
+\underset{x \in C \subseteq S}{max} Disp(C,S)/|C|
+\end{align}
+Dieser Methodik folgen allerdings zwei Probleme:
+\begin{enumerate}
+\item Die mögliche Anzahl an Sets von Punkten $x \in C \subseteq S$ wächst exponentiell zu $S$, weshalb Anomalieerkennung über Methodik \ref{ali:difcmax} ineffizient wäre.
+\item Wird $S$ gestreamed, und der RRCF live über den Stream konstruiert, sind zum Zeitpunkt der Bewertung von $x$ noch nicht alle Punkte von $S$, also nicht alle möglichen Punkte von $C$, sondern nur ein Sample $S' \subset S$ bekannt. Somit ist Methodik \ref{ali:difcmax} nicht für Streaming-Daten geeignet.
+\end{enumerate}
+
+Zur Lösung dieser Probleme, darf $C$ für unterschiedliche Samples $S'$ verschieden gewählt werden. Es ergibt sich die folgende Definition des $Collusive Displacements (Codisp)$, oder der Bit-Verschiebung mithilfe einer Gruppe von Punkten, eines Punktes:
+\begin{definition}[CoDisp]
+Sei ein Datensatz $S$ gegeben. Die erwartete durchschnittliche Bit-Verschiebung eines Punktes $x$ in allen möglichen RRCTs $T = \mathcal{T}(S')$ über ein Sample $S' \subset S$ und die darüber gegebenen $T'' = \mathcal{T}(S - C)$, ist gegeben durch:
+\begin{align}
+CoDisp(x,S,|S'|) = \underset{S' \subseteq S,T}{\mathbb{E}}\bigg[\underset{x \in C \subseteq S}{max} \frac{1}{|C|} \sum_{y \in S-C} f(y,S',T)-f(y,S'-C,T'' \bigg]
+\end{align}
+\end{definition}
+
+Dabei kann $T''$ wieder aufgrund von Theorem \ref{theo:wahrsch} deterministisch von allen Kombinationen von $T$ und $C$ abgeleitet werden. 
+Mit der nun durch $Codisp()$ gegebenen, gegen Duplikate robusten Möglichkeit der Ermittlung des Effektes den ein Punkt innerhalb eines RRCTs auf die Modellkomplexität seines RRCTs hat, ergibt sich die zentrale Definition des RRCFs:
+\begin{definition}
+Die Ausreißer eines Datensatzes haben in einem über den Datensatz, oder über einem Sample über den Datensatz konstruierten RRCT in Erwartung einen hohen CoDisp() 
+\end{definition}
+
+Weiterhin gilt:
+
+\begin{lemma}\label{lem:codispeff}
+Die CoDisp(x,Z,|S|) kann effizient bestimmt werden
+\end{lemma}
+
+\paragraph{Beweis von Lemma \ref{lem:codispeff}}
+
+Analog zu dem Beweis von Lemma \ref{lem:verschiebung} ist der U

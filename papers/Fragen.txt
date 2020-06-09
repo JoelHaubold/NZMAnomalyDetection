@@ -1,6 +1,11 @@
+Fragen?
 Figur in rrcf wiederholen? (Seite an Seite zu Figur b)
 Bilder aus Papers leicht verändern?
+Überschriften? (Nur eine subsubsection in einer subsection)
+
 
 Todo:
 Nur die Biträpresentation der Punkte in S werden für die Modellkomplexität verwendet
 Bild von Baum mit Duplikaten
+Gehe auf Wahrscheinlichkeit des Algorithmus ein und wie diese durch Forest ausgeglichen wird. (Am Anfang das hoher Erwartungswert in Tree bedeutet das im Forest hoch)
+Geschwisterknoten muss Kind des Elternknotens sein! Ist kein Geschwisterknoten! --> Geschwister Teilbaum

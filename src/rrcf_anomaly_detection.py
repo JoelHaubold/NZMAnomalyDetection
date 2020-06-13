@@ -10,8 +10,8 @@ import threading
 from scipy import optimize
 
 
-number_proc = 3
-number_reps = 1
+number_proc = 8
+number_reps = 3
 
 rrcf_cod_directory = Path("../../rrcf_cod")
 rrcf_result_file = Path("./../results/rrcf_results")
@@ -143,14 +143,13 @@ def save_result(station, start_date, end_date, tree_size, nmbr_trees, shingle_si
         else:
             df = pd.DataFrame(columns=['station', 'start_date', 'end_date', 'tree_size', 'nmbr_trees', 'shingle_size',
                                        'cod_threshold', 'mcc', 'calc_nmbr'])
-        df = df.append({'station': station,'start_date': start_date,'end_date': end_date, 'tree_size': tree_size,
+        df = df.append({'station': station,'start_date': start_date, 'end_date': end_date, 'tree_size': tree_size,
                         'nmbr_trees': nmbr_trees, 'shingle_size': shingle_size, 'cod_threshold': cod_threshold,
                         'mcc': mcc, 'calc_nmbr': calc_nmbr}, ignore_index=True)
         df.to_pickle(rrcf_result_file)
 
 
 def run_hp_test(df_constr, df_p, station, start_date, end_date, tree_size, nmbr_trees, shingle_size, a_type, calc_nmbr):
-    print("dddd")
     # avg_codisp = np.load(file=rrcf_cod_directory / "512333.npy", allow_pickle=True)
     # print(avg_codisp)
     # cod_threshold, mcc = calc_opt_cod_threshold(df_p, avg_codisp, a_type)
@@ -207,16 +206,13 @@ def test_h_parameters():
         for ts in tree_size_opt:
             for tn in num_trees_opt:
                 for ss in shingle_size_opt:
-                    print('x')
                     station = row['station']
                     start = row['start']
                     end = row['end']
                     a_type = row['a_type']
                     a_type = AThreshold[a_type]
                     df_p, df_const = get_test_sample(station, start, end, a_type, ts, ss)
-                    print("y")
                     for pn in range(number_reps):
-                        print(pn)
                         calc_nmbr = np.random.randint(low=0, high=999999)
                         p = Process(target=run_hp_test, args=(df_const, df_p, station, start, end, ts, tn, ss, a_type, calc_nmbr))
                         start_process(p)

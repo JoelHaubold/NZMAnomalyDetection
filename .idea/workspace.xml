@@ -2,87 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f17a0c2-61a2-41e4-8de6-216c9edd0e7e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AnomalyDetection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AnomalyDetection.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/rrcf_results" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/anomaly_thresholds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/anomaly_thresholds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rrcf_anomaly_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rrcf_anomaly_detection.py" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/src/venv/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rrcf_anomaly_detection_old.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/rrcf_anomaly_detection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="164" selection-start-line="164" selection-end-line="164" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/anomaly_thresholds.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/rrcf/shingle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2754">
-              <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_exec2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/multiprocessing/process.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2278">
-              <caret line="139" selection-start-line="139" selection-end-line="139" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -91,59 +21,11 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>print</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/venv/rrcf_anomaly_detection.py" />
-        <option value="$PROJECT_DIR$/src/anomaly_thresholds.py" />
-        <option value="$PROJECT_DIR$/src/rrcf_anomaly_detection.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="403" />
-    <option name="y" value="23" />
-    <option name="width" value="1400" />
-    <option name="height" value="1009" />
-  </component>
   <component name="ProjectId" id="1YOVbRkRHxJFYuDG7c1ni0LrKXx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="NZMAnomalyDetection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NZMAnomalyDetection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NZMAnomalyDetection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NZMAnomalyDetection" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NZMAnomalyDetection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -151,25 +33,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NzmLabeling" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.rrcf_anomaly_detection">
     <configuration name="anomaly_thresholds" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -256,238 +126,105 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.3997833" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Python Console" order="3" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="R Graphics" order="0" />
-      <window_info anchor="right" id="R Packages" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
-    </layout-to-restore>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="447" y="376" width="374" height="585" key="FileChooserDialogImpl" timestamp="1588676846723">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="394" y="347" width="374" height="585" key="FileChooserDialogImpl" timestamp="1592086049036">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state x="394" y="347" key="FileChooserDialogImpl/0.28.1920.961@0.28.1920.961" timestamp="1592086049036" />
     <state x="1620" y="360" key="FileChooserDialogImpl/1047.0.2793.3240@1047.0.2793.3240" timestamp="1587639200952" />
     <state x="447" y="376" width="374" height="447" key="FileChooserDialogImpl/67.27.1853.1053/0.1080.1920.1080@67.27.1853.1053" timestamp="1585300805281" />
     <state x="447" y="376" width="374" height="585" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1588676846723" />
-    <state x="1503" y="477" width="424" height="484" key="FileChooserDialogImpl/936.1440.1920.1080/1003.0.2437.1440@1003.0.2437.1440" timestamp="1583064755177" />
     <state x="1620" y="716" key="FileChooserDialogImpl/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584619464820" />
-    <state width="1830" height="173" key="GridCell.Tab.0.bottom" timestamp="1588784996557">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="248" key="GridCell.Tab.0.bottom" timestamp="1592137129345">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="248" key="GridCell.Tab.0.bottom/0.28.1920.961@0.28.1920.961" timestamp="1592137129345" />
+    <state width="1663" height="248" key="GridCell.Tab.0.bottom/0.28.1920.984@0.28.1920.984" timestamp="1592130925813" />
     <state width="1897" height="786" key="GridCell.Tab.0.bottom/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937734" />
     <state width="1887" height="786" key="GridCell.Tab.0.bottom/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978804" />
     <state width="1830" height="173" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588784996557" />
     <state width="1908" height="643" key="GridCell.Tab.0.bottom/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636848635" />
-    <state width="1830" height="173" key="GridCell.Tab.0.center" timestamp="1588784996557">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="248" key="GridCell.Tab.0.center" timestamp="1592137129343">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="248" key="GridCell.Tab.0.center/0.28.1920.961@0.28.1920.961" timestamp="1592137129343" />
+    <state width="1663" height="248" key="GridCell.Tab.0.center/0.28.1920.984@0.28.1920.984" timestamp="1592130925809" />
     <state width="1897" height="786" key="GridCell.Tab.0.center/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937733" />
     <state width="1887" height="786" key="GridCell.Tab.0.center/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978804" />
     <state width="1830" height="173" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588784996557" />
     <state width="1908" height="643" key="GridCell.Tab.0.center/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636848635" />
-    <state width="1830" height="173" key="GridCell.Tab.0.left" timestamp="1588784996556">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="248" key="GridCell.Tab.0.left" timestamp="1592137129342">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="248" key="GridCell.Tab.0.left/0.28.1920.961@0.28.1920.961" timestamp="1592137129342" />
+    <state width="1663" height="248" key="GridCell.Tab.0.left/0.28.1920.984@0.28.1920.984" timestamp="1592130925808" />
     <state width="1897" height="786" key="GridCell.Tab.0.left/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937733" />
     <state width="1887" height="786" key="GridCell.Tab.0.left/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978804" />
     <state width="1830" height="173" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588784996556" />
     <state width="1908" height="643" key="GridCell.Tab.0.left/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636848635" />
-    <state width="1830" height="173" key="GridCell.Tab.0.right" timestamp="1588784996557">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="248" key="GridCell.Tab.0.right" timestamp="1592137129344">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="248" key="GridCell.Tab.0.right/0.28.1920.961@0.28.1920.961" timestamp="1592137129344" />
+    <state width="1663" height="248" key="GridCell.Tab.0.right/0.28.1920.984@0.28.1920.984" timestamp="1592130925811" />
     <state width="1897" height="786" key="GridCell.Tab.0.right/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937733" />
     <state width="1887" height="786" key="GridCell.Tab.0.right/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978804" />
     <state width="1830" height="173" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588784996557" />
     <state width="1908" height="643" key="GridCell.Tab.0.right/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636848635" />
-    <state width="1830" height="343" key="GridCell.Tab.1.bottom" timestamp="1588706646386">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="307" key="GridCell.Tab.1.bottom" timestamp="1592123611250">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="307" key="GridCell.Tab.1.bottom/0.28.1920.961@0.28.1920.961" timestamp="1592123611250" />
     <state width="1897" height="786" key="GridCell.Tab.1.bottom/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937734" />
     <state width="1887" height="786" key="GridCell.Tab.1.bottom/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978712" />
     <state width="1887" height="786" key="GridCell.Tab.1.bottom/1042.2160.1920.1080/67.27.3773.2133@1042.2160.1920.1080" timestamp="1584107917093" />
     <state width="1830" height="343" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1588706646386" />
     <state width="1908" height="786" key="GridCell.Tab.1.bottom/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636632634" />
-    <state width="1830" height="343" key="GridCell.Tab.1.center" timestamp="1588706646386">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="307" key="GridCell.Tab.1.center" timestamp="1592123611247">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="307" key="GridCell.Tab.1.center/0.28.1920.961@0.28.1920.961" timestamp="1592123611247" />
     <state width="1897" height="786" key="GridCell.Tab.1.center/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937734" />
     <state width="1887" height="786" key="GridCell.Tab.1.center/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978712" />
     <state width="1887" height="786" key="GridCell.Tab.1.center/1042.2160.1920.1080/67.27.3773.2133@1042.2160.1920.1080" timestamp="1584107917092" />
     <state width="1830" height="343" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1588706646386" />
     <state width="1908" height="786" key="GridCell.Tab.1.center/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636632634" />
-    <state width="1830" height="343" key="GridCell.Tab.1.left" timestamp="1588706646386">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="307" key="GridCell.Tab.1.left" timestamp="1592123611246">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="307" key="GridCell.Tab.1.left/0.28.1920.961@0.28.1920.961" timestamp="1592123611246" />
     <state width="1897" height="786" key="GridCell.Tab.1.left/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937734" />
     <state width="1887" height="786" key="GridCell.Tab.1.left/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978712" />
     <state width="1887" height="786" key="GridCell.Tab.1.left/1042.2160.1920.1080/67.27.3773.2133@1042.2160.1920.1080" timestamp="1584107917092" />
     <state width="1830" height="343" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1588706646386" />
     <state width="1908" height="786" key="GridCell.Tab.1.left/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636632634" />
-    <state width="1830" height="343" key="GridCell.Tab.1.right" timestamp="1588706646386">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1663" height="307" key="GridCell.Tab.1.right" timestamp="1592123611249">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state width="1663" height="307" key="GridCell.Tab.1.right/0.28.1920.961@0.28.1920.961" timestamp="1592123611249" />
     <state width="1897" height="786" key="GridCell.Tab.1.right/1042.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584111937734" />
     <state width="1887" height="786" key="GridCell.Tab.1.right/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584106978712" />
     <state width="1887" height="786" key="GridCell.Tab.1.right/1042.2160.1920.1080/67.27.3773.2133@1042.2160.1920.1080" timestamp="1584107917092" />
     <state width="1830" height="343" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1588706646386" />
     <state width="1908" height="786" key="GridCell.Tab.1.right/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584636632634" />
+    <state x="563" y="143" key="SettingsEditor" timestamp="1592086053381">
+      <screen x="0" y="28" width="1920" height="961" />
+    </state>
+    <state x="563" y="143" key="SettingsEditor/0.28.1920.961@0.28.1920.961" timestamp="1592086053381" />
     <state x="616" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1585300783028">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="616" y="366" key="com.intellij.ide.util.TipDialog/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1582816083074" />
     <state x="616" y="384" key="com.intellij.ide.util.TipDialog/67.27.1853.1053/0.1080.1920.1080@67.27.1853.1053" timestamp="1585300783028" />
     <state x="616" y="384" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1584707738042" />
-    <state x="1725" y="488" key="com.intellij.ide.util.TipDialog/936.1440.1920.1080/1003.0.2437.1440@1003.0.2437.1440" timestamp="1583064423025" />
-    <state x="515" y="271" width="947" height="562" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1585046197733">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="464" y="251" width="982" height="520" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1592123451056">
+      <screen x="0" y="28" width="1920" height="961" />
     </state>
+    <state x="464" y="251" width="982" height="520" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.28.1920.961@0.28.1920.961" timestamp="1592123451056" />
     <state x="515" y="271" width="947" height="562" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/67.27.1853.1053@67.27.1853.1053" timestamp="1585046197733" />
     <state x="2508" y="509" width="688" height="678" key="search.everywhere.popup" timestamp="1584632898818">
       <screen x="1047" y="0" width="2793" height="2160" />
     </state>
     <state x="2538" y="509" width="672" height="678" key="search.everywhere.popup/1042.2160.1920.1080/1109.0.2731.2160@1109.0.2731.2160" timestamp="1584105578857" />
     <state x="2508" y="509" width="688" height="678" key="search.everywhere.popup/980.2160.1920.1080/1047.0.2793.2160@1047.0.2793.2160" timestamp="1584632898818" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/venv/rrcf_anomaly_detection.py" />
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1281182910/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="4212" column="8" selection-start-line="4212" selection-start-column="8" selection-end-line="4212" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="540" selection-start-line="540" selection-end-line="540" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/numpy/lib/format.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="738" selection-start-line="738" selection-end-line="738" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/pandas/core/ops/array_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="233" selection-start-line="233" selection-end-line="233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/scipy/optimize/optimize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-422">
-          <caret line="331" column="4" selection-start-line="331" selection-start-column="4" selection-end-line="331" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/venv/Lib/site-packages/rrcf/shingle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="191" column="8" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_exec2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/multiprocessing/process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2278">
-          <caret line="139" selection-start-line="139" selection-end-line="139" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/anomaly_thresholds.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rrcf_anomaly_detection_old.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="12" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rrcf_anomaly_detection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="164" selection-start-line="164" selection-end-line="164" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

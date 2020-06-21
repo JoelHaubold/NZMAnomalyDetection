@@ -4,7 +4,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Ein Beispiel Datensatz \IeC {\"u}ber 3 Dimensionen mit numerischen Werten mit $S={x, y, z}$ sowie die von Definition \ref {def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit das $S$ \IeC {\"u}ber die jeweilige Dimension als n\IeC {\"a}chstes in Schritt 3 geteilt wird\relax }}{10}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Ein Beispiel Datensatz \IeC {\"u}ber 3 Dimensionen mit numerischen Werten mit $S=\{x, y, z\}$ sowie die von Definition \ref {def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit $\frac {l_i}{\Sigma _j l_i}$ das $S$ in Schritt 3 \IeC {\"u}ber die jeweilige Dimension partitioniert wird\relax }}{10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

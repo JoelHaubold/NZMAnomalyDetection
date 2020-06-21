@@ -7,7 +7,8 @@ import numpy as np
 import rrcf
 from multiprocessing import Process
 import threading
-from scipy import optimize
+import time
+#  from scipy import optimize
 
 
 number_proc = 8
@@ -136,39 +137,41 @@ def calc_opt_cod_threshold(df_p, avg_codisp, a_threshold, shingle_size):
 lock = threading.Lock()
 
 
-def save_result(station, start_date, end_date, tree_size, nmbr_trees, shingle_size, cod_threshold, mcc, calc_nmbr):
+def save_result(station, start_date, end_date, tree_size, nmbr_trees, shingle_size, cod_threshold, mcc, calc_nmbr, phase, t_needed):
     with lock:
         if rrcf_result_file.exists():
             df = pd.read_pickle(rrcf_result_file)
         else:
             df = pd.DataFrame(columns=['station', 'start_date', 'end_date', 'tree_size', 'nmbr_trees', 'shingle_size',
-                                       'cod_threshold', 'mcc', 'calc_nmbr'])
+                                       'cod_threshold', 'mcc', 'calc_nmbr', 'phase', 'r_time'])
         df = df.append({'station': station,'start_date': start_date, 'end_date': end_date, 'tree_size': tree_size,
                         'nmbr_trees': nmbr_trees, 'shingle_size': shingle_size, 'cod_threshold': cod_threshold,
-                        'mcc': mcc, 'calc_nmbr': calc_nmbr}, ignore_index=True)
+                        'mcc': mcc, 'calc_nmbr': calc_nmbr, 'phase': phase, 'r_time': t_needed}, ignore_index=True)
         df.to_pickle(rrcf_result_file)
 
 
-def run_hp_test(df_constr, df_p, station, start_date, end_date, tree_size, nmbr_trees, shingle_size, a_type, calc_nmbr):
+def run_hp_test(df_constr, df_p, station, start_date, end_date, tree_size, nmbr_trees, shingle_size, a_type, calc_nmbr, phase):
     # avg_codisp = np.load(file=rrcf_cod_directory / "512333.npy", allow_pickle=True)
     # print(avg_codisp)
     # cod_threshold, mcc = calc_opt_cod_threshold(df_p, avg_codisp, a_type)
+    t_start = time.time()
     avg_codisp = analyse_station_phase(df_p, df_constr, tree_size, nmbr_trees, shingle_size, a_type)
+    t_needed = (time.time() - t_start)/60
     np.save(arr=avg_codisp, file=rrcf_cod_directory / str(calc_nmbr))
 
     cod_threshold, mcc = calc_opt_cod_threshold(df_p, avg_codisp, a_type, shingle_size)
 
-    save_result(station, start_date, end_date, tree_size, nmbr_trees, shingle_size, cod_threshold, mcc, calc_nmbr)
+    save_result(station, start_date, end_date, tree_size, nmbr_trees, shingle_size, cod_threshold, mcc, calc_nmbr, phase, t_needed)
 
 
-def get_test_sample(station, start, end, a_type, tree_size, shingle_size):
+def get_test_sample(station, start, end, a_type, tree_size, shingle_size,phase):
     f_path = pickle_directory / station
-    df_phases = list(
-        map(lambda p: pd.read_pickle(f_path / ("h_phase" + p)), ['1', '2', '3']))
-    df_p = df_phases[0].rename(columns={"Value": "p1"})
-    df_p['p2'] = df_phases[1].Value
-    df_p['p3'] = df_phases[2].Value
-
+    #df_phases = list(
+    #    map(lambda p: pd.read_pickle(f_path / ("h_phase" + p)), ['1', '2', '3']))
+    #df_p = df_phases[0].rename(columns={"Value": "p1"})
+    #df_p['p2'] = df_phases[1].Value
+    #df_p['p3'] = df_phases[2].Value
+    df_p = pd.read_pickle(f_path / ("h_phase" + str(phase)))
     df_p = df_p[[a_type.name]]
 
     start_row = df_p.index.get_loc(start, method='backfill').start
@@ -187,13 +190,18 @@ def start_process(p):
     i = 0
     while len(running_procs) >= number_proc:
         if i < number_proc:
-            ex_code = running_procs[i].join(1)
-            if ex_code is not None:
+            # ex_code = running_procs[i].join(1)
+            if not running_procs[i].is_alive():
                 del running_procs[i]
             else:
                 i = i + 1
         else:
             i = 0
+            time.sleep(60)
+            t = time.localtime()
+            current_time = time.strftime("%H:%M:%S", t)
+            print(current_time)
+
 
     running_procs.append(p)
     p.start()
@@ -202,25 +210,33 @@ def start_process(p):
 def test_h_parameters():
     sample_df = pd.read_csv(test_sample_file)
 
-    for index, row in sample_df.iterrows():
-        for ts in tree_size_opt:
-            for tn in num_trees_opt:
-                for ss in shingle_size_opt:
-                    station = row['station']
-                    start = row['start']
-                    end = row['end']
-                    a_type = row['a_type']
-                    a_type = AThreshold[a_type]
-                    df_p, df_const = get_test_sample(station, start, end, a_type, ts, ss)
-                    for pn in range(number_reps):
-                        calc_nmbr = np.random.randint(low=0, high=999999)
-                        p = Process(target=run_hp_test, args=(df_const, df_p, station, start, end, ts, tn, ss, a_type, calc_nmbr))
+    for pn in range(number_reps):
+        for index, row in sample_df.iterrows():
+            station = row['station']
+            start = row['start']
+            end = row['end']
+            a_type = row['a_type']
+            a_type = AThreshold[a_type]
+            phase = row['phase']
+            for ts in tree_size_opt:
+                for tn in num_trees_opt:
+                    for ss in shingle_size_opt:
+                        df_p, df_const = get_test_sample(station, start, end, a_type, ts, ss, phase)
+                        calc_nmbr = np.random.randint(low=0, high=99999999)
+                        p = Process(target=run_hp_test, args=(df_const, df_p, station, start, end, ts, tn, ss, a_type, calc_nmbr, phase))
                         start_process(p)
     for rp in running_procs:
-        rp.join()
+        while rp.is_alive():
+            time.sleep(60)
+            t = time.localtime()
+            current_time = time.strftime("%H:%M:%S", t)
+            print(current_time)
 
-
+#  with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 def main():
+#    while True:
+#        print(time.time())
+#        time.sleep(10)
     test_h_parameters()
 
 

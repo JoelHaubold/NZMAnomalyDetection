@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  8 JUN 2020 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  18 JUN 2020 20:07
 entering extended mode
 **./main.tex
 (main.tex
@@ -934,131 +934,148 @@ Kapitel 3.
 
 
 
-] [10]
-Overfull \hbox (8.84636pt too wide) in paragraph at lines 88--89
+]
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 50.
+
+<bilder/rrcfTree.png, id=68, 449.68pt x 405.515pt>
+File: bilder/rrcfTree.png Graphic file (type png)
+<use bilder/rrcfTree.png>
+Package pdftex.def Info: bilder/rrcfTree.png  used on input line 52. on input l
+ine 52.
+Package pdftex.def Info: Requested size: 140.0pt x 126.24666pt on input line 52
+.
+[10]
+Underfull \vbox (badness 7186) has occurred while \output is active []
+
+ [11 <./bilder/rrcfTree.png>]
+Overfull \hbox (8.84636pt too wide) in paragraph at lines 98--99
 []\T1/cmr/m/it/10.95 Sei ein RRCT $\OMS/cmsy/m/n/10.95 T$ \T1/cmr/m/it/10.95 we
 l-cher über
  []
 
-[11]
-Overfull \hbox (4.68326pt too wide) in paragraph at lines 99--100
+[12]
+Overfull \hbox (4.68326pt too wide) in paragraph at lines 109--110
 []\T1/cmr/m/it/10.95 Sei $\OML/cmm/m/it/10.95 S$ \T1/cmr/m/it/10.95 ei-
  []
 
-[12]
+[13]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 126.
+               Default added (so using `tbp') on input line 136.
 
-<bilder/rrcf_model_compl.png, id=82, 438.8897pt x 553.31718pt>
+<bilder/rrcf_model_compl.png, id=88, 438.8897pt x 553.31718pt>
 File: bilder/rrcf_model_compl.png Graphic file (type png)
 <use bilder/rrcf_model_compl.png>
-Package pdftex.def Info: bilder/rrcf_model_compl.png  used on input line 128. o
-n input line 128.
-Package pdftex.def Info: Requested size: 140.0pt x 176.49944pt on input line 12
+Package pdftex.def Info: bilder/rrcf_model_compl.png  used on input line 138. o
+n input line 138.
+Package pdftex.def Info: Requested size: 140.0pt x 176.49944pt on input line 13
 8.
-[13] [14 <./bilder/rrcf_model_compl.png>] [15]
+[14] [15 <./bilder/rrcf_model_compl.png>] [16]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 209.
+               Default added (so using `tbp') on input line 219.
 
-<bilder/rrcf_model_compl2.png, id=97, 461.47406pt x 526.96875pt>
+<bilder/rrcf_model_compl2.png, id=102, 461.47406pt x 526.96875pt>
 File: bilder/rrcf_model_compl2.png Graphic file (type png)
 <use bilder/rrcf_model_compl2.png>
-Package pdftex.def Info: bilder/rrcf_model_compl2.png  used on input line 211. 
-on input line 211.
-Package pdftex.def Info: Requested size: 140.0pt x 159.86887pt on input line 21
+Package pdftex.def Info: bilder/rrcf_model_compl2.png  used on input line 221. 
+on input line 221.
+Package pdftex.def Info: Requested size: 140.0pt x 159.86887pt on input line 22
 1.
-[16] [17 <./bilder/rrcf_model_compl2.png>]
+[17]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 243.
+               Default added (so using `tbp') on input line 253.
 
 File: bilder/anomaly_chandola.png Graphic file (type png)
 <use bilder/anomaly_chandola.png>
-Package pdftex.def Info: bilder/anomaly_chandola.png  used on input line 245. o
-n input line 245.
-Package pdftex.def Info: Requested size: 200.0pt x 168.63445pt on input line 24
+Package pdftex.def Info: bilder/anomaly_chandola.png  used on input line 255. o
+n input line 255.
+Package pdftex.def Info: Requested size: 200.0pt x 168.63445pt on input line 25
 5.
+[18 <./bilder/rrcf_model_compl2.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 250.
+               Default added (so using `tbp') on input line 260.
 
-<bilder/rrcfDupli.png, id=105, 295.1025pt x 544.0325pt>
+<bilder/rrcfDupli.png, id=110, 295.1025pt x 544.0325pt>
 File: bilder/rrcfDupli.png Graphic file (type png)
 <use bilder/rrcfDupli.png>
-Package pdftex.def Info: bilder/rrcfDupli.png  used on input line 252. on input
- line 252.
-Package pdftex.def Info: Requested size: 100.0pt x 184.34601pt on input line 25
+Package pdftex.def Info: bilder/rrcfDupli.png  used on input line 262. on input
+ line 262.
+Package pdftex.def Info: Requested size: 100.0pt x 184.34601pt on input line 26
 2.
-
-Underfull \vbox (badness 4254) has occurred while \output is active []
-
- [18 <./bilder/rrcfDupli.png>] [19]) [20]
+[19 <./bilder/rrcfDupli.png>]) [20] [21]
 \openout2 = `kapitel/svm.aux'.
 
- (kapitel/svm.tex
-Kapitel 4.
-) [21
+ (kapitel/svm.tex [22
 
 
 
 ]
+Kapitel 4.
+) [23]
 \openout2 = `kapitel/tests.aux'.
 
- (kapitel/tests.tex [22
+ (kapitel/tests.tex [24
 
 
 
 ]
 Kapitel 5.
-) [23]
+) [25]
 \openout2 = `kapitel/fazit.aux'.
 
- (kapitel/fazit.tex [24
+ (kapitel/fazit.tex [26
 
 
 
 ]
 Kapitel 6.
-) [25]
+) [27]
 \openout2 = `kapitel/anhang.aux'.
 
- (kapitel/anhang.tex [26
+ (kapitel/anhang.tex [28
 
 
 
 ]
 Anhang A.
-) [27] [28
+) [29] [30
 
 
 ] (main.lof)
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
- [29] [30
+ [31] [32
 
 ] (main.lot)
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [31
+ [33
 
-] [32
+] [34
 
 ] (main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [33
+ [35
 
-] [34
+] [36
 
 ]
-(main.bbl [35
+(main.bbl [37
 
-]) [36]
+]) [38]
 \openout2 = `kapitel/erklaerung.aux'.
 
  (kapitel/erklaerung.tex)
@@ -1081,10 +1098,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
 
  []
 
-[37
+[39
 
 
-] [38
+] [40
 
 
 ]
@@ -1096,13 +1113,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
 (kapitel/tests.aux) (kapitel/fazit.aux) (kapitel/anhang.aux)
 (kapitel/erklaerung.aux)) ) 
 Here is how much of TeX's memory you used:
- 6851 strings out of 493312
- 99613 string characters out of 3138899
- 189006 words of memory out of 3000000
- 10130 multiletter control sequences out of 15000+200000
+ 6858 strings out of 493312
+ 99749 string characters out of 3138899
+ 189017 words of memory out of 3000000
+ 10136 multiletter control sequences out of 15000+200000
  31933 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,12n,41p,1211b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,12n,41p,1211b,471s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\l
 jfour\jknappen\ec\dpi600\eccc1095.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\
 fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\joelh\AppData\Local\M
@@ -1122,19 +1139,20 @@ joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecss1200.pk>
 x1200.pk> <C:\Users\joelh\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
 dpi600\ecss1440.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (42 pages, 645472 bytes).
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (44 pages, 678166 bytes).
 PDF statistics:
- 834 PDF objects out of 1000 (max. 8388607)
+ 854 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

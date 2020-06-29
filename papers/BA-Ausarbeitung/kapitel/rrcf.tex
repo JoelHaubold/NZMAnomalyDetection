@@ -3,24 +3,23 @@
 \chapter{Robust Random Cut Forest}
 \label{chapter:rrcf}
 
-In diesem Kapitel wird einer der beiden auf unserem Datensatz angewendeten Verfahren, der \textbf{Robust Random Cut Forest} (von hier an RRCF) wie in  \cite{guha2016rrcfTheory} und \cite{guha2016rrcfSup}, zuerst in seinen Grundzügen beschrieben und darauf wird auf die im unterlegenen Theoreme eingegangen.
+In diesem Kapitel wird einer der beiden, auf den PPC Datensatz angewendeten Verfahren, der \textbf{Robust Random Cut Forest} (von hier an RRCF) in seinen Grundzügen beschrieben. Das Kapitel orientiert sich dabei an Artikel \cite{guha2016rrcfTheory} und dem zugehörigen Supplement \cite{guha2016rrcfSup}.
 
-\section{Vorteile von RRCF} % Einleitung zu Bedarf des Datensatzes hier vor, oder ans Ende des Kapitels packen, oder in das nächste Kapitel so das dies ein reines Theorykapitel wird, oder Datensatz unabhängig beschreiben
 
-RRCF wird zur Analyse des dieser Arbeit zugrunde legendem Datensatzes benutzt, da dass Verfahren eine Reihe von Vorteilen besitzt \cite{bartos2019rrcfImpl}:
-\begin{itemize}
-\item \textit{Anwendbarkeit auf Streaming-Daten}: Neue Datenpunkte können in die konstruierten Bäume eingegliedert werden ohne das diese neu aufgebaut werden müssen.
-\item \textit{Geeignet für hoch dimensionale Daten}: Die angewandte Baumstruktur ist sehr geeignet für das aufnehmen von hochdimensionalen Daten. Da der Algorithmus zwischen wichtigen und unwichtigen Dimensionen unterscheiden kann, wird auch der Einfluss von solchen unwichtigen Dimensionen eingeschränkt.
-\item \textit{Robust gegenüber Duplikaten}: Duplikate
-\item \textit{Ausgabe in vorm einer Bewertung}: Eine Bewertende Ausgabe ist nützlich, da
-\end{itemize} 
 
 \section{RRCF Theory}
 
-Der RRCF ähnelt vielerlei einem Isolation Forest, was seinen Aufbau als binären Baum, sowie dem Vorgehen beim Löschen und hinzufügen von einzelnen Knoten angeht.
+Der RRCF basiert auf, und ähnelt somit vielerlei dem in Kapitel \ref{chapter:grundlagen} vorgestellten Isolation Forest. So versucht der RRCF ebenfalls Anomalien direkt vom Datensatz zu isolieren statt ein Profil einer normalen Klasse zu definieren. Auch basiert der RRCF ebenfalls auf dem Zufallsprinzip, und mittelt sein Ergebnis aus den einzelnen Ergebnissen der unabhängig konstruierten Bäume aus denen er besteht.
+Unterscheiden tut sich der RRCF allerdings in zweierlei Hinsicht:
+\begin{enumerate}
+\item Bei der Konstruktion der Bäume des RRCFs, werden die Dimensionen über die der zugrundeliegende Datensatz geteilt wird nicht uniform-zufällig, sondern nach der Größe der in ihnen vorhandenen Unterschieden der Punkte des Datensatzes gewichtet ausgewählt. So kann der Einfluss von unwichtigen Dimensionen (siehe Sektion \ref{sec:komp}) reduziert werden, und die Zugrundeliegenden Wahrscheinlichkeiten jedes Baumes über einen Datensatz bleiben konstant, unabhängig davon wie dieser Baum zustande kam.
+\item Das Kriterium nach dem die Ausgabe des RRCFs berechnet wird bezieht sich nicht auf die Tiefe der Punkte, sondern auf den Effekt die eine beliebige diesen Punkt beinhaltende  Gruppe von Punkten, auf die gesamte Modellkomplexität des Baumes hat. Diese Metrik ist allgemein robuster, ins besonders können Duplikate einer Anomalie nicht mehr ihre Erkennung als solche verhindern
+\end{enumerate}
+
+In den folgenden Sektionen werden diese Unterschiede, sowie die dem RRCF zugrunde liegenden Theoreme dargestellt.
 
 \subsection{RRCF Aufbau}
-Parallel zu anderen Forest-Ansätzen aus dem Gebiet des maschinellen Lernens, besteht ein RRCF aus mehreren unabhängigen \textbf{Robust Random Cut Trees} (RRCT):
+Analog zu anderen Forest-Ansätzen aus dem Gebiet des maschinellen Lernens, besteht ein RRCF aus mehreren unabhängig voneinander konstruierten \textbf{Robust Random Cut Trees} (RRCT):
 \begin{definition}[RRCT]\label{def:rrcfdef1}
 Ein RRCT wird über ein Datensatz $S$ mit $j$ Dimensionen wie folgt generiert:
 \begin{enumerate}
@@ -30,33 +29,43 @@ Ein RRCT wird über ein Datensatz $S$ mit $j$ Dimensionen wie folgt generiert:
 \end{enumerate}
 \end{definition}
 %Referenziere Grundlagen, hier evtl eine Tabelle als Beispiel, ?Isolation Forest als Referenz?
-In Schritt 1 wird die Dimension ausgewählt über die der Datensatz bei der Konstruktion des Baumes getrennt wird. Ein wichtiger Unterschied bei der Konstruktion eines RRCT zu der Konstruktion eines Baumes in einem Isolation Forest, wie in \cite{liu2012isolation}, ist dabei, dass die zur Trennung genutzte Dimension $i$ nicht Uniform über alle Dimensionen $j$ ausgewählt wird. Stattdessen werden die Dimensionen proportional dazu wie stark die Werte der einzelnen Punkte sich in den Dimensionen unterscheiden gewichtet. \\
-Als Beispiel würden in dem Datensatz von Tabelle \ref{tab:table1} bei dem ersten Durchlauf der Baumkonstruktion die Dimensionen 1, 2 und 3 mit einer jeweiligen Wahrscheinlichkeit von $\frac{1}{7}$, $\frac{2}{7}$ und $\frac{4}{7}$, als die Dimension über die in Schritt 3 geteilt wird, ausgewählt werden.
+In Schritt 1 wird die Dimension ausgewählt über die der Datensatz bei der Konstruktion des Baumes getrennt wird. Ein wichtiger Unterschied bei der Konstruktion eines RRCT zu der Konstruktion eines Baumes in einem Isolation Forest, wie in \cite{liu2012isolation}, ist dabei, dass die zur Trennung genutzte Dimension $i$ nicht Uniform über alle Dimensionen $j$ ausgewählt wird. Stattdessen werden die Dimensionen proportional dazu wie stark die Werte der einzelnen Punkte sich in den Dimensionen unterscheiden gewichtet bevor eine von ihnen gewählt wird. \\
 
 \begin{table}%[h]
   \begin{center}
-    \caption{Ein Beispiel Datensatz über 3 Dimensionen mit numerischen Werten mit $S={x, y, z}$ sowie die von Definition \ref{def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit das $S$ über die jeweilige Dimension als nächstes in Schritt 3 geteilt wird}
+    \caption{Ein Beispiel Datensatz über 3 Dimensionen mit numerischen Werten mit $S=\{x, y, z\}$ sowie die von Definition \ref{def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit $\frac{l_i}{\Sigma_j l_i}$ das $S$ in Schritt 3 über die jeweilige Dimension partitioniert wird}
     \label{tab:table1}
-    \begin{tabular}{c|c|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-      \textbf{Dimension} & \textbf{x} & \textbf{y} & \textbf{z} & $\frac{l_i}{\Sigma_j l_i}$\\
+    \scalebox{1.15}{%
+    \begin{tabular}{c|c|c|c|c} % 
+      \textbf{Dimension} & \textbf{x} & \textbf{y} & \textbf{z} & $\dfrac{l_i}{\Sigma_j l_i}$\\
       %$\alpha$ & $\beta$ & $\gamma$ \\
       \hline
       1 & 5 & 10 & 6 & $\frac{5}{35}$\\
       2 & 2 & 8 & 12& $\frac{10}{35}$\\
       3 & 25 & 5 & 5& $\frac{20}{35}$\\
-    \end{tabular}
+    \end{tabular}}
   \end{center}
 \end{table}
 
+\begin{figure}[]
+\centering
+\includegraphics[width=140 pt]{bilder/rrcfTree.png}
+\caption{Ein möglicher, nach Definition \protect\ref{def:rrcfdef1} konstruierter RRCF über den in Tabelle \protect\ref{tab:table1} dargestellten Datensatz $S$. Die erste Partition erfolgte über die dritte Dimension mit einem nach Schritt 2 zufällig bestimmten Grenzwert von 6. Da $S_1$ darauf mehr als einen Punkt enthielt erfolgte eine weitere Partition über die erste Dimension und einen Grenzwert von 8}
+\label{image:rrcfTree}
+\end{figure}
 
-In Schritt 2 wird darauf analog zum Isolation Forest Verfahren ein Trennwert $X_i$ uniform aus der Wertespanne aller Datenpunkte der jeweiligen Dimension gewählt.
+In Schritt 2 wird darauf analog zum Isolation Forest Verfahren ein Trennwert $X_i$ uniform aus der Wertespanne aller Punkte $x \in S$ der in Schritt 1 ausgewählten Dimension gewählt.\\
+In Schritt 3 wird der Datensatz $S$ dann über $X_i$ partitioniert, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ größer oder gleich groß wie $X_i$ sind und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleiner als $X_i$ sind. 
 
-In Schritt 3 wird der Datensatz $S$ dann in über diesen Trennwert geteilt, sodass $S1$ die  Datenpunkte enthält die in Dimension $i$ einen größeren oder gleichen Wert hatten als $X_i$ und $S_2$ die verbliebenen Datenpunkte, welche in $i$ einen kleineren Wert hatten. \\
-Ein so fertig konstruierter RRCT, hat als seine Blätter genau alle Punkte aus $S$ und als seine Knoten die in den rekursiven Durchläufen bestimmten Schnittpunkte und die jeweils zugehörige Dimension mithilfe derer $S$ geteilt wurde.
+Beispielhaft würden in dem Datensatz von Tabelle \ref{tab:table1} bei dem ersten Durchlauf der Baumkonstruktion die Dimensionen 1, 2 und 3 mit einer jeweiligen Wahrscheinlichkeit von $\frac{1}{7}$, $\frac{2}{7}$ und $\frac{4}{7}$, als die Dimension über die $S$ partitioniert wird, ausgewählt werden. Je nach gewählter Dimension wird $X_i$ darauf aus den Wertespannen $[5,10]$, $[2,12]$ beziehungsweise $[5,25]$ uniform-zufällig gewählt. Ein möglicher RRCF, welcher sich aus dem in Tabelle \ref{tab:table1} dargestellten Datensatz ergibt ist in Abbildung \ref{image:rrcfTree} dargestellt. 
 
-\subsection{Distanzbeibehaltung bei RRCT Konstruktion}
+Jeder innere Knoten eines RRCTs $T = \mathcal{T}(S)$, über einen Datensatz $S$, entspricht demnach einer Partition, und enthält die entsprechende Dimension und den Grenzwert für diese Partition. Die Blätter des RRCTs entsprechen den einzelnen Punkten in $S$, welche über eine Reihe von Partitionen, entsprechend der Knoten entlang des Pfades von der Wurzel von $T$ zu dem jeweiligen Blatt, von allen anderen Punkten in $S$ isoliert wurden.
 
-Damit ein RRCF zur Anomalieerkennung eingesetzt werden kann, muss gezeigt werden, dass die RRCTs in der er die Punkte des zu untersuchenden Datensatzes auf eine Art speichert, die die Distanz zwischen den Punkten Beibehält. Ein Datenpunkt der sich im Datensatz anomal abzeichnet muss, auch in einem aus diesem Datensatz gebauten RRCT als anomal erkennbar sein. Dies ist gegeben durch \cite{guha2016rrcfTheory}:
+
+
+\subsection{Distanzbeibehaltung bei der RRCT Konstruktion}
+
+Damit ein RRCF zur Anomalieerkennung eingesetzt werden kann, muss gezeigt werden, dass die RRCTs in der er die Punkte des zu untersuchenden Datensatzes auf eine Art speichert, die die Distanz zwischen den Punkten Beibehält. Ein Datenpunkt der sich im Datensatz anomal abzeichnet muss, auch in einem aus diesem Datensatz gebauten RRCT als anomal erkennbar sein. Dies ist gegeben durch folgendes Theorem:
 
 \begin{theorem}[Distanzbeibehaltung]\label{theo:distance}
 Sei ein RRCT $\mathcal{T}$ über einen Datensatz $S$ mit $d$ Dimensionen konstruiert. Sei das Gewicht eines Knotens von $\mathcal{T}$ die Summe der Länge der Kanten der minimal begrenzenden Box der diesem Knoten untergeordneten Punkte $\sum_i l_i$, und sei die Baumdistanz zwischen zwei Knoten $u, v \in S$ das Gewicht des letzten gemeinsamen Vorfahrens von $u$ und $v$.
@@ -67,18 +76,18 @@ Dann ist die Baumdistanz von $u$ und $v$ mindestens $L_1(u,v)$ und in Erwartung 
 \end{theorem}
 
 \subsubsection{Beweis von Theorem \ref{theo:distance}}
+Sei für einen Datensatz $S$ $l_i$ erneut als die Wertespanne zwischen den niedrigsten und höchsten Wert von $S$ in der Dimension $i$ definiert. Sei $B(S)$ die $Minimal Bounding Box$(MBB) um alle Punkte in $S$. Sei dann $P(S) = \underset{i}{\sum} l_i$ die Summe der Seitenlängen von $B(S)$. Es ergibt sich:
 \begin{lemma} \label{lem:tren}
-Die Wahrscheinlichkeit das $u$ und $v$ durch die erste Partition von $S$ getrennt werden ist:
+Die Wahrscheinlichkeit das $u, v \in S$ durch eine Partition von $S$ nach Definition \ref{def:rrcfdef1} getrennt werden ist gegeben durch:
 \begin{align}
 \frac{1}{P(S)}\sum_i|u_i-v_i|
 \end{align}
 \end{lemma}
 $P(S)$ entspricht der Summe der Länge aller Wertespannen $l_i$ in denen in Schritt 1 und 2 von Theorem \ref{def:rrcfdef1} ein Schnittpunkt gewählt wird. $\sum_i|u_i-v_i|$ entspricht der Summe der Wertespannen, auf denen die Wahl eines Schnittpunktes $u$ und $v$ trennen würde. Das Lemma folgt.
-\par
 
 
 \subsection{RRCF Instandhaltung}
-In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal T(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können. //
+In diesem Abschnitt wird gezeigt das von einem RRCT $\mathcal T(S)$ effizient ein Punkt $x$ gelöscht oder hinzugefügt werden kann, also die jeweiligen RRCTs $\mathcal{T}(S-\{x\})$ und $\mathcal{T}(S \cup \{x\})$ effizient erzeugt werden können.
 
 \subsubsection{Löschen eizelner Punkte} %Move to Implementation and reference here? Reference Binary Tree Operations
 Soll ein Punkt $u$ aus dem Baum $\mathcal T$ gelöscht werden, so muss lediglich der Elternknoten $k$ von $u$, welcher die Trennung mithilfe der $u$ isoliert wurde darstellt, mit gelöscht werden, und der Elternknoten von $k$ bekommt als neues Kind, dass nun verwaiste Kind von $k$. Siehe Bild ???

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  29 JUN 2020 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  2 JUL 2020 15:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1010,53 +1010,58 @@ Kapitel 4.
 
 ]
 Kapitel 5.
-[25]) [26]
+[25]
+
+LaTeX Warning: Reference `tab:table_an_nmbr' on page 26 undefined on input line
+ 32.
+
+[26] [27]) [28]
 \openout2 = `kapitel/fazit.aux'.
 
  (./kapitel/fazit.tex
 Kapitel 6.
-) [27
+) [29
 
 
 
 ]
 \openout2 = `kapitel/anhang.aux'.
 
- (./kapitel/anhang.tex [28
+ (./kapitel/anhang.tex [30
 
 
 
 ]
 Anhang A.
-) [29] [30
+) [31] [32
 
 
 ] (./main.lof)
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
- [31] [32
+ [33] [34
 
 ] (./main.lot)
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [33
+ [35
 
-] [34
+] [36
 
 ] (./main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [35
+ [37
 
 ]
-[36
+[38
 
-] (./main.bbl [37
+] (./main.bbl [39
 
-]) [38]
+]) [40]
 \openout2 = `kapitel/erklaerung.aux'.
 
  (./kapitel/erklaerung.tex)
@@ -1079,10 +1084,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
 
  []
 
-[39
+[41
 
 
-] [40
+] [42
 
 
 ]
@@ -1092,49 +1097,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
  (./main.aux (./kapitel/titelseite.aux) (./kapitel/einleitung.aux)
 (./kapitel/grundlagen.aux) (./kapitel/rrcf.aux) (./kapitel/svm.aux)
 (./kapitel/tests.aux) (./kapitel/fazit.aux) (./kapitel/anhang.aux)
-(./kapitel/erklaerung.aux)) ) 
+(./kapitel/erklaerung.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6830 strings out of 494757
- 96984 string characters out of 6175785
+ 6834 strings out of 494757
+ 97045 string characters out of 6175785
  185791 words of memory out of 5000000
- 9909 multiletter control sequences out of 15000+600000
+ 9913 multiletter control sequences out of 15000+600000
  31933 words of font info for 78 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  41i,12n,41p,1209b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/joelhaubold/.texlive2017/texmf-var/fonts/p
-k/ljfour/jknappen/ec/eccc1095.600pk> </home/joelhaubold/.texlive2017/texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/joelhaubold/.texlive2017/tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/joelhaubold/.texlive2
-017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/joelhaubold/.t
-exlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/joelhau
-bold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/
-joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> 
-</home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.
-600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ec
-rm1095.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappe
-n/ec/ecbx1095.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/
-jknappen/ec/ecbx2488.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/
-ljfour/jknappen/ec/ecss1095.600pk> </home/joelhaubold/.texlive2017/texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ecss1200.600pk> </home/joelhaubold/.texlive2017/texmf
--var/fonts/pk/ljfour/jknappen/ec/ecsx1200.600pk> </home/joelhaubold/.texlive201
-7/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (44 pages, 628371 bytes).
+ </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc10
+95.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecrm1000.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/ecbx1000.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecti1095.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/
+pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/joelhaubold/.texlive2017/texmf-var
+/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/joelhaubold/.texlive2017/te
+xmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/joelhaubold/.texlive
+2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsl1095.600pk> </home/joelhaubold/.
+texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/joelha
+ubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home
+/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk>
+ </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095
+.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+css1200.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ecsx1200.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecss1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb>
+Output written on main.pdf (46 pages, 635493 bytes).
 PDF statistics:
- 858 PDF objects out of 1000 (max. 8388607)
- 203 compressed objects within 3 object streams
+ 871 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

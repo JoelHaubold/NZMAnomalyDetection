@@ -3,33 +3,56 @@
 \chapter{Tests auf Niederspannungsdaten}
 \label{chapter:tests}
 
-Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahren auf dem ihr zugrundeliegnedem PPC-Datensatz beurteilt. In diesem Kapitel wird nun zuerst auf die Eigenschaften des Datensatzes eingegangen, und darauf auf die Eignung der angewanten Anomalieerkennungsverfahren für diesen, sowie auf die Details ihrer jeweiligen Implementierung. 
+Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahren auf dem ihr zugrundeliegendem PPC-Datensatz beurteilt. In diesem Kapitel wird nun zuerst auf die Eigenschaften des Datensatzes eingegangen, und darauf auf die Eignung der angewandten Anomalieerkennungsverfahren für diesen, sowie auf die Details ihrer jeweiligen Implementierung. 
 
 \section{Aufmachung der Testdaten}
 
-Der PPC-Datensatz wurde im Jahr 2018 von in unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Normalfall in Abständen von bis zu 10 Sekunden. Je nach Station gab es einen Bemessungszeitraum von mindestens 4 bis zu maximal 10 Monaten.
+Der PPC-Datensatz wurde im Jahr 2018 von in unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Normalfall in Abständen von bis zu 10 Sekunden, wobei jede Phase zeitlich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 4 bis zu maximal 10 Monaten ab.
 
-Eilnzelne Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 6 Anomalieklassen zugeordnet. Diese sind:
+Die absoluten Spannungswerte bewegen sich in einem Korridor von x bis y. Saisonbedingt steigt dieser bis zum Monat x, von wo an er wieder abnimmt. Tabelle lol
 
+Einzelne Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
 \begin{enumerate}
-\item 
-\item 
-\item 
-\item 
-\item 
-\item 
+\item \textbf{Sprunganomalien:} Punkte direkt nach einer Trafostufung, also eine drei Punkte Kombination einer Messung deren jeweilige Spannungen  in der jeweilig gleichen Phase entweder jeweils ungewöhnlich größer oder jeweils ungewöhnlich kleiner sind, als die 3 Spannungen der 3 Punkte Kombination der vorherigen Messung der Messstation.
+\item \textbf{Zeitanomalien} Punkte direkt nach einer Messlücke, also Punkte deren Zeitpunkt weit länger als die üblichen 10 Sekunden hinter dem Zeitpunkt ihres Vorgängerpunkts liegt.
+\item \textbf{Phasenanomalien:} Punkte welche sich von den jeweiligen Punkten der anderen beiden Phasen absetzen, also Punkte deren Spannung stark von der Spannung von mindestens einer Spannung der beiden zugleich aufgenommenen Punkte der beiden anderen Phasen unterscheidet.
+\item \textbf{Saisonanomalien:} Punkte die mit dem saisonalen Trend der Zeitreihe brechen, also Punkte deren Spannungswerte sich stark von den Werten vorherigen Punkte unterscheiden, welche zu einer ähnlichen Uhrzeit und in der gleichen Tagesart gemessen wurden. Dabei wurde zwischen Werktagen und der Kombination aus Feier- und Wochenendtagen unterschieden.
+\item \textbf{Stationsanomalien:} Punkte welche gegen den Trend des durchschnittlichen Verlaufs aller Zeitreihen verstoßen, also Punkte deren Spannung sich stark von dem Durchschnitt der Spannung der Punkte aller anderen Stationen unterscheiden.
 \end{enumerate}
 
-Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien in jeweils unterschiedlciher Stärke und Frequenz auf.
-
-
-
-\section{Vorteile von RRCF} % Einleitung zu Bedarf des Datensatzes hier vor, oder ans Ende des Kapitels packen, oder in das nächste Kapitel so das dies ein reines Theorykapitel wird, oder Datensatz unabhängig beschreiben
-
-RRCF wird zur Analyse des dieser Arbeit zugrunde legendem Datensatzes benutzt, da dass Verfahren eine Reihe von Vorteilen besitzt \cite{bartos2019rrcfImpl}:
+Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien je nach Zeitreihe in jeweils unterschiedlicher Stärke und Frequenz auf. Während die Daten punktweise gelabeled sind, zeichnen sich punktübergreifende Muster für jede Anomalieklasse ab:
 \begin{itemize}
-\item \textit{Anwendbarkeit auf Streaming-Daten}: Neue Datenpunkte können in die konstruierten Bäume eingegliedert werden ohne das diese neu aufgebaut werden müssen.
-\item \textit{Geeignet für hoch dimensionale Daten}: Die angewandte Baumstruktur ist sehr geeignet für das aufnehmen von hochdimensionalen Daten. Da der Algorithmus zwischen wichtigen und unwichtigen Dimensionen unterscheiden kann, wird auch der Einfluss von solchen unwichtigen Dimensionen eingeschränkt.
-\item \textit{Robust gegenüber Duplikaten}: Duplikate
-\item \textit{Ausgabe in vorm einer Bewertung}: Eine Bewertende Ausgabe ist nützlich, da
+\item Aufgrund der Definition von Sprunganomalien wonach jeder Punkt in einer Messung ein bestimmtes Verhalten gegenüber dem Punkt in der jeweilig gleichen Phase der vorherigen Messung haben muss, sind in einer Messung entweder alle Punkte eine Sprunganomalie oder keiner von ihnen. 
+\item Ähnlich dazu treten Zeitanomalien fast ausschließlich in dreier Paaren von Punkten auf, welche eine Messung einer Station darstellen, da die ihnen zugrundeliegenden Zeitlücken, fast immer Messlücken einer Messstation entsprechen und so für jede Phase einer Station sich zeitliche Lücken bilden.
+\item Saison-, Phasen- und Stationsanomalien weisen ein stark geklustertes Verhalten auf, wo der Großteil der ihnen zusammenhängenden Punkte direkt aufeinander folgen, wo der Spannungsverlauf einer Phase, wesentlich höher oder niedriger als erwartet ist.
 \end{itemize} 
+
+\subsection{Eignung der Daten für überwachte und unüberwachte Anomalieerkennung}
+
+Während die Verhaltensformen der Anomalieklassen sich überwachten Lernen anbieten können, wurde sich in dieser Arbeit dennoch für zwei unüberwachte Verfahren entschieden. Wie in Tabelle \ref{tab:table_an_nmbr} zu sehen ist, sind die Anomalieklassen sehr gering vertreten, wodurch sich eine Knappheit an Daten mithilfe derer ein überwachtes Anomalieerkennungsverfahren die jeweiligen Anomalieklassen lernen könnte. Weiterhin entsprechen die Anomalien immer einer höheren oder niedrigeren Spannung als gewöhnlich, weshalb ein ünüberwachtes Verfahren, diese über Bestimmung der jeweiligen Häufigkeit der eingegebenen Punkt als solche klassifizieren kann. \\
+Daher wurden in dieser Arbeit zwei unüberwachte Verfahren zur Anommalieerkennung eingesetzt.
+
+\subsection{Benötigte Eigenschaften eines Anomalieerkennungsverfahrens}
+
+Es ergeben sich drei weitere Eigenschaften für die die gewählten Anomalieerkennungsverfahren geeignet sein müssen:
+
+\begin{enumerate}
+\item Aufgrund der oben beschriebenen Tendenz mancher Anomalien in Gruppen zu clustern muss ein auf dem Datensatz angewendetes Anomalieerkennungsverfahren robust gegenüber Duplikaten seien.
+\item Da die Daten über die Messstationen live erfasst werden sollte das Anomalieerkennungsverfahren in der Lage sein, seinen Input als Stream zu empfangen. Weiterhin muss das Verfahren in der Lage sein sich der Änderung des durchschnittlichen Spannungswerts anzupassen, möglichst ohne das wegen dieser eigentliche Inliner als Anomalien klassifiziert werden.
+\item Aufgrund der numerischen Klassifizierungskriterien der Anomalien, also dem Fehlen einer klaren Abgrenzung zwischen Inlinern und Anomalien, muss das Verfahren in der Lage sein die Grenze zwischen diesen zu approximieren. Im Falle eines unüberwachten Verfahrens ohne das es sich diesen anlernen kann.
+\end{enumerate}
+
+\section{Testen des RRCF Verfahrens}
+
+RRCF als unüberwachtes Anomalieerkennungsverfahren eignet sich zur Analyse des dieser Arbeit zugrunde legendem Datensatzes\cite{bartos2019rrcfImpl}:
+\begin{itemize}
+\item \textit{Robust gegenüber Duplikaten}: Da der RRCF seine Anomalieeinschätzung in Form des CoDisps gibt, welches per Konzept Robust gegenüber Duplikaten ist, ist das Verfahren in der Lage auch mehrere sich nur schwach unterscheidende anomale Punkte in den  Bäumen als solche zu klassifizieren.  
+\item \textit{Anwendbarkeit auf Streaming-Daten}: Neue Datenpunkte können in die konstruierten Bäume eingegliedert werden ohne das diese neu aufgebaut werden müssen.
+\item \textit{Anpassung an Änderungen im Datensatz}: Da jeder RRCT eine endliche Anzahl an Punkten enthält, muss mit dem Einfügen von neuen Punkten in den RRCT, das Löschen von alten Punkten einhergehen. So kann das was der RRCT als Inliner klassifiziern würde, an das neuer normal angepasst werden
+%\item \textit{Geeignet für hoch-dimensionale Daten}: Die angewandte Baumstruktur ist sehr geeignet für das aufnehmen von hochdimensionalen Daten. Da der Algorithmus zwischen wichtigen und unwichtigen Dimensionen unterscheiden kann, wird auch der Einfluss von solchen unwichtigen Dimensionen eingeschränkt.
+\item \textit{Ausgabe in vorm einer Bewertung}: Für das RRCF Verfahren muss ein Grenzwert ermittelt werden, um den Codisp der jedem Punkt zugeordnet wird zu der binären Klassifizierung zwischen Inliner und Anomalie zu transformieren. So kann die tatsächliche Grenze der Klassifizierung ermittelt werden.  
+\end{itemize} 
+
+Ein weiterer Vorteil des RRCF Verfahrens, die effiziente Handhabung von hochdimensionalen Daten, wird hier nicht benutzt, öffnet aber weitere Alternativen zu der Handhabung des Datensatzes.
+
+\subsection{Implementierung der Tests}

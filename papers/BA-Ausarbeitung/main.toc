@@ -1,6 +1,6 @@
-\select@language {english}
-\select@language {english}
-\select@language {german}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {german}{}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}
 \contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
 \contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
@@ -45,7 +45,8 @@
 \contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{21}
 \contentsline {chapter}{\numberline {4}Support Vector Machine}{23}
 \contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{25}
-\contentsline {section}{\numberline {5.1}Vorteile von RRCF}{25}
+\contentsline {section}{\numberline {5.1}Aufmachung der Testdaten}{25}
+\contentsline {section}{\numberline {5.2}Vorteile von RRCF}{26}
 \contentsline {chapter}{\numberline {6}Fazit}{27}
 \contentsline {chapter}{\numberline {A}Weitere Informationen}{29}
 \contentsline {chapter}{Abbildungsverzeichnis}{31}

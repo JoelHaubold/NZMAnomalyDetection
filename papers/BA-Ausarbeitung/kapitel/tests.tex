@@ -3,6 +3,27 @@
 \chapter{Tests auf Niederspannungsdaten}
 \label{chapter:tests}
 
+Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahren auf dem ihr zugrundeliegnedem PPC-Datensatz beurteilt. In diesem Kapitel wird nun zuerst auf die Eigenschaften des Datensatzes eingegangen, und darauf auf die Eignung der angewanten Anomalieerkennungsverfahren für diesen, sowie auf die Details ihrer jeweiligen Implementierung. 
+
+\section{Aufmachung der Testdaten}
+
+Der PPC-Datensatz wurde im Jahr 2018 von in unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Normalfall in Abständen von bis zu 10 Sekunden. Je nach Station gab es einen Bemessungszeitraum von mindestens 4 bis zu maximal 10 Monaten.
+
+Eilnzelne Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 6 Anomalieklassen zugeordnet. Diese sind:
+
+\begin{enumerate}
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{enumerate}
+
+Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien in jeweils unterschiedlciher Stärke und Frequenz auf.
+
+
+
 \section{Vorteile von RRCF} % Einleitung zu Bedarf des Datensatzes hier vor, oder ans Ende des Kapitels packen, oder in das nächste Kapitel so das dies ein reines Theorykapitel wird, oder Datensatz unabhängig beschreiben
 
 RRCF wird zur Analyse des dieser Arbeit zugrunde legendem Datensatzes benutzt, da dass Verfahren eine Reihe von Vorteilen besitzt \cite{bartos2019rrcfImpl}:

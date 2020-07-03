@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  2 JUL 2020 15:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  3 JUL 2020 16:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1010,58 +1010,65 @@ Kapitel 4.
 
 ]
 Kapitel 5.
+
+LaTeX Warning: Reference `xd' on page 25 undefined on input line 12.
+
 [25]
 
 LaTeX Warning: Reference `tab:table_an_nmbr' on page 26 undefined on input line
  32.
 
-[26] [27]) [28]
+[26] [27]
+
+LaTeX Warning: Reference `xd' on page 28 undefined on input line 71.
+
+[28]) [29]
 \openout2 = `kapitel/fazit.aux'.
 
- (./kapitel/fazit.tex
-Kapitel 6.
-) [29
+ (./kapitel/fazit.tex [30
 
 
 
 ]
+Kapitel 6.
+) [31]
 \openout2 = `kapitel/anhang.aux'.
 
- (./kapitel/anhang.tex [30
+ (./kapitel/anhang.tex [32
 
 
 
 ]
 Anhang A.
-) [31] [32
+) [33] [34
 
 
 ] (./main.lof)
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
- [33] [34
+ [35] [36
 
 ] (./main.lot)
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [35
+ [37
 
-] [36
+] [38
 
 ] (./main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [37
+ [39
 
 ]
-[38
+[40
 
-] (./main.bbl [39
+] (./main.bbl [41
 
-]) [40]
+]) [42]
 \openout2 = `kapitel/erklaerung.aux'.
 
  (./kapitel/erklaerung.tex)
@@ -1084,10 +1091,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--40
 
  []
 
-[41
+[43
 
 
-] [42
+] [44
 
 
 ]
@@ -1103,10 +1110,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6834 strings out of 494757
- 97045 string characters out of 6175785
+ 6837 strings out of 494757
+ 97070 string characters out of 6175785
  185791 words of memory out of 5000000
- 9913 multiletter control sequences out of 15000+600000
+ 9916 multiletter control sequences out of 15000+600000
  31933 words of font info for 78 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  41i,12n,41p,1209b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1140,10 +1147,10 @@ e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb>
-Output written on main.pdf (46 pages, 635493 bytes).
+Output written on main.pdf (48 pages, 638986 bytes).
 PDF statistics:
- 871 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
+ 877 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

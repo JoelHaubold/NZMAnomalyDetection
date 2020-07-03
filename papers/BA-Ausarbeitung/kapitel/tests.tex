@@ -7,11 +7,11 @@ Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahr
 
 \section{Aufmachung der Testdaten}
 
-Der PPC-Datensatz wurde im Jahr 2018 von in unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Normalfall in Abständen von bis zu 10 Sekunden, wobei jede Phase zeitlich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 4 bis zu maximal 10 Monaten ab.
+Der PPC-Datensatz wurde im Jahr 2018 von in unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Normalfall in Abständen von bis zu 10 Sekunden, wobei jede Phase zeitlich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 4 bis zu maximal 10 Monaten ab. Insgesamt gibt es x Punkte, welche sich in wie in Tabelle \ref{} dargestellt aufteilen.
 
-Die absoluten Spannungswerte bewegen sich in einem Korridor von x bis y. Saisonbedingt steigt dieser bis zum Monat x, von wo an er wieder abnimmt. Tabelle lol
+Die absoluten Spannungswerte bewegen sich in einem Korridor von x bis y. Saisonbedingt steigt dieser bis zum Monat x, von wo an er wieder abnimmt. Tabelle \ref{xd}
 
-Einzelne Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
+Die Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
 \begin{enumerate}
 \item \textbf{Sprunganomalien:} Punkte direkt nach einer Trafostufung, also eine drei Punkte Kombination einer Messung deren jeweilige Spannungen  in der jeweilig gleichen Phase entweder jeweils ungewöhnlich größer oder jeweils ungewöhnlich kleiner sind, als die 3 Spannungen der 3 Punkte Kombination der vorherigen Messung der Messstation.
 \item \textbf{Zeitanomalien} Punkte direkt nach einer Messlücke, also Punkte deren Zeitpunkt weit länger als die üblichen 10 Sekunden hinter dem Zeitpunkt ihres Vorgängerpunkts liegt.
@@ -19,10 +19,11 @@ Einzelne Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 5 An
 \item \textbf{Saisonanomalien:} Punkte die mit dem saisonalen Trend der Zeitreihe brechen, also Punkte deren Spannungswerte sich stark von den Werten vorherigen Punkte unterscheiden, welche zu einer ähnlichen Uhrzeit und in der gleichen Tagesart gemessen wurden. Dabei wurde zwischen Werktagen und der Kombination aus Feier- und Wochenendtagen unterschieden.
 \item \textbf{Stationsanomalien:} Punkte welche gegen den Trend des durchschnittlichen Verlaufs aller Zeitreihen verstoßen, also Punkte deren Spannung sich stark von dem Durchschnitt der Spannung der Punkte aller anderen Stationen unterscheiden.
 \end{enumerate}
+Die Anomalieklassen sind nicht exklusiv, jeder Punkt kann in mehreren Anomalieklassen sein. Dies trifft allerdings nur auf x Punkte von x anomalen Punkten zu
 
-Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien je nach Zeitreihe in jeweils unterschiedlicher Stärke und Frequenz auf. Während die Daten punktweise gelabeled sind, zeichnen sich punktübergreifende Muster für jede Anomalieklasse ab:
+Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien je nach Zeitreihe in jeweils unterschiedlicher Stärke und Frequenz auf. Die Daten sind jeweils punktweise gelabeled, es zeichnen sich allerdings punktübergreifende Muster für jede Anomalieklasse ab:
 \begin{itemize}
-\item Aufgrund der Definition von Sprunganomalien wonach jeder Punkt in einer Messung ein bestimmtes Verhalten gegenüber dem Punkt in der jeweilig gleichen Phase der vorherigen Messung haben muss, sind in einer Messung entweder alle Punkte eine Sprunganomalie oder keiner von ihnen. 
+\item Aufgrund der Definition von Sprunganomalien wonach jeder Punkt in einer Messung ein bestimmtes Verhalten gegenüber dem Punkt in der jeweilig gleichen Phase der vorherigen Messung haben muss, damit diese Punkte als anomal gekennzeichnet sind, sind in einer Messung entweder alle Punkte eine Sprunganomalie oder keiner von ihnen. Analog dazu sind entweder alle Punkte einer Messung als Phasenanomalie gekennzeichnet oder keine. 
 \item Ähnlich dazu treten Zeitanomalien fast ausschließlich in dreier Paaren von Punkten auf, welche eine Messung einer Station darstellen, da die ihnen zugrundeliegenden Zeitlücken, fast immer Messlücken einer Messstation entsprechen und so für jede Phase einer Station sich zeitliche Lücken bilden.
 \item Saison-, Phasen- und Stationsanomalien weisen ein stark geklustertes Verhalten auf, wo der Großteil der ihnen zusammenhängenden Punkte direkt aufeinander folgen, wo der Spannungsverlauf einer Phase, wesentlich höher oder niedriger als erwartet ist.
 \end{itemize} 
@@ -42,6 +43,17 @@ Es ergeben sich drei weitere Eigenschaften für die die gewählten Anomalieerken
 \item Aufgrund der numerischen Klassifizierungskriterien der Anomalien, also dem Fehlen einer klaren Abgrenzung zwischen Inlinern und Anomalien, muss das Verfahren in der Lage sein die Grenze zwischen diesen zu approximieren. Im Falle eines unüberwachten Verfahrens ohne das es sich diesen anlernen kann.
 \end{enumerate}
 
+\subsubsection{Aufbau der Testsätze}
+
+Aufgrund des hohen Umfangs der PPC-Daten wurden die Tests auf einem Subset der RRCF Daten ausgeführt, diese waren jeweils definiert über:
+\begin{itemize}
+\item Die Station der zu testenden Zeitreihe
+\item Der Startzeitpunkt des zu testenden Zeitfensters
+\item Die zu testende Phase
+\item Die zu testende Anomalieklasse
+\end{itemize}
+Die Gesamtheit der Testsätze wurde representativ über die Daten ausgewählt. Dabei wurde ein Fokus auf Testsätze, welche anomale Abschnitte enthalten gelegt. Testsätze, welche nur aus Inlinern bestehen wurden stellenweise hinzugefügt um die Klassifizierung von Inlinern als solche zu überprüfen. 
+
 \section{Testen des RRCF Verfahrens}
 
 RRCF als unüberwachtes Anomalieerkennungsverfahren eignet sich zur Analyse des dieser Arbeit zugrunde legendem Datensatzes\cite{bartos2019rrcfImpl}:
@@ -50,9 +62,34 @@ RRCF als unüberwachtes Anomalieerkennungsverfahren eignet sich zur Analyse des 
 \item \textit{Anwendbarkeit auf Streaming-Daten}: Neue Datenpunkte können in die konstruierten Bäume eingegliedert werden ohne das diese neu aufgebaut werden müssen.
 \item \textit{Anpassung an Änderungen im Datensatz}: Da jeder RRCT eine endliche Anzahl an Punkten enthält, muss mit dem Einfügen von neuen Punkten in den RRCT, das Löschen von alten Punkten einhergehen. So kann das was der RRCT als Inliner klassifiziern würde, an das neuer normal angepasst werden
 %\item \textit{Geeignet für hoch-dimensionale Daten}: Die angewandte Baumstruktur ist sehr geeignet für das aufnehmen von hochdimensionalen Daten. Da der Algorithmus zwischen wichtigen und unwichtigen Dimensionen unterscheiden kann, wird auch der Einfluss von solchen unwichtigen Dimensionen eingeschränkt.
-\item \textit{Ausgabe in vorm einer Bewertung}: Für das RRCF Verfahren muss ein Grenzwert ermittelt werden, um den Codisp der jedem Punkt zugeordnet wird zu der binären Klassifizierung zwischen Inliner und Anomalie zu transformieren. So kann die tatsächliche Grenze der Klassifizierung ermittelt werden.  
+\item \textit{Ausgabe in vorm einer Bewertung}: Für das RRCF Verfahren muss ein Grenzwert ermittelt werden, um den Codisp der jedem Punkt zugeordnet wird zu der binären Klassifizierung zwischen Inliner und Anomalie zu transformieren. So kann die tatsächliche Grenze der vorhandenen Anomalielabel ermittelt werden.  
 \end{itemize} 
 
-Ein weiterer Vorteil des RRCF Verfahrens, die effiziente Handhabung von hochdimensionalen Daten, wird hier nicht benutzt, öffnet aber weitere Alternativen zu der Handhabung des Datensatzes.
+Ein weiterer Vorteil des RRCF Verfahrens, die effiziente Handhabung von hochdimensionalen Daten, wird hier nicht benutzt, öffnet aber weitere Alternativen zu der Handhabung des Datensatzes. %To the end with sampling
 
 \subsection{Implementierung der Tests}
+
+Über die Tests sollen die Parameter für den auf den PPC-Daten leistungsfähigsten RRCF gefunden werden. Zur Ermittlung der Leistungsfähigkeit wird dabei der MCC verwendet, um eine Balance zwischen den richtigen Klassifizierung von Inlinern und Anomalien zu finden, eine detailliertere Begründung dazu folgt in Sektion \ref{xd}
+
+Da in der Praxis der RRCF live auf den von den Messstationen aufgenommen Daten laufen soll, ist es Ziel der Tests diese Situation über Ausschnitte der Daten zu simulieren. Dazu wird wie folgt vorgegangen:
+
+
+\subsubsection{Ablauf der Testläufe}
+
+Jeder Testlauf testet, auf einem Testsatz die Leistungsfähigkeit einer Kombination der folgenden drei Parameter:
+\begin{itemize}
+\item \textbf{Baumgröße ($ts$):} Die Anzahl an Punkten die in jeden RRCT des RRCFs passen
+\item \textbf{Baumanzahl ($nt$):} Die Anzahl der RRCTs in dem konstruierten RRCF
+\item \textbf{Fenstergröße:} Die Größe der Fensterabschnitte, welche die Punkte aus denen die RRCTs gebaut werden ausmachen
+\end{itemize}
+Der Testlauf erfolgt in drei Schritten:
+ 
+\paragraph{Schritt 1: Simulation der Praxis} Es wird ein RRCF enstprechend der Parameter des Testlaufes erzeugt, um den in der Praxis bereits vorhanden, über die vorherig gestreamten Daten konstruierten RRCF zu simulieren. Dazu werden aus den letzten $ts$ Punkten (wobei ein Punkt je nach Fenstergröße entweder ein alleinstehender Wert oder eine Reihe von Werten ist) vor dem von dem Testlauf definierten Startpunkt, $nt$ Bäume konstruiert. Es genügt die einzelnen RRCTs nach Definition \ref{def:rrcfdef1} zu konstruieren, anstatt die Punkte einzeln in die Bäume einzufügen, da es so nach Theorem \ref{theo:wahrsch} keinen Unterschied in den erwarteten Bäumen gibt. 
+
+\paragraph{Schritt 2: Streaming des Testsatzes} Der Testsatz wird angefangen mit dem definierten Startpunkt durch jeden RRCT des RRCF gestreamed. Da die Größe jedes RRCTs nach Schritt 1 der definierten Baumgröße entspricht, muss mit jedem eingefügten Punkt ein Punkt aus dem RRCF entfernt werden. In den Testläufen wurde dabei immer der älteste Punkt, also der Punkt welcher am frühesten gemessen wurde gewählt. Mit dem Einfügen von jedem Punkt wird das CoDisp zu diesem vom RRCF berechnet und abgespeichert.
+
+\paragraph{Schritt 3: Auswertung der Ergebnisse} Basierend auf den generierten CoDisp Werten wird darauf der bestmögliche MCC über alle möglichen CoDisp-Grenzwerte, für ab wann ein Punkt als Anomalie klassifiziert wird ermittelt. Daraufhin wird für den ermittelten optimalen Grenzwert die Accuracy bestimmt, um eine Vergleichsmetrik mit Testabschnitten zu haben, ausschließlich Inliner enthalten.
+
+\subsubsection{Ergebnisse}
+
+Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse

@@ -18,7 +18,7 @@ number_proc = 16
 number_reps = 1
 
 rrcf_cod_directory = Path("../../rrcf_cod")
-rrcf_result_file = Path("./../results/rrcf_results")
+rrcf_result_file = Path("./../results/rrcf_results_phase_dif")
 pickle_directory = Path("../../pickles")
 # num_trees = 200
 # tree_size = 10000
@@ -26,10 +26,10 @@ pickle_directory = Path("../../pickles")
 # codisp_filename = f"Shingle{shingle_size}_TreeN{num_trees}_TreeS{tree_size}"
 
 num_trees_opt = [150]
-tree_size_opt = [30000, 20000, 15000]
+tree_size_opt = [25000, 20000, 15000]
 shingle_size_opt = [1]
 
-test_sample_file = Path("../test_sections.csv")
+test_sample_file = Path("../phasedif_test_sections.csv")
 
 
 def get_file_names(file_directory):

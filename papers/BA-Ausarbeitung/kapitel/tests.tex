@@ -7,7 +7,7 @@ Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahr
 
 \section{Aufmachung der Testdaten}
 
-Der PPC-Datensatz wurde im Jahr 2018 von in unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Normalfall in Abständen von bis zu 10 Sekunden, wobei jede Phase zeitlich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 4 bis zu maximal 10 Monaten ab. Insgesamt gibt es x Punkte, welche sich in wie in Tabelle \ref{} dargestellt aufteilen.
+Der PPC-Datensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen, im Regelfall in Abständen von bis zu 10 Sekunden, wobei jede Phase zeitgleich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 4 bis zu maximal 10 Monaten ab. Insgesamt gibt es x Punkte, welche sich in wie in Tabelle \ref{} dargestellt aufteilen.
 
 Die absoluten Spannungswerte bewegen sich in einem Korridor von x bis y. Saisonbedingt steigt dieser bis zum Monat x, von wo an er wieder abnimmt. Tabelle \ref{xd}
 
@@ -23,7 +23,7 @@ Die Anomalieklassen sind nicht exklusiv, jeder Punkt kann in mehreren Anomaliekl
 
 Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien je nach Zeitreihe in jeweils unterschiedlicher Stärke und Frequenz auf. Die Daten sind jeweils punktweise gelabeled, es zeichnen sich allerdings punktübergreifende Muster für jede Anomalieklasse ab:
 \begin{itemize}
-\item Aufgrund der Definition von Sprunganomalien wonach jeder Punkt in einer Messung ein bestimmtes Verhalten gegenüber dem Punkt in der jeweilig gleichen Phase der vorherigen Messung haben muss, damit diese Punkte als anomal gekennzeichnet sind, sind in einer Messung entweder alle Punkte eine Sprunganomalie oder keiner von ihnen. Analog dazu sind entweder alle Punkte einer Messung als Phasenanomalie gekennzeichnet oder keine. 
+\item Aufgrund der Definition von Sprunganomalien, nach welcher jeder Punkt in einer Messung ein bestimmtes Verhalten gegenüber dem Punkt, der jeweilig gleichen Phase der vorherigen Messung haben muss, damit diese Punkte als anomal gekennzeichnet sind, sind in einer Messung entweder alle Punkte eine Sprunganomalie oder keiner von ihnen. Analog dazu sind entweder alle Punkte einer Messung als Phasenanomalie gekennzeichnet oder keine. 
 \item Ähnlich dazu treten Zeitanomalien fast ausschließlich in dreier Paaren von Punkten auf, welche eine Messung einer Station darstellen, da die ihnen zugrundeliegenden Zeitlücken, fast immer Messlücken einer Messstation entsprechen und so für jede Phase einer Station sich zeitliche Lücken bilden.
 \item Saison-, Phasen- und Stationsanomalien weisen ein stark geklustertes Verhalten auf, wo der Großteil der ihnen zusammenhängenden Punkte direkt aufeinander folgen, wo der Spannungsverlauf einer Phase, wesentlich höher oder niedriger als erwartet ist.
 \end{itemize} 

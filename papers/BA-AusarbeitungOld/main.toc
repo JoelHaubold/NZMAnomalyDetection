@@ -1,0 +1,67 @@
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {german}{}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}
+\contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
+\contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
+\contentsline {subsection}{\numberline {1.1.2}Analyse des Niederspannungsnetzes}{2}
+\contentsline {subsubsection}{Datensatz}{2}
+\contentsline {section}{\numberline {1.2}Aufbau der Arbeit}{2}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}
+\contentsline {section}{\numberline {2.1}Notationen}{3}
+\contentsline {section}{\numberline {2.2}Anomalien}{3}
+\contentsline {subsection}{\numberline {2.2.1}Anomalytypen}{3}
+\contentsline {subsection}{\numberline {2.2.2}Komplikationen}{4}
+\contentsline {subsubsection}{Kontextabh\IeC {\"a}ngigkeit}{4}
+\contentsline {subsubsection}{Duplikate}{5}
+\contentsline {subsubsection}{Rauschen}{5}
+\contentsline {subsubsection}{Mehrdimensionalit\IeC {\"a}t}{6}
+\contentsline {section}{\numberline {2.3}Anomalieerkennung durch maschinelles Lernen}{6}
+\contentsline {subsection}{\numberline {2.3.1}\IeC {\"U}berwachtes und un\IeC {\"u}berwachtes Lernen}{6}
+\contentsline {subsubsection}{\IeC {\"U}berwachtes Lernen}{6}
+\contentsline {subsubsection}{Un\IeC {\"u}berwachtes Lernen}{6}
+\contentsline {subsection}{\numberline {2.3.2}Input und Output von Anomalieerkennungsverfahren}{6}
+\contentsline {subsubsection}{Arten von zu analysierenden Dateninstanzen}{7}
+\contentsline {subsubsection}{Ergebnisse des Anomalieerkennungsverfahren}{7}
+\contentsline {subsection}{\numberline {2.3.3}Robustheit}{7}
+\contentsline {subsection}{\numberline {2.3.4}Streaming Data}{7}
+\contentsline {subsection}{\numberline {2.3.5}Kriterien zur Performancebeurteilung}{8}
+\contentsline {subsubsection}{Accuracy}{8}
+\contentsline {subsubsection}{F-Measure}{8}
+\contentsline {subsubsection}{MCC}{8}
+\contentsline {section}{\numberline {2.4}Arten von Anomalieerkennungsverfahren}{8}
+\contentsline {chapter}{\numberline {3}Robust Random Cut Forest}{9}
+\contentsline {section}{\numberline {3.1}RRCF Theory}{9}
+\contentsline {subsection}{\numberline {3.1.1}RRCF Aufbau}{10}
+\contentsline {subsection}{\numberline {3.1.2}Distanzbeibehaltung bei der RRCT Konstruktion}{11}
+\contentsline {subsubsection}{Beweis von Theorem \ref {theo:distance}}{12}
+\contentsline {subsection}{\numberline {3.1.3}RRCF Instandhaltung}{12}
+\contentsline {subsubsection}{L\IeC {\"o}schen eizelner Punkte}{12}
+\contentsline {subsubsection}{Unterschiede beim L\IeC {\"o}schen eines Punktes}{13}
+\contentsline {section}{\numberline {3.2}Anomalieerkennung \IeC {\"u}ber RRCF}{14}
+\contentsline {subsection}{\numberline {3.2.1}Modellkomplexit\IeC {\"a}t eines RRCT}{14}
+\contentsline {subsection}{\numberline {3.2.2}Verschiebung der Modellkomplexit\IeC {\"a}t durch einen Punkt $\textbf {x}$}{16}
+\contentsline {paragraph}{Beweis Lemma \ref {lem:verschiebung}}{17}
+\contentsline {subsection}{\numberline {3.2.3}Codisp}{18}
+\contentsline {subsubsection}{Robustheit gegen\IeC {\"u}ber Duplikaten}{19}
+\contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{21}
+\contentsline {chapter}{\numberline {4}Support Vector Machine}{23}
+\contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{25}
+\contentsline {section}{\numberline {5.1}Aufmachung der Testdaten}{25}
+\contentsline {subsection}{\numberline {5.1.1}Eignung der Daten f\IeC {\"u}r \IeC {\"u}berwachte und un\IeC {\"u}berwachte Anomalieerkennung}{27}
+\contentsline {subsection}{\numberline {5.1.2}Ben\IeC {\"o}tigte Eigenschaften eines Anomalieerkennungsverfahrens}{28}
+\contentsline {subsubsection}{Aufbau der Tests\IeC {\"a}tze}{28}
+\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{28}
+\contentsline {subsection}{\numberline {5.2.1}Implementierung der Tests}{29}
+\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{29}
+\contentsline {paragraph}{Schritt 1: Simulation der Praxis}{30}
+\contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{30}
+\contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{30}
+\contentsline {subsubsection}{Ergebnisse}{30}
+\contentsline {chapter}{\numberline {6}Fazit}{31}
+\contentsline {chapter}{\numberline {A}Weitere Informationen}{33}
+\contentsline {chapter}{Abbildungsverzeichnis}{35}
+\contentsline {chapter}{Tabellenverzeichnis}{37}
+\contentsline {chapter}{Algorithmenverzeichnis}{39}
+\contentsline {chapter}{Literaturverzeichnis}{42}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{42}

@@ -1,0 +1,46 @@
+% main.tex
+\include{header}
+\usepackage{booktabs}
+\usepackage{longtable}
+\begin{document}
+
+\selectlanguage{german}
+\include{kapitel/titelseite}
+\blankpage
+\pagenumbering{roman}
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+% Kapitel
+\include{kapitel/einleitung}
+\include{kapitel/grundlagen}
+\include{kapitel/rrcf}
+\include{kapitel/svm}
+\include{kapitel/tests}
+\include{kapitel/fazit}
+% Anhang
+\appendix
+\include{kapitel/anhang}
+% Abbildungsverzeichnis
+\listoffigures
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\cleardoublepage
+% Algorithmenverzeichnis
+\listofalgorithms
+\addcontentsline{toc}{chapter}{Algorithmenverzeichnis}
+\cleardoublepage
+% Literaturverzeichnis
+\bibliographystyle{gerplain}
+\bibliography{literatur/diplom}
+\addcontentsline{toc}{chapter}{\bibname}
+% Erklaerung
+\thispagestyle{myheadings}
+\markboth{}{ERKLÄRUNG}
+\addcontentsline{toc}{chapter}{Erklärung}
+\include{kapitel/erklaerung}
+\cleardoublepage
+\end{document}
+

@@ -3,38 +3,31 @@
 \chapter{Grundlagen}
 \label{chapter:grundlagen}
 
-\section{Notationen}
-Die in dieser Arbeit verwendeten Notationen lehnen sich an die in dem Papier \cite{guha2016rrcfTheory} verwendeten an:
 
-
-\begin{itemize}
-\item \makebox[5cm][l]{$\mathbb{E}$}  \makebox[5cm][l]{ddd}
-\item \makebox[5cm][l]{$\mathbb{P}r$}  \makebox[5cm][l]{ddd}
-\item \makebox[5cm][l]{$\mathcal{T}$}  \makebox[5cm][l]{ddd}
-\end{itemize}
 
 \section{Anomalien}
 
  % Define dimensions of Z; Move Usefulness to Introduction
-In einem gegebenen Datensatz $Z$ an Punkten, wird einer dieser Punkte $x \in Z$ als Outlier bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von den Punkten $Z  - \{x\}$ unterscheidet. Seien $Y$ alle anomalen Punkte aus $Z$. Ein Modell welches $Z$ darstellt ist entsprechend wesentlich komplexer als ein Modell welches $Z-Y$, also nur die nicht-normalen \textit{Inliners} von $Z$ darstellt.  Wie stark sich $x$ in seinen Merkmalen von anderen Punkten in $Z$ unterscheiden muss, beziehungsweise wie stark $x$ die Komplexität des Modells von $Z$ erhöht, damit $x$ als Anomalie gesehen wird ist hängt oft von der jeweiligen Zielsetzung ab.\\
+In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Anomalie bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von dem restlichen, nicht-anomalen $normalen$ Punkten des Datensatzes abhebt.
 %Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
 %Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
 \begin{figure}[]
 \centering
 \includegraphics[width=0.5\textwidth]{bilder/anomaly_chandola.png}
-\caption{Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \protect\cite{chandola2009anomaly}}
+\caption{Ein zweidimensionaler Beispieldatensatz dessen Struktur durch die Punktegruppen $N_1$ und $N_2$ gebildet wird. Im Kontext zu diesen sind die Punkte $o_1$ und $o_2$, sowie die Punktegruppe $O_3$ anomal. Quelle: \protect\cite{chandola2009anomaly}}
 \label{image-dup}
 \end{figure}
-\subsection{Anomalytypen} %Change Examples?
-Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich von den Inlinern abheben in drei Klassen unterteilen: \cite{ahmed2016surveyatypes}
+
+Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich aus ihrem Datensatz abheben in drei Klassen unterteilen \cite{ahmed2016surveyatypes} : 
 \begin{itemize}
-\item \textit{Punktanomalien}: Wenn ein Datenpunkt sich stark von den normalen Merkmalsausprägungen im Datenset unterscheidet. Beispielsweise wäre bei Beobachtung des Kraftstoffverbrauchs pro Tag eines Autos ein Verbrauch von 50 Litern, mit einem normalen Verbrauch von 5 Litern pro Tag eine Punktanomalie
-\item \textit{Kontextanomalien}: Wenn ein Datenpunkt in einem bestimmten Kontext in seinem Datensatz hervorsticht. Zum Beispiel können bei der Anomalieerkennung auf den Ausgaben einer Person, überdurchschnittlich hohe Ausgaben hohe Ausgaben an einem Feiertag normal sein, im Kontext eines Arbeitstages allerdings eine Anomalie darstellen.
-\item \textit{Kollektivanomalien}: Wenn mehrere, über ein oder mehrere ihrer Merkmale zusammenhängende Datenpunkte, welche alleine keine Besonderheit darstellen würden, zusammen eine Anomalie darstellen. Beispielsweise sind bei einem Elektrokardiogramm (EKG) einzelne niedrige Werte Teil einer Inlinergruppe, eine Reihe lange zeitlich aufeinanderfolgender Werte allerdings ist eine Anomalie.
+\item \textit{Punktanomalien}: Wenn ein Datenpunkt sich stark von den normalen Merkmalsausprägungen in seinem Datensatz unterscheidet. Beispielsweise wäre bei Beobachtung des Kraftstoffverbrauchs eines Autos pro Tag ein Verbrauch von 50 Litern, bei einem normalen Verbrauch von 5 Litern pro Tag eine Punktanomalie. Die anomalen Punkte in Figur \ref{image-dup} entsprechen dieser Anomalieklasse.
+\item \textit{Kontextanomalien}: Wenn ein Datenpunkt in einem bestimmten Kontext in seinem Datensatz hervorsticht, ohne diesen aber nicht als Anomalie zu erkennen wäre. Zum Beispiel können bei einer Anomalieerkennung auf den Finanzen einer Person, überdurchschnittlich hohe Ausgaben an einem Feiertag normal sein, im Kontext eines Arbeitstages allerdings eine Anomalie darstellen.
+\item \textit{Kollektivanomalien}: Wenn mehrere, über ein oder mehrere ihrer Merkmale zusammenhängende Datenpunkte, welche alleine keine Besonderheit darstellen würden, zusammen eine Anomalie darstellen. Beispielsweise sind bei einem Elektrokardiogramm (EKG) einzelne niedrige Werte Teil einer der normalen Punkte, eine Reihe lange zeitlich aufeinanderfolgender Werte allerdings ist eine Anomalie.
 \end{itemize}
+Kollektivanomalien setzen entsprechend ihrer Definition voraus, dass die Punkte des ihnen zugrunde liegendem Datensatz miteinander in Beziehung stehen, etwa wie in den oben aufgeführten Beispiel durch deren Zeitpunkt zu dem diese aufgenommen wurden. Ähnlich muss ein Datensatz über Attribute Verfügen, mit welcher für dessen Punkte Kontexte definiert werden können, damit in diesem Kontextanomalien existieren können.
 
 \subsection{Komplikationen} \label{sec:komp}
-Die Diversität von möglichen Datensätzen und deren Merkmalen macht es generell nicht möglich,  ein allgemeines Vorgehen für die Erkennung von Anomalien zu bestimmen. Dazu kommen mögliche Eigenschaften die dies weiterhin erschweren, oder es bestimmten Vorgehen sogar unmöglich machen, Anomalie von Inliner zu unterscheiden. Ein Überblick über einige dieser ist hier aufgeführt:
+Die Diversität von möglichen Datensätzen und deren Merkmalen macht es generell nicht möglich, ein allgemeines Vorgehen für die Erkennung von Anomalien zu bestimmen. E Dazu kommen mögliche Eigenschaften von Datensätzen, welche Anomalieerkennung auf diesen weiter erschweren, oder bestimmten Vorgehensweisen sogar unmöglich machen, Anomalien zu klassifizieren. Ein Überblick über einige dieser möglichen erschwerenden Eigenschaften ist hier aufgeführt:
 
 \subsubsection{Kontextabhängigkeit}
 Es ist zu beachten das bei zwei anomalen Punkten nicht die gleichen Grenzwerte für die einzelnen Merkwerte gelten müssen, es kommt vielmehr auf die Kombination der Merkmale an. Ein einfaches Beispiel ist ein über die Zeit stetig zunehmender Messwert. Ein Punkt dessen Wert zu Beginn aus der Zeitreihe nach oben ausreißt, ist wahrscheinlich anomal. Die Punkte die später durch den Trend der Zeitreihe diesen Wert überschreiten, sind deswegen aber nicht zwingend selber anomal, noch invalidieren sie den Status des Ausreißers als Anomalie. \cite{changing_d_tan2011fast}
@@ -59,16 +52,27 @@ Hat der zu untersuchende Datensatz eine hohe Dimensionalität in seinen Merkmale
 
 
 
-\section{Anomalieerkennung durch maschinelles Lernen}
-Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen. Dabei eignen sich nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen. 
+\section{Anomalieerkennungsverfahren}
+Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen und diese eventuell in mehrere Klassen zu kategorisieren. Nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur eigenen Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen \cite{gupta2013outlier}. Auch die Zielsetzung, welche Art von Anomalie man in dem Datensatz erkennen will hat Einfluss auf die Auswahl des entsprechenden Anomalieerkennungsverfahren. 
 
 \subsection{Überwachtes und unüberwachtes Lernen}
 \label{sec-supervised}
-Generell lassen sich zur Anomalieerkennung angewandte maschinelle Lernverfahren in zwei Bereiche teilen, überwachtes und unüberwachtes Lernen: %gupda!!!!
+Es mag sein, dass für Teile eines Datensatzes auf dem ein Anomalieerkennungsverfahren laufen soll, bereits Label existieren die Punkte oder Ausschnitte des Datensatzes als anomal oder normal klassifizieren. Mithilfe dieser gelabelten Daten können einem Anomalieerkennungsverfahren die Eigenschaften der anomalen beziehungsweise der normalen Daten antrainiert werden, damit es diese besser auf ungelabelten Daten erkennen kann. Anomalieerkennungsverfahren lassen sich so über den Grad an Informationen den sie auf ihren Trainingsdaten benötigen in drei Klassen unterteilen \cite{chandola2009anomaly}:
 \subsubsection{Überwachtes Lernen}
-Überwachtes Lernen
+
+Das überwachte Lernen setzt voraus das ein Trainingsdatensatz zur Verfügung steht, welcher gelabelte Instanzen von normalen sowie anormalen Daten enthält. Oftmals wird über diese Daten ein Prognosemodell erstellt, welches zwischen den normalen Daten, sowie den Anomalieklassen unterscheiden soll. Bei dieser Art von Anomalieerkennung gibt es zwei grundlegende Probleme: Zuerst sind Anomalien, naheliegend aus ihrer Definition im Datensatz oft nur geringfügig vertreten, was dazu führen kann das bei der Erstellung des Prognosemodells die zugehörigen Anomalieklassen zu spezifisch auf diese im Trainingsdatensatz vorkommenden Ausprägungen dieser Klassen modelliert werden, was dazu führt das diese im ungelabelten Teil des Datensatzes nicht vollständig als Teil ihrer Klasse erkannt werden. Weiterhin entspricht das Vorhandensein eines Trainingsdatensatzes, welcher alle möglichen Ausprägungen aller Anomalieklassen darstellt oft nicht der Praxis. Einerseit, weil Anomalien als Abweichung von dem normalen Verhalten des Datensatzes oftmals in vielfältiger Form kommen können, und somit eventuell künstliche Trainingspunkte erzeugt werden müssen um die Ausmaße der Klassen, sowie den eventuell benötigten Kontext für diese Klassen ausreichend darzustellen. Andererseits müssen real vorkommende Anomalien im Trainingsdatensatz oftmals per Hand von einer Fachkraft als solche gelabeled werden, was unerwünschte Kosten mit sich bringt. 
+
+\subsubsection{Semiüberwachtes Lernen}
+
+Beim semiüberwachtem Lernen wird nur von einem Trainingsdatensatz ausgegangen, welcher das Normalverhalten der Daten vollständig darstellt. Dies ist oft einfacher zu erfüllen, so kann der Trainingsdatensatz zum Beispiel bereits aus einer Aufzeichung eines normalen Ablaufs des datengenerierenden Prozesses gewonnen werden. Die einzige Voraussetzung bleibt, dass der Trainingsdatensatz das Normalverhalten ausreichend genug darstellt, sodass das Anomalieerkennungsverfahren nicht anormale Entwicklungen im datengenerierenden Prozess, als solche erkennen kann. Da das Normalverhalten eines Prozesses aber oft klarer definiert ist, als eine anomale Abweichung in beliebig komplexer Form, ist diese Voraussetzung oft verfügbarer als die für überwachtes Lernen. 
+
+Aufgrund dieses klaren Unterschied der Praktikabilität, kommen semiüberwachte Ansätze, welche einen Trainingsdatensatz aus gelabelten Anomalien nur limitiert vor.
 
 \subsubsection{Unüberwachtes Lernen}
+
+Der Ansatz des unüberwachten Lernens benötigt keinerlei vorgelabelten Testdaten, stattdessen wird die implizite Annahme getroffen, dass Anomalien im Datensatz wesentlich seltener auftreten als normale Daten. Unter dieser Annahme versucht ein unüberwachtes Verfahren diese selten auftretenden anomalen Daten von den zueinander konformen Daten abzugrenzen.
+
+Viele semiüberwachte Verfahren können unüberwacht angewandt werden, indem sie in Abwesenheit des eigentlich benötigten, das Normalverhalten modellierenden Testdatensatzes, über einem Datensatz trainieren, bei dem davon ausgegangen wird das dieser eine sehr geringe Anzahl an Anomalien enthält. So verwendete Verfahren müssen robust genug gegenüber den so eintrainierten Anomalien sein, um eine Verfälschung bei der späteren Beurteilung von Daten zu verhindern. 
 
 \subsection{Input und Output von Anomalieerkennungsverfahren}
 
@@ -102,3 +106,4 @@ Space Time Anpassung des Modells, Live Ergebnisse
 
 \section{Arten von Anomalieerkennungsverfahren}
 
+Clustering, Inlinermodell, Isolierung

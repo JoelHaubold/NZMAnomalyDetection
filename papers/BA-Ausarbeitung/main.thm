@@ -1,14 +1,14 @@
-\contentsline {definition}{{Definition}{4.2.{1}}{RRCT}}{14}
-\contentsline {theorem}{{Theorem}{4.2.{2}}{Distanzbeibehaltung}}{16}
-\contentsline {lemma}{{Lemma}{4.2.{3}}{}}{16}
-\contentsline {theorem}{{Theorem}{4.2.{4}}{Konsistenz der inneren Probabilität}}{17}
-\contentsline {theorem}{{Theorem}{4.2.{5}}{Die RRCT Konstruktion ist Stichproben unabhängig}}{17}
-\contentsline {theorem}{{Theorem}{4.2.{6}}{}}{18}
-\contentsline {theorem}{{Theorem}{4.2.{7}}{}}{18}
-\contentsline {definition}{{Definition}{4.3.{1}}{Tiefe eines Punktes in $x$}}{19}
-\contentsline {definition}{{Definition}{4.3.{2}}{Modellkomplexität}}{20}
-\contentsline {definition}{{Definition}{4.3.{3}}{Verschiebung ($Displacement$) eines Punktes}}{21}
-\contentsline {lemma}{{Lemma}{4.3.{4}}{}}{22}
-\contentsline {definition}{{Definition}{4.3.{5}}{CoDisp}}{25}
-\contentsline {definition}{{Definition}{4.3.{6}}{}}{25}
-\contentsline {lemma}{{Lemma}{4.3.{7}}{}}{25}
+\contentsline {definition}{{Definition}{3.2.{1}}{RRCT}}{14}
+\contentsline {theorem}{{Theorem}{3.2.{2}}{Distanzbeibehaltung}}{16}
+\contentsline {lemma}{{Lemma}{3.2.{3}}{}}{16}
+\contentsline {theorem}{{Theorem}{3.2.{4}}{Konsistenz der inneren Probabilität}}{17}
+\contentsline {theorem}{{Theorem}{3.2.{5}}{Die RRCT Konstruktion ist Stichproben unabhängig}}{17}
+\contentsline {theorem}{{Theorem}{3.2.{6}}{}}{18}
+\contentsline {theorem}{{Theorem}{3.2.{7}}{}}{18}
+\contentsline {definition}{{Definition}{3.3.{1}}{Tiefe eines Punktes in $x$}}{19}
+\contentsline {definition}{{Definition}{3.3.{2}}{Modellkomplexität}}{20}
+\contentsline {definition}{{Definition}{3.3.{3}}{Verschiebung ($Displacement$) eines Punktes}}{21}
+\contentsline {lemma}{{Lemma}{3.3.{4}}{}}{22}
+\contentsline {definition}{{Definition}{3.3.{5}}{CoDisp}}{25}
+\contentsline {definition}{{Definition}{3.3.{6}}{}}{25}
+\contentsline {lemma}{{Lemma}{3.3.{7}}{}}{25}

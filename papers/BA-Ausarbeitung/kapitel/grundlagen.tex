@@ -53,7 +53,7 @@ Hat der zu untersuchende Datensatz eine hohe Dimensionalität in seinen Merkmale
 
 
 \section{Anomalieerkennungsverfahren}
-Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen und diese eventuell in mehrere Klassen zu kategorisieren. Nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur eigenen Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen \cite{gupta2013outlier}. Auch die Zielsetzung, welche Art von Anomalie man in dem Datensatz erkennen will hat Einfluss auf die Auswahl des entsprechenden Anomalieerkennungsverfahren. 
+Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen und diese eventuell in mehrere Klassen zu kategorisieren. Nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur eigenen Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen \cite{gupta2013outlierTemp}. Auch die Zielsetzung, welche Art von Anomalie man in dem Datensatz erkennen will hat Einfluss auf die Auswahl des entsprechenden Anomalieerkennungsverfahren. 
 
 \subsection{Überwachtes und unüberwachtes Lernen}
 \label{sec-supervised}
@@ -79,7 +79,7 @@ Viele semiüberwachte Verfahren können unüberwacht angewandt werden, indem sie
 Weiter Unterscheidungen lassen sich über Anomalieerkennungsverfahren darin machen, in welcher Form der Input auf Anomalien untersucht wird, und in Welcher Form das Anomalieerkennungsverfahren seine Ergebnisse ausgibt.
 
 \subsubsection{Arten von zu analysierenden Dateninstanzen}
-Auch darin in welcher Form die Anomalien erkannt werden sollen unterscheiden sich die möglichen Verfahren. Je nach Zielsetzung kann in einer Zeitreihe nach einzelnen oder Sequenzen von anomalen Datenpunkten gesucht, oder es können Zeitabschnitte nach Auffälligkeiten miteinander verglichen werden. Anders mag es auch von Nutzen seien, ganze Zeitreihen aus einer Gruppe von Zeitreihen als anomal zu bestimmen. \cite{gupta2013outlier}  
+Auch darin in welcher Form die Anomalien erkannt werden sollen unterscheiden sich die möglichen Verfahren. Je nach Zielsetzung und den Eigenschaften der zugrundeliegenden Daten kann in diesen nach einzelnen oder unter einem bestimmten Kontext zusammenhängenden  anomalen Datenpunkten gesucht werden. Auch mag es von Nutzen seien, ganze Datensätze aus einer Gruppe dieser als anomal oder normal zu bestimmen. \cite{gupta2013outlierTemp}  
 
 \subsubsection{Ergebnisse des Anomalieerkennungsverfahren}
 Das Ergebnis eines Anomalieerkennungsverfahrens, stellt die Beurteilung des Verfahrens gegenüber den eingegebenen Datensatz dar, ob die Eingabe oder die Elemente die diese ausmacht anomal oder nicht sind, beziehungsweise um welche Art von Anomalie es sich handelt. Allgemein kann man zwischen zwei Ausgabearten der Ergebnisse unterscheiden: \cite{ahmed2016surveyatypes}
@@ -89,20 +89,96 @@ Das Ergebnis eines Anomalieerkennungsverfahrens, stellt die Beurteilung des Verf
 \end{itemize}
 
 \subsection{Robustheit}
- Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomalien im Trainingsdatensatzes und gegenüber ungewollten Unterschieden zwischen dem Trainingsdatensatz und dem Testdatensatz. Weiterhin kann ein Anomalieerkennungsverfahren besonders Robust gegenüber einer Eigenschaft von Datensätzen, wie zum Beispiel Rauschen oder Mehrdimensionalität, sein, die sich allgemein negativ auf die Performance von auf ihrem Datensatz ausgeführten Algorithmen auswirkt.
+Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomalien im Trainingsdatensatzes und gegenüber ungewollten Unterschieden zwischen dem Trainingsdatensatz und dem Testdatensatz. Weiterhin kann ein Anomalieerkennungsverfahren besonders Robust gegenüber einer Eigenschaft von Datensätzen, wie zum Beispiel Rauschen oder Mehrdimensionalität, sein, die sich allgemein negativ auf die Performance von auf ihrem Datensatz ausgeführten Algorithmen auswirkt. \cite{evR}
 
 \subsection{Streaming Data}
-
 
 Space Time Anpassung des Modells, Live Ergebnisse
 
 \subsection{Kriterien zur Performancebeurteilung} \label{sec:performance}
 
+Zur Beurteilung des Erfolges eines spezifischen Anomalieerkennungsverfahrens auf einem gelabelten Datensatz kann das Ergebnis von diesem mit den vorhandenen Labels abgeglichen werden. Aus diesem Vergleich können eine Reihe von Metriken gezogen werden, um eine quantitative Rangliste der Performance von verschiedenen Verfahren, beziehungsweise verschieden parametrisierte Verfahren erstellen zu können
+\cite{boughorbel2017optimalClassifier}. In den folgenden vorgestellten Verfahren werden die folgenden Notationen, basierend auf den englischen Begriffen $True(/\, False)\; Positives(/\,Negatives)$ benutzt. Zur beispielhaften Darstellung wird hier von einer einzigen Anomalieklasse, und einer punktweisen Anomalie Erkennung ausgegangen:
+\begin{align*}
+TP &= \text{Anzahl korrekt als Anomalien klassifizierter Punkte} \\
+TN &= \text{Anzahl korrekt als nicht-Anomalie klassifizierter Punkte} \\
+FP &= \text{Anzahl fälschlicherweise als Anomalien klassifizierter Punkte} \\
+FN &= \text{Anzahl fälschlicherweise als nicht-Anomalie klassifizierter Punkte}
+\end{align*}
+Ein Punkt gilt als von seinem Verfahren korrekt klassifiziert, wenn das Ergebnis des Verfahrens in bezüglich mit seinem Label übereinstimmt.
 \subsubsection{Accuracy}
 
-\subsubsection{F-Measure} 
+Eine der einfachsten Formen des Vergleichs bietet sich dadurch, zu identifizieren zu welchen Raten Anomalien, beziehungsweise nicht-Anomalien korrekt identifiziert wurden. Diese ergeben sich jeweils folgendermaßen aus den richtig und falsch klassifizierten Anomalien, beziehungsweise nicht-Anomalien:
+\begin{align*}
+TPR &= \frac{TP}{TP+FN} && 
+FPR = \frac{TN}{TN+FP}
+\end{align*}
+Aus dem Zusammenfügen dieser beiden Raten, für einen einfachen Vergleich ergibt sich die $Genauigkeit$ (englisch: $Accuracy$) mit der ein Verfahren seine Daten klassifiziert:
+\begin{align*}
+Accuracy &= \frac{TP+TN}{TP+TN+FP+FN}
+\end{align*}
+Die möglichen Werte der Genauigkeit liegen dabei zwischen 0 und 1, wobei eine 0 dafür steht das kein einziger und eine 1 dafür, dass alle Punkte des zugrundeliegenden Datensatzes richtig klassifiziert wurden.
+Der Vorteil dieser Metrik zur Performancebeurteilung eines Verfahrens liegt neben der Intuitivität darin, dass sie alle möglichen Klassifizierung eines Datenpunktes miteinbezieht, jegliche positive oder negative Abänderung des Ergebnisses demnach durch sie abgebildet wird. 
+Ein Problem mit der Genauigkeit eines Verfahrens ergibt sich allerdings sobald der zugrundeliegende Datensatz gegenüber einer Klasse sehr unbalanciert ist, er zum Beispiel wesentlich mehr anomale als nicht anomale Punkte enthält. Diese wie in Sektion \ref{sec-supervised} beschriebene häufig vorkommende Situation kann zu, wie in Tabelle \ref{tab:acc} dargestellt missrepresentativen Genauigkeitswerten führen.
+\begin{table}[h]
+
+\caption{Zwei mögliche Ergebnisse eines Anomalieerkennungsverfahrens auf einem Datensatz bestehend aus 950 normalen und 50 anomalen Punkten, mit der berechneten Genauigkeit für jedes Verfahren}
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+{} &  TP &    TN &      FP &    FN &   Genauigkeit    \\
+\textbf{Verfahren} &              &             &             &             &            \\
+\midrule
+\textbf{V1} & 0 & 950 & 0 & 50 &      0.95 \\
+\textbf{V2} & 50 & 900 & 50 & 0 &      0.95 \\
+\bottomrule
+\end{tabular}
+\label{tab:acc}
+\end{table}
+Die  beiden dargestellten  Verfahren V1 und V2 unterscheiden sich stark darin, dass V1 keine einzige der 50  Anomalien als solche klassifiziert hat, V2 hingegen lediglich 50 Punkte fälschlicherweise als normal klassifiziert hat. In der Praxis würde V2 fast immer als produktiver angesehen werden, dies spiegelt sich jedoch keinesfalls in der Genauigkeit der beiden Verfahren wieder.
+
+\subsubsection{F-Measure}
+
+Um einen Messwert zu definieren, dessen Fokus mehr auf dem Erkennen von Anomalien liegt eignen sich die Präzision (englisch: $Precision$) und die Trefferquote (englisch: $Recall$) eines Verfahrens, welche wie folgt definiert sind:
+\begin{align*}
+Precision &= \frac{TP}{TP+FP} && 
+Recall = \frac{TP}{TP+FN}
+\end{align*}
+Dabei stellt die Präzision im Bereich von 0 bis 1 den Anteil an wirklichen Anomalien den diese an den als Anomalie bestimmten Punkte eines Verfahrens haben dar. Dazu passend steht die Trefferquote im Bereich von 0 bis 1 für den Anteil an Anomalien die ein Verfahren erfolgreich klassifiziert hat. Über das harmonische Mittel zusammengefasst ergibt sich das $\text{F}_1$-Maß:
+\begin{align*}
+F_1 &= 2*\frac{Precision*Recall}{Precision + Recall}
+\end{align*}
+Ein hoher $F_1$ Wert steht so für ein Verfahren, welches einen Großteil der Anomalien des zugrundeliegenden Datensatzes richtig klassifiziert und nur wenige normale Punkte fälschlicherweise als Anomalie klassifiziert. Soll auf eine dieser Eigenschaften mehr Wert gelegt werden bietet sich eine Variation des $\text{F}_1$-Maßes an:
+\begin{align*}
+F_\alpha &= (1+\alpha^{2})*\frac{Precision*Recall}{\alpha^{2}*Precision + Recall}
+\end{align*}
+Für $\alpha$ größer null wird die Trefferquote mit wachsendem $\alpha$ im Vergleich zur Präzision stärker gewichtet. Alle F-Maße haben allerdings zwei Schwächen. Einmal setzen sie das vorhandensein von Anomalien im Datensatz voraus um angewandt weren zu können, da ansonsten mit einer garantieren Anzahl von richtig klassifizierten Anomalien $TP$ von 0, sowohl die Genauigkeit als auch die Trefferquote, und somit auch jedes F-Maß immer gleich 0 sind. Der zweite Nachteil des F-Maßes ist die Nichteinbeziehung der Anzahl der von dem Verfahren richtig als normal klassifizierten Punkte $FP$, wie in der Tabelle \ref{tab:fm} dargestellt \cite{gu2009evaluationOP}.
+\begin{table}[h]
+
+\caption{Zwei mögliche Ergebnisse eines Anomalieerkennungsverfahrens auf zwei Datensätzen, mit dem berechneten $\text{F}_1$-Maß für jedes Verfahren. Der Datensatz von V1 besteht aus 200 anomalen und 125 normalen Punkten, der von V2 aus 200 normalen und 1025 anomalen Punkten.}
+\centering
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &  TP &    TN &      FP &    FN &   Präzision &  Trefferquote & $\text{F}_1$  \\
+\textbf{Verfahren} &              &             &             &             &         & & \\
+\midrule
+\textbf{V1} & 100 & 0 & 25 & 100 &      0.8 & 0.5 & $\sim \text{0.62}$ \\
+\textbf{V2} & 100 & 1000 & 25 & 100 &      0.8 & 0.5 & $\sim \text{0.62}$\\
+\bottomrule
+\end{tabular}
+\label{tab:fm}
+\end{table}
+Verfahren V1 hat gegenüber dem Verfahren V2 die Schwäche keine normalen Punkte als solche klassifizieren zu können. Dennoch sind beide Verfahren nach beliebigen F-Maßen gleich.
+
 
 \subsubsection{MCC}
+
+Eine Lösung sowohl des Problems der Nichtmiteinbeziehung der richtig klassifizierten normalen Punkte der F-Maße, als auch der Schwäche gegenüber stark unbalancierten Klassen der Genauigkeit, bildet der Mathews Correlation Coefficient ($MCC$):
+\begin{align*}
+MCC &= \frac{TP*TN-FP*FN}{\sqrt{(TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)}}
+\end{align*}
+Dieser reicht von -1 für ein Verfahren, welches alle Punkte jeweils umgekehrt zu ihren Labels klassifiziert über 0 für ein Verfahren, welches Punkte unabhängig von ihrem tatsächlichem Label klassifiziert zu 1 für ein Verfahren, welches alle Punkte entsprechend ihrer Labels klassifiziert.
+Auch für den MCC bilden sich jedoch zwei Probleme. Erstens zieht dieser zwar alle möglichen Klassifizierungen mit ein und vernachlässigt keine basierend auf ihrer Größe, dafür fehlt ihm aber die Flexibilität der F-Maße, einen Fokus auf die Reinheit, beziehungsweise auf die Vollständigkeit der Klassifizierungen eines Verfahrens zu legen. Weiterhin ist der MCC aufgrund der Miteinbeziehung der als normal klassifizierten Punkte $FP$ sowohl für Datensätze, welche keine Anomalien, als auch für Datensätze welche nur Anomalien beinhalten nicht definiert.
 
 \section{Arten von Anomalieerkennungsverfahren}
 

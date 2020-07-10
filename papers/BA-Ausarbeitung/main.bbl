@@ -15,6 +15,12 @@
   algorithm for anomaly detection on streams}.
 \newblock Journal of Open Source Software, 4(35):1336, 2019.
 
+\bibitem{boughorbel2017optimalClassifier}
+{\sc Boughorbel, Sabri}, {\sc Fethi Jarray} \btxandlong{}\ {\sc Mohammed
+  El-Anbari}: {\em Optimal classifier for imbalanced data using Matthews
+  Correlation Coefficient metric}.
+\newblock PloS one, 12(6):e0177678, 2017.
+
 \bibitem{chandola2009anomaly}
 {\sc Chandola, Varun}, {\sc Arindam Banerjee} \btxandlong{}\ {\sc Vipin Kumar}:
   {\em Anomaly detection: A survey}.
@@ -26,6 +32,12 @@
   large-scale anomaly detection using a linear one-class SVM with deep
   learning}.
 \newblock Pattern Recognition, 58:121--134, 2016.
+
+\bibitem{gu2009evaluationOP}
+{\sc Gu, Qiong}, {\sc Li~Zhu} \btxandlong{}\ {\sc Zhihua Cai}: {\em Evaluation
+  measures of the classification performance of imbalanced data sets}.
+\newblock \Btxinlong{}\ {\em International symposium on intelligence
+  computation and applications}, \btxpageslong{}\ 461--471. Springer, 2009.
 
 \bibitem{guha2016rrcfTheory}
 {\sc Guha, Sudipto}, {\sc Nina Mishra}, {\sc Gourav Roy} \btxandlong{}\ {\sc
@@ -41,7 +53,7 @@
 \newblock \Btxinlong{}\ {\em International conference on machine learning},
   \btxpageslong{}\ 2712--2721, 2016.
 
-\bibitem{gupta2013outlier}
+\bibitem{gupta2013outlierTemp}
 {\sc Gupta, Manish}, {\sc Jing Gao}, {\sc Charu~C Aggarwal} \btxandlong{}\ {\sc
   Jiawei Han}: {\em Outlier detection for temporal data: A survey}.
 \newblock IEEE Transactions on Knowledge and Data Engineering,
@@ -58,5 +70,11 @@
   {\em Fast anomaly detection for streaming data}.
 \newblock \Btxinlong{}\ {\em Twenty-Second International Joint Conference on
   Artificial Intelligence}, 2011.
+
+\bibitem{evR}
+{\sc Templ, Matthias}, {\sc J~Gussenbauer} \btxandlong{}\ {\sc P~Filzmoser}:
+  {\em Evaluation of robust outlier detection methods for zero-inflated complex
+  data}.
+\newblock Journal of Applied Statistics, 47(7):1144--1167, 2020.
 
 \end{thebibliography}

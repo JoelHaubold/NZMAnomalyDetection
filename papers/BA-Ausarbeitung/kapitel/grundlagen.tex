@@ -11,7 +11,7 @@
 In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Anomalie bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von dem restlichen, nicht-anomalen $normalen$ Punkten des Datensatzes abhebt.
 %Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
 %Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
-\begin{figure}[]
+\begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{bilder/anomaly_chandola.png}
 \caption{Ein zweidimensionaler Beispieldatensatz dessen Struktur durch die Punktegruppen $N_1$ und $N_2$ gebildet wird. Im Kontext zu diesen sind die Punkte $o_1$ und $o_2$, sowie die Punktegruppe $O_3$ anomal. Quelle: \protect\cite{chandola2009anomaly}}
@@ -37,7 +37,7 @@ Erschwerend für die Anomalieerkennung kann es sein falls sich mehrere Anomalien
 
 \subsubsection{Rauschen}
 Je nach generierenden Prozess des Datensatzes kann es sein das in diesem neben der zu beobachtenden Größe, weitere Punkte aufgenommen werden, welche sich in ihren Merkmalen stark von den Inlinern unterscheiden, aber nicht von Relevanz für den Beobachter des Prozesses sind. \cite{aggarwal2015outlier}
-\begin{figure}[]
+\begin{figure}
 \centering
 \includegraphics[width=0.75\textwidth]{bilder/noise_aggarwal.png}
 \caption{Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Inlinergruppen und einem anomalen Punkt $A$. Quelle: \protect\cite{aggarwal2015outlier}} %TODO: Annahme das es zwei Inlinergruppen gibt? Deutsche Beschreibung
@@ -120,7 +120,7 @@ Accuracy &= \frac{TP+TN}{TP+TN+FP+FN}
 Die möglichen Werte der Genauigkeit liegen dabei zwischen 0 und 1, wobei eine 0 dafür steht das kein einziger und eine 1 dafür, dass alle Punkte des zugrundeliegenden Datensatzes richtig klassifiziert wurden.
 Der Vorteil dieser Metrik zur Performancebeurteilung eines Verfahrens liegt neben der Intuitivität darin, dass sie alle möglichen Klassifizierung eines Datenpunktes miteinbezieht, jegliche positive oder negative Abänderung des Ergebnisses demnach durch sie abgebildet wird. 
 Ein Problem mit der Genauigkeit eines Verfahrens ergibt sich allerdings sobald der zugrundeliegende Datensatz gegenüber einer Klasse sehr unbalanciert ist, er zum Beispiel wesentlich mehr anomale als nicht anomale Punkte enthält. Diese wie in Sektion \ref{sec-supervised} beschriebene häufig vorkommende Situation kann zu, wie in Tabelle \ref{tab:acc} dargestellt missrepresentativen Genauigkeitswerten führen.
-\begin{table}[h]
+\begin{table}
 
 \caption{Zwei mögliche Ergebnisse eines Anomalieerkennungsverfahrens auf einem Datensatz bestehend aus 950 normalen und 50 anomalen Punkten, mit der berechneten Genauigkeit für jedes Verfahren}
 \centering
@@ -153,7 +153,7 @@ Ein hoher $F_1$ Wert steht so für ein Verfahren, welches einen Großteil der An
 F_\alpha &= (1+\alpha^{2})*\frac{Precision*Recall}{\alpha^{2}*Precision + Recall}
 \end{align*}
 Für $\alpha$ größer null wird die Trefferquote mit wachsendem $\alpha$ im Vergleich zur Präzision stärker gewichtet. Alle F-Maße haben allerdings zwei Schwächen. Einmal setzen sie das vorhandensein von Anomalien im Datensatz voraus um angewandt weren zu können, da ansonsten mit einer garantieren Anzahl von richtig klassifizierten Anomalien $TP$ von 0, sowohl die Genauigkeit als auch die Trefferquote, und somit auch jedes F-Maß immer gleich 0 sind. Der zweite Nachteil des F-Maßes ist die Nichteinbeziehung der Anzahl der von dem Verfahren richtig als normal klassifizierten Punkte $FP$, wie in der Tabelle \ref{tab:fm} dargestellt \cite{gu2009evaluationOP}.
-\begin{table}[h]
+\begin{table}
 
 \caption{Zwei mögliche Ergebnisse eines Anomalieerkennungsverfahrens auf zwei Datensätzen, mit dem berechneten $\text{F}_1$-Maß für jedes Verfahren. Der Datensatz von V1 besteht aus 200 anomalen und 125 normalen Punkten, der von V2 aus 200 normalen und 1025 anomalen Punkten.}
 \centering
@@ -180,6 +180,7 @@ MCC &= \frac{TP*TN-FP*FN}{\sqrt{(TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)}}
 Dieser reicht von -1 für ein Verfahren, welches alle Punkte jeweils umgekehrt zu ihren Labels klassifiziert über 0 für ein Verfahren, welches Punkte unabhängig von ihrem tatsächlichem Label klassifiziert zu 1 für ein Verfahren, welches alle Punkte entsprechend ihrer Labels klassifiziert.
 Auch für den MCC bilden sich jedoch zwei Probleme. Erstens zieht dieser zwar alle möglichen Klassifizierungen mit ein und vernachlässigt keine basierend auf ihrer Größe, dafür fehlt ihm aber die Flexibilität der F-Maße, einen Fokus auf die Reinheit, beziehungsweise auf die Vollständigkeit der Klassifizierungen eines Verfahrens zu legen. Weiterhin ist der MCC aufgrund der Miteinbeziehung der als normal klassifizierten Punkte $FP$ sowohl für Datensätze, welche keine Anomalien, als auch für Datensätze welche nur Anomalien beinhalten nicht definiert.
 
-\section{Arten von Anomalieerkennungsverfahren}
+\section{Anomalieerkennung über Isolation}
 
-Clustering, Inlinermodell, Isolierung
+Ein Großteil der existierenden Anomalieerkennungsverfahren, wie \textit{Replicator Neural Network} \cite{rnnWilliams2002comparative}, \textit{One class Svm} \cite{svm_tax2004support}, oder auf Klassifizierung \cite{classiAbe2006outlier} \cite{classiShi2006unsupervised} beziehungsweise Clustering \cite{clusterHe2003discovering} basierenden Methoden erkennen Anomalien in einem Datensatz, indem sie ein Profil der normalen Klasse an Punkten konstruieren und alle Punkte welche von diesem Profil abweichen als Anomalien identifizieren. Da solche Verfahren oftmals ursprünglich nicht zur Anomalieerkennung eingesetzt wurden ergeben sich zwei große Nachteile \cite{liu2012isolation}:
+Zuerst ziehen nicht auf Anomalieerkennung spezifizierte Verfahren nicht den oftmalse sehr geringen Anteil den anomale Punkte am Datensatz haben in Betracht, was zu einer erhöhten Zahl an fälschlicherweise als Anomalie klassifizierten Punkten führt.s

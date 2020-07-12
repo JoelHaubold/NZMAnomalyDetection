@@ -93,7 +93,7 @@ Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomali
 
 \subsection{Streaming Data}
 
-Space Time Anpassung des Modells, Live Ergebnisse
+Space Time Anpassung des Modells, Live Ergebnisse, ressourcen einschränkung
 
 \subsection{Kriterien zur Performancebeurteilung} \label{sec:performance}
 
@@ -179,8 +179,3 @@ MCC &= \frac{TP*TN-FP*FN}{\sqrt{(TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)}}
 \end{align*}
 Dieser reicht von -1 für ein Verfahren, welches alle Punkte jeweils umgekehrt zu ihren Labels klassifiziert über 0 für ein Verfahren, welches Punkte unabhängig von ihrem tatsächlichem Label klassifiziert zu 1 für ein Verfahren, welches alle Punkte entsprechend ihrer Labels klassifiziert.
 Auch für den MCC bilden sich jedoch zwei Probleme. Erstens zieht dieser zwar alle möglichen Klassifizierungen mit ein und vernachlässigt keine basierend auf ihrer Größe, dafür fehlt ihm aber die Flexibilität der F-Maße, einen Fokus auf die Reinheit, beziehungsweise auf die Vollständigkeit der Klassifizierungen eines Verfahrens zu legen. Weiterhin ist der MCC aufgrund der Miteinbeziehung der als normal klassifizierten Punkte $FP$ sowohl für Datensätze, welche keine Anomalien, als auch für Datensätze welche nur Anomalien beinhalten nicht definiert.
-
-\section{Anomalieerkennung über Isolation}
-
-Ein Großteil der existierenden Anomalieerkennungsverfahren, wie \textit{Replicator Neural Network} \cite{rnnWilliams2002comparative}, \textit{One class Svm} \cite{svm_tax2004support}, oder auf Klassifizierung \cite{classiAbe2006outlier} \cite{classiShi2006unsupervised} beziehungsweise Clustering \cite{clusterHe2003discovering} basierenden Methoden erkennen Anomalien in einem Datensatz, indem sie ein Profil der normalen Klasse an Punkten konstruieren und alle Punkte welche von diesem Profil abweichen als Anomalien identifizieren. Da solche Verfahren oftmals ursprünglich nicht zur Anomalieerkennung eingesetzt wurden ergeben sich zwei große Nachteile \cite{liu2012isolation}:
-Zuerst ziehen nicht auf Anomalieerkennung spezifizierte Verfahren nicht den oftmalse sehr geringen Anteil den anomale Punkte am Datensatz haben in Betracht, was zu einer erhöhten Zahl an fälschlicherweise als Anomalie klassifizierten Punkten führt.s

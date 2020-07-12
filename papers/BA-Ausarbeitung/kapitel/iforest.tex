@@ -12,3 +12,8 @@ Da das in dieser Arbeit auf dem PPC-Datensatz evaluierte Verfahren \textit{Robus
 \end{itemize}
 
 \section{iForest Theory}
+
+Ein Großteil der existierenden Anomalieerkennungsverfahren, wie \textit{Replicator Neural Network} \cite{rnnWilliams2002comparative}, \textit{One class Svm} \cite{svm_tax2004support}, oder auf Klassifizierung \cite{classiAbe2006outlier} \cite{classiShi2006unsupervised} beziehungsweise Clustering \cite{clusterHe2003discovering} basierenden Methoden erkennen Anomalien in einem Datensatz, indem sie ein Profil der normalen Klasse an Punkten konstruieren und alle Punkte welche von diesem Profil abweichen als Anomalien identifizieren. Da solche Verfahren oftmals ursprünglich nicht zur Anomalieerkennung eingesetzt wurden ergeben sich zwei große Nachteile \cite{liu2012isolation}:
+Zuerst ziehen nicht auf Anomalieerkennung spezifizierte Verfahren nicht den oftmals sehr geringen Anteil den anomale Punkte am Datensatz haben in Betracht, was zu einer erhöhten Zahl an fälschlicherweise als Anomalie klassifizierten Punkten führt. Weiterhin sind solche Verfahren oftmals nicht für hoch dimensionale oder sehr große Datensätze, welche zum Beispiel bei der Auswertung von Sensordaten vorhanden sein können optimiert, und brauchen daher auf diesen Datensätzen eine große Menge an Rechenleistung.
+
+Alternativ 

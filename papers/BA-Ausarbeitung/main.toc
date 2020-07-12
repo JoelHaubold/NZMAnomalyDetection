@@ -1,6 +1,6 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}
 \contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
 \contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
@@ -27,7 +27,6 @@
 \contentsline {subsubsection}{Accuracy}{9}
 \contentsline {subsubsection}{F-Measure}{10}
 \contentsline {subsubsection}{MCC}{11}
-\contentsline {section}{\numberline {2.3}Anomalieerkennung \IeC {\"u}ber Isolation}{11}
 \contentsline {chapter}{\numberline {3}Isolation Forest}{13}
 \contentsline {section}{\numberline {3.1}iForest Theory}{13}
 \contentsline {chapter}{\numberline {4}Robust Random Cut Forest}{15}

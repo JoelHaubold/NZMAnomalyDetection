@@ -1,6 +1,6 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Ein zweidimensionaler Beispieldatensatz dessen Struktur durch die Punktegruppen $N_1$ und $N_2$ gebildet wird. Im Kontext zu diesen sind die Punkte $o_1$ und $o_2$, sowie die Punktegruppe $O_3$ anomal. Quelle: \cite {chandola2009anomaly}\relax }}{3}

@@ -1,6 +1,6 @@
-\select@language {english}
-\select@language {english}
-\select@language {german}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {german}{}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}
 \contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
 \contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
@@ -10,57 +10,60 @@
 \contentsline {section}{\numberline {2.1}Anomalien}{3}
 \contentsline {subsection}{\numberline {2.1.1}Komplikationen}{4}
 \contentsline {subsubsection}{Kontextabh\IeC {\"a}ngigkeit}{4}
-\contentsline {subsubsection}{Duplikate}{4}
+\contentsline {subsubsection}{Duplikate}{5}
 \contentsline {subsubsection}{Rauschen}{5}
-\contentsline {subsubsection}{Mehrdimensionalit\IeC {\"a}t}{5}
+\contentsline {subsubsection}{Mehrdimensionalit\IeC {\"a}t}{6}
 \contentsline {section}{\numberline {2.2}Anomalieerkennungsverfahren}{6}
 \contentsline {subsection}{\numberline {2.2.1}\IeC {\"U}berwachtes und un\IeC {\"u}berwachtes Lernen}{6}
 \contentsline {subsubsection}{\IeC {\"U}berwachtes Lernen}{6}
 \contentsline {subsubsection}{Semi\IeC {\"u}berwachtes Lernen}{7}
 \contentsline {subsubsection}{Un\IeC {\"u}berwachtes Lernen}{7}
-\contentsline {subsection}{\numberline {2.2.2}Input und Output von Anomalieerkennungsverfahren}{7}
+\contentsline {subsection}{\numberline {2.2.2}Input und Output von Anomalieerkennungsverfahren}{8}
 \contentsline {subsubsection}{Arten von zu analysierenden Dateninstanzen}{8}
+\contentsline {subsubsection}{Arten des Dateninputs}{8}
 \contentsline {subsubsection}{Ergebnisse des Anomalieerkennungsverfahren}{8}
-\contentsline {subsection}{\numberline {2.2.3}Robustheit}{8}
-\contentsline {subsection}{\numberline {2.2.4}Streaming Data}{8}
-\contentsline {subsection}{\numberline {2.2.5}Kriterien zur Performancebeurteilung}{8}
-\contentsline {subsubsection}{Accuracy}{9}
-\contentsline {subsubsection}{F-Measure}{10}
-\contentsline {subsubsection}{MCC}{11}
+\contentsline {subsection}{\numberline {2.2.3}Robustheit}{9}
+\contentsline {subsection}{\numberline {2.2.4}Kriterien zur Performancebeurteilung}{9}
+\contentsline {subsubsection}{Accuracy}{10}
+\contentsline {subsubsection}{F-Measure}{11}
+\contentsline {subsubsection}{MCC}{12}
 \contentsline {chapter}{\numberline {3}Isolation Forest}{13}
-\contentsline {section}{\numberline {3.1}iForest Theory}{13}
-\contentsline {chapter}{\numberline {4}Robust Random Cut Forest}{15}
-\contentsline {section}{\numberline {4.1}Notationen}{15}
-\contentsline {section}{\numberline {4.2}RRCF Theory}{15}
-\contentsline {subsection}{\numberline {4.2.1}RRCF Aufbau}{16}
-\contentsline {subsection}{\numberline {4.2.2}Distanzbeibehaltung bei der RRCT Konstruktion}{18}
-\contentsline {subsubsection}{Beweis von Theorem \ref {theo:distance}}{18}
-\contentsline {subsection}{\numberline {4.2.3}RRCF Instandhaltung}{19}
-\contentsline {subsubsection}{L\IeC {\"o}schen eizelner Punkte}{19}
-\contentsline {subsubsection}{Unterschiede beim L\IeC {\"o}schen eines Punktes}{19}
-\contentsline {section}{\numberline {4.3}Anomalieerkennung \IeC {\"u}ber RRCF}{20}
-\contentsline {subsection}{\numberline {4.3.1}Modellkomplexit\IeC {\"a}t eines RRCT}{21}
-\contentsline {subsection}{\numberline {4.3.2}Verschiebung der Modellkomplexit\IeC {\"a}t durch einen Punkt $\textbf {x}$}{22}
-\contentsline {paragraph}{Beweis Lemma \ref {lem:verschiebung}}{24}
-\contentsline {subsection}{\numberline {4.3.3}Codisp}{25}
-\contentsline {subsubsection}{Robustheit gegen\IeC {\"u}ber Duplikaten}{26}
-\contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{27}
-\contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{29}
-\contentsline {section}{\numberline {5.1}Aufmachung der Testdaten}{29}
-\contentsline {subsection}{\numberline {5.1.1}Eignung der Daten f\IeC {\"u}r \IeC {\"u}berwachte und un\IeC {\"u}berwachte Anomalieerkennung}{31}
-\contentsline {subsection}{\numberline {5.1.2}Ben\IeC {\"o}tigte Eigenschaften eines Anomalieerkennungsverfahrens}{32}
-\contentsline {subsubsection}{Aufbau der Tests\IeC {\"a}tze}{32}
-\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{32}
-\contentsline {subsection}{\numberline {5.2.1}Implementierung der Tests}{33}
-\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{33}
-\contentsline {paragraph}{Schritt 1: Simulation der Praxis}{34}
-\contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{34}
-\contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{34}
-\contentsline {subsubsection}{Ergebnisse}{34}
-\contentsline {chapter}{\numberline {6}Fazit}{35}
-\contentsline {chapter}{\numberline {A}Weitere Informationen}{37}
-\contentsline {chapter}{Abbildungsverzeichnis}{39}
-\contentsline {chapter}{Tabellenverzeichnis}{41}
-\contentsline {chapter}{Algorithmenverzeichnis}{43}
-\contentsline {chapter}{Literaturverzeichnis}{46}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{46}
+\contentsline {section}{\numberline {3.1}Isolation Forest Theory}{13}
+\contentsline {subsection}{\numberline {3.1.1}iForest Training}{14}
+\contentsline {subsection}{\numberline {3.1.2}iForest Auswertung}{16}
+\contentsline {subsubsection}{Evaluationsmaximum der Wegl\IeC {\"a}nge}{17}
+\contentsline {section}{\numberline {3.2}Implementation}{18}
+\contentsline {chapter}{\numberline {4}Robust Random Cut Forest}{21}
+\contentsline {section}{\numberline {4.1}Notationen}{21}
+\contentsline {section}{\numberline {4.2}RRCF Theory}{21}
+\contentsline {subsection}{\numberline {4.2.1}RRCF Aufbau}{22}
+\contentsline {subsection}{\numberline {4.2.2}Distanzbeibehaltung bei der RRCT Konstruktion}{24}
+\contentsline {subsubsection}{Beweis von Theorem \ref {theo:distance}}{24}
+\contentsline {subsection}{\numberline {4.2.3}RRCF Instandhaltung}{25}
+\contentsline {subsubsection}{L\IeC {\"o}schen eizelner Punkte}{25}
+\contentsline {subsubsection}{Unterschiede beim L\IeC {\"o}schen eines Punktes}{25}
+\contentsline {section}{\numberline {4.3}Anomalieerkennung \IeC {\"u}ber RRCF}{26}
+\contentsline {subsection}{\numberline {4.3.1}Modellkomplexit\IeC {\"a}t eines RRCT}{27}
+\contentsline {subsection}{\numberline {4.3.2}Verschiebung der Modellkomplexit\IeC {\"a}t durch einen Punkt $\textbf {x}$}{28}
+\contentsline {paragraph}{Beweis Lemma \ref {lem:verschiebung}}{30}
+\contentsline {subsection}{\numberline {4.3.3}Codisp}{31}
+\contentsline {subsubsection}{Robustheit gegen\IeC {\"u}ber Duplikaten}{32}
+\contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{33}
+\contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{35}
+\contentsline {section}{\numberline {5.1}Aufmachung der Testdaten}{35}
+\contentsline {subsection}{\numberline {5.1.1}Eignung der Daten f\IeC {\"u}r \IeC {\"u}berwachte und un\IeC {\"u}berwachte Anomalieerkennung}{37}
+\contentsline {subsection}{\numberline {5.1.2}Ben\IeC {\"o}tigte Eigenschaften eines Anomalieerkennungsverfahrens}{38}
+\contentsline {subsubsection}{Aufbau der Tests\IeC {\"a}tze}{38}
+\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{38}
+\contentsline {subsection}{\numberline {5.2.1}Implementierung der Tests}{39}
+\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{39}
+\contentsline {paragraph}{Schritt 1: Simulation der Praxis}{40}
+\contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{40}
+\contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{40}
+\contentsline {subsubsection}{Ergebnisse}{40}
+\contentsline {chapter}{\numberline {6}Fazit}{41}
+\contentsline {chapter}{Abbildungsverzeichnis}{43}
+\contentsline {chapter}{Tabellenverzeichnis}{45}
+\contentsline {chapter}{Algorithmenverzeichnis}{47}
+\contentsline {chapter}{Literaturverzeichnis}{50}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{50}

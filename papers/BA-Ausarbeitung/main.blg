@@ -12,44 +12,44 @@ A level-1 auxiliary file: kapitel/anhang.aux
 The style file: gerplain.bst
 A level-1 auxiliary file: kapitel/erklaerung.aux
 Database file #1: literatur/diplom.bib
-You've used 18 entries,
+You've used 19 entries,
             2343 wiz_defined-function locations,
-            681 strings with 8303 characters,
-and the built_in function-call counts, 7901 in all, are:
-= -- 821
-> -- 333
+            687 strings with 8460 characters,
+and the built_in function-call counts, 8126 in all, are:
+= -- 842
+> -- 340
 < -- 5
-+ -- 132
-- -- 112
-* -- 651
-:= -- 1188
-add.period$ -- 39
-call.type$ -- 18
-change.case$ -- 92
++ -- 135
+- -- 114
+* -- 662
+:= -- 1225
+add.period$ -- 41
+call.type$ -- 19
+change.case$ -- 95
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 331
-empty$ -- 638
-format.name$ -- 112
-if$ -- 1775
+cite$ -- 19
+duplicate$ -- 344
+empty$ -- 662
+format.name$ -- 114
+if$ -- 1825
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 29
-newline$ -- 75
-num.names$ -- 36
-pop$ -- 111
+int.to.str$ -- 19
+missing$ -- 31
+newline$ -- 79
+num.names$ -- 38
+pop$ -- 119
 preamble$ -- 1
-purify$ -- 92
+purify$ -- 95
 quote$ -- 0
-skip$ -- 269
+skip$ -- 276
 stack$ -- 0
-substring$ -- 517
-swap$ -- 137
+substring$ -- 522
+swap$ -- 139
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
+type$ -- 74
 warning$ -- 0
-while$ -- 71
-width$ -- 20
-write$ -- 183
+while$ -- 73
+width$ -- 21
+write$ -- 192

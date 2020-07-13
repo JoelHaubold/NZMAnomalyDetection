@@ -6,14 +6,173 @@
 Da das in dieser Arbeit auf dem PPC-Datensatz evaluierte Verfahren \textit{Robust Random Cut Forest} auf dem benutztem Vergleichsverfahren \textit{Isolation Forest} (\textbf{iForest}) basiert, wird zuerst in diesem Kapitel der Isolation Forest in seinen Grundzügen beschrieben. Das Kapitel orientiert sich dabei an dem Artikel \cite{liu2012isolation}, welcher das Verfahren vorstellte. Es werden die folgenden Notationen benutzt:
 
 \begin{itemize}
-\item \makebox[5cm][l]{$\mathbb{E}$}  \makebox[5cm][l]{ddd}
-\item \makebox[5cm][l]{$\mathbb{P}r$}  \makebox[5cm][l]{ddd}
-\item \makebox[5cm][l]{$\mathcal{T}$}  \makebox[5cm][l]{ddd}
+\item \makebox[1.5cm][l]{$x$}  \makebox[5cm][l]{Ein Datenpunkt}
+\item \makebox[1.5cm][l]{$Xr$}  \makebox[5cm][l]{Ein Datensatz aus n Punkten}
+\item \makebox[1.5cm][l]{$n$}  \makebox[5cm][l]{Die Anzahl von Punkten in einem Datensatz, $n = |X|$}
+\item \makebox[1.5cm][l]{$Q$}  \makebox[5cm][l]{Die Attribute eines Datensatzes $X$}
+\item \makebox[1.5cm][l]{$x_q$}  \makebox[5cm][l]{Der Wert von $x$ in $q \in Q$}
+\item \makebox[1.5cm][l]{$T$}  \makebox[5cm][l]{Ein Baum oder ein Knoten eines Baumes}
+\item \makebox[1.5cm][l]{$t$}  \makebox[5cm][l]{Die Anzahl von Bäumen in einem Forest}
+\item \makebox[1.5cm][l]{$h(x)$}  \makebox[5cm][l]{Die Weglänge eines Punktes x in einem Baum}
+\item \makebox[1.5cm][l]{$hlim$}  \makebox[5cm][l]{Tiefenmaximum der Wegevaluation}
+\item \makebox[1.5cm][l]{$\psi$}  \makebox[5cm][l]{Größe einer Stichprobe}
+\item \makebox[1.5cm][l]{$s$}  \makebox[5cm][l]{Eine Funktion welche die Annomalität eines Punktes bewertet}
 \end{itemize}
 
-\section{iForest Theory}
+\section{Isolation Forest Theory}
 
 Ein Großteil der existierenden Anomalieerkennungsverfahren, wie \textit{Replicator Neural Network} \cite{rnnWilliams2002comparative}, \textit{One class Svm} \cite{svm_tax2004support}, oder auf Klassifizierung \cite{classiAbe2006outlier} \cite{classiShi2006unsupervised} beziehungsweise Clustering \cite{clusterHe2003discovering} basierenden Methoden erkennen Anomalien in einem Datensatz, indem sie ein Profil der normalen Klasse an Punkten konstruieren und alle Punkte welche von diesem Profil abweichen als Anomalien identifizieren. Da solche Verfahren oftmals ursprünglich nicht zur Anomalieerkennung eingesetzt wurden ergeben sich zwei große Nachteile \cite{liu2012isolation}:
 Zuerst ziehen nicht auf Anomalieerkennung spezifizierte Verfahren nicht den oftmals sehr geringen Anteil den anomale Punkte am Datensatz haben in Betracht, was zu einer erhöhten Zahl an fälschlicherweise als Anomalie klassifizierten Punkten führt. Weiterhin sind solche Verfahren oftmals nicht für hoch dimensionale oder sehr große Datensätze, welche zum Beispiel bei der Auswertung von Sensordaten vorhanden sein können optimiert, und brauchen daher auf diesen Datensätzen eine große Menge an Rechenleistung.
 
-Alternativ 
+Als ein alternatives Anomalieerkennungsverfahren wurde in dem Artikel \cite{liu2012isolation} die Methodik entwickelt anomale Instanzen eines Datensatzes zu isolieren, ohne dabei eine Distanz beziehungsweise Dichte zwischen den einzelnen Instanzen zu kalkulieren. Dabei wird von den beiden, in Sektion \ref{sec-supervised} beschriebenen grundlegenden Annahmen von unüberwachten Anomalieerkennungsverfahren über die Eigenschaften anomaler Instanzen ausgegangen:
+\begin{theorem}\label{theo:ifanomalie}
+Anomale Punkte in einem Datensatz zeichnen sich durch zwei Eigenschaften aus:
+\begin{enumerate}
+\item Anomalien bilden eine Minderheit in ihrem Datensatz
+\item Anomalien zeichnen sich durch von der Norm des Datensatzes stark abweichende Merkmalsausprägungen aus
+\end{enumerate} 
+\end{theorem}
+Das grundlegende Konzept von \textit{Isolation} ist dabei, dass diese beiden Eigenschaften es einfacher machen einen anomalen Punkt von dem restlichem Datensatz zu trennen als einen normalen Punkt. Das zugrundeliegende Trennverfahren eines iForests sind eine Ansammlung von binären Bäumen, genannt \textit{Isolation Tree} (\textbf{iTree}), aufgrund der Effizienz ihrer Konstruktion.
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[x]{0.40\textwidth}
+  \centering
+  \includegraphics[width=0.95\textwidth]{bilder/isoa.png}
+  \caption{Isolation eines normalen Punktes $x_i$ über 12 Partitionen}
+  \label{fig:isol1}
+\end{subfigure}%
+\begin{subfigure}[y]{0.40\textwidth}
+  \centering
+  \includegraphics[width=0.95\textwidth]{bilder/isob.png}
+  \caption{Isolation eines anomalen Punktes $x_o$ über 4 Partitionen}
+  \label{fig:isol2}
+\end{subfigure}
+\caption{Zwei gleiche Datensätze über zwei Dimensionen, in denen jeweils ein Punkt durch zufällige partitionierungen des Datensatzes isoliert wurde. Jede Schnittlinie stellt eine isolation dar. Quelle: \protect\cite{liu2012isolation}}
+\label{fig:isol}
+\end{figure}
+
+\subsection{iForest Training}
+
+Um die Empfänglichkeit jedes Punktes eines Datensatzes $X$ zu bestimmen, von $X$ isoliert zu werden, partitioniert ein iTree $X$ solange rekursiv bis alle Punkte von $X$ voneinander getrennt sind. Die inneren Knoten stellen dabei, entsprechend Definition \ref{def:iso} jeweils eine Partition und die Blätter jeweils eine Stelle an der ein Punkt von $X$ isoliert wurde dar. Zu jeder Partition wird dazu ein Merkmal des verbleibenden Datensatzes $X'$, sowie ein zufälliger Trennwert zwischen den maximalen und minimalen Wert in $X'$ in diesem Merkmal ausgewählt, worauf $X'$ über diesen Grenzwert getrennt wird. Aufgrund der vorher definierten Annahmen zu den Eigenschaften anomaler Punkte, benötigen diese wesentlich weniger Partitionen und haben somit einen wesentlich kürzeren Pfad zur Wurzel als normale Punkte:
+\begin{itemize}
+\item Die geringe Anzahl an Anomalien führt zu mehr Platz um die Anomalien herum, wodurch weniger Partitionen gebraucht werden um diese zu isolieren.
+\item Die stark abweichenden Merkmalsausprägungen von Anomalien führt zu einer höheren Wahrscheinlichkeit, dass diese durch den zufällig gewählten Trennwert einer Partition von dem Rest des Datensatzes getrennt wird. 
+\end{itemize} 
+Diese beiden Effekte sind in dem Beispiel in Figur \ref{fig:isol} dargestellt. Aufgrund der Abwesenheit von ähnlichen Punkten, sowie der hohen Entfernung von $x_o$ zu dem Cluster an normalen Punkten, braucht es im Vergleich zu dem Punkt $x_i$ merkbar weniger zufällige Partitionen um diesen von dem Rest des Datensatzes zu trennen. 
+
+Es ergibt sich die folgende Definition eines iTrees:
+\begin{definition}[Isolation Tree]\label{def:iso}
+
+Sei $T$ ein Knoten eines iTrees über eine Stichprobe der Größe $\psi$ des Datensatz $X$ mit Attributen $Q$. $T$ ist entweder ein Blatt (\textit{exNode}), oder ein interner Knoten (\textit{inNode}) mit zwei Kindknoten ($T_l$,$T_r$) und einer Partition. Die Partition von $T$ besteht aus einem Attribut $q \in Q$ und einem Trennwert $p$, sodass für $x \in X$ über $x_q < p$ bestimmt wird ob $x$ zu $T_l$ oder $T_r$ partitioniert wird. 
+\end{definition}
+Es ergeben sich, für einen über $\psi$ Punkte konstruierten iTree $\psi$ externe und ,aus der zugrunde liegenden Struktur eines Binärbaums hervorgehend $\psi-1$ interne Knoten.
+
+Um die möglichen Schwankungen durch die zufällige Auswahl des Attributes sowie des Trennwerts zu jeder Partition auszugleichen, und um zu einem konsistenten Ausgabe zu kommen, wird beim iForest Verfahren nicht ein iTree verwendet, sondern eine Ansammlung von $t$ iTrees, deren Einschätzung gegenüber der Anomalität eines Punktes, kombiniert wird um zu der letztendlichen Einschätzung des iForests zu kommen.
+
+\subsection{iForest Auswertung}
+
+Unter Definition \ref{def:iso} ergibt sich für die Länge des Weges eines Punktes, welcher den Partitionen von der Wurzel eines iTrees aus folgt, bis er auf ein Blatt trifft:
+
+\begin{definition}[Weglänge $h(x)$]\label{Weglänge}
+Sei $T$ ein iTree. Die Weglänge $h(x)$ eines Punktes $x$ entspricht der Anzahl an Kanten von $T$, welche $x$ den Partitionen der inneren Knoten von $T$ folgend passiert, bis der Weg von $x$ an einem externen Knoten endet.
+\end{definition}
+
+Die Weglänge eines Punktes $x$ kalkuliert durch einen iForest $E(h(x))$, ergibt sich dann als der Durchschnitt aller kalkulierten Weglängen der iTrees des iForests.
+
+Da die erwartete Weglänge eines Punktes in einem iTree $T$, mit der Zunahme der Größe der Stichprobe über der $T$ konstruiert wurde um die Größenordnung $log(\psi)$ zunimmt, wird die Weglänge $E(h(x))$ des Punktes $x$ in einem iForest über die durchschnittliche Weglänge $c(\psi)$ eines beliebigen Punktes in einem iTree welcher über eine Stichprobe der Größe $\psi$ konstruiert wurde. So kann die Performance von iForests mit unterschiedlichen Stichprobengrößen verglichen werden. Da die Struktur eines iTrees mit der von \textit{Binary Search Trees} übereinstimmt, ist die durchschnittliche Weglänge einer nicht erfolgreichen Suche eines Binary Search Trees gleich $c(\psi)$. Somit gibt sich für $c(\psi)$ mit der harmonischen Zahl $H(i)\approx \ln{(i)}+05772156649$ \cite{BSTbruno2000data}: 
+
+\begin{equation}
+c(\psi) = \begin{cases}
+      2H(\psi-1)-2(\psi-1)/n &,\psi > 2 \\
+      1 &, \psi = 2 \\
+      0 &, \text{otherwise}
+    \end{cases}
+\end{equation}
+
+Die genormte Einschätzung der Anomalität eines Punktes $x$ durch einen iForest der Größe $\psi$ ist nun definiert als:
+
+\begin{align}
+s(x,\psi) &= 2^{-\dfrac{E(h(x))}{c(\psi)}}
+\end{align}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.65\textwidth]{bilder/sspan.png}
+\caption{Der Verlauf des Anomalieindikators $s$ eines iForests über die durchschnittliche Weglänge aller iTrees des iForests. Quelle: \protect\cite{liu2012isolation}}
+\label{fig:sspan}
+\end{figure}
+Die gesamte Spannweite von $s$ liegt im Intervall $[0,1]$ und ist in Abbildung \ref{fig:sspan} abgebildet. Es stechen 3 besondere Werte von $s$ hervor:
+\begin{enumerate}
+\item $E(h(x)) \rightarrow 0, s \rightarrow 1$: Ist $s$ nahe 1, geht die durchschnittliche Weglänge von $x$ gegen 0. $x$ ist somit wesentlich anfälliger für Isolation als ein durchschnittlicher Punkt der zur Konstruktion des iForests benutzten Stichprobe, und somit nach Theorem \ref{theo:ifanomalie} höchstwahrscheinlich eine Anomalie.
+\item $E(h(x)) \rightarrow \psi -1, s \rightarrow 0$: Analog dazu bedeutet ein $s$ nahe 0, dass $x$ erst nach unverhältnismäßig vielen Partitionen isoliert wurde, und somit somit nach Theorem \ref{theo:ifanomalie} höchstwahrscheinlich keine Anomalie ist.
+\item $E(h(x)) \rightarrow c(\psi), s \rightarrow 0.5$: Falls alle Punkte ein $s$ nahe 0.5 zugewiesen bekommen, hat die gesamte bewertete Stichprobe keine distinkten Anomalien
+\end{enumerate}
+
+\subsubsection{Evaluationsmaximum der Weglänge}
+Eine Herausforderung bei der Anomalieerkennung ist zu bestimmen ab wann ein verhältnismäßig kleiner Cluster von Punkten in einem Datensatz eine Gruppe von normalen Punkten und ab wann er eine Gruppe von Anomalien darstellt. Bei einem iForest Verfahren kann dies über eine Beschränkung der zulässigen Tiefe $hlim$ bei der Bestimmung der Weglänge eines Punktes parametrisiert werden. Wurden $hlim$ Kanten bei der Bestimmung der Weglänge passiert, wird die Suche nach der genauen Weglänge abgebrochen und, basierend auf der bisherigen Anzahl passierter Kanten sowie der Anzahl der nach den so durchlaufenen Partitionen möglichen übrigen Blättern $\psi'$ eine Abschätzung $e + c(\psi')$ anstatt ihrer ausgegeben. So lässt sich eine Granularität für die Abschätzung der Anomalität durch $s$ festlegen, die in dem obigen Beispiel festlegen würde, ob der gesamte Cluster oder nur seine Ränder, als anomal gewertet werden. Dies ist illustriert durch Abbildung \ref{fig:ifhlim}. 
+
+\section{Implementation}
+
+Für das Trainieren eines iForests aus $t$ iTrees über Stichproben der Größe $\psi$ ergeben sich die folgenden Algorithmen:
+
+\begin{algorithm}[ht]
+\caption{\textit{iForest(X,t,$\psi$)}}
+\label{alg:IFconstr}
+\begin{algorithmic}[1]
+\REQUIRE $X$ - Trainingsdatensatz, $t$ - Anzahl Bäume, $\psi$ - subsampling size 
+\ENSURE Ein Satz von $t$ $iTrees$
+\STATE \textbf{Initialize} $Forest$
+\FOR{$i = 1$ to $t$}
+\STATE $X' \leftarrow sample(X, \psi)$
+\STATE $Forst \leftarrow Forest \cup iTree(X')$
+\ENDFOR
+\RETURN $Forest$
+\end{algorithmic}
+\end{algorithm}
+
+Algorithmus \ref{alg:IFconstr} erhält den Trainingsdatensatz über den der iForest konstruiert wird, sowie die beiden einzigen Trainingsparameter des Verfahrens: Die Stichprobengröße $\psi$ über die die einzelnen Bäume konstruiert werden, sowie die Anzahl der Bäume des iForests $t$.
+In Zeile 1 wird die Liste $Forest$ initialisiert, welche in der Schleife in Zeile 2 mit $t$ Bäumen gefüllt wird. Dazu wird jeweils zuerst in Zeile 3 eine zufällige Stichprobe $X'$ der Größe $\psi$ aus dem Datensatz $X$ genommen, aus der in Zeile 4 von Algorithmus \ref{alg:ITconstr} ein iTree konstruiert und $Forest$ hinzugefügt wird.
+
+\begin{algorithm}[ht]
+\caption{\textit{iTree(X')}}
+\label{alg:ITconstr}
+\begin{algorithmic}[1]
+\REQUIRE $X'$ - Input Datensatz 
+\ENSURE Ein $iTree$
+\IF{$|unique(X')|=1$}
+\RETURN \textit{exNode}\{\textit{Size} $\leftarrow |X'|$\}
+\ELSE
+\STATE Sei $Q$ die Liste von Attibuten von $X'$
+\STATE Wähle $q \in Q$ zufällig
+\STATE Wähle $p \sim \textnormal{Uniform}[\min_{x \in X'} x_q, \max_{x \in X'} x_q]$
+\STATE $X_l \leftarrow filter(X',x_q<p)$
+\STATE $X_r \leftarrow filter(X',x_q \geq p)$
+\RETURN $inNode$\{$Left \leftarrow iTree(X_l)$,
+\STATE  \makebox[2.6cm][l]{}   $Right \leftarrow iTree(X_r)$,
+\STATE  \makebox[2.6cm][l]{}   $SplitAtt \leftarrow q$,
+\STATE  \makebox[2.6cm][l]{}   $SplitValue \leftarrow p$\}
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+Algorithmus \ref{alg:ITconstr} erhält die ihm von Algorithmus \ref{alg:IFconstr} zugewiesene Stichprobe $X'$, und konstruiert rekursiv aus dieser einen möglichen iTree.
+Zeile 1 stellt dabei das rekurisve Abbruchkriterium dar: Wenn ein Punkt beziehungsweise eine Gruppe von Duplikaten erfolgreich von dem restlichen Datensatz isoliert wurde. In Zeile 2 wird ein Blatt mit der Anzahl der verbliebenen Punkte in der Stichprobe als Attribut $Size$ zurück an den rekursiven Vaterprozess gegeben.
+Entspricht der Datensatz nicht der Abbruchbedingung in Zeile 1 wird stattdessen eine weiter Partition durchgeführt: Dazu wird in den Zeilen 4 bis 6 ein Attribut des Datensatzes $q \in Q$ sowie ein Trennwert $p$ aus der Wertespanne aller Punkte in $q$ uniform zufällig gewählt. In den Zeilen 7 und 8 wird darauf die eigentliche Trennung von $X'$ vorgenommen, Punkte mit einem Wert $x_q$ im Attribut $q$ kleiner als $p$ werden in den Datensatz $X_l$ des linken Teilknoten partitioniert, der Rest in den Datensatz $X_r$ des rechten Teilknoten. Darauf wird in Zeile 9 ein innerer Knoten an den rekursiven Vaterprozess zurückgegeben, mit den beiden rekursiv berechneten Kindknoten als $Left$ und $Right$ Attribut, sowie die Partition die dieser Knoten darstellt, über das ausgewählten Attribut $q$ und dem zugehörigen Trennwert $p$ respektiv als $SplitAtt$ und $SplitValue$. 
+
+\begin{algorithm}[ht]
+\caption{\textit{PathLength(x,T,hlim,e)}}
+\label{alg:ITpath}
+\begin{algorithmic}[1]
+\REQUIRE $x$ - ein Punkt, $T$ - ein iTree, $hlim$ - eine Tiefenbegrenzung, $e$ -  momentane Weglänge; 0 zur Initialisierung
+\ENSURE Die Weglänge von $x$ in $T$
+\IF{$T$ ist Blatt oder $e \geq hlim$}
+\RETURN $e + c(T.size)$
+\ENDIF
+\STATE $a \leftarrow T.splitAtt$
+\IF{$x_a < T.splitValue$}
+\RETURN $PathLength(x,T.left,hlim,e+1)$
+\ELSE
+\RETURN $PathLength(x,T.right,hlim,e+1)$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}

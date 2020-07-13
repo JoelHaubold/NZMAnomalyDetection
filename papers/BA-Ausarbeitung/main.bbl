@@ -77,6 +77,11 @@
 \newblock ACM Transactions on Knowledge Discovery from Data (TKDD), 6(1):1--39,
   2012.
 
+\bibitem{BSTbruno2000data}
+{\sc Preiss, Bruno~R.}: {\em Data Structures and Algorithms with
+  Object-Oriented Design Patterns in Java}.
+\newblock John Wiley \& Sons Incorporated, 2000.
+
 \bibitem{classiShi2006unsupervised}
 {\sc Shi, Tao} \btxandlong{}\ {\sc Steve Horvath}: {\em Unsupervised learning
   with random forest predictors}.

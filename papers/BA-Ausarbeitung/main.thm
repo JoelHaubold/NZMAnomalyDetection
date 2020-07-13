@@ -1,14 +1,17 @@
-\contentsline {definition}{{Definition}{4.2.{1}}{RRCT}}{16}
-\contentsline {theorem}{{Theorem}{4.2.{2}}{Distanzbeibehaltung}}{18}
-\contentsline {lemma}{{Lemma}{4.2.{3}}{}}{18}
-\contentsline {theorem}{{Theorem}{4.2.{4}}{Konsistenz der inneren Probabilität}}{19}
-\contentsline {theorem}{{Theorem}{4.2.{5}}{Die RRCT Konstruktion ist Stichproben unabhängig}}{19}
-\contentsline {theorem}{{Theorem}{4.2.{6}}{}}{20}
-\contentsline {theorem}{{Theorem}{4.2.{7}}{}}{20}
-\contentsline {definition}{{Definition}{4.3.{1}}{Tiefe eines Punktes in $x$}}{21}
-\contentsline {definition}{{Definition}{4.3.{2}}{Modellkomplexität}}{22}
-\contentsline {definition}{{Definition}{4.3.{3}}{Verschiebung ($Displacement$) eines Punktes}}{23}
-\contentsline {lemma}{{Lemma}{4.3.{4}}{}}{24}
-\contentsline {definition}{{Definition}{4.3.{5}}{CoDisp}}{27}
-\contentsline {definition}{{Definition}{4.3.{6}}{}}{27}
-\contentsline {lemma}{{Lemma}{4.3.{7}}{}}{27}
+\contentsline {theorem}{{Theorem}{3.1.{1}}{}}{14}
+\contentsline {definition}{{Definition}{3.1.{2}}{Isolation Tree}}{15}
+\contentsline {definition}{{Definition}{3.1.{3}}{Weglänge $h(x)$}}{16}
+\contentsline {definition}{{Definition}{4.2.{1}}{RRCT}}{22}
+\contentsline {theorem}{{Theorem}{4.2.{2}}{Distanzbeibehaltung}}{24}
+\contentsline {lemma}{{Lemma}{4.2.{3}}{}}{24}
+\contentsline {theorem}{{Theorem}{4.2.{4}}{Konsistenz der inneren Probabilität}}{25}
+\contentsline {theorem}{{Theorem}{4.2.{5}}{Die RRCT Konstruktion ist Stichproben unabhängig}}{25}
+\contentsline {theorem}{{Theorem}{4.2.{6}}{}}{26}
+\contentsline {theorem}{{Theorem}{4.2.{7}}{}}{26}
+\contentsline {definition}{{Definition}{4.3.{1}}{Tiefe eines Punktes in $x$}}{27}
+\contentsline {definition}{{Definition}{4.3.{2}}{Modellkomplexität}}{28}
+\contentsline {definition}{{Definition}{4.3.{3}}{Verschiebung ($Displacement$) eines Punktes}}{29}
+\contentsline {lemma}{{Lemma}{4.3.{4}}{}}{30}
+\contentsline {definition}{{Definition}{4.3.{5}}{CoDisp}}{33}
+\contentsline {definition}{{Definition}{4.3.{6}}{}}{33}
+\contentsline {lemma}{{Lemma}{4.3.{7}}{}}{33}

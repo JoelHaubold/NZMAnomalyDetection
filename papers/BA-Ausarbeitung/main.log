@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  13 JUL 2020 20:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  14 JUL 2020 12:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1048,9 +1048,6 @@ Package pdftex.def Info: bilder/rrcfDupli.png  used on input line 269.
 
 ]
 Kapitel 5.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 LaTeX Warning: Reference `Spannung \IeC {\"u}ber Monat' on page 35 undefined on
  input line 46.

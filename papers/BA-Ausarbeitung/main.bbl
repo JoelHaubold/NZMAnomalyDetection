@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{classiAbe2006outlier}
+{\sc Abe, Naoki}, {\sc Bianca Zadrozny} \btxandlong{}\ {\sc John Langford}:
+  {\em Outlier detection by active learning}.
+\newblock \Btxinlong{}\ {\em Proceedings of the 12th ACM SIGKDD international
+  conference on Knowledge discovery and data mining}, \btxpageslong{}\
+  504--509, 2006.
+
 \bibitem{aggarwal2015outlier}
 {\sc Aggarwal, Charu~C}: {\em Outlier analysis}.
 \newblock \Btxinlong{}\ {\em Data mining}. Springer, 2015.
@@ -15,6 +22,12 @@
   algorithm for anomaly detection on streams}.
 \newblock Journal of Open Source Software, 4(35):1336, 2019.
 
+\bibitem{boughorbel2017optimalClassifier}
+{\sc Boughorbel, Sabri}, {\sc Fethi Jarray} \btxandlong{}\ {\sc Mohammed
+  El-Anbari}: {\em Optimal classifier for imbalanced data using Matthews
+  Correlation Coefficient metric}.
+\newblock PloS one, 12(6):e0177678, 2017.
+
 \bibitem{chandola2009anomaly}
 {\sc Chandola, Varun}, {\sc Arindam Banerjee} \btxandlong{}\ {\sc Vipin Kumar}:
   {\em Anomaly detection: A survey}.
@@ -26,6 +39,12 @@
   large-scale anomaly detection using a linear one-class SVM with deep
   learning}.
 \newblock Pattern Recognition, 58:121--134, 2016.
+
+\bibitem{gu2009evaluationOP}
+{\sc Gu, Qiong}, {\sc Li~Zhu} \btxandlong{}\ {\sc Zhihua Cai}: {\em Evaluation
+  measures of the classification performance of imbalanced data sets}.
+\newblock \Btxinlong{}\ {\em International symposium on intelligence
+  computation and applications}, \btxpageslong{}\ 461--471. Springer, 2009.
 
 \bibitem{guha2016rrcfTheory}
 {\sc Guha, Sudipto}, {\sc Nina Mishra}, {\sc Gourav Roy} \btxandlong{}\ {\sc
@@ -41,11 +60,16 @@
 \newblock \Btxinlong{}\ {\em International conference on machine learning},
   \btxpageslong{}\ 2712--2721, 2016.
 
-\bibitem{gupta2013outlier}
+\bibitem{gupta2013outlierTemp}
 {\sc Gupta, Manish}, {\sc Jing Gao}, {\sc Charu~C Aggarwal} \btxandlong{}\ {\sc
   Jiawei Han}: {\em Outlier detection for temporal data: A survey}.
 \newblock IEEE Transactions on Knowledge and Data Engineering,
   26(9):2250--2267, 2013.
+
+\bibitem{clusterHe2003discovering}
+{\sc He, Zengyou}, {\sc Xiaofei Xu} \btxandlong{}\ {\sc Shengchun Deng}: {\em
+  Discovering cluster-based local outliers}.
+\newblock Pattern Recognition Letters, 24(9-10):1641--1650, 2003.
 
 \bibitem{liu2012isolation}
 {\sc Liu, Fei~Tony}, {\sc Kai~Ming Ting} \btxandlong{}\ {\sc Zhi-Hua Zhou}:
@@ -53,10 +77,39 @@
 \newblock ACM Transactions on Knowledge Discovery from Data (TKDD), 6(1):1--39,
   2012.
 
+\bibitem{BSTbruno2000data}
+{\sc Preiss, Bruno~R.}: {\em Data Structures and Algorithms with
+  Object-Oriented Design Patterns in Java}.
+\newblock John Wiley \& Sons Incorporated, 2000.
+
+\bibitem{classiShi2006unsupervised}
+{\sc Shi, Tao} \btxandlong{}\ {\sc Steve Horvath}: {\em Unsupervised learning
+  with random forest predictors}.
+\newblock Journal of Computational and Graphical Statistics, 15(1):118--138,
+  2006.
+
 \bibitem{changing_d_tan2011fast}
 {\sc Tan, Swee~Chuan}, {\sc Kai~Ming Ting} \btxandlong{}\ {\sc Tony~Fei Liu}:
   {\em Fast anomaly detection for streaming data}.
 \newblock \Btxinlong{}\ {\em Twenty-Second International Joint Conference on
   Artificial Intelligence}, 2011.
+
+\bibitem{svm_tax2004support}
+{\sc Tax, David~MJ} \btxandlong{}\ {\sc Robert~PW Duin}: {\em Support vector
+  data description}.
+\newblock Machine learning, 54(1):45--66, 2004.
+
+\bibitem{evR}
+{\sc Templ, Matthias}, {\sc J~Gussenbauer} \btxandlong{}\ {\sc P~Filzmoser}:
+  {\em Evaluation of robust outlier detection methods for zero-inflated complex
+  data}.
+\newblock Journal of Applied Statistics, 47(7):1144--1167, 2020.
+
+\bibitem{rnnWilliams2002comparative}
+{\sc Williams, Graham}, {\sc Rohan Baxter}, {\sc Hongxing He}, {\sc Simon
+  Hawkins} \btxandlong{}\ {\sc Lifang Gu}: {\em A comparative study of RNN for
+  outlier detection in data mining}.
+\newblock \Btxinlong{}\ {\em 2002 IEEE International Conference on Data Mining,
+  2002. Proceedings.}, \btxpageslong{}\ 709--712. IEEE, 2002.
 
 \end{thebibliography}

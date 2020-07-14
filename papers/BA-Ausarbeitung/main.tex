@@ -1,5 +1,8 @@
 % main.tex
 \include{header}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{varwidth}
 \begin{document}
 \selectlanguage{german}
 \include{kapitel/titelseite}
@@ -11,13 +14,13 @@
 % Kapitel
 \include{kapitel/einleitung}
 \include{kapitel/grundlagen}
+\include{kapitel/iforest}
 \include{kapitel/rrcf}
-\include{kapitel/svm}
 \include{kapitel/tests}
 \include{kapitel/fazit}
 % Anhang
 \appendix
-\include{kapitel/anhang}
+%\include{kapitel/anhang}
 % Abbildungsverzeichnis
 \listoffigures
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}

@@ -1,12 +1,55 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
 A level-1 auxiliary file: kapitel/titelseite.aux
 A level-1 auxiliary file: kapitel/einleitung.aux
 A level-1 auxiliary file: kapitel/grundlagen.aux
+A level-1 auxiliary file: kapitel/iforest.aux
 A level-1 auxiliary file: kapitel/rrcf.aux
-A level-1 auxiliary file: kapitel/svm.aux
 A level-1 auxiliary file: kapitel/tests.aux
 A level-1 auxiliary file: kapitel/fazit.aux
 A level-1 auxiliary file: kapitel/anhang.aux
 The style file: gerplain.bst
 A level-1 auxiliary file: kapitel/erklaerung.aux
 Database file #1: literatur/diplom.bib
+You've used 19 entries,
+            2343 wiz_defined-function locations,
+            687 strings with 8460 characters,
+and the built_in function-call counts, 8126 in all, are:
+= -- 842
+> -- 340
+< -- 5
++ -- 135
+- -- 114
+* -- 662
+:= -- 1225
+add.period$ -- 41
+call.type$ -- 19
+change.case$ -- 95
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 344
+empty$ -- 662
+format.name$ -- 114
+if$ -- 1825
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 31
+newline$ -- 79
+num.names$ -- 38
+pop$ -- 119
+preamble$ -- 1
+purify$ -- 95
+quote$ -- 0
+skip$ -- 276
+stack$ -- 0
+substring$ -- 522
+swap$ -- 139
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 74
+warning$ -- 0
+while$ -- 73
+width$ -- 21
+write$ -- 192

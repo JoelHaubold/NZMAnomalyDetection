@@ -3,38 +3,31 @@
 \chapter{Grundlagen}
 \label{chapter:grundlagen}
 
-\section{Notationen}
-Die in dieser Arbeit verwendeten Notationen lehnen sich an die in dem Papier \cite{guha2016rrcfTheory} verwendeten an:
 
 
-\begin{itemize}
-\item \makebox[5cm][l]{$\mathbb{E}$}  \makebox[5cm][l]{ddd}
-\item \makebox[5cm][l]{$\mathbb{P}r$}  \makebox[5cm][l]{ddd}
-\item \makebox[5cm][l]{$\mathcal{T}$}  \makebox[5cm][l]{ddd}
-\end{itemize}
-
-\section{Anomalien}
+\section{Anomalien} % iForest Swamping Masking
 
  % Define dimensions of Z; Move Usefulness to Introduction
-In einem gegebenen Datensatz $Z$ an Punkten, wird einer dieser Punkte $x \in Z$ als Outlier bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von den Punkten $Z  - \{x\}$ unterscheidet. Seien $Y$ alle anomalen Punkte aus $Z$. Ein Modell welches $Z$ darstellt ist entsprechend wesentlich komplexer als ein Modell welches $Z-Y$, also nur die nicht-normalen \textit{Inliners} von $Z$ darstellt.  Wie stark sich $x$ in seinen Merkmalen von anderen Punkten in $Z$ unterscheiden muss, beziehungsweise wie stark $x$ die Komplexität des Modells von $Z$ erhöht, damit $x$ als Anomalie gesehen wird ist hängt oft von der jeweiligen Zielsetzung ab.\\
+In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Anomalie bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von dem restlichen, nicht-anomalen $normalen$ Punkten des Datensatzes abhebt.
 %Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
 %Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
-\begin{figure}[]
+\begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{bilder/anomaly_chandola.png}
-\caption{Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \protect\cite{chandola2009anomaly}}
+\includegraphics[width=0.55\textwidth]{bilder/anomaly_chandola.png}
+\caption{Ein zweidimensionaler Beispieldatensatz über zwei Merkmale x und y, dessen Struktur durch die Punktegruppen $N_1$ und $N_2$ gebildet wird. Im Kontext zu diesen sind die Punkte $o_1$ und $o_2$, sowie die Punktegruppe $O_3$ anomal. Quelle: \protect\cite{chandola2009anomaly}}
 \label{image-dup}
 \end{figure}
-\subsection{Anomalytypen} %Change Examples?
-Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich von den Inlinern abheben in drei Klassen unterteilen: \cite{ahmed2016surveyatypes}
+
+Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich aus ihrem Datensatz abheben in drei Klassen unterteilen \cite{ahmed2016surveyatypes} : 
 \begin{itemize}
-\item \textit{Punktanomalien}: Wenn ein Datenpunkt sich stark von den normalen Merkmalsausprägungen im Datenset unterscheidet. Beispielsweise wäre bei Beobachtung des Kraftstoffverbrauchs pro Tag eines Autos ein Verbrauch von 50 Litern, mit einem normalen Verbrauch von 5 Litern pro Tag eine Punktanomalie
-\item \textit{Kontextanomalien}: Wenn ein Datenpunkt in einem bestimmten Kontext in seinem Datensatz hervorsticht. Zum Beispiel können bei der Anomalieerkennung auf den Ausgaben einer Person, überdurchschnittlich hohe Ausgaben hohe Ausgaben an einem Feiertag normal sein, im Kontext eines Arbeitstages allerdings eine Anomalie darstellen.
-\item \textit{Kollektivanomalien}: Wenn mehrere, über ein oder mehrere ihrer Merkmale zusammenhängende Datenpunkte, welche alleine keine Besonderheit darstellen würden, zusammen eine Anomalie darstellen. Beispielsweise sind bei einem Elektrokardiogramm (EKG) einzelne niedrige Werte Teil einer Inlinergruppe, eine Reihe lange zeitlich aufeinanderfolgender Werte allerdings ist eine Anomalie.
+\item \textit{Punktanomalien}: Wenn ein Datenpunkt sich stark von den normalen Merkmalsausprägungen in seinem Datensatz unterscheidet. Beispielsweise wäre bei Beobachtung des Kraftstoffverbrauchs eines Autos pro Tag ein Verbrauch von 50 Litern, bei einem normalen Verbrauch von 5 Litern pro Tag eine Punktanomalie. Die anomalen Punkte in Figur \ref{image-dup} entsprechen dieser Anomalieklasse.
+\item \textit{Kontextanomalien}: Wenn ein Datenpunkt in einem bestimmten Kontext in seinem Datensatz hervorsticht, ohne diesen aber nicht als Anomalie zu erkennen wäre. Zum Beispiel können bei einer Anomalieerkennung auf den Finanzen einer Person, überdurchschnittlich hohe Ausgaben an einem Feiertag normal sein, im Kontext eines Arbeitstages allerdings eine Anomalie darstellen.
+\item \textit{Kollektivanomalien}: Wenn mehrere, über ein oder mehrere ihrer Merkmale zusammenhängende Datenpunkte, welche alleine keine Besonderheit darstellen würden, zusammen eine Anomalie darstellen. Beispielsweise sind bei einem Elektrokardiogramm (EKG) einzelne niedrige Werte Teil einer der normalen Punkte, eine Reihe lange zeitlich aufeinanderfolgender Werte allerdings ist eine Anomalie.
 \end{itemize}
+Kollektivanomalien setzen entsprechend ihrer Definition voraus, dass die Punkte des ihnen zugrunde liegendem Datensatz miteinander in Beziehung stehen, etwa wie in den oben aufgeführten Beispiel durch deren Zeitpunkt zu dem diese aufgenommen wurden. Ähnlich muss ein Datensatz über Attribute Verfügen, mit welcher für dessen Punkte Kontexte definiert werden können, damit in diesem Kontextanomalien existieren können.
 
 \subsection{Komplikationen} \label{sec:komp}
-Die Diversität von möglichen Datensätzen und deren Merkmalen macht es generell nicht möglich,  ein allgemeines Vorgehen für die Erkennung von Anomalien zu bestimmen. Dazu kommen mögliche Eigenschaften die dies weiterhin erschweren, oder es bestimmten Vorgehen sogar unmöglich machen, Anomalie von Inliner zu unterscheiden. Ein Überblick über einige dieser ist hier aufgeführt:
+Die Diversität von möglichen Datensätzen und deren Merkmalen macht es generell nicht möglich, ein allgemeines Vorgehen für die Erkennung von Anomalien zu bestimmen. E Dazu kommen mögliche Eigenschaften von Datensätzen, welche Anomalieerkennung auf diesen weiter erschweren, oder bestimmten Vorgehensweisen sogar unmöglich machen, Anomalien zu klassifizieren. Ein Überblick über einige dieser möglichen erschwerenden Eigenschaften ist hier aufgeführt:
 
 \subsubsection{Kontextabhängigkeit}
 Es ist zu beachten das bei zwei anomalen Punkten nicht die gleichen Grenzwerte für die einzelnen Merkwerte gelten müssen, es kommt vielmehr auf die Kombination der Merkmale an. Ein einfaches Beispiel ist ein über die Zeit stetig zunehmender Messwert. Ein Punkt dessen Wert zu Beginn aus der Zeitreihe nach oben ausreißt, ist wahrscheinlich anomal. Die Punkte die später durch den Trend der Zeitreihe diesen Wert überschreiten, sind deswegen aber nicht zwingend selber anomal, noch invalidieren sie den Status des Ausreißers als Anomalie. \cite{changing_d_tan2011fast}
@@ -44,12 +37,32 @@ Erschwerend für die Anomalieerkennung kann es sein falls sich mehrere Anomalien
 
 \subsubsection{Rauschen}
 Je nach generierenden Prozess des Datensatzes kann es sein das in diesem neben der zu beobachtenden Größe, weitere Punkte aufgenommen werden, welche sich in ihren Merkmalen stark von den Inlinern unterscheiden, aber nicht von Relevanz für den Beobachter des Prozesses sind. \cite{aggarwal2015outlier}
-\begin{figure}[]
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.75\textwidth]{bilder/noise_aggarwal.png}
+%\caption{Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Inlinergruppen und einem anomalen Punkt $A$. Quelle: \protect\cite{aggarwal2015outlier}} %TODO: Annahme das es zwei Inlinergruppen gibt? Deutsche Beschreibung
+%\label{image-noise}
+%\end{figure}
+
+
+\begin{figure}
 \centering
-\includegraphics[width=0.75\textwidth]{bilder/noise_aggarwal.png}
-\caption{Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Inlinergruppen und einem anomalen Punkt $A$. Quelle: \protect\cite{aggarwal2015outlier}} %TODO: Annahme das es zwei Inlinergruppen gibt? Deutsche Beschreibung
+\begin{subfigure}[x]{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\textwidth]{bilder/noise_aggarwal_a.png}
+  \caption{Ohne Rauschen}
+  \label{image-noise1}
+\end{subfigure}%
+\begin{subfigure}[y]{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.9\textwidth]{bilder/noise_aggarwal_b2.png}
+  \caption{Mit Rauschen}
+  \label{image-noise2}
+\end{subfigure}
+\caption{Der Einfluss von Rauschen auf einen Datensatz bestehend aus zwei Ansammlung von Punkten und einem anomalen Punkt $A$. Quelle: \protect\cite{aggarwal2015outlier}}
 \label{image-noise}
 \end{figure}
+
 In den beiden Abbildungen \ref{image-noise} ist die Schwierigkeit die Rauschen bei der Anomalieerkennung mit sich bringt zu sehen. In Abbildung \ref{image-noise} (a) ist der Punkt A offensichtlich anomal. In \ref{image-noise} (b) könnte dieser allerdings Teil des Rauschens sein. Um den Punkt A als anomal markieren zu können, aber nicht den Rest des uninteressanten Rauschens, muss dem Anomalieerkennungsverfahren mitgeteilt werden das Punkte mit seinen Merkmalen  als anomal gelten.
 
 \subsubsection{Mehrdimensionalität} % TODO: Formularisch darstellen
@@ -59,23 +72,39 @@ Hat der zu untersuchende Datensatz eine hohe Dimensionalität in seinen Merkmale
 
 
 
-\section{Anomalieerkennung durch maschinelles Lernen}
-Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen. Dabei eignen sich nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen. 
+\section{Anomalieerkennungsverfahren}
+Ein Anomalieerkennungsverfahren bietet generalisiert die Funktion auf einem Datensatz Anomalien zu erkennen und diese eventuell in mehrere Klassen zu kategorisieren. Nicht alle Verfahren für alle Datensätze, sei es weil sie für eine bestimmte Eigenschaft des Datensatzes nicht geeignet sind, oder umgekehrt weil sie zur eigenen Leistungsverbesserung bestimmte Eigenschaften im Datensatz voraussetzen \cite{gupta2013outlierTemp}. Auch die Zielsetzung, welche Art von Anomalie man in dem Datensatz erkennen will hat Einfluss auf die Auswahl des entsprechenden Anomalieerkennungsverfahren. 
 
 \subsection{Überwachtes und unüberwachtes Lernen}
 \label{sec-supervised}
-Generell lassen sich zur Anomalieerkennung angewandte maschinelle Lernverfahren in zwei Bereiche teilen, überwachtes und unüberwachtes Lernen: %gupda!!!!
+Es mag sein, dass für Teile eines Datensatzes auf dem ein Anomalieerkennungsverfahren laufen soll, bereits Label existieren die Punkte oder Ausschnitte des Datensatzes als anomal oder normal klassifizieren. Mithilfe dieser gelabelten Daten können einem Anomalieerkennungsverfahren die Eigenschaften der anomalen beziehungsweise der normalen Daten antrainiert werden, damit es diese besser auf ungelabelten Daten erkennen kann. Anomalieerkennungsverfahren lassen sich so über den Grad an Informationen den sie auf ihren Trainingsdaten benötigen in drei Klassen unterteilen \cite{chandola2009anomaly}:
 \subsubsection{Überwachtes Lernen}
-Überwachtes Lernen
+
+Das überwachte Lernen setzt voraus das ein Trainingsdatensatz zur Verfügung steht, welcher gelabelte Instanzen von normalen sowie anormalen Daten enthält.  Oftmals wird über diese Daten ein Prognosemodell erstellt, welches zwischen den normalen Daten, sowie den Anomalieklassen unterscheiden soll. Dies ermöglicht komplexere Anomaliedefinitionen, welche eventuell nicht alleinig über die Seltenheit der Eigenschaften eines Punktes oder einer Gruppe von Punkten erkennbar wären. Bei dieser Art von Anomalieerkennung gibt es zwei grundlegende Probleme: Zuerst sind Anomalien, naheliegend aus ihrer Definition im Datensatz oft nur geringfügig vertreten, was dazu führen kann das bei der Erstellung des Prognosemodells die zugehörigen Anomalieklassen zu spezifisch auf diese im Trainingsdatensatz vorkommenden Ausprägungen dieser Klassen modelliert werden, was dazu führt das diese im ungelabelten Teil des Datensatzes nicht vollständig als Teil ihrer Klasse erkannt werden. Weiterhin entspricht das Vorhandensein eines Trainingsdatensatzes, welcher alle möglichen Ausprägungen aller Anomalieklassen darstellt oft nicht der Praxis. Einerseit, weil Anomalien als Abweichung von dem normalen Verhalten des Datensatzes oftmals in vielfältiger Form kommen können, und somit eventuell künstliche Trainingspunkte erzeugt werden müssen um die Ausmaße der Klassen, sowie den eventuell benötigten Kontext für diese Klassen ausreichend darzustellen. Andererseits müssen real vorkommende Anomalien im Trainingsdatensatz oftmals per Hand von einer Fachkraft als solche gelabeled werden, was unerwünschte Kosten mit sich bringt. 
+
+\subsubsection{Semiüberwachtes Lernen}
+
+Beim semiüberwachtem Lernen wird nur von einem Trainingsdatensatz ausgegangen, welcher das Normalverhalten der Daten vollständig darstellt. Dies ist oft einfacher zu erfüllen, so kann der Trainingsdatensatz zum Beispiel bereits aus einer Aufzeichung eines normalen Ablaufs des datengenerierenden Prozesses gewonnen werden. Die einzige Voraussetzung bleibt, dass der Trainingsdatensatz das Normalverhalten ausreichend genug darstellt, sodass das Anomalieerkennungsverfahren nicht anormale Entwicklungen im datengenerierenden Prozess, als solche erkennen kann. Da das Normalverhalten eines Prozesses aber oft klarer definiert ist, als eine anomale Abweichung in beliebig komplexer Form, ist diese Voraussetzung oft verfügbarer als die für überwachtes Lernen. 
+
+Aufgrund dieses klaren Unterschied der Praktikabilität, kommen semiüberwachte Ansätze, welche einen Trainingsdatensatz aus gelabelten Anomalien nur limitiert vor.
 
 \subsubsection{Unüberwachtes Lernen}
+
+Der Ansatz des unüberwachten Lernens benötigt keinerlei vorgelabelten Testdaten, stattdessen wird die implizite Annahme getroffen, dass Anomalien im Datensatz wesentlich seltener auftreten als normale Daten. Unter dieser Annahme versucht ein unüberwachtes Verfahren diese selten auftretenden anomalen Daten von den zueinander konformen Daten abzugrenzen.
+
+Viele semiüberwachte Verfahren können unüberwacht angewandt werden, indem sie in Abwesenheit des eigentlich benötigten, das Normalverhalten modellierenden Testdatensatzes, über einem Datensatz trainieren, bei dem davon ausgegangen wird das dieser eine sehr geringe Anzahl an Anomalien enthält. So verwendete Verfahren müssen robust genug gegenüber den so eintrainierten Anomalien sein, um eine Verfälschung bei der späteren Beurteilung von Daten zu verhindern. 
 
 \subsection{Input und Output von Anomalieerkennungsverfahren}
 
 Weiter Unterscheidungen lassen sich über Anomalieerkennungsverfahren darin machen, in welcher Form der Input auf Anomalien untersucht wird, und in Welcher Form das Anomalieerkennungsverfahren seine Ergebnisse ausgibt.
 
 \subsubsection{Arten von zu analysierenden Dateninstanzen}
-Auch darin in welcher Form die Anomalien erkannt werden sollen unterscheiden sich die möglichen Verfahren. Je nach Zielsetzung kann in einer Zeitreihe nach einzelnen oder Sequenzen von anomalen Datenpunkten gesucht, oder es können Zeitabschnitte nach Auffälligkeiten miteinander verglichen werden. Anders mag es auch von Nutzen seien, ganze Zeitreihen aus einer Gruppe von Zeitreihen als anomal zu bestimmen. \cite{gupta2013outlier}  
+Auch darin in welcher Form die Anomalien erkannt werden sollen unterscheiden sich die möglichen Verfahren. Je nach Zielsetzung und den Eigenschaften der zugrundeliegenden Daten kann in diesen nach einzelnen oder unter einem bestimmten Kontext zusammenhängenden  anomalen Datenpunkten gesucht werden. Auch mag es von Nutzen seien, ganze Datensätze aus einer Gruppe dieser als anomal oder normal zu bestimmen. \cite{gupta2013outlierTemp} 
+
+\subsubsection{Arten des Dateninputs}
+Grundsätzlich lassen sich verschiedene Verfahren darin unterscheiden, ob sie davon ausgehen alle Daten auf denen sie operieren sollen von Anfang an zur Verfügung haben, also diese Daten \textit{offline} analysieren können. Ist dies nicht der Fall, sind mit der Anomaliedetektion auf diesen \textit{gestreamten} Daten eine Reihe von Komplikationen verbunden \cite{changing_d_tan2011fast} \cite{aggarwal2015outlier}:
+Solche Streams oftmals kein vordefiniertes Ende haben, ist es meist nicht praktisch diese abzuspeichern, um auf den so gesammelten Daten ein offline Verfahren auszuführen, da dieses zwangsweise nicht genug Speicher haben kann, und da es von Bedeutung sein mag die Anomalien möglichst nahe zu dem Zeitpunkt, an dem diese gestreamt wurden zu erkennen. Auch haben Streams, welche oftmals eine live Übertragung von Sensordaten darstellen oftmals das oben definierte Problem, nur wenige Anomalien zu enthalten, welche die Gesamtheit aller möglichen Anomalien nicht ausreichend darstellen, was das Antrainieren eines Verfahrens zum Erkennen der Anomalieklassen erschwert. Weiterhin muss darauf geachtet werden, dass mögliche Änderungen des Kontextes in welchem Anomalien auftreten, zum Beispiel in Form einer Änderung im Normalverhalten der Daten in die Anomalieerkennung miteinbezogen werden.
+
 
 \subsubsection{Ergebnisse des Anomalieerkennungsverfahren}
 Das Ergebnis eines Anomalieerkennungsverfahrens, stellt die Beurteilung des Verfahrens gegenüber den eingegebenen Datensatz dar, ob die Eingabe oder die Elemente die diese ausmacht anomal oder nicht sind, beziehungsweise um welche Art von Anomalie es sich handelt. Allgemein kann man zwischen zwei Ausgabearten der Ergebnisse unterscheiden: \cite{ahmed2016surveyatypes}
@@ -85,16 +114,89 @@ Das Ergebnis eines Anomalieerkennungsverfahrens, stellt die Beurteilung des Verf
 \end{itemize}
 
 \subsection{Robustheit}
- Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomalien im Trainingsdatensatzes und gegenüber ungewollten Unterschieden zwischen dem Trainingsdatensatz und dem Testdatensatz. Weiterhin kann ein Anomalieerkennungsverfahren besonders Robust gegenüber einer Eigenschaft von Datensätzen, wie zum Beispiel Rauschen oder Mehrdimensionalität, sein, die sich allgemein negativ auf die Performance von auf ihrem Datensatz ausgeführten Algorithmen auswirkt.
+Die Robustheit eines Algorithmus beschreibt seine Stabilität gegenüber Anomalien im Trainingsdatensatzes und gegenüber ungewollten Unterschieden zwischen dem Trainingsdatensatz und dem Testdatensatz. Weiterhin kann ein Anomalieerkennungsverfahren besonders Robust gegenüber einer Eigenschaft von Datensätzen, wie zum Beispiel Rauschen oder Mehrdimensionalität, sein, die sich allgemein negativ auf die Performance von auf ihrem Datensatz ausgeführten Algorithmen auswirkt. \cite{evR}
 
-\subsection{Streaming Data}
+\subsection{Kriterien zur Performancebeurteilung} \label{sec:performance}
+
+Zur Beurteilung des Erfolges eines spezifischen Anomalieerkennungsverfahrens auf einem gelabelten Datensatz kann das Ergebnis von diesem mit den vorhandenen Labels abgeglichen werden. Aus diesem Vergleich können eine Reihe von Metriken gezogen werden, um eine quantitative Rangliste der Performance von verschiedenen Verfahren, beziehungsweise verschieden parametrisierte Verfahren erstellen zu können
+\cite{boughorbel2017optimalClassifier}. In den folgenden vorgestellten Verfahren werden die folgenden Notationen, basierend auf den englischen Begriffen $True(/\, False)\; Positives(/\,Negatives)$ benutzt. Zur beispielhaften Darstellung wird hier von einer einzigen Anomalieklasse, und einer punktweisen Anomalie Erkennung ausgegangen:
+\begin{align*}
+TP &= \text{Anzahl korrekt als Anomalien klassifizierter Punkte} \\
+TN &= \text{Anzahl korrekt als nicht-Anomalie klassifizierter Punkte} \\
+FP &= \text{Anzahl fälschlicherweise als Anomalien klassifizierter Punkte} \\
+FN &= \text{Anzahl fälschlicherweise als nicht-Anomalie klassifizierter Punkte}
+\end{align*}
+Ein Punkt gilt als von seinem Verfahren korrekt klassifiziert, wenn das Ergebnis des Verfahrens in bezüglich mit seinem Label übereinstimmt.
+\subsubsection{Accuracy}
+
+Eine der einfachsten Formen des Vergleichs bietet sich dadurch, zu identifizieren zu welchen Raten Anomalien, beziehungsweise nicht-Anomalien korrekt identifiziert wurden. Diese ergeben sich jeweils folgendermaßen aus den richtig und falsch klassifizierten Anomalien, beziehungsweise nicht-Anomalien:
+\begin{align*}
+TPR &= \frac{TP}{TP+FN} && 
+FPR = \frac{TN}{TN+FP}
+\end{align*}
+Aus dem Zusammenfügen dieser beiden Raten, für einen einfachen Vergleich ergibt sich die $Genauigkeit$ (englisch: $Accuracy$) mit der ein Verfahren seine Daten klassifiziert:
+\begin{align*}
+Accuracy &= \frac{TP+TN}{TP+TN+FP+FN}
+\end{align*}
+Die möglichen Werte der Genauigkeit liegen dabei zwischen 0 und 1, wobei eine 0 dafür steht das kein einziger und eine 1 dafür, dass alle Punkte des zugrundeliegenden Datensatzes richtig klassifiziert wurden.
+Der Vorteil dieser Metrik zur Performancebeurteilung eines Verfahrens liegt neben der Intuitivität darin, dass sie alle möglichen Klassifizierung eines Datenpunktes miteinbezieht, jegliche positive oder negative Abänderung des Ergebnisses demnach durch sie abgebildet wird. 
+Ein Problem mit der Genauigkeit eines Verfahrens ergibt sich allerdings sobald der zugrundeliegende Datensatz gegenüber einer Klasse sehr unbalanciert ist, er zum Beispiel wesentlich mehr anomale als nicht anomale Punkte enthält. Diese wie in Sektion \ref{sec-supervised} beschriebene häufig vorkommende Situation kann zu, wie in Tabelle \ref{tab:acc} dargestellt missrepresentativen Genauigkeitswerten führen.
+\begin{table}
+
+\caption{Zwei mögliche Ergebnisse eines Anomalieerkennungsverfahrens auf einem Datensatz bestehend aus 950 normalen und 50 anomalen Punkten, mit der berechneten Genauigkeit für jedes Verfahren}
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+{} &  TP &    TN &      FP &    FN &   Genauigkeit    \\
+\textbf{Verfahren} &              &             &             &             &            \\
+\midrule
+\textbf{V1} & 0 & 950 & 0 & 50 &      0.95 \\
+\textbf{V2} & 50 & 900 & 50 & 0 &      0.95 \\
+\bottomrule
+\end{tabular}
+\label{tab:acc}
+\end{table}
+Die  beiden dargestellten  Verfahren V1 und V2 unterscheiden sich stark darin, dass V1 keine einzige der 50  Anomalien als solche klassifiziert hat, V2 hingegen lediglich 50 Punkte fälschlicherweise als normal klassifiziert hat. In der Praxis würde V2 fast immer als produktiver angesehen werden, dies spiegelt sich jedoch keinesfalls in der Genauigkeit der beiden Verfahren wieder.
+
+\subsubsection{F-Measure}
+
+Um einen Messwert zu definieren, dessen Fokus mehr auf dem Erkennen von Anomalien liegt eignen sich die Präzision (englisch: $Precision$) und die Trefferquote (englisch: $Recall$) eines Verfahrens, welche wie folgt definiert sind:
+\begin{align*}
+Precision &= \frac{TP}{TP+FP} && 
+Recall = \frac{TP}{TP+FN}
+\end{align*}
+Dabei stellt die Präzision im Bereich von 0 bis 1 den Anteil an wirklichen Anomalien den diese an den als Anomalie bestimmten Punkte eines Verfahrens haben dar. Dazu passend steht die Trefferquote im Bereich von 0 bis 1 für den Anteil an Anomalien die ein Verfahren erfolgreich klassifiziert hat. Über das harmonische Mittel zusammengefasst ergibt sich das $\text{F}_1$-Maß:
+\begin{align*}
+F_1 &= 2*\frac{Precision*Recall}{Precision + Recall}
+\end{align*}
+Ein hoher $F_1$ Wert steht so für ein Verfahren, welches einen Großteil der Anomalien des zugrundeliegenden Datensatzes richtig klassifiziert und nur wenige normale Punkte fälschlicherweise als Anomalie klassifiziert. Soll auf eine dieser Eigenschaften mehr Wert gelegt werden bietet sich eine Variation des $\text{F}_1$-Maßes an:
+\begin{align*}
+F_\alpha &= (1+\alpha^{2})*\frac{Precision*Recall}{\alpha^{2}*Precision + Recall}
+\end{align*}
+Für $\alpha$ größer null wird die Trefferquote mit wachsendem $\alpha$ im Vergleich zur Präzision stärker gewichtet. Alle F-Maße haben allerdings zwei Schwächen. Einmal setzen sie das vorhandensein von Anomalien im Datensatz voraus um angewandt weren zu können, da ansonsten mit einer garantieren Anzahl von richtig klassifizierten Anomalien $TP$ von 0, sowohl die Genauigkeit als auch die Trefferquote, und somit auch jedes F-Maß immer gleich 0 sind. Der zweite Nachteil des F-Maßes ist die Nichteinbeziehung der Anzahl der von dem Verfahren richtig als normal klassifizierten Punkte $FP$, wie in der Tabelle \ref{tab:fm} dargestellt \cite{gu2009evaluationOP}.
+\begin{table}
+
+\caption{Zwei mögliche Ergebnisse eines Anomalieerkennungsverfahrens auf zwei Datensätzen, mit dem berechneten $\text{F}_1$-Maß für jedes Verfahren. Der Datensatz von V1 besteht aus 200 anomalen und 125 normalen Punkten, der von V2 aus 200 normalen und 1025 anomalen Punkten.}
+\centering
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &  TP &    TN &      FP &    FN &   Präzision &  Trefferquote & $\text{F}_1$  \\
+\textbf{Verfahren} &              &             &             &             &         & & \\
+\midrule
+\textbf{V1} & 100 & 0 & 25 & 100 &      0.8 & 0.5 & $\sim \text{0.62}$ \\
+\textbf{V2} & 100 & 1000 & 25 & 100 &      0.8 & 0.5 & $\sim \text{0.62}$\\
+\bottomrule
+\end{tabular}
+\label{tab:fm}
+\end{table}
+Verfahren V1 hat gegenüber dem Verfahren V2 die Schwäche keine normalen Punkte als solche klassifizieren zu können. Dennoch sind beide Verfahren nach beliebigen F-Maßen gleich.
 
 
-Space Time Anpassung des Modells, Live Ergebnisse
+\subsubsection{MCC}
 
-\subsection{Kriterien zur Performancebeurteilung}
-
-\subsection{F-Measure}
-
-\section{Arten von Anomalieerkennungsverfahren}
-
+Eine Lösung sowohl des Problems der Nichtmiteinbeziehung der richtig klassifizierten normalen Punkte der F-Maße, als auch der Schwäche gegenüber stark unbalancierten Klassen der Genauigkeit, bildet der Mathews Correlation Coefficient ($MCC$):
+\begin{align*}
+MCC &= \frac{TP*TN-FP*FN}{\sqrt{(TP+FP)*(TP+FN)*(TN+FP)*(TN+FN)}}
+\end{align*}
+Dieser reicht von -1 für ein Verfahren, welches alle Punkte jeweils umgekehrt zu ihren Labels klassifiziert über 0 für ein Verfahren, welches Punkte unabhängig von ihrem tatsächlichem Label klassifiziert zu 1 für ein Verfahren, welches alle Punkte entsprechend ihrer Labels klassifiziert.
+Auch für den MCC bilden sich jedoch zwei Probleme. Erstens zieht dieser zwar alle möglichen Klassifizierungen mit ein und vernachlässigt keine basierend auf ihrer Größe, dafür fehlt ihm aber die Flexibilität der F-Maße, einen Fokus auf die Reinheit, beziehungsweise auf die Vollständigkeit der Klassifizierungen eines Verfahrens zu legen. Weiterhin ist der MCC aufgrund der Miteinbeziehung der als normal klassifizierten Punkte $FP$ sowohl für Datensätze, welche keine Anomalien, als auch für Datensätze welche nur Anomalien beinhalten nicht definiert.

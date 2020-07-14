@@ -5,7 +5,7 @@
 \usepackage[german,english]{babel}
 
 \usepackage[pdftex]{graphicx,color}
-\usepackage{amsmath,amssymb,subfigure}
+\usepackage{amsmath,amssymb}%,subfigure}
 
 
 % Theorem-Umgebungen
@@ -16,7 +16,7 @@
 \usepackage[T1]{fontenc}
 
 % Algorithmen
-\usepackage[plain,chapter]{algorithm}
+\usepackage[chapter]{algorithm}
 \usepackage{algorithmic}
 
 \usepackage{enumerate}
@@ -75,8 +75,8 @@
 \renewtheorem{problem*}{Problem}
 
 % Algorithmen anpassen %
-\renewcommand{\algorithmicrequire}{\textit{Eingabe:}}
-\renewcommand{\algorithmicensure}{\textit{Ausgabe:}}
+\renewcommand{\algorithmicrequire}{\textbf{Eingabe:}}
+\renewcommand{\algorithmicensure}{\textbf{Ausgabe:}}
 \floatname{algorithm}{Algorithmus}
 \renewcommand{\listalgorithmname}{Algorithmenverzeichnis}
 \renewcommand{\algorithmiccomment}[1]{\color{grau}{// #1}}

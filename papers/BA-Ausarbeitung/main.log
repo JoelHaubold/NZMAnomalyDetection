@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  14 JUL 2020 12:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.6.29)  15 JUL 2020 17:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -893,28 +893,28 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 
 
-]) [2]
+]) [2] [3]
 \openout2 = `kapitel/grundlagen.aux'.
 
 
-(./kapitel/grundlagen.tex
+(./kapitel/grundlagen.tex [4
+
+
+
+]
 Kapitel 2.
-<bilder/anomaly_chandola.png, id=35, 896.34875pt x 755.82375pt>
+<bilder/anomaly_chandola.png, id=42, 896.34875pt x 755.82375pt>
 File: bilder/anomaly_chandola.png Graphic file (type png)
 <use bilder/anomaly_chandola.png>
 Package pdftex.def Info: bilder/anomaly_chandola.png  used on input line 16.
 (pdftex.def)             Requested size: 234.73654pt x 197.92809pt.
-[3
-
-
-
- <./bilder/anomaly_chandola.png>] [4]
-<bilder/noise_aggarwal_a.png, id=49, 915.42pt x 730.73pt>
+[5 <./bilder/anomaly_chandola.png>] [6]
+<bilder/noise_aggarwal_a.png, id=55, 915.42pt x 730.73pt>
 File: bilder/noise_aggarwal_a.png Graphic file (type png)
 <use bilder/noise_aggarwal_a.png>
 Package pdftex.def Info: bilder/noise_aggarwal_a.png  used on input line 52.
 (pdftex.def)             Requested size: 192.0548pt x 153.30173pt.
-<bilder/noise_aggarwal_b2.png, id=50, 911.405pt x 720.6925pt>
+<bilder/noise_aggarwal_b2.png, id=56, 911.405pt x 720.6925pt>
 File: bilder/noise_aggarwal_b2.png Graphic file (type png)
 <use bilder/noise_aggarwal_b2.png>
 Package pdftex.def Info: bilder/noise_aggarwal_b2.png  used on input line 58.
@@ -922,58 +922,68 @@ Package pdftex.def Info: bilder/noise_aggarwal_b2.png  used on input line 58.
 
 Underfull \vbox (badness 1137) has occurred while \output is active []
 
- [5 <./bilder/noise_aggarwal_a.png> <./bilder/noise_aggarwal_b2.png>] [6] [7] [
-8] [9]
+ [7 <./bilder/noise_aggarwal_a.png> <./bilder/noise_aggarwal_b2.png>] [8] [9] [
+10] [11]
 Underfull \vbox (badness 7151) has occurred while \output is active []
 
- [10]
-[11]) [12]
+ [12]
+[13]) [14]
 \openout2 = `kapitel/iforest.aux'.
 
  (./kapitel/iforest.tex
 Kapitel 3.
-[13
+[15
 
 
 
 ]
-<bilder/isoa.png, id=85, 838.13126pt x 838.13126pt>
+<bilder/isoa.png, id=92, 838.13126pt x 838.13126pt>
 File: bilder/isoa.png Graphic file (type png)
 <use bilder/isoa.png>
 Package pdftex.def Info: bilder/isoa.png  used on input line 41.
-(pdftex.def)             Requested size: 162.1777pt x 162.17523pt.
-<bilder/isob.png, id=86, 836.12375pt x 839.135pt>
+(pdftex.def)             Requested size: 182.45146pt x 182.44554pt.
+<bilder/isob.png, id=93, 836.12375pt x 839.135pt>
 File: bilder/isob.png Graphic file (type png)
 <use bilder/isob.png>
 Package pdftex.def Info: bilder/isob.png  used on input line 47.
-(pdftex.def)             Requested size: 162.1777pt x 162.75357pt.
- [14] [15 <./bilder/isoa.png> <./bilder/isob.png>]
-<bilder/sspan.png, id=98, 1012.78375pt x 889.3225pt>
+(pdftex.def)             Requested size: 182.45146pt x 183.09937pt.
+ [16] [17 <./bilder/isoa.png> <./bilder/isob.png>]
+<bilder/sspan.png, id=104, 1012.78375pt x 889.3225pt>
 File: bilder/sspan.png Graphic file (type png)
 <use bilder/sspan.png>
 Package pdftex.def Info: bilder/sspan.png  used on input line 100.
 (pdftex.def)             Requested size: 277.41176pt x 243.59418pt.
- [16]
-
-LaTeX Warning: Reference `fig:ifhlim' on page 17 undefined on input line 112.
-
+ [18]
+<bilder/hlim1.png, id=110, 1003.75pt x 1003.75pt>
+File: bilder/hlim1.png Graphic file (type png)
+<use bilder/hlim1.png>
+Package pdftex.def Info: bilder/hlim1.png  used on input line 118.
+(pdftex.def)             Requested size: 213.39568pt x 213.39743pt.
+<bilder/hlim2.png, id=111, 1003.75pt x 1003.75pt>
+File: bilder/hlim2.png Graphic file (type png)
+<use bilder/hlim2.png>
+Package pdftex.def Info: bilder/hlim2.png  used on input line 124.
+(pdftex.def)             Requested size: 213.39568pt x 213.39743pt.
 
 Underfull \vbox (badness 2932) has occurred while \output is active []
 
- [17 <./bilder/sspan.png>]
-Underfull \vbox (badness 2856) has occurred while \output is active []
+ [19 <./bilder/sspan.png>]
+Underfull \vbox (badness 1895) has occurred while \output is active []
 
- [18])
-[19]
+ [20 <./bilder/hlim1.png> <./bilder/hlim2.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21])
+[22]
 \openout2 = `kapitel/rrcf.aux'.
 
- (./kapitel/rrcf.tex [20
+ (./kapitel/rrcf.tex
+Kapitel 4.
+[23
 
 
 
 ]
-Kapitel 4.
-[21]
 Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
@@ -982,12 +992,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 58.
 
-<bilder/rrcfTree.png, id=124, 449.68pt x 405.515pt>
+<bilder/rrcfTree.png, id=134, 449.68pt x 405.515pt>
 File: bilder/rrcfTree.png Graphic file (type png)
 <use bilder/rrcfTree.png>
 Package pdftex.def Info: bilder/rrcfTree.png  used on input line 60.
 (pdftex.def)             Requested size: 140.0pt x 126.24666pt.
-[22] [23 <./bilder/rrcfTree.png>] [24]
+[24] [25 <./bilder/rrcfTree.png>] [26]
 Overfull \hbox (8.84636pt too wide) in paragraph at lines 105--106
 []\T1/cmr/m/it/10.95 Sei ein RRCT $\OMS/cmsy/m/n/10.95 T$ \T1/cmr/m/it/10.95 we
 l-cher über
@@ -998,12 +1008,12 @@ Overfull \hbox (4.68326pt too wide) in paragraph at lines 116--117
 []\T1/cmr/m/it/10.95 Sei $\OML/cmm/m/it/10.95 S$ \T1/cmr/m/it/10.95 ei-
  []
 
-[25] [26]
+[27] [28]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 143.
 
-<bilder/rrcf_model_compl.png, id=142, 438.8897pt x 553.31718pt>
+<bilder/rrcf_model_compl.png, id=153, 438.8897pt x 553.31718pt>
 File: bilder/rrcf_model_compl.png Graphic file (type png)
 <use bilder/rrcf_model_compl.png>
 Package pdftex.def Info: bilder/rrcf_model_compl.png  used on input line 145.
@@ -1011,17 +1021,17 @@ Package pdftex.def Info: bilder/rrcf_model_compl.png  used on input line 145.
 
 Underfull \vbox (badness 2080) has occurred while \output is active []
 
- [27 <./bilder/rrcf_model_compl.png>] [28] [29]
+ [29 <./bilder/rrcf_model_compl.png>] [30] [31]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 226.
 
-<bilder/rrcf_model_compl2.png, id=154, 461.47406pt x 526.96875pt>
+<bilder/rrcf_model_compl2.png, id=164, 461.47406pt x 526.96875pt>
 File: bilder/rrcf_model_compl2.png Graphic file (type png)
 <use bilder/rrcf_model_compl2.png>
 Package pdftex.def Info: bilder/rrcf_model_compl2.png  used on input line 228.
 (pdftex.def)             Requested size: 140.0pt x 159.86887pt.
-[30 <./bilder/rrcf_model_compl2.png>]
+[32 <./bilder/rrcf_model_compl2.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 260.
@@ -1034,42 +1044,42 @@ Package pdftex.def Info: bilder/anomaly_chandola.png  used on input line 262.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 267.
 
-<bilder/rrcfDupli.png, id=159, 295.1025pt x 544.0325pt>
+<bilder/rrcfDupli.png, id=169, 295.1025pt x 544.0325pt>
 File: bilder/rrcfDupli.png Graphic file (type png)
 <use bilder/rrcfDupli.png>
 Package pdftex.def Info: bilder/rrcfDupli.png  used on input line 269.
 (pdftex.def)             Requested size: 100.0pt x 184.34601pt.
-[31] [32 <./bilder/rrcfDupli.png>]) [33]
+[33] [34 <./bilder/rrcfDupli.png>]) [35]
 \openout2 = `kapitel/tests.aux'.
 
- (./kapitel/tests.tex [34
+ (./kapitel/tests.tex [36
 
 
 
 ]
 Kapitel 5.
 
-LaTeX Warning: Reference `Spannung \IeC {\"u}ber Monat' on page 35 undefined on
+LaTeX Warning: Reference `Spannung \IeC {\"u}ber Monat' on page 37 undefined on
  input line 46.
 
-[35]
+[37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [36]
-[37] [38]
+ [38]
+[39] [40]
 
-LaTeX Warning: Reference `xd' on page 39 undefined on input line 104.
+LaTeX Warning: Reference `xd' on page 41 undefined on input line 104.
 
-[39]) [40]
+[41]) [42]
 \openout2 = `kapitel/fazit.aux'.
 
  (./kapitel/fazit.tex
 Kapitel 6.
-) [41
+) [43
 
 
 
-] [42
+] [44
 
 
 ] (./main.lof
@@ -1078,35 +1088,38 @@ Overfull \hbox (5.2661pt too wide) in paragraph at lines 9--9
  iso-liert wur-de. Je-de Schnitt- 
  []
 
-)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [45])
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
- [43] [44
 
-] (./main.lot)
+[46] (./main.lot)
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [45
+ [47
 
-] [46
+
+] [48
 
 ] (./main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [47
+ [49
 
-] [48
+] [50
 
-] (./main.bbl [49
+] (./main.bbl [51
 
-])
-[50]
+]) [52]
 \openout2 = `kapitel/erklaerung.aux'.
 
- (./kapitel/erklaerung.tex)
+
+(./kapitel/erklaerung.tex)
 Underfull \hbox (badness 10000) in paragraph at lines 4--43
 
  []
@@ -1126,10 +1139,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--43
 
  []
 
-[51
+[53
 
 
-] [52
+] [54
 
 
 ]
@@ -1144,13 +1157,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6951 strings out of 494757
- 98814 string characters out of 6175785
- 188078 words of memory out of 5000000
- 10026 multiletter control sequences out of 15000+600000
+ 6967 strings out of 494757
+ 99066 string characters out of 6175785
+ 188159 words of memory out of 5000000
+ 10040 multiletter control sequences out of 15000+600000
  34232 words of font info for 81 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
- 41i,13n,41p,1683b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,13n,41p,1683b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc10
 95.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec
 /ecrm0900.600pk> </home/joelhaubold/.texlive2017/texmf-var/fonts/pk/ljfour/jkna
@@ -1183,10 +1196,10 @@ pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on main.pdf (56 pages, 852113 bytes).
+Output written on main.pdf (58 pages, 2553503 bytes).
 PDF statistics:
- 952 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
+ 969 PDF objects out of 1000 (max. 8388607)
+ 240 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

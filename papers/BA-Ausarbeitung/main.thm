@@ -1,17 +1,17 @@
-\contentsline {theorem}{{Theorem}{3.1.{1}}{}}{14}
-\contentsline {definition}{{Definition}{3.1.{2}}{Isolation Tree}}{15}
-\contentsline {definition}{{Definition}{3.1.{3}}{Weglänge $h(x)$}}{16}
-\contentsline {definition}{{Definition}{4.2.{1}}{RRCT}}{22}
-\contentsline {theorem}{{Theorem}{4.2.{2}}{Distanzbeibehaltung}}{24}
-\contentsline {lemma}{{Lemma}{4.2.{3}}{}}{24}
-\contentsline {theorem}{{Theorem}{4.2.{4}}{Konsistenz der inneren Probabilität}}{25}
-\contentsline {theorem}{{Theorem}{4.2.{5}}{Die RRCT Konstruktion ist Stichproben unabhängig}}{25}
-\contentsline {theorem}{{Theorem}{4.2.{6}}{}}{26}
-\contentsline {theorem}{{Theorem}{4.2.{7}}{}}{26}
-\contentsline {definition}{{Definition}{4.3.{1}}{Tiefe eines Punktes in $x$}}{27}
-\contentsline {definition}{{Definition}{4.3.{2}}{Modellkomplexität}}{28}
-\contentsline {definition}{{Definition}{4.3.{3}}{Verschiebung ($Displacement$) eines Punktes}}{29}
-\contentsline {lemma}{{Lemma}{4.3.{4}}{}}{30}
-\contentsline {definition}{{Definition}{4.3.{5}}{CoDisp}}{33}
-\contentsline {definition}{{Definition}{4.3.{6}}{}}{33}
-\contentsline {lemma}{{Lemma}{4.3.{7}}{}}{33}
+\contentsline {theorem}{{Theorem}{3.1.{1}}{}}{16}
+\contentsline {definition}{{Definition}{3.1.{2}}{Isolation Tree}}{17}
+\contentsline {definition}{{Definition}{3.1.{3}}{Weglänge $h(x)$}}{18}
+\contentsline {definition}{{Definition}{4.2.{1}}{RRCT}}{24}
+\contentsline {theorem}{{Theorem}{4.2.{2}}{Distanzbeibehaltung}}{26}
+\contentsline {lemma}{{Lemma}{4.2.{3}}{}}{26}
+\contentsline {theorem}{{Theorem}{4.2.{4}}{Konsistenz der inneren Probabilität}}{27}
+\contentsline {theorem}{{Theorem}{4.2.{5}}{Die RRCT Konstruktion ist Stichproben unabhängig}}{27}
+\contentsline {theorem}{{Theorem}{4.2.{6}}{}}{28}
+\contentsline {theorem}{{Theorem}{4.2.{7}}{}}{28}
+\contentsline {definition}{{Definition}{4.3.{1}}{Tiefe eines Punktes in $x$}}{29}
+\contentsline {definition}{{Definition}{4.3.{2}}{Modellkomplexität}}{30}
+\contentsline {definition}{{Definition}{4.3.{3}}{Verschiebung ($Displacement$) eines Punktes}}{31}
+\contentsline {lemma}{{Lemma}{4.3.{4}}{}}{32}
+\contentsline {definition}{{Definition}{4.3.{5}}{CoDisp}}{35}
+\contentsline {definition}{{Definition}{4.3.{6}}{}}{35}
+\contentsline {lemma}{{Lemma}{4.3.{7}}{}}{35}

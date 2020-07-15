@@ -29,9 +29,10 @@ def calc_mcc(df_points, avg_codisp_a, a_threshold):
 
 def run_test(df_p, a_type):
     X = df_p.values
+    X = np.around(X)
     conta = df_p[(abs(df_p[a_type.name]) >= a_type.value)].shape[0] / df_p.shape[0]
     print("predicting")
-    labels = IsolationForest().fit_predict(X)
+    labels = IsolationForest(contamination=0.001).fit_predict(X)
     print(labels)
     mcc, accuracy, tp, tn, fp, fn = calc_mcc(df_p, labels, a_type)
     print(mcc, accuracy, tp, tn, fp, fn)

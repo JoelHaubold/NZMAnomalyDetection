@@ -3,7 +3,7 @@
 \chapter{Isolation Forest}
 \label{chapter:iforest}
 
-Da das in dieser Arbeit auf dem PPC-Datensatz evaluierte Verfahren \textit{Robust Random Cut Forest} auf dem benutztem Vergleichsverfahren \textit{Isolation Forest} (\textbf{iForest}) basiert, wird zuerst in diesem Kapitel der Isolation Forest in seinen Grundzügen beschrieben. Das Kapitel orientiert sich dabei an dem Artikel \cite{liu2012isolation}, welcher das Verfahren vorstellte. Es werden die folgenden Notationen benutzt:
+Da das in dieser Arbeit auf dem Testdatensatz evaluierte Verfahren \textit{Robust Random Cut Forest} auf dem benutztem Vergleichsverfahren \textit{Isolation Forest} (\textbf{iForest}) basiert, wird zuerst in diesem Kapitel der Isolation Forest in seinen Grundzügen beschrieben. Das Kapitel orientiert sich dabei an dem Artikel \cite{liu2012isolation}, welcher das Verfahren vorstellte. Es werden die folgenden Notationen benutzt:
 
 \begin{itemize}
 \item \makebox[1.5cm][l]{$x$}  \makebox[5cm][l]{Ein Datenpunkt}
@@ -36,19 +36,19 @@ Das grundlegende Konzept von \textit{Isolation} ist dabei, dass diese beiden Eig
 
 \begin{figure}[ht]
 \centering
-\begin{subfigure}[x]{0.40\textwidth}
+\begin{subfigure}[x]{0.45\textwidth}
   \centering
   \includegraphics[width=0.95\textwidth]{bilder/isoa.png}
   \caption{Isolation eines normalen Punktes $x_i$ über 12 Partitionen}
   \label{fig:isol1}
 \end{subfigure}%
-\begin{subfigure}[y]{0.40\textwidth}
+\begin{subfigure}[y]{0.45\textwidth}
   \centering
   \includegraphics[width=0.95\textwidth]{bilder/isob.png}
   \caption{Isolation eines anomalen Punktes $x_o$ über 4 Partitionen}
   \label{fig:isol2}
 \end{subfigure}
-\caption{Zwei gleiche Datensätze über zwei Dimensionen, in denen jeweils ein Punkt durch zufällige partitionierungen des Datensatzes isoliert wurde. Jede Schnittlinie stellt eine isolation dar. Quelle: \protect\cite{liu2012isolation}}
+\caption{Zwei gleiche Datensätze über zwei Dimensionen, in denen jeweils ein Punkt durch zufällige partitionierungen des Datensatzes isoliert wurde. Jede Schnittlinie stellt eine Isolation dar. Quelle: \protect\cite{liu2012isolation}}
 \label{fig:isol}
 \end{figure}
 
@@ -82,7 +82,7 @@ Die Weglänge eines Punktes $x$ kalkuliert durch einen iForest $E(h(x))$, ergibt
 
 Da die erwartete Weglänge eines Punktes in einem iTree $T$, mit der Zunahme der Größe der Stichprobe über der $T$ konstruiert wurde um die Größenordnung $log(\psi)$ zunimmt, wird die Weglänge $E(h(x))$ des Punktes $x$ in einem iForest über die durchschnittliche Weglänge $c(\psi)$ eines beliebigen Punktes in einem iTree welcher über eine Stichprobe der Größe $\psi$ konstruiert wurde. So kann die Performance von iForests mit unterschiedlichen Stichprobengrößen verglichen werden. Da die Struktur eines iTrees mit der von \textit{Binary Search Trees} übereinstimmt, ist die durchschnittliche Weglänge einer nicht erfolgreichen Suche eines Binary Search Trees gleich $c(\psi)$. Somit gibt sich für $c(\psi)$ mit der harmonischen Zahl $H(i)\approx \ln{(i)}+05772156649$ \cite{BSTbruno2000data}: 
 
-\begin{equation}
+\begin{equation} \label{eq:ifest}
 c(\psi) = \begin{cases}
       2H(\psi-1)-2(\psi-1)/n &,\psi > 2 \\
       1 &, \psi = 2 \\
@@ -92,7 +92,7 @@ c(\psi) = \begin{cases}
 
 Die genormte Einschätzung der Anomalität eines Punktes $x$ durch einen iForest der Größe $\psi$ ist nun definiert als:
 
-\begin{align}
+\begin{align} \label{eq:ifs}
 s(x,\psi) &= 2^{-\dfrac{E(h(x))}{c(\psi)}}
 \end{align}
 \begin{figure}[ht]
@@ -109,7 +109,26 @@ Die gesamte Spannweite von $s$ liegt im Intervall $[0,1]$ und ist in Abbildung \
 \end{enumerate}
 
 \subsubsection{Evaluationsmaximum der Weglänge}
-Eine Herausforderung bei der Anomalieerkennung ist zu bestimmen ab wann ein verhältnismäßig kleiner Cluster von Punkten in einem Datensatz eine Gruppe von normalen Punkten und ab wann er eine Gruppe von Anomalien darstellt. Bei einem iForest Verfahren kann dies über eine Beschränkung der zulässigen Tiefe $hlim$ bei der Bestimmung der Weglänge eines Punktes parametrisiert werden. Wurden $hlim$ Kanten bei der Bestimmung der Weglänge passiert, wird die Suche nach der genauen Weglänge abgebrochen und, basierend auf der bisherigen Anzahl passierter Kanten sowie der Anzahl der nach den so durchlaufenen Partitionen möglichen übrigen Blättern $\psi'$ eine Abschätzung $e + c(\psi')$ anstatt ihrer ausgegeben. So lässt sich eine Granularität für die Abschätzung der Anomalität durch $s$ festlegen, die in dem obigen Beispiel festlegen würde, ob der gesamte Cluster oder nur seine Ränder, als anomal gewertet werden. Dies ist illustriert durch Abbildung \ref{fig:ifhlim}. 
+Eine Herausforderung bei der Anomalieerkennung ist zu bestimmen ab wann ein verhältnismäßig kleiner Cluster von Punkten in einem Datensatz eine Gruppe von normalen Punkten und ab wann er eine Gruppe von Anomalien darstellt. Bei einem iForest Verfahren kann dies über eine Beschränkung der zulässigen Tiefe $hlim$ bei der Bestimmung der Weglänge eines Punktes parametrisiert werden. Wurden $hlim$ Kanten bei der Bestimmung der Weglänge passiert, wird die Suche nach der genauen Weglänge abgebrochen und, basierend auf der bisherigen Anzahl passierter Kanten sowie der Anzahl der nach den so durchlaufenen Partitionen möglichen übrigen Blättern $\psi'$ eine Abschätzung $e + c(\psi')$ anstatt ihrer ausgegeben. So lässt sich eine Granularität für die Abschätzung der Anomalität durch $s$ festlegen, die in dem obigen Beispiel festlegen würde, ob der gesamte Cluster oder nur seine Ränder, als anomal gewertet werden. Dies ist illustriert durch Abbildung \ref{fig:hlim}. 
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[x]{0.50\textwidth}
+  \centering
+  \includegraphics[width=1\textwidth]{bilder/hlim1.png}
+  \caption{hlim = 6}
+  \label{fig:hlim1}
+\end{subfigure}%
+\begin{subfigure}[y]{0.50\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{bilder/hlim2.png}
+  \caption{hlim = 1}
+  \label{fig:hlim2}
+\end{subfigure}
+\caption{Ein Datensatz über zwei Dimensionen, über dem ein iForest konstruiert wurde. Die beiden Unterabbildungen stellen zwei Evaluationen durch diesen iForest mit unterschiedlich gesetzter Tiefenbegrenzung $hlim$ dar. Die Trennlinien zeigen dabei Wertebereiche der $s$-Werte der Punkte an (Die Trennlinie innerhalb des kleinen Klusters in unterabbildung a) gehört dabei zu der 0.55 Linie). Zu sehen ist das $hlim = 6$ in Unterabbildung a) für eine wesentlich höhere Granularität der $s$-Werte, als $hlim = 1$ in b) sorgt. Dadurch gibt es in a) eine klare Abgrenzung zwischen den inneren Punkten des kleinen Kluster und den Äußeren Punkten, in Form der 0.55 Trennlinie. Diese Abggrenzung ist in  b) mit $hlim = 1$ nicht vorhanden. Quelle: \protect\cite{liu2012isolation}}
+\label{fig:hlim}
+\end{figure}
+
 
 \section{Implementation}
 
@@ -159,20 +178,29 @@ Algorithmus \ref{alg:ITconstr} erhält die ihm von Algorithmus \ref{alg:IFconstr
 Zeile 1 stellt dabei das rekurisve Abbruchkriterium dar: Wenn ein Punkt beziehungsweise eine Gruppe von Duplikaten erfolgreich von dem restlichen Datensatz isoliert wurde. In Zeile 2 wird ein Blatt mit der Anzahl der verbliebenen Punkte in der Stichprobe als Attribut $Size$ zurück an den rekursiven Vaterprozess gegeben.
 Entspricht der Datensatz nicht der Abbruchbedingung in Zeile 1 wird stattdessen eine weiter Partition durchgeführt: Dazu wird in den Zeilen 4 bis 6 ein Attribut des Datensatzes $q \in Q$ sowie ein Trennwert $p$ aus der Wertespanne aller Punkte in $q$ uniform zufällig gewählt. In den Zeilen 7 und 8 wird darauf die eigentliche Trennung von $X'$ vorgenommen, Punkte mit einem Wert $x_q$ im Attribut $q$ kleiner als $p$ werden in den Datensatz $X_l$ des linken Teilknoten partitioniert, der Rest in den Datensatz $X_r$ des rechten Teilknoten. Darauf wird in Zeile 9 ein innerer Knoten an den rekursiven Vaterprozess zurückgegeben, mit den beiden rekursiv berechneten Kindknoten als $Left$ und $Right$ Attribut, sowie die Partition die dieser Knoten darstellt, über das ausgewählten Attribut $q$ und dem zugehörigen Trennwert $p$ respektiv als $SplitAtt$ und $SplitValue$. 
 
+Zur Berechnung der Anomalieeinschätzung $s$ eines Punktes $x$ durch einen iForest, wird für jedem iTree $T$ des iForests die Weglänge die $x$ in $T$ hat mithilfe von Algorithmus \ref{alg:ITpath} berechnet. Darauf wird $s$ über Formel \ref{eq:ifs} bestimmt. 
+
+Zur Evaluation der Weglänge eines Punktes über einem Baum wird der folgende Algorithmus \ref{alg:ITpath}:
 \begin{algorithm}[ht]
 \caption{\textit{PathLength(x,T,hlim,e)}}
 \label{alg:ITpath}
 \begin{algorithmic}[1]
-\REQUIRE $x$ - ein Punkt, $T$ - ein iTree, $hlim$ - eine Tiefenbegrenzung, $e$ -  momentane Weglänge; 0 zur Initialisierung
+\REQUIRE $x$ - der zu evaluierende Punkt, $T$ - ein iTree, $hlim$ - eine Tiefenbegrenzung, $e$ -  momentane Weglänge; 0 zur Initialisierung
 \ENSURE Die Weglänge von $x$ in $T$
 \IF{$T$ ist Blatt oder $e \geq hlim$}
 \RETURN $e + c(T.size)$
-\ENDIF
+\ELSE
 \STATE $a \leftarrow T.splitAtt$
 \IF{$x_a < T.splitValue$}
 \RETURN $PathLength(x,T.left,hlim,e+1)$
 \ELSE
 \RETURN $PathLength(x,T.right,hlim,e+1)$
 \ENDIF
+\ENDIF
 \end{algorithmic}
 \end{algorithm}
+
+Algorithmus \ref{alg:ITpath} erhält als Parameter einen Punkt $x$, einen iTree $T$ , sowie den einzigen Evaluationsparameter des iForests Verfahrens, in Form der Begrenzung der Tiefe die Algorithmus \ref{alg:ITpath} in $T$ vordringt $hlim$. Weiterhin wird über $e$ die, der momentan erreichten Weglänge entsprechenden Anzahl an Kanten die bereits von Algorithmus \ref{alg:ITpath} passiert wurden gezählt. Entsprechend wird $e$ zur Initialisierung auf 0 gesetzt.
+Ausgegeben wird die Weglänge von $x$ in $T$, beziehungsweise die $hlim$ plus die durchschnittliche Weglänge, basierend auf der Anzahl an, nach der verbleibenden Punkten die dem aktuellen Knoten untergeordnet sind, falls $e$ den Wert von $hlim$ erreicht.
+Zeile 1 stellt dabei die Abbruchbedingung des Algorithmus dar, welche Eintritt sobald ein Blatt von $T$ oder die Tiefe $hlim$ erreicht wurde. Darauf wird in Zeile 2 als Ergebnis der Berechnung der Weglänge, die Anzahl passierter Kanten $e$ plus die nach Formel \ref{eq:ifest} berechnete, durchschnittliche Weglänge welche sich durch die verbleibenden Punkte ergibt. Ist die Abbruchbedingung nicht eingetreten, wird in Zeile 4 und 5 die Partition des aktuellen Knotens aus diesem, in der Form von $splitAtt$ als $a$ und $splitValue$ ausgelesen und es wird überprüft ob $x$ nach seinem Wert $x_a$ im Attribut $a$ in die Teilmenge des linken oder des rechten partitioniert worden wäre. Dementsprechend wird die Suche nach der Weglänge von $x$ 
+in Zeile 6 beziehungsweise Zeile 8 in dem linken beziehungsweise dem rechten Teilknoten weitergeführt.

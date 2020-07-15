@@ -3,14 +3,14 @@
 \chapter{Tests auf Niederspannungsdaten}
 \label{chapter:tests}
 
-Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahren auf dem ihr zugrundeliegendem PPC-Datensatz beurteilt. In diesem Kapitel wird nun zuerst auf die Eigenschaften des Datensatzes eingegangen, und darauf auf die Eignung der angewandten Anomalieerkennungsverfahren für diesen, sowie auf die Details ihrer jeweiligen Implementierung. 
+Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahren auf dem ihr zugrundeliegendem Testdatensatzes beurteilt. In diesem Kapitel wird nun zuerst auf die Eigenschaften des Datensatzes eingegangen, und darauf auf die Eignung der angewandten Anomalieerkennungsverfahren für diesen, sowie auf die Details ihrer jeweiligen Implementierung. 
 
 \section{Aufmachung der Testdaten}
 
-Der PPC-Datensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen in Abständen von 9.5 Sekunden, wobei jede Phase zeitgleich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 3 bis zu maximal 8 Monaten ab. Insgesamt enthält der Datensatz über alle Phasen aller Stationen 66 Millionen Punkte, welche sich in wie in Tabelle \ref{tab:ppc} dargestellt aufteilen. 
+Der Testdatensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen in Abständen von 9.5 Sekunden, wobei jede Phase zeitgleich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 3 bis zu maximal 8 Monaten ab. Insgesamt enthält der Datensatz über alle Phasen aller Stationen 66 Millionen Punkte, welche sich in wie in Tabelle \ref{tab:ppc} dargestellt aufteilen. 
 
-\begin{table}[h]
-\caption{Der PPC-Datensatz aufgeschlüsselt nach den Stationen und der Anzahl an Punkten aller drei Phasen der Station, welche den jeweiligen Anomalieklassen zugehören. Die letzten beiden Reihen stellen die Gesamtgröße der Anomalieklassen in dem Datensatz dar, sowie den prozentualen Anteil den diese insgesamt an dem Datensatz haben}
+\begin{table}[ht]
+\caption{Der Testdatensatz aufgeschlüsselt nach den Stationen und der Anzahl an Punkten aller drei Phasen der Station, welche den jeweiligen Anomalieklassen zugehören. Die letzten beiden Reihen stellen die Gesamtgröße der Anomalieklassen in dem Datensatz dar, sowie den prozentualen Anteil den diese insgesamt an dem Datensatz haben}
 \centering
 \begin{tabular}{lrlllll}
 \toprule
@@ -45,7 +45,7 @@ Der PPC-Datensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deu
 
 Die absoluten Spannungswerte bewegen sich in einem Bereich von 182 V bis 236 V. Über den Gesamtmesszeitraum ergeben sich dabei starke saisonale Unterschiede, unter anderem Abhängig von der Jahreszeit und der Tagesart. \ref{Spannung über Monat}
 
-Die Punkte des PPC-Datensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
+Die Punkte des Testdatensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
 \begin{enumerate}
 \item \textbf{Sprunganomalien:} Punkte direkt nach einer Trafostufung, also eine drei Punkte Kombination einer Messung deren jeweilige Spannungen  in der jeweilig gleichen Phase entweder jeweils ungewöhnlich größer oder jeweils ungewöhnlich kleiner sind, als die 3 Spannungen der 3 Punkte Kombination der vorherigen Messung der Messstation.
 \item \textbf{Zeitanomalien} Punkte direkt nach einer Messlücke, also Punkte deren Zeitpunkt weit länger als die üblichen 10 Sekunden hinter dem Zeitpunkt ihres Vorgängerpunkts liegt.
@@ -77,7 +77,7 @@ Es ergeben sich drei weitere Eigenschaften für die die gewählten Anomalieerken
 
 \subsubsection{Aufbau der Testsätze}
 
-Aufgrund des hohen Umfangs der PPC-Daten wurden die Tests auf einem Subset der RRCF Daten ausgeführt, diese waren jeweils definiert über:
+Aufgrund des hohen Umfangs der Testdaten wurden die Tests auf einem Subset der RRCF Daten ausgeführt, diese waren jeweils definiert über:
 \begin{itemize}
 \item Die Station der zu testenden Zeitreihe
 \item Der Startzeitpunkt des zu testenden Zeitfensters
@@ -101,7 +101,7 @@ Ein weiterer Vorteil des RRCF Verfahrens, die effiziente Handhabung von hochdime
 
 \subsection{Implementierung der Tests}
 
-Über die Tests sollen die Parameter für den auf den PPC-Daten leistungsfähigsten RRCF gefunden werden. Zur Ermittlung der Leistungsfähigkeit wird dabei der MCC verwendet, um eine Balance zwischen den richtigen Klassifizierung von Inlinern und Anomalien zu finden, eine detailliertere Begründung dazu folgt in Sektion \ref{xd}
+Über die Tests sollen die Parameter für den auf den Testdaten leistungsfähigsten RRCF gefunden werden. Zur Ermittlung der Leistungsfähigkeit wird dabei der MCC verwendet, um eine Balance zwischen den richtigen Klassifizierung von Inlinern und Anomalien zu finden, eine detailliertere Begründung dazu folgt in Sektion \ref{xd}
 
 Da in der Praxis der RRCF live auf den von den Messstationen aufgenommen Daten laufen soll, ist es Ziel der Tests diese Situation über Ausschnitte der Daten zu simulieren. Dazu wird wie folgt vorgegangen:
 
@@ -125,5 +125,7 @@ Der Testlauf erfolgt in drei Schritten:
 \subsubsection{Ergebnisse}
 
 Die ersten Testläufe, wurden gebündelt über alle Anomalieklassen ausgeführt:
+
+
 
 Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse, reduzierung auf drei nachkommastellen vs volle nachkommastellen

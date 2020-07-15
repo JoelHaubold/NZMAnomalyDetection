@@ -14,26 +14,19 @@ Anomalieerkennung auf Zeitreihen ist ein weitreichendes Forschungsgebiet, sowohl
 Diese Arbeit beschäftigt sich spezifisch mit dem in dem folgendem Abschnitt erläuterten Sensordatensatz.
 
 
-\subsection{PPC-Datensatz}
+\subsection{Testdatensatz}
 Das deutsche Verteilnetz wurde ursprünglich mit dem Ziel gebaut, den in Großkraftwerken
 produzierten Strom und über das Transportnetz in die einzelnen Regionen Deutschlands transportiert wird, regional an die Endkunden (sowohl Industrie- und Gewerbekunden als auch
 Haushalte) zu verteilen. Das Verteilnetz ist dabei baumartig strukturiert und besteht aus der Hochspannungsebene die den Übergabepunkt des Transportnetz enthält und sich hin zur Mittelspannungsebene, Niederspannungsebene und schließlich den Endkunden verzweigt. 
-Mit zunehmender Integration von Erneuerbaren Energien wie Wind- und PV-Anlagen in die
-Mittel- und Niederspannungsebene steigt auch die Dynamik in den unteren Spannungsebenen.
-Lastflüsse die vorher stets von oben (Hochspannung) nach unten (Mittel-, Niederspannung)
-gerichtet waren, kehren sich in Teilen um und können zu einer lokal höheren Auslastung des
-Netzes führen. Hinzu kommen neue Verbraucher wie z.B. Elektrofahrzeuge die insbesondere in
-den frühen Abendstunden und über die Nacht verteilt das Netz stärker belasten.  
-Um diese Effekte erkennen und analysieren zu können, müssen die Niederspannungsebene
-zunächst messtechnisch erfasst werden. Die Firma PPC hat ein Messgerät entwickelt, welches sich in Ortsnetzstationen (Übergabepunkt von Mittel- zu Niederspannung) einbauen lässt und dort eine dreiphasige Spannungsmessung durchführen kann. Zusätzlich verfügt das Messgerät über
-eine Kommunikationsanbindung mit der sich die Daten abrufen und an einem zentralen Punkt
-aggregieren und auswerten lassen. 
+Mit zunehmender Integration von Erneuerbaren Energien wie Wind- und PV-Anlagen in die Mittel- und Niederspannungsebene steigt auch die Dynamik in den unteren Spannungsebenen.
+Lastflüsse die vorher stets von oben (Hochspannung) nach unten (Mittel-, Niederspannung) gerichtet waren, kehren sich in Teilen um und können zu einer lokal höheren Auslastung des Netzes führen. Hinzu kommen neue Verbraucher wie z.B. Elektrofahrzeuge die insbesondere in den frühen Abendstunden und über die Nacht verteilt das Netz stärker belasten. Um diese Effekte erkennen und analysieren zu können, müssen die Niederspannungsebene
+zunächst messtechnisch erfasst werden. Ein Messgerätehersteller hat ein Messgerät entwickelt, welches sich in Ortsnetzstationen (Übergabepunkt von Mittel- zu Niederspannung) einbauen lässt und dort eine dreiphasige Spannungsmessung durchführen kann. Zusätzlich verfügt dieses Messgerät über eine Kommunikationsanbindung mit der sich die Daten abrufen und an einem zentralen Punkt aggregieren und auswerten lassen.
 
-Zum Testen inwiefern sich diese Auswertung automatisieren lässt, sollen zuerst vordefinierte Anomalien automatisch auf dem Datensatz erkannt werden. Dazu wurde eine Teilmenge dieser Daten, in Form von der gemessenen absoluten Spannung von 17 Messstationen als Grundlage dieser Arbeit freigegeben.
+Zum Testen inwiefern sich diese Auswertung automatisieren lässt, sollen zuerst vordefinierte Anomalien automatisch auf dem Datensatz erkannt werden. In Kooperation mit der Firma logarithmo wurden dazu wurde eine Teilmenge dieser Daten, in Form von der gemessenen absoluten Spannung von 17 Messstationen als Grundlage dieser Arbeit freigegeben.
 
 
 
 \section{Aufbau der Arbeit}
-In dieser Arbeit wird nun für diese Anomalieerkennung eine Implementation des \textit{Robust Random Cut Forest} Verfahrens \cite{guha2016rrcfTheory} benutzt. Als Vergleichsverfahren wird das dem Random Forest zugrundeliegende \textit{Isolation Forest} \cite{liu2012isolation} Verfahren angewandt.
+In dieser Arbeit wird nun für diese Anomalieerkennung eine Implementation des \textit{Robust Random Cut Forest} Verfahrens \cite{guha2016rrcfTheory} benutzt. Als Vergleichsverfahren wird das dem Random Forest zugrundeliegende \textit{Isolation Forest} \cite{liu2012isolation} Verfahren angewandt. Die Benutzung zweier unüberwachter Lernverfahren begründet sich durch den zu hohen Aufwand den ein manuelles Labelling des PPC-Datensatzes, aufgrund seiner Größe, sowie der relativen Knappheit an Vertretern der verschiedenen Anomalieklassen in diesem mit sich bringen würde. 
 
 In Kapitel \ref{chapter:grundlagen} werden zuerst die Grundsätze und Herausforderungen von Anomalieerkennung erläutert. In Kapitel \ref{chapter:iforest} und Kapitel \ref{chapter:rrcf} werden jeweils der Isolation Forest und der auf diesem aufbauende Random Forest beschrieben. In Kapitel \ref{chapter:tests} wird auf die Ergebnisse der beiden Verfahren eingegangen. In Kapitel \ref{chapter:fazit} wird, auf Basis dieser Ergebnisse ein Fazit gezogen, inwiefern auf Basis des PPC-Datensatzes der Random Forest eine Verbesserung  gegenüber dem Isolation Forest verfahren darstellt, und generell für die Anwendung auf dem Datensatz geeignet ist.

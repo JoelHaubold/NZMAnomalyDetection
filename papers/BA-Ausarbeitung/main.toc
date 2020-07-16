@@ -60,9 +60,10 @@
 \contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{42}
 \contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{42}
 \contentsline {subsubsection}{Ergebnisse}{42}
-\contentsline {chapter}{\numberline {6}Fazit}{43}
-\contentsline {chapter}{Abbildungsverzeichnis}{46}
-\contentsline {chapter}{Tabellenverzeichnis}{47}
-\contentsline {chapter}{Algorithmenverzeichnis}{49}
-\contentsline {chapter}{Literaturverzeichnis}{52}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{52}
+\contentsline {section}{\numberline {5.3}Testen des IF Verfahrens}{45}
+\contentsline {chapter}{\numberline {6}Fazit}{47}
+\contentsline {chapter}{Abbildungsverzeichnis}{50}
+\contentsline {chapter}{Tabellenverzeichnis}{52}
+\contentsline {chapter}{Algorithmenverzeichnis}{53}
+\contentsline {chapter}{Literaturverzeichnis}{56}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{56}

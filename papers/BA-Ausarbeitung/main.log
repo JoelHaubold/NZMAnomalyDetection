@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  16 JUL 2020 17:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  16 JUL 2020 20:16
 entering extended mode
 **./main.tex
 (main.tex
@@ -1074,24 +1074,25 @@ Kapitel 5.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [38]
-[39] [40]
+[39] [40] [41] [42]
+Overfull \hbox (2.99219pt too wide) in paragraph at lines 150--166
+ [][] 
+ []
 
-LaTeX Warning: Reference `xd' on page 41 undefined on input line 104.
+[43]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[41]
-
-LaTeX Warning: Reference `tab:shingle' on page 42 undefined on input line 127.
-
-) [42]
+ [44])
+[45]
 \openout2 = `kapitel/fazit.aux'.
 
- (kapitel/fazit.tex
+ (kapitel/fazit.tex [46
+
+
+
+]
 Kapitel 6.
-) [43
-
-
-
-] [44
+) [47] [48
 
 
 ] (main.lof
@@ -1103,58 +1104,60 @@ Overfull \hbox (5.2661pt too wide) in paragraph at lines 9--9
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45])
+ [49])
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
 
-[46] (main.lot)
+[50] (main.lot
+Underfull \vbox (badness 6268) has occurred while \output is active []
+
+ [51
+
+
+])
 \tf@lot=\write5
 \openout5 = `main.lot'.
 
- [47
 
-
-] [48
-
-] (main.loa)
+[52] (main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [49
-
-] [50
-
-] (main.bbl [51
-
-]) [52]
-\openout2 = `kapitel/erklaerung.aux'.
-
-
-(kapitel/erklaerung.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 4--43
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--43
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--43
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--43
-
- []
-
-[53
+ [53
 
 
 ] [54
+
+] (main.bbl [55
+
+]) [56]
+\openout2 = `kapitel/erklaerung.aux'.
+
+ (kapitel/erklaerung.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 4--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--43
+
+ []
+
+[57
+
+
+] [58
 
 
 ]
@@ -1163,23 +1166,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--43
 
  (main.aux (kapitel/titelseite.aux) (kapitel/einleitung.aux)
 (kapitel/grundlagen.aux) (kapitel/iforest.aux) (kapitel/rrcf.aux)
-(kapitel/tests.aux) (kapitel/fazit.aux) (kapitel/erklaerung.aux))
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
+(kapitel/tests.aux) (kapitel/fazit.aux) (kapitel/erklaerung.aux)) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 98 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7005 strings out of 493312
- 101701 string characters out of 3138899
- 191660 words of memory out of 3000000
- 10272 multiletter control sequences out of 15000+200000
+ 7008 strings out of 493312
+ 101736 string characters out of 3138899
+ 191715 words of memory out of 3000000
+ 10275 multiletter control sequences out of 15000+200000
  36553 words of font info for 88 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,13n,41p,1685b,642s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1217,9 +1213,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (58 pages, 2627822 bytes).
+Output written on main.pdf (62 pages, 2637779 bytes).
 PDF statistics:
- 993 PDF objects out of 1000 (max. 8388607)
+ 1007 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

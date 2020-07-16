@@ -43,7 +43,7 @@ Der Testdatensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deu
 \end{table}
 
 
-Die absoluten Spannungswerte bewegen sich in einem Bereich von 182 V bis 236 V. Über den Gesamtmesszeitraum ergeben sich dabei starke saisonale Unterschiede, unter anderem Abhängig von der Jahreszeit und der Tagesart. \ref{Spannung über Monat}
+Die absoluten Spannungswerte bewegen sich in einem Bereich von 182 V bis 236 V. Über den Gesamtmesszeitraum ergeben sich dabei starke saisonale Unterschiede, unter anderem Abhängig von der Jahreszeit und der Tagesart. %\ref{Spannung über Monat}
 
 Die Punkte des Testdatensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
 \begin{enumerate}
@@ -53,7 +53,7 @@ Die Punkte des Testdatensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomali
 \item \textbf{Saisonanomalien:} Punkte die mit dem saisonalen Trend der Zeitreihe brechen, also Punkte deren Spannungswerte sich stark von den Werten vorherigen Punkte unterscheiden, welche zu einer ähnlichen Uhrzeit und in der gleichen Tagesart gemessen wurden. Dabei wurde zwischen Werktagen und der Kombination aus Feier- und Wochenendtagen unterschieden.
 \item \textbf{Stationsanomalien:} Punkte welche gegen den Trend des durchschnittlichen Verlaufs aller Zeitreihen verstoßen, also Punkte deren Spannung sich stark von dem Durchschnitt der Spannung der Punkte aller anderen Stationen unterscheiden.
 \end{enumerate}
-Die Anomalieklassen sind nicht exklusiv, jeder Punkt kann in mehreren Anomalieklassen sein. Dies trifft allerdings nur auf x Punkte von x anomalen Punkten zu
+Die Anomalieklassen sind nicht exklusiv, jeder Punkt kann in mehreren Anomalieklassen sein.
 
 Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien je nach Zeitreihe in jeweils unterschiedlicher Stärke und Frequenz auf. Die Daten sind jeweils punktweise gelabeled, es zeichnen sich allerdings punktübergreifende Muster für jede Anomalieklasse ab:
 \begin{itemize}
@@ -124,8 +124,21 @@ Der Testlauf erfolgt in drei Schritten:
 
 \subsubsection{Ergebnisse}
 
-Die ersten Testläufe, wurden gebündelt über alle Anomalieklassen ausgeführt:
-
-
+Die ersten Testläufe, wurden gebündelt über alle Anomalieklassen ausgeführt, um den Effekt der drei Parameter der Testläufe beurteilen zu können. Dabei stach hervor, dass wie in Tabelle \ref{tab:shingle} dargestellt, die Einführung der Methodik, den Input in Fenstern dem RRCF einzuführen, zu einer Performanceverschlechterung führte
+\begin{table}
+\caption{Der Effekt }
+\centering
+\begin{tabular}{lrrr}
+\toprule
+{} &       MCC &  Testlauf Dauer &  Genauigkeit \\
+\textbf{Fenstergröße} &           &                 &              \\
+\midrule
+\textbf{1           } &  0.398729 &      217.164686 &     0.989065 \\
+\textbf{3           } &  0.381215 &      455.646902 &     0.980104 \\
+\textbf{5           } &  0.365391 &      467.922607 &     0.984984 \\
+\bottomrule
+\end{tabular}
+\label{tab:shingle}
+\end{table}
 
 Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse, reduzierung auf drei nachkommastellen vs volle nachkommastellen

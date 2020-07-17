@@ -1,6 +1,6 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}
 \contentsline {section}{\numberline {1.1}Motivation und Hintergrund}{1}
 \contentsline {subsection}{\numberline {1.1.1}Anomaliererkennung auf Zeitreihen}{1}
@@ -35,13 +35,11 @@
 \contentsline {section}{\numberline {3.2}Implementation}{20}
 \contentsline {chapter}{\numberline {4}Robust Random Cut Forest}{23}
 \contentsline {section}{\numberline {4.1}Notationen}{23}
-\contentsline {section}{\numberline {4.2}RRCF Theory}{23}
+\contentsline {section}{\numberline {4.2}RRCF Theory}{24}
 \contentsline {subsection}{\numberline {4.2.1}RRCF Aufbau}{24}
 \contentsline {subsection}{\numberline {4.2.2}Distanzbeibehaltung bei der RRCT Konstruktion}{26}
-\contentsline {subsubsection}{Beweis von Theorem \ref {theo:distance}}{26}
 \contentsline {subsection}{\numberline {4.2.3}RRCF Instandhaltung}{27}
 \contentsline {subsubsection}{L\IeC {\"o}schen eizelner Punkte}{27}
-\contentsline {subsubsection}{Unterschiede beim L\IeC {\"o}schen eines Punktes}{27}
 \contentsline {section}{\numberline {4.3}Anomalieerkennung \IeC {\"u}ber RRCF}{28}
 \contentsline {subsection}{\numberline {4.3.1}Modellkomplexit\IeC {\"a}t eines RRCT}{29}
 \contentsline {subsection}{\numberline {4.3.2}Verschiebung der Modellkomplexit\IeC {\"a}t durch einen Punkt $\textbf {x}$}{30}
@@ -49,6 +47,7 @@
 \contentsline {subsection}{\numberline {4.3.3}Codisp}{33}
 \contentsline {subsubsection}{Robustheit gegen\IeC {\"u}ber Duplikaten}{34}
 \contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{35}
+\contentsline {section}{\numberline {4.4}Implementation}{35}
 \contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{37}
 \contentsline {section}{\numberline {5.1}Aufmachung der Testdaten}{37}
 \contentsline {subsection}{\numberline {5.1.1}Eignung der Daten f\IeC {\"u}r \IeC {\"u}berwachte und un\IeC {\"u}berwachte Anomalieerkennung}{39}
@@ -61,9 +60,10 @@
 \contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{42}
 \contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{42}
 \contentsline {subsubsection}{Ergebnisse}{42}
-\contentsline {chapter}{\numberline {6}Fazit}{43}
-\contentsline {chapter}{Abbildungsverzeichnis}{46}
-\contentsline {chapter}{Tabellenverzeichnis}{47}
-\contentsline {chapter}{Algorithmenverzeichnis}{49}
-\contentsline {chapter}{Literaturverzeichnis}{52}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{52}
+\contentsline {section}{\numberline {5.3}Testen des IF Verfahrens}{45}
+\contentsline {chapter}{\numberline {6}Fazit}{47}
+\contentsline {chapter}{Abbildungsverzeichnis}{50}
+\contentsline {chapter}{Tabellenverzeichnis}{52}
+\contentsline {chapter}{Algorithmenverzeichnis}{53}
+\contentsline {chapter}{Literaturverzeichnis}{56}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{56}

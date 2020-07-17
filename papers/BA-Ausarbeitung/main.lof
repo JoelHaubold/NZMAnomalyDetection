@@ -1,6 +1,6 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Ein zweidimensionaler Beispieldatensatz \IeC {\"u}ber zwei Merkmale x und y, dessen Struktur durch die Punktegruppen $N_1$ und $N_2$ gebildet wird. Im Kontext zu diesen sind die Punkte $o_1$ und $o_2$, sowie die Punktegruppe $O_3$ anomal. Quelle: \cite {chandola2009anomaly}\relax }}{5}
@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Ein Datensatz \IeC {\"u}ber zwei Dimensionen, \IeC {\"u}ber dem ein iForest konstruiert wurde. Die beiden Unterabbildungen stellen zwei Evaluationen durch diesen iForest mit unterschiedlich gesetzter Tiefenbegrenzung $hlim$ dar. Die Trennlinien zeigen dabei Wertebereiche der $s$-Werte der Punkte an (Die Trennlinie innerhalb des kleinen Klusters in unterabbildung a) geh\IeC {\"o}rt dabei zu der 0.55 Linie). Zu sehen ist das $hlim = 6$ in Unterabbildung a) f\IeC {\"u}r eine wesentlich h\IeC {\"o}here Granularit\IeC {\"a}t der $s$-Werte, als $hlim = 1$ in b) sorgt. Dadurch gibt es in a) eine klare Abgrenzung zwischen den inneren Punkten des kleinen Kluster und den \IeC {\"A}u\IeC {\ss }eren Punkten, in Form der 0.55 Trennlinie. Diese Abggrenzung ist in b) mit $hlim = 1$ nicht vorhanden. Quelle: \cite {liu2012isolation}\relax }}{20}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Ein m\IeC {\"o}glicher, nach Definition \ref {def:rrcfdef1} konstruierter RRCF \IeC {\"u}ber den in Tabelle \ref {tab:table1} dargestellten Datensatz $S$. Die erste Partition erfolgte \IeC {\"u}ber die dritte Dimension mit einem nach Schritt 2 zuf\IeC {\"a}llig bestimmten Grenzwert von 6. Da $S_1$ darauf mehr als einen Punkt enthielt erfolgte eine weitere Partition \IeC {\"u}ber die erste Dimension und einen Grenzwert von 8\relax }}{25}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Ein Teilbaum $T_1$ \IeC {\"u}ber die Menge $S_1$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_1$ in zwei Teilemengen da. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \cite {guha2016rrcfTheory}\relax }}{29}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Ein Teilbaum $T_1$ \IeC {\"u}ber die Menge $S_1$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_1$ in zwei Teilemengen dar. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \cite {guha2016rrcfTheory}\relax }}{29}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Ein Teilbaum $T_2$ \IeC {\"u}ber die Menge $S_2$, eines RRCTs $T$, dessen Wurzel in $T$ die Tiefe $r+1$ hat. Der Knoten $a$ stellt eine Partitionierung von $S_2$ in zwei Teilemengen da. $q_0,...,q_r$ sind die Bits die die Position von $a$ in $T$ beschreiben. Quelle: \cite {guha2016rrcfTheory}\relax }}{32}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Ein Beispieldatensatz mit zwei Anomalien $o_1$ und $o_2$, sowie eine Punktegruppe $O_3$ von 7 Anomalien. Die Gruppen $N_1$ und $N_2$ stellen die Inliner des Datensatzes da. Quelle: \cite {chandola2009anomaly}\relax }}{33}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Ein Teilbaum, welcher \relax }}{34}

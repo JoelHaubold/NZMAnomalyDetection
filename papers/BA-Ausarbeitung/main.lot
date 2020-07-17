@@ -1,13 +1,17 @@
-\babel@toc {english}{}
-\babel@toc {english}{}
-\babel@toc {german}{}
+\select@language {english}
+\select@language {english}
+\select@language {german}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Zwei m\IeC {\"o}gliche Ergebnisse eines Anomalieerkennungsverfahrens auf einem Datensatz bestehend aus 950 normalen und 50 anomalen Punkten, mit der berechneten Genauigkeit f\IeC {\"u}r jedes Verfahren\relax }}{12}
 \contentsline {table}{\numberline {2.2}{\ignorespaces Zwei m\IeC {\"o}gliche Ergebnisse eines Anomalieerkennungsverfahrens auf zwei Datens\IeC {\"a}tzen, mit dem berechneten $\text {F}_1$-Ma\IeC {\ss } f\IeC {\"u}r jedes Verfahren. Der Datensatz von V1 besteht aus 200 anomalen und 125 normalen Punkten, der von V2 aus 200 normalen und 1025 anomalen Punkten.\relax }}{13}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Ein Beispiel Datensatz \IeC {\"u}ber 3 Dimensionen mit numerischen Werten mit $S=\{x, y, z\}$ sowie die von Definition \ref {def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit $\frac {l_i}{\Sigma _j l_i}$ das $S$ in Schritt 3 \IeC {\"u}ber die jeweilige Dimension partitioniert wird\relax }}{25}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Ein Beispiel Datensatz \IeC {\"u}ber 3 Dimensionen mit numerischen Werten mit $S=\{x, y, z\}$ sowie die von Definition \ref {def:rrcfdef1} in Schritt 1 berechnete Wahrscheinlichkeit $\frac {l_i}{\Sigma _d l_i}$ das $S$ in Schritt 3 \IeC {\"u}ber die jeweilige Dimension partitioniert wird\relax }}{25}
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {5.1}{\ignorespaces Der Testdatensatz aufgeschl\IeC {\"u}sselt nach den Stationen und der Anzahl an Punkten aller drei Phasen der Station, welche den jeweiligen Anomalieklassen zugeh\IeC {\"o}ren. Die letzten beiden Reihen stellen die Gesamtgr\IeC {\"o}\IeC {\ss }e der Anomalieklassen in dem Datensatz dar, sowie den prozentualen Anteil den diese insgesamt an dem Datensatz haben\relax }}{38}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Der Effekt des Fenstergr\IeC {\"o}\IeC {\ss }en Parameters \IeC {\"u}ber 150 Tests\IeC {\"a}tze. Dargestellt ist die Dauer des Testlaufes sowie der durchschnittliche MCC, die durchschnittliche Dauer des Testlaufes in Minuten und die durchschnittliche Genauigkeit. Die Parameter f\IeC {\"u}r die Baumgr\IeC {\"o}\IeC {\ss }e und die Anzahl an B\IeC {\"a}umen liefen von 10000 bis 30000, beziehungsweise von 100 bis 300 in Schritten von 5000 beziehungsweise 50.\relax }}{43}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Der Effekt einer Verringerung der Nachkommastellen, angegeben als $NK$ des Inputs auf den MCC und der Testlaufdauer in Minuten. Dargestellt sind jeweils 24 Testl\IeC {\"a}ufe \IeC {\"u}ber 8 Tests\IeC {\"a}tze mit 3 Wiederholungen, pro Baumgr\IeC {\"o}\IeC {\ss }e und Nachkommastelle. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Anzahl der B\IeC {\"a}ume betrug 150.\relax }}{43}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Die Testl\IeC {\"a}ufe zur Bestimmung der besten Baumgr\IeC {\"o}\IeC {\ss }e f\IeC {\"u}r jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Baumgr\IeC {\"o}\IeC {\ss }e wurde dabei \IeC {\"u}ber 24 Testl\IeC {\"a}ufe, mit 8 Tests\IeC {\"a}tzen und 3 Wiederholungen getestet. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Anzahl der B\IeC {\"a}ume betrug 150. Hervorgehoben ist pro Spalte jeweils die Baumgr\IeC {\"o}\IeC {\ss }e mit dem besten Ergebnis\relax }}{44}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Die Testl\IeC {\"a}ufe zur Bestimmung der besten Anzahl an B\IeC {\"a}umen f\IeC {\"u}r jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Anzahl wurde dabei \IeC {\"u}ber 24 Testl\IeC {\"a}ufe, mit 8 Tests\IeC {\"a}tzen und 3 Wiederholungen getestet. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Gr\IeC {\"o}\IeC {\ss }e der B\IeC {\"a}ume entsprach der besten Gr\IeC {\"o}\IeC {\ss }e der vorherigen Testl\IeC {\"a}ufe zur Bestimmung dieser. Hervorgehoben ist pro Spalte jeweils die Anzahl mit dem besten Ergebnis\relax }}{45}
 \addvspace {10\p@ }

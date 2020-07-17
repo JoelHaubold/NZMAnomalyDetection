@@ -8,7 +8,7 @@
 \section{Anomalien} % iForest Swamping Masking
 
  % Define dimensions of Z; Move Usefulness to Introduction
-In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Anomalie bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von dem restlichen, nicht-anomalen $normalen$ Punkten des Datensatzes abhebt.
+In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Anomalie bezeichnet, falls er sich signifikant in einen oder mehreren seiner Merkmale von dem restlichen, nicht-anomalen normalen Punkten des Datensatzes abhebt. Ein einfaches Beispiel ist hier ein Datensatz über eine Menge an Objekten, bestehend aus einer Anzahl schwarzer Würfel, schwarzer Kugeln, sowie einer grünen Kugel. In diesem Beispiel ist die grüne Kugel offensichtlich eine Anomalie, da sie sich im Merkmal der Farbe stark von dem Rest der Menge unterscheidet.
 %Die meisten Applikationen erzeugen ihre Daten über einen oder mehreren generierenden Prozessen, beispielsweise durch die Beobachtung von Nutzeraktivität, oder durch das Ablesen von externen Daten. 
 %Dementsprechend lassen sich über das Erkennen dieser Anomalien Informationen über die jeweilige Applikationen sammeln. \cite{aggarwal2015outlier} 
 \begin{figure}
@@ -18,7 +18,7 @@ In einem gegebenen Datensatz an Punkten, wird einer dieser Punkte als Anomalie b
 \label{image-dup}
 \end{figure}
 
-Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich aus ihrem Datensatz abheben in drei Klassen unterteilen \cite{ahmed2016surveyatypes} : 
+Grundsätzlich lassen sich Anomalien darüber inwiefern sie sich aus ihrem Datensatz abheben in drei Klassen unterteilen \cite{ahmed2016surveyatypes}: 
 \begin{itemize}
 \item \textit{Punktanomalien}: Wenn ein Datenpunkt sich stark von den normalen Merkmalsausprägungen in seinem Datensatz unterscheidet. Beispielsweise wäre bei Beobachtung des Kraftstoffverbrauchs eines Autos pro Tag ein Verbrauch von 50 Litern, bei einem normalen Verbrauch von 5 Litern pro Tag eine Punktanomalie. Die anomalen Punkte in Figur \ref{image-dup} entsprechen dieser Anomalieklasse.
 \item \textit{Kontextanomalien}: Wenn ein Datenpunkt in einem bestimmten Kontext in seinem Datensatz hervorsticht, ohne diesen aber nicht als Anomalie zu erkennen wäre. Zum Beispiel können bei einer Anomalieerkennung auf den Finanzen einer Person, überdurchschnittlich hohe Ausgaben an einem Feiertag normal sein, im Kontext eines Arbeitstages allerdings eine Anomalie darstellen.

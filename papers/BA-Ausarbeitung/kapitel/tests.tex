@@ -5,7 +5,7 @@
 
 Im Rahmen dieser Arbeit wurde die Performance von zwei Anomalieerkennungsverfahren auf dem ihr zugrundeliegendem Testdatensatzes beurteilt. In diesem Kapitel wird nun zuerst auf die Eigenschaften des Datensatzes eingegangen, und darauf auf die Eignung der angewandten Anomalieerkennungsverfahren für diesen, sowie auf die Details ihrer jeweiligen Implementierung. 
 
-\section{Aufmachung der Testdaten}
+\section{Aufmachung der Testdaten} \label{sec:ans}
 
 Der Testdatensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deutschen Niederspannungsnetz angebrachten Messstationen aufgezeichnet. Bemessen wurde dabei die absolute Spannung aller drei Stromphasen in Abständen von 9.5 Sekunden, wobei jede Phase zeitgleich bemessen wurde. Je nach Station bilden die aufgenommenen Daten einen Zeitraum von mindestens 3 bis zu maximal 8 Monaten ab. Insgesamt enthält der Datensatz über alle Phasen aller Stationen 66 Millionen Punkte, welche sich in wie in Tabelle \ref{tab:ppc} dargestellt aufteilen. 
 
@@ -43,9 +43,9 @@ Der Testdatensatz wurde im Jahr 2018 von in 17 unterschiedlichen Stellen des deu
 \end{table}
 
 
-Die absoluten Spannungswerte bewegen sich in einem Bereich von 182 V bis 236 V. Über den Gesamtmesszeitraum ergeben sich dabei starke saisonale Unterschiede, unter anderem Abhängig von der Jahreszeit und der Tagesart. \ref{Spannung über Monat}
+Die absoluten Spannungswerte bewegen sich in einem Bereich von 182 V bis 236 V. Über den Gesamtmesszeitraum ergeben sich dabei starke saisonale Unterschiede, unter anderem Abhängig von der Jahreszeit und der Tagesart. %\ref{Spannung über Monat}
 
-Die Punkte des Testdatensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
+Die Punkte des Testdatensatzes wurden in der Nachbearbeitung maschinell zu bis zu 5 Anomalieklassen zugeordnet. Diese sind:
 \begin{enumerate}
 \item \textbf{Sprunganomalien:} Punkte direkt nach einer Trafostufung, also eine drei Punkte Kombination einer Messung deren jeweilige Spannungen  in der jeweilig gleichen Phase entweder jeweils ungewöhnlich größer oder jeweils ungewöhnlich kleiner sind, als die 3 Spannungen der 3 Punkte Kombination der vorherigen Messung der Messstation.
 \item \textbf{Zeitanomalien} Punkte direkt nach einer Messlücke, also Punkte deren Zeitpunkt weit länger als die üblichen 10 Sekunden hinter dem Zeitpunkt ihres Vorgängerpunkts liegt.
@@ -53,7 +53,7 @@ Die Punkte des Testdatensatzes wurden in der Nachbearbeitung zu bis zu 5 Anomali
 \item \textbf{Saisonanomalien:} Punkte die mit dem saisonalen Trend der Zeitreihe brechen, also Punkte deren Spannungswerte sich stark von den Werten vorherigen Punkte unterscheiden, welche zu einer ähnlichen Uhrzeit und in der gleichen Tagesart gemessen wurden. Dabei wurde zwischen Werktagen und der Kombination aus Feier- und Wochenendtagen unterschieden.
 \item \textbf{Stationsanomalien:} Punkte welche gegen den Trend des durchschnittlichen Verlaufs aller Zeitreihen verstoßen, also Punkte deren Spannung sich stark von dem Durchschnitt der Spannung der Punkte aller anderen Stationen unterscheiden.
 \end{enumerate}
-Die Anomalieklassen sind nicht exklusiv, jeder Punkt kann in mehreren Anomalieklassen sein. Dies trifft allerdings nur auf x Punkte von x anomalen Punkten zu
+Die Anomalieklassen sind nicht exklusiv, jeder Punkt kann in mehreren Anomalieklassen sein. 
 
 Während die Zeitreihen jeder Messtation ähnliche Verhaltensweisen aufweist, treten die vorhandenen Anomalien je nach Zeitreihe in jeweils unterschiedlicher Stärke und Frequenz auf. Die Daten sind jeweils punktweise gelabeled, es zeichnen sich allerdings punktübergreifende Muster für jede Anomalieklasse ab:
 \begin{itemize}
@@ -84,6 +84,7 @@ Aufgrund des hohen Umfangs der Testdaten wurden die Tests auf einem Subset der R
 \item Die zu testende Phase
 \item Die zu testende Anomalieklasse
 \end{itemize}
+Zur Erkennung jeder Anomalieklassen wird die absolute Spannung jeweils den entsprechenden Bedingungen der Klasse, wie in Sektion \ref{sec:ans} umgerechnet, beispielsweise wird für die Phasenanomlien aus den 3 gemessenen absoluten Spannungswerten die 
 Die Gesamtheit der Testsätze wurde representativ über die Daten ausgewählt. Dabei wurde ein Fokus auf Testsätze, welche anomale Abschnitte enthalten gelegt. Testsätze, welche nur aus Inlinern bestehen wurden stellenweise hinzugefügt um die Klassifizierung von Inlinern als solche zu überprüfen. 
 
 \section{Testen des RRCF Verfahrens}
@@ -101,7 +102,7 @@ Ein weiterer Vorteil des RRCF Verfahrens, die effiziente Handhabung von hochdime
 
 \subsection{Implementierung der Tests}
 
-Über die Tests sollen die Parameter für den auf den Testdaten leistungsfähigsten RRCF gefunden werden. Zur Ermittlung der Leistungsfähigkeit wird dabei der MCC verwendet, um eine Balance zwischen den richtigen Klassifizierung von Inlinern und Anomalien zu finden, eine detailliertere Begründung dazu folgt in Sektion \ref{xd}
+Über die Tests sollen die Parameter für den auf den Testdaten leistungsfähigsten RRCF gefunden werden. Zur Ermittlung der Leistungsfähigkeit wird dabei der MCC verwendet, um eine Balance zwischen den richtigen Klassifizierung von Inlinern und Anomalien zu finden. Ein F-Maß wurde ausgeschlossen, da das Verfahren in der Lage sein muss sehr viele normale Datenpunkte als solche zu klassifizieren, was in einem F-Maß nicht bewertet wird. Die Genauigkeit der Ergebnisse ist ebenfalls eine unzureichende Metrik, aufgrund des geringen Anteils von Anomalien im Datensatz, wodurch bei einer Bewertung über Genauigkeit, die Klassifizierung von Anomalien nebensächlich wäre
 
 Da in der Praxis der RRCF live auf den von den Messstationen aufgenommen Daten laufen soll, ist es Ziel der Tests diese Situation über Ausschnitte der Daten zu simulieren. Dazu wird wie folgt vorgegangen:
 
@@ -120,12 +121,95 @@ Der Testlauf erfolgt in drei Schritten:
 
 \paragraph{Schritt 2: Streaming des Testsatzes} Der Testsatz wird angefangen mit dem definierten Startpunkt durch jeden RRCT des RRCF gestreamed. Da die Größe jedes RRCTs nach Schritt 1 der definierten Baumgröße entspricht, muss mit jedem eingefügten Punkt ein Punkt aus dem RRCF entfernt werden. In den Testläufen wurde dabei immer der älteste Punkt, also der Punkt welcher am frühesten gemessen wurde gewählt. Mit dem Einfügen von jedem Punkt wird das CoDisp zu diesem vom RRCF berechnet und abgespeichert.
 
-\paragraph{Schritt 3: Auswertung der Ergebnisse} Basierend auf den generierten CoDisp Werten wird darauf der bestmögliche MCC über alle möglichen CoDisp-Grenzwerte, für ab wann ein Punkt als Anomalie klassifiziert wird ermittelt. Daraufhin wird für den ermittelten optimalen Grenzwert die Accuracy bestimmt, um eine Vergleichsmetrik mit Testabschnitten zu haben, welche ausschließlich Inliner enthalten, da der MCC, wie in Sektion \ref{sec:performance} beschrieben dort nicht anwendbar ist.
+\paragraph{Schritt 3: Auswertung der Ergebnisse} Basierend auf den generierten CoDisp Werten wird darauf der bestmögliche MCC über alle möglichen CoDisp-Grenzwerte, für ab wann ein Punkt als Anomalie klassifiziert wird ermittelt, wobei sich auf die Anomalielabels des Datensatzes bezogen wird, ob ein Punkt von dem RRCF richtig klassifiziert wurde. Daraufhin wird für den ermittelten optimalen Grenzwert die Accuracy bestimmt, um eine Vergleichsmetrik mit Testabschnitten zu haben, welche ausschließlich Inliner enthalten, da der MCC, wie in Sektion \ref{sec:performance} beschrieben dort nicht anwendbar ist.
 
 \subsubsection{Ergebnisse}
 
-Die ersten Testläufe, wurden gebündelt über alle Anomalieklassen ausgeführt:
+Die ersten Testläufe, wurden gebündelt über alle Anomalieklassen ausgeführt, um den Effekt der drei Parameter der Testläufe beurteilen zu können. Dabei stach hervor, dass wie in Tabelle \ref{tab:shingle} dargestellt, die Einführung der Methodik, den Input des RRCF Verfahrens in Fenstern einzuführen, zu einer Performanceverschlechterung führte. Die Ursache dafür ist auf das punktuelle Labeling der Anomalieklassen zurückzuführen. Ein als Anomalie gelabelter Punkt des Datensatzes, ist in einer Fenstergröße von drei, beziehungsweise von fünf, drei beziehungsweise fünf Mal im Input enthalten. Bei der Auswertung der Einschätzung des RRCFs wird allerdings nur eine Klassifizierung als Anomalie genau des Fensters, welches den anomalen Punkt enthält als richtig bewertet.
+Weiterhin zeichnet sich mit einer Fenstergröße höher eins ein starker Anstieg der Laufzeit des Verfahrens ab, da die Dimensionalität des Inputs erhöht wird.
+\begin{table}[ht]
+\caption{Der Effekt des Fenstergrößen Parameters über 150 Testsätze. Dargestellt ist die Dauer des Testlaufes sowie der durchschnittliche MCC, die durchschnittliche Dauer des Testlaufes in Minuten und die durchschnittliche Genauigkeit. Die Parameter für die Baumgröße und die Anzahl an Bäumen liefen von 10000 bis 30000, beziehungsweise von 100 bis 300 in Schritten von 5000 beziehungsweise 50.}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+{} &       MCC &  Testlauf Dauer &  Genauigkeit \\
+\textbf{Fenstergröße} &           &                 &              \\
+\midrule
+\textbf{1           } &  0.398729 &      217.164686 &     0.989065 \\
+\textbf{3           } &  0.381215 &      455.646902 &     0.980104 \\
+\textbf{5           } &  0.365391 &      467.922607 &     0.984984 \\
+\bottomrule
+\end{tabular}
+\label{tab:shingle}
+\end{table}
 
+Weiterhin hat sich herausgestellt das die Reduzierung der Granularität des Inputs des Verfahrens zu einer wesentlichen Verbesserung, sowohl von dessen Genauigkeit, als auch dessen Laufzeit führte. Diese Verringerung der Granularität wurde über eine Begrenzung der Nachkommastellen des Inputs erreicht und ihr Effekt ist in Tabelle \ref{tab:nksphase} beispielhaft dargestellt.
+\begin{table}[ht]
+\caption{Der Effekt einer Verringerung der Nachkommastellen, angegeben als $NK$ des Inputs auf den MCC und der Testlaufdauer in Minuten. Dargestellt sind jeweils 24 Testläufe über 8 Testsätze mit 3 Wiederholungen, pro Baumgröße und Nachkommastelle. Die Fenstergröße von jedem Testlauf war 1 und die Anzahl der Bäume betrug 150.}
+\centering
+\begin{tabular}{lrrrrrr}
+\toprule
+{} &       MCC NK:3 &          Testlauf Dauer NK:3 &  MCC NK:7 &  Testlauf Dauer NK:7  \\
+\textbf{Baumgröße} &                       &              &              &                 \\
+\midrule
+\textbf{10000    } &  0.559057 &    44.494513 &          NaN &         NaN \\
+\textbf{15000    } &  0.562351 &    67.811954 &          NaN &       NaN \\
+\textbf{20000    } &  0.524942 &   102.143578 &     0.689383 &     6.666684 \\
+\textbf{25000    } &  0.514378 &   141.698940 &     0.696069 &     6.896325 \\
+\textbf{30000    } &       NaN &             NaN &     0.741360 &     7.002047 \\
+\textbf{35000    } &       NaN &             NaN &     0.725485 &    7.646865 \\
+\textbf{40000    } &       NaN &             NaN &     0.728822 &    7.896554 \\
+\textbf{45000    } &       NaN &           NaN &     0.733467 &      8.299229 \\
+\bottomrule
+\end{tabular}
+\label{tab:nksphase}
+\end{table}
+Die Verbesserung der Laufzeit lässt sich darauf zurückführen, dass mit einer verringerten Granularität mehr Duplikate im input vorhanden sind, und somit bei der Einführung von weniger Punkten in die RRCTs neue Partitionen vonnöten sind. Ebenfalls sorgt die niedrigere Granularität für ein Zusammenklumpen der normalen Punkte, während die Anomalien durch ihre distinkten Werte, weiterhin leicht isolierbar bleiben, was zu der Verbesserung des MCCs führt, diese Verhinderung der richtigen Klassifizierung von Anomalien, durch zu viele normale leicht unterschiedliche Punkte führt dazu das die optimale Baumgröße steigt, da die dazukommenden normalen Punkte, welche kein Duplikat eines bisherigen Punktes sind sinkt.
+Die Testläufe zur Bestimmung der optimalen Klassifizierung wurden getrennt durchgeführt, um Unterschiede in der Aufmachung des jeweiligen Datenstroms auszunutzen. Tabelle \ref{tab:ts} stellt dabei die Ergebnisse der Suche nach der optimalen Baumgröße dar, Tabelle \ref{tab:nt} die darauffolgende Suche nach der optimalen Anzahl an Bäumen. Auffällig ist die besonders starke Performance bei der Klassifizierung der Sprunganomalien, welche sich aus dem, im Vergleich zu den anderen Anomalieklassen besonders spezifischen Kriterien ergibt die durch die Vorberechnung des Inputs leicht erkennbar ist. Während die Baumgröße nur einen logarithmischen Einfluss auf die Laufzeit der Testläufe hat, so hat die Anzahl der Bäume einen linearen Einfluss, da die Anzahl der Operationen die mit jeder Einfügung eines Punktes kommen linear steigen. Da die Verbesserung des MCCs über diese Parameter ab einer bestimmten Größe nur noch minimal ist, wird für die Anzahl der Bäume, für jede Anomalieklasse 150 als optimal gewertet, da die Laufzeit des Algorithmus ansonsten zu lang ist. Aufgrund der minimalen Zunahme der Laufzeit bei wachsender Baumgröße wird für diese die mit dem besten Ergebnis als optimal gewertet. 
 
+\begin{table}[ht]
+\caption{Die Testläufe zur Bestimmung der besten Baumgröße für jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Baumgröße wurde dabei über 24 Testläufe, mit 8 Testsätzen und 3 Wiederholungen getestet. Die Fenstergröße von jedem Testlauf war 1 und die Anzahl der Bäume betrug 150. Hervorgehoben ist pro Spalte jeweils die Baumgröße mit dem besten Ergebnis}
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+{} &    Zeita. &   Phasena. &  Sprunga. &  Stationsa. &  Seasona. \\
+\textbf{Baumgröße} &           &           &           &             &           \\
+\midrule
+\textbf{20000    } &       NaN &  0.603210 &       NaN &    0.536278 &  0.671732 \\
+\textbf{25000    } &  0.632683 &  0.609060 &  0.904462 &    0.570382 &  0.713191 \\
+\textbf{30000    } &  0.635779 &  0.648690 &  0.914529 &    0.634900 &  0.759553 \\
+\textbf{35000    } &  0.642542 &  0.634799 &  0.922088 &    0.657656 &  0.767432 \\
+\textbf{40000    } &  0.653790 &  \textbf{0.637720} &  0.949432 &    0.664821 &  0.773245 \\
+\textbf{45000    } &  0.660279 &  0.631784 &  0.938342 &    0.673285 &  0.780158 \\
+\textbf{50000    } &  \textbf{0.654150} &       NaN &  \textbf{0.947933} &    \textbf{0.687166} &  0.784906 \\
+\textbf{55000    } &  0.653438 &       NaN &  0.935317 &    0.683527 &  \textbf{0.792754} \\
+\textbf{60000    } &  0.650126 &       NaN &       NaN &         NaN &  0.784951 \\
+\bottomrule
+\end{tabular}
+\label{tab:ts}
+\end{table}
 
-Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse, reduzierung auf drei nachkommastellen vs volle nachkommastellen
+\begin{table}[ht]
+\caption{Die Testläufe zur Bestimmung der besten Anzahl an Bäumen für jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Anzahl wurde dabei über 24 Testläufe, mit 8 Testsätzen und 3 Wiederholungen getestet. Die Fenstergröße von jedem Testlauf war 1 und die Größe der Bäume entsprach der besten Größe der vorherigen Testläufe zur Bestimmung dieser. Hervorgehoben ist pro Spalte jeweils die Anzahl mit dem besten Ergebnis}
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+{} & Zeita. &  Phasena. &  Sprunga. &  Stationsa. &  Seasona. \\
+\textbf{Anzahl Bäume} &        &           &           &             &           \\
+\midrule
+\textbf{100         } &   0.653942 &  0.630615 &  0.927817 &    0.679372 &  0.770709 \\
+\textbf{150         } &   \textbf{0.655839} &  0.633044 &  0.935337 &    0.684770 &  \textbf{0.809800} \\
+\textbf{200         } &   0.655421 &  0.630866 &  0.940764 &    0.686961 &  0.803877 \\
+\textbf{250         } &   0.655630 &  0.628403 &  0.942023 &    0.689922 &  0.780190 \\
+\textbf{300         } &   0.654832 &  \textbf{0.634816} &  \textbf{0.943043} &    \textbf{0.690939} &       NaN \\
+\textbf{350         } &   0.654610 &  0.633528 &  0.936555 &    0.689280 &       NaN \\
+\bottomrule
+\end{tabular}
+\label{tab:nt}
+\end{table}
+
+\section{Testen des IF Verfahrens}
+
+Die 
+
+Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse

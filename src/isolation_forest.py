@@ -29,14 +29,13 @@ def calc_mcc(df_points, avg_codisp_a, a_threshold):
 
 def run_test(df_p, a_type):
     X = df_p.values
-    X = np.around(X)
     conta = df_p[(abs(df_p[a_type.name]) >= a_type.value)].shape[0] / df_p.shape[0]
     print("predicting")
-    labels = IsolationForest(contamination=0.001).fit_predict(X)
+    labels = IsolationForest(contamination=0.0016).fit_predict(X)
     print(labels)
     mcc, accuracy, tp, tn, fp, fn = calc_mcc(df_p, labels, a_type)
     print(mcc, accuracy, tp, tn, fp, fn)
-    print("x")
+    return mcc
 
 
 def get_test_sample(station, start, a_type, phase, run_window):
@@ -52,13 +51,28 @@ def get_test_sample(station, start, a_type, phase, run_window):
     df_p = df_p.iloc[start_row:start_row + tree_size_max]
 
     return df_p
+mcc_list = []
 
 
 def main():
-    a_type = AThreshold["phase_dif"]
-    df_p = get_test_sample("NW000000000000000000000NBSNST0888", "2017-05-01 00:00:00", a_type, 1, 25000)
-    run_test(df_p, a_type)
+    test_sample_file = Path("../trafodif_test_sections.csv")
+    sample_df = pd.read_csv(test_sample_file)
+    for index, row in sample_df.iterrows():
+        a_type = AThreshold["trafo"]
+        df_p = get_test_sample(row["station"], row['start'], a_type, 1, 25000)
+        mcc = run_test(df_p, a_type)
+        mcc_list.append(mcc)
+    s = pd.Series(data=mcc_list)
+    mcc_average = s.mean()
+    print(mcc_average)
+    print("x")
 
 
 if __name__ == '__main__':
     main()
+
+# phase = 0.14750792503444723 0.3338373086485978
+# trafo = 0.08833066458127181 0.718359376599812
+# time =  0.1806321374521998 0.342480058655457
+# station = 0.20415526519894023 0.20308829189867555
+# seas = 0.1066211871334278 0.6692231027794284

@@ -63,12 +63,14 @@ def analyse_station_phase(df_p, df_constr, tree_size, nmbr_trees, shingle_size, 
     constr_points = df_constr[a_type.name].values
     streaming_points = abs(streaming_points)
     constr_points = abs(constr_points)
+    print(
+        f"{nmbr_trees}-{shingle_size}-{tree_size}-{a_type.name}: uc->{len(np.unique(constr_points))} us->{len(np.unique(streaming_points))}")
     if a_type != AThreshold.time_passed:
         streaming_points = np.around(streaming_points, 3)
         constr_points = np.around(constr_points, 3)
     else:
-        streaming_points = np.around(streaming_points, 0)
-        constr_points = np.around(constr_points, 0)
+        streaming_points = np.around(streaming_points, -1)
+        constr_points = np.around(constr_points, -1)
     print(f"{nmbr_trees}-{shingle_size}-{tree_size}-{a_type.name}: uc->{len(np.unique(constr_points))} us->{len(np.unique(streaming_points))}")
     # Prepare points
     if shingle_size != 1:
@@ -332,13 +334,13 @@ def main():
                     Path("./../results/rrcf_results_phase_dif2_nt"), 3)
     tp4 = TestParam([55000], 25000, [100], [1], Path("../seasdif_test_sections.csv"),
                     Path("./../results/rrcf_results_seas_dif_nt"), 3)
-    tp5 = TestParam([50000], 25000, [250], [1], Path("../stationdif_test_sections.csv"),
+    tp5 = TestParam([50000], 25000, [300, 350], [1], Path("../stationdif_test_sections.csv"),
                     Path("./../results/rrcf_results_station_dif_nt"), 3)
-    tp6 = TestParam([40000], 25000, [100, 150, 200, 250], [1], Path("../trafodif_test_sections.csv"),
+    tp6 = TestParam([40000], 25000, [300, 350], [1], Path("../trafodif_test_sections.csv"),
                     Path("./../results/rrcf_results_trafo_dif_nt"), 3)
-    tp7 = TestParam([25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000], 25000, [150], [1], Path("./../timedif_test_sections.csv"),
-                    Path("./../results/rrcf_results_time_dif3"), 3)
-    test_params = [tp6, tp5,tp7]
+    tp7 = TestParam([45000], 25000, [150], [1], Path("./../timedif_test_sections.csv"),
+                    Path("./../results/rrcf_results_time_dif_nt4"), 3)
+    test_params = [tp7, tp5]
     test_h_parameters(test_params)
 
 

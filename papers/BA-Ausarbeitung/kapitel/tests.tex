@@ -84,7 +84,7 @@ Aufgrund des hohen Umfangs der Testdaten wurden die Tests auf einem Subset der R
 \item Die zu testende Phase
 \item Die zu testende Anomalieklasse
 \end{itemize}
-Zur Erkennung jeder Anomalieklassen wird die absolute Spannung jeweils den entsprechenden Bedingungen der Klasse, wie in Sektion \ref{sec:ans} umgerechnet, beispielsweise wird für die Phasenanomlien aus den 3 gemessenen absoluten Spannungswerten die 
+Zur Erkennung jeder Anomalieklassen wird die absolute Spannung jeweils den entsprechenden Bedingungen der Klasse, wie in Sektion \ref{sec:ans} umgerechnet, beispielsweise wird für die Phasenanomlien aus den 3 gemessenen absoluten Spannungswerten die größte Differenz als Input verwendet. Die dazu nötigen Operationen sind für alle Anomalieklassen, bis auf die der Seasonanomalien effizient berechenbar und somit live ausführbar.
 Die Gesamtheit der Testsätze wurde representativ über die Daten ausgewählt. Dabei wurde ein Fokus auf Testsätze, welche anomale Abschnitte enthalten gelegt. Testsätze, welche nur aus Inlinern bestehen wurden stellenweise hinzugefügt um die Klassifizierung von Inlinern als solche zu überprüfen. 
 
 \section{Testen des RRCF Verfahrens}
@@ -165,10 +165,8 @@ Weiterhin hat sich herausgestellt das die Reduzierung der Granularität des Inpu
 \label{tab:nksphase}
 \end{table}
 Die Verbesserung der Laufzeit lässt sich darauf zurückführen, dass mit einer verringerten Granularität mehr Duplikate im input vorhanden sind, und somit bei der Einführung von weniger Punkten in die RRCTs neue Partitionen vonnöten sind. Ebenfalls sorgt die niedrigere Granularität für ein Zusammenklumpen der normalen Punkte, während die Anomalien durch ihre distinkten Werte, weiterhin leicht isolierbar bleiben, was zu der Verbesserung des MCCs führt, diese Verhinderung der richtigen Klassifizierung von Anomalien, durch zu viele normale leicht unterschiedliche Punkte führt dazu das die optimale Baumgröße steigt, da die dazukommenden normalen Punkte, welche kein Duplikat eines bisherigen Punktes sind sinkt.
-Die Testläufe zur Bestimmung der optimalen Klassifizierung wurden getrennt durchgeführt, um Unterschiede in der Aufmachung des jeweiligen Datenstroms auszunutzen. Tabelle \ref{tab:ts} stellt dabei die Ergebnisse der Suche nach der optimalen Baumgröße dar, Tabelle \ref{tab:nt} die darauffolgende Suche nach der optimalen Anzahl an Bäumen. Auffällig ist die besonders starke Performance bei der Klassifizierung der Sprunganomalien, welche sich aus dem, im Vergleich zu den anderen Anomalieklassen besonders spezifischen Kriterien ergibt die durch die Vorberechnung des Inputs leicht erkennbar ist. Während die Baumgröße nur einen logarithmischen Einfluss auf die Laufzeit der Testläufe hat, so hat die Anzahl der Bäume einen linearen Einfluss, da die Anzahl der Operationen die mit jeder Einfügung eines Punktes kommen linear steigen. Da die Verbesserung des MCCs über diese Parameter ab einer bestimmten Größe nur noch minimal ist, wird für die Anzahl der Bäume, für jede Anomalieklasse 150 als optimal gewertet, da die Laufzeit des Algorithmus ansonsten zu lang ist. Aufgrund der minimalen Zunahme der Laufzeit bei wachsender Baumgröße wird für diese die mit dem besten Ergebnis als optimal gewertet. 
-
 \begin{table}[ht]
-\caption{Die Testläufe zur Bestimmung der besten Baumgröße für jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Baumgröße wurde dabei über 24 Testläufe, mit 8 Testsätzen und 3 Wiederholungen getestet. Die Fenstergröße von jedem Testlauf war 1 und die Anzahl der Bäume betrug 150. Hervorgehoben ist pro Spalte jeweils die Baumgröße mit dem besten Ergebnis}
+\caption{Die Testläufe zur Bestimmung der besten Baumgröße für jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Baumgröße wurde dabei über 24 Testläufe, mit 8 Testsätzen und 3 Wiederholungen getestet. Die Fenstergröße von jedem Testlauf war 1 und die Anzahl der Bäume betrug 150. Hervorgehoben ist pro Spalte jeweils die Baumgröße mit dem besten Ergebnis.}
 \centering
 \begin{tabular}{lrrrrr}
 \toprule
@@ -190,7 +188,7 @@ Die Testläufe zur Bestimmung der optimalen Klassifizierung wurden getrennt durc
 \end{table}
 
 \begin{table}[ht]
-\caption{Die Testläufe zur Bestimmung der besten Anzahl an Bäumen für jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Anzahl wurde dabei über 24 Testläufe, mit 8 Testsätzen und 3 Wiederholungen getestet. Die Fenstergröße von jedem Testlauf war 1 und die Größe der Bäume entsprach der besten Größe der vorherigen Testläufe zur Bestimmung dieser. Hervorgehoben ist pro Spalte jeweils die Anzahl mit dem besten Ergebnis}
+\caption{Die Testläufe zur Bestimmung der besten Anzahl an Bäumen für jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Anzahl wurde dabei über 24 Testläufe, mit 8 Testsätzen und 3 Wiederholungen getestet. Die Fenstergröße von jedem Testlauf war 1 und die Größe der Bäume entsprach der besten Größe der vorherigen Testläufe zur Bestimmung dieser. Hervorgehoben ist pro Spalte jeweils die Anzahl mit dem besten Ergebnis.}
 \centering
 \begin{tabular}{lrrrrr}
 \toprule
@@ -207,9 +205,67 @@ Die Testläufe zur Bestimmung der optimalen Klassifizierung wurden getrennt durc
 \end{tabular}
 \label{tab:nt}
 \end{table}
+Die Testläufe zur Bestimmung der optimalen Klassifizierung wurden getrennt durchgeführt, um Unterschiede in der Aufmachung des jeweiligen Datenstroms auszunutzen. Tabelle \ref{tab:ts} stellt dabei die Ergebnisse der Suche nach der optimalen Baumgröße dar, Tabelle \ref{tab:nt} die darauffolgende Suche nach der optimalen Anzahl an Bäumen. Auffällig ist die besonders starke Performance bei der Klassifizierung der Sprunganomalien, welche sich aus dem, im Vergleich zu den anderen Anomalieklassen besonders spezifischen Kriterien ergibt die durch die Vorberechnung des Inputs leicht erkennbar ist. Während die Baumgröße nur einen logarithmischen Einfluss auf die Laufzeit der Testläufe hat, so hat die Anzahl der Bäume einen linearen Einfluss, da die Anzahl der Operationen die mit jeder Einfügung eines Punktes kommen linear steigen. Da die Verbesserung des MCCs über diese Parameter ab einer bestimmten Größe nur noch minimal ist, wird für die Anzahl der Bäume, für jede Anomalieklasse 150 als optimal gewertet, da die Laufzeit des Algorithmus ansonsten zu lang ist. Aufgrund der minimalen Zunahme der Laufzeit bei wachsender Baumgröße wird für diese die mit dem besten Ergebnis als optimal gewertet.
+Somit gibt sich für die Performance des RRCF Verfahren aufgeschlüsselt nach den Anomalieklassen die Tabelle \ref{tab:rrcfres}. Anzumerken ist die hohe Genauigkeit der meisten Anomalieklassen, welche zusammen mit dem MCC darauf schließen lässt, dass das Verfahren zwar erfolgreich die normalen Punkte als solche klassifiziert und somit seine hohe Genauigkeit erzeugt, aber einige Anomalien fälschlicherweise nicht als solche erkennt.
+%\begin{itemize}
+%\item \textbf{Zeitanomalien:} Ein MCC von 0.6558
+%\item \textbf{Phasenanomalien:} Ein MCC von 0.6348
+%\item \textbf{Sprunganomalien:} Ein MCC von 0.943
+%\item \textbf{Stationsanomalien:} Ein MCC von 0.6909
+%\item \textbf{Seasonanomalien:} Ein MCC von 0.8098
+%\end{itemize}
+\begin{table}
+\caption{Der, über alle 24 mit den optimalen Testparametern ausgeführten Testläufen durchschnittliche MCC, sowie die durchschnittliche Genauigkeit jeder Anomalieklasse}
+\centering
+\begin{tabular}{lrr}
+\toprule
+{}&MCC&Genauigkeit\\
+\textbf{Anomalieklasse} &  &\\
+\midrule
+\textbf{Zeitanomalien} & 0.6558 & 0.996457 \\
+\textbf{Phasenanomalien} & 0.6348 & 0.994447 \\
+\textbf{Sprunganomalien} & 0.943 &  0.999650 \\
+\textbf{Stationsanomalien} & 0.6909&   0.990624\\
+\textbf{Seasonanomalien} & 0.8098 & 0.989687\\
+\bottomrule
+\end{tabular}
+\label{tab:rrcfres}
+\end{table}
+
+
 
 \section{Testen des IF Verfahrens}
 
-Die 
+Die Tests des IF-Verfahren, laufen analog zu den RRCF-Tests ab, was ihre Bewertung über den MCC, sowie dem Aufbau der Teststrecken angeht. Da der Isolation Forest allerdings nicht für Streaming Inputs geeignet ist vereinfacht sich der Testablauf von diesem:
+\paragraph{Schritt 1: Konstruktion des Forests}
+Der iForest wird über den selben Testsätzen, wie die für das Testen des RRCF Verfahren benutzt wurden konstruiert, dabei wird ein unüberwachter Parametertrainierer benutzt um für diese die beste Kombination zu finden. Um zu überprüfen ob die Bereitstellung von Streaming Eigenschaften, welche das RRCF Verfahren über seine Abänderungen des iForests Verfahren erreicht, eine Verbesserung über der Analyse des gesamten Datensatzes in einem Forest darstellt, wird zur Konstruktion des iForests
+\paragraph{Schritt 2: Auswertung der Ergebnisse}
+Der iForest kalkuliert eine Abschätzung für jeden Punkt, ob dieser für ihn eine Anomalie darstellt oder nicht. Diese Abschätzung wird mit den tatsächlichen Labels verglichen, woraus der MCC des Ergebnisses kalkuliert wird
 
-Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse
+\subsection{Ergebnisse} 
+
+Die Ergebnisse de iForest Verfahrens sind in Tabelle \ref{ifres} dargestellt. Nur unter Zuhilfenahme des Parametertrainers unterschätzt das iForest Verfahren den Anteil, den nicht anomale Punkte an dem Testdatensattz haben. Daher klassifiziert es viele normale Punkte als Anomalien, worunter der MCC entsprechend leidet. Als Hilfestellung wirde in einer zweiten Runde von Testläufen der Anteil den Anomalien im gesamten Testdatensatz über aller Stationen haben übergeben, welcher aufgrund der Größe des Datensatzes als angemessen konstant angenommen wird. Unter dieser Hilfestellung steigt die Klassifizierungsperformance des iForests merklich, leidet allerdings immer noch unter Testabschnitten oder ganzen Stationen, auf denen Anomalien der jeweiligen Klasse über oder unter vertreten sind. Die angewandte Implementierung des iForest Verfahrens hat nicht die selben Probleme wie das RRCF Verfahren mit einer hohen Granularität des Inputs, weder in seiner Laufzeit noch in seiner Performance. Daher wird auf eine Begrenzung der Nachkommastellen verzichtet.
+
+\begin{table}
+\caption{Der je Anomalieklasse über 16 ausgeführte Testläufe, über je acht Testsätze mit 1 Wiederholung durchschnittliche MCC, sowie der MCC unter übergabe des angegeben Grenzwertes}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+{}&MCC&Anteil Anomalien&MCC mit Anteil\\
+\textbf{Anomalieklasse} & &\\
+\midrule
+\textbf{Zeitanomalien}     & 0.147507 &0.001& 0.333837 \\
+\textbf{Phasenanomalien}   & 0.088330 &0.001& 0.618359 \\
+\textbf{Sprunganomalien}   & 0.180632 &0.00167& 0.342480 \\
+\textbf{Stationsanomalien} & 0.204155 &0.001& 0.203088\\
+\textbf{Seasonanomalien}   & 0.106621 &0.001& 0.669223\\
+\bottomrule
+\end{tabular}
+\label{ifres}
+\end{table}
+%Abweichungen, mcc vs accuracy, ergebnisse vs anomalie spezifische ergebnisse
+%phase = 0.14750792503444723 0.3338373086485978
+%trafo = 0.08833066458127181 0.718359376599812
+%time = 0.1806321374521998 0.342480058655457
+%station = 0.20415526519894023 0.20308829189867555
+%seas = 0.1066211871334278 0.6692231027794284

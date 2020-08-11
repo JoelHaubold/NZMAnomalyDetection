@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  16 JUL 2020 20:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.1.15)  16 JUL 2020 23:21
 entering extended mode
 **./main.tex
 (main.tex
@@ -1079,23 +1079,20 @@ Overfull \hbox (2.99219pt too wide) in paragraph at lines 150--166
  [][] 
  []
 
-[43]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [44])
-[45]
+[43] [44] [45]) [46] [47]
 \openout2 = `kapitel/fazit.aux'.
 
- (kapitel/fazit.tex [46
+ (kapitel/fazit.tex [48
 
 
 
 ]
 Kapitel 6.
-) [47] [48
 
+Underfull \vbox (badness 1168) has occurred while \output is active []
 
-] (main.lof
+ [49])
+[50] (main.lof
 Overfull \hbox (5.2661pt too wide) in paragraph at lines 9--9
  \T1/cmr/m/n/10.95 durch zu-fäl-li-ge par-ti-tio-nie-run-gen des Da-ten-sat-zes
  iso-liert wur-de. Je-de Schnitt- 
@@ -1104,15 +1101,18 @@ Overfull \hbox (5.2661pt too wide) in paragraph at lines 9--9
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [49])
+ [51
+
+
+])
 \tf@lof=\write4
 \openout4 = `main.lof'.
 
 
-[50] (main.lot
+[52] (main.lot
 Underfull \vbox (badness 6268) has occurred while \output is active []
 
- [51
+ [53
 
 
 ])
@@ -1120,18 +1120,18 @@ Underfull \vbox (badness 6268) has occurred while \output is active []
 \openout5 = `main.lot'.
 
 
-[52] (main.loa)
+[54] (main.loa)
 \tf@loa=\write6
 \openout6 = `main.loa'.
 
- [53
+ [55
 
 
-] [54
+] [56
 
-] (main.bbl [55
+] (main.bbl [57
 
-]) [56]
+]) [58]
 \openout2 = `kapitel/erklaerung.aux'.
 
  (kapitel/erklaerung.tex)
@@ -1154,10 +1154,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--43
 
  []
 
-[57
+[59
 
 
-] [58
+] [60
 
 
 ]
@@ -1172,10 +1172,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--43
 ### simple group (level 1) entered at line 98 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7008 strings out of 493312
- 101736 string characters out of 3138899
- 191715 words of memory out of 3000000
- 10275 multiletter control sequences out of 15000+200000
+ 7010 strings out of 493312
+ 101756 string characters out of 3138899
+ 200737 words of memory out of 3000000
+ 10277 multiletter control sequences out of 15000+200000
  36553 words of font info for 88 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,13n,41p,1685b,642s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1213,9 +1213,9 @@ b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (62 pages, 2637779 bytes).
+Output written on main.pdf (64 pages, 2646420 bytes).
 PDF statistics:
- 1007 PDF objects out of 1200 (max. 8388607)
+ 1015 PDF objects out of 1200 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

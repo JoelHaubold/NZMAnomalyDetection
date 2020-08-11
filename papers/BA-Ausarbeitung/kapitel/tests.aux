@@ -11,24 +11,31 @@
 \citation{bartos2019rrcfImpl}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Ben\IeC {\"o}tigte Eigenschaften eines Anomalieerkennungsverfahrens}{40}}
 \@writefile{toc}{\contentsline {subsubsection}{Aufbau der Tests\IeC {\"a}tze}{40}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{40}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{41}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Implementierung der Tests}{41}}
-\@writefile{toc}{\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{41}}
+\@writefile{toc}{\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{42}}
 \@writefile{toc}{\contentsline {paragraph}{Schritt 1: Simulation der Praxis}{42}}
 \@writefile{toc}{\contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{42}}
 \@writefile{toc}{\contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{42}}
 \@writefile{toc}{\contentsline {subsubsection}{Ergebnisse}{42}}
 \@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Der Effekt des Fenstergr\IeC {\"o}\IeC {\ss }en Parameters \IeC {\"u}ber 150 Tests\IeC {\"a}tze. Dargestellt ist die Dauer des Testlaufes sowie der durchschnittliche MCC, die durchschnittliche Dauer des Testlaufes in Minuten und die durchschnittliche Genauigkeit. Die Parameter f\IeC {\"u}r die Baumgr\IeC {\"o}\IeC {\ss }e und die Anzahl an B\IeC {\"a}umen liefen von 10000 bis 30000, beziehungsweise von 100 bis 300 in Schritten von 5000 beziehungsweise 50.\relax }}{43}}
 \newlabel{tab:shingle}{{5.2}{43}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Der Effekt einer Verringerung der Nachkommastellen, angegeben als $NK$ des Inputs auf den MCC und der Testlaufdauer in Minuten. Dargestellt sind jeweils 24 Testl\IeC {\"a}ufe \IeC {\"u}ber 8 Tests\IeC {\"a}tze mit 3 Wiederholungen, pro Baumgr\IeC {\"o}\IeC {\ss }e und Nachkommastelle. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Anzahl der B\IeC {\"a}ume betrug 150.\relax }}{43}}
-\newlabel{tab:nksphase}{{5.3}{43}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Die Testl\IeC {\"a}ufe zur Bestimmung der besten Baumgr\IeC {\"o}\IeC {\ss }e f\IeC {\"u}r jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Baumgr\IeC {\"o}\IeC {\ss }e wurde dabei \IeC {\"u}ber 24 Testl\IeC {\"a}ufe, mit 8 Tests\IeC {\"a}tzen und 3 Wiederholungen getestet. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Anzahl der B\IeC {\"a}ume betrug 150. Hervorgehoben ist pro Spalte jeweils die Baumgr\IeC {\"o}\IeC {\ss }e mit dem besten Ergebnis\relax }}{44}}
-\newlabel{tab:ts}{{5.4}{44}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Die Testl\IeC {\"a}ufe zur Bestimmung der besten Anzahl an B\IeC {\"a}umen f\IeC {\"u}r jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Anzahl wurde dabei \IeC {\"u}ber 24 Testl\IeC {\"a}ufe, mit 8 Tests\IeC {\"a}tzen und 3 Wiederholungen getestet. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Gr\IeC {\"o}\IeC {\ss }e der B\IeC {\"a}ume entsprach der besten Gr\IeC {\"o}\IeC {\ss }e der vorherigen Testl\IeC {\"a}ufe zur Bestimmung dieser. Hervorgehoben ist pro Spalte jeweils die Anzahl mit dem besten Ergebnis\relax }}{45}}
-\newlabel{tab:nt}{{5.5}{45}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Testen des IF Verfahrens}{45}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Der Effekt einer Verringerung der Nachkommastellen, angegeben als $NK$ des Inputs auf den MCC und der Testlaufdauer in Minuten. Dargestellt sind jeweils 24 Testl\IeC {\"a}ufe \IeC {\"u}ber 8 Tests\IeC {\"a}tze mit 3 Wiederholungen, pro Baumgr\IeC {\"o}\IeC {\ss }e und Nachkommastelle. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Anzahl der B\IeC {\"a}ume betrug 150.\relax }}{44}}
+\newlabel{tab:nksphase}{{5.3}{44}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Testen des IF Verfahrens}{44}}
+\@writefile{toc}{\contentsline {paragraph}{Schritt 1: Konstruktion des Forests}{44}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Die Testl\IeC {\"a}ufe zur Bestimmung der besten Baumgr\IeC {\"o}\IeC {\ss }e f\IeC {\"u}r jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Baumgr\IeC {\"o}\IeC {\ss }e wurde dabei \IeC {\"u}ber 24 Testl\IeC {\"a}ufe, mit 8 Tests\IeC {\"a}tzen und 3 Wiederholungen getestet. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Anzahl der B\IeC {\"a}ume betrug 150. Hervorgehoben ist pro Spalte jeweils die Baumgr\IeC {\"o}\IeC {\ss }e mit dem besten Ergebnis.\relax }}{45}}
+\newlabel{tab:ts}{{5.4}{45}}
+\@writefile{toc}{\contentsline {paragraph}{Schritt 2: Auswertung der Ergebnisse}{45}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Ergebnisse}{45}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Die Testl\IeC {\"a}ufe zur Bestimmung der besten Anzahl an B\IeC {\"a}umen f\IeC {\"u}r jede Anomalieklasse, gemessen anhand des durchschnittlichen MCCs jedes Testlaufes. Jede Anzahl wurde dabei \IeC {\"u}ber 24 Testl\IeC {\"a}ufe, mit 8 Tests\IeC {\"a}tzen und 3 Wiederholungen getestet. Die Fenstergr\IeC {\"o}\IeC {\ss }e von jedem Testlauf war 1 und die Gr\IeC {\"o}\IeC {\ss }e der B\IeC {\"a}ume entsprach der besten Gr\IeC {\"o}\IeC {\ss }e der vorherigen Testl\IeC {\"a}ufe zur Bestimmung dieser. Hervorgehoben ist pro Spalte jeweils die Anzahl mit dem besten Ergebnis.\relax }}{46}}
+\newlabel{tab:nt}{{5.5}{46}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Der, \IeC {\"u}ber alle 24 mit den optimalen Testparametern ausgef\IeC {\"u}hrten Testl\IeC {\"a}ufen durchschnittliche MCC, sowie die durchschnittliche Genauigkeit jeder Anomalieklasse\relax }}{46}}
+\newlabel{tab:rrcfres}{{5.6}{46}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.7}{\ignorespaces Der je Anomalieklasse \IeC {\"u}ber 16 ausgef\IeC {\"u}hrte Testl\IeC {\"a}ufe, \IeC {\"u}ber je acht Tests\IeC {\"a}tze mit 1 Wiederholung durchschnittliche MCC, sowie der MCC unter \IeC {\"u}bergabe des angegeben Grenzwertes\relax }}{47}}
+\newlabel{ifres}{{5.7}{47}}
 \@setckpt{kapitel/tests}{
-\setcounter{page}{46}
+\setcounter{page}{48}
 \setcounter{equation}{0}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -39,12 +46,12 @@
 \setcounter{part}{0}
 \setcounter{chapter}{5}
 \setcounter{section}{3}
-\setcounter{subsection}{0}
+\setcounter{subsection}{1}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
 \setcounter{figure}{0}
-\setcounter{table}{5}
+\setcounter{table}{7}
 \setcounter{parentequation}{0}
 \setcounter{endNonectr}{62}
 \setcounter{currNonectr}{0}

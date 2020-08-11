@@ -317,20 +317,21 @@ CoDisp(x,S,|S'|) = \underset{S' \subseteq S,T}{\mathbb{E}}\bigg[\underset{x \in 
 \end{align}
 \end{definition}
 
-Dabei kann $T''$ wieder aufgrund von Theorem \ref{theo:wahrsch} deterministisch von allen Kombinationen von $T$ und $C$ abgeleitet werden. 
+Dabei kann $T''$ wieder aufgrund von Theorem \ref{theo:wahrsch} deterministisch von allen Kombinationen von $T$ und $C$ abgeleitet werden.
+Es gilt für die Berechnung des Codisps:
+
+\begin{lemma}\label{lem:codispeff}
+Die CoDisp(x,Z,|S|) kann effizient bestimmt werden
+\end{lemma}
 Mit der nun durch $Codisp$ gegebenen, gegen Duplikate robusten Möglichkeit der Ermittlung des Effektes den ein Punkt innerhalb eines RRCTs auf die Modellkomplexität seines RRCTs hat, ergibt sich die zentrale Definition der Anomalieerkennung eines RRCFs:
 \begin{definition}
 Die Anomalien eines Datensatzes haben in einem über den Datensatz, oder über einem Sample über den Datensatz konstruierten RRCT in Erwartung einen hohen CoDisp() 
 \end{definition}
 
-Weiterhin gilt:
 
-\begin{lemma}\label{lem:codispeff}
-Die CoDisp(x,Z,|S|) kann effizient bestimmt werden
-\end{lemma}
 
-\paragraph{Beweis von Lemma \ref{lem:codispeff}}
-
-Analog zu dem Beweis von Lemma \ref{lem:verschiebung} ist der U
-
-\section{Implementation}
+%\paragraph{Beweis von Lemma \ref{lem:codispeff}}
+%
+%Analog zu dem Beweis von Lemma \ref{lem:verschiebung} ist der U
+%
+%\section{Implementation}

@@ -46,24 +46,25 @@
 \contentsline {paragraph}{Beweis Lemma \ref {lem:verschiebung}}{32}
 \contentsline {subsection}{\numberline {4.3.3}Codisp}{33}
 \contentsline {subsubsection}{Robustheit gegen\IeC {\"u}ber Duplikaten}{34}
-\contentsline {paragraph}{Beweis von Lemma \ref {lem:codispeff}}{35}
-\contentsline {section}{\numberline {4.4}Implementation}{35}
 \contentsline {chapter}{\numberline {5}Tests auf Niederspannungsdaten}{37}
 \contentsline {section}{\numberline {5.1}Aufmachung der Testdaten}{37}
 \contentsline {subsection}{\numberline {5.1.1}Eignung der Daten f\IeC {\"u}r \IeC {\"u}berwachte und un\IeC {\"u}berwachte Anomalieerkennung}{39}
 \contentsline {subsection}{\numberline {5.1.2}Ben\IeC {\"o}tigte Eigenschaften eines Anomalieerkennungsverfahrens}{40}
 \contentsline {subsubsection}{Aufbau der Tests\IeC {\"a}tze}{40}
-\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{40}
+\contentsline {section}{\numberline {5.2}Testen des RRCF Verfahrens}{41}
 \contentsline {subsection}{\numberline {5.2.1}Implementierung der Tests}{41}
-\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{41}
+\contentsline {subsubsection}{Ablauf der Testl\IeC {\"a}ufe}{42}
 \contentsline {paragraph}{Schritt 1: Simulation der Praxis}{42}
 \contentsline {paragraph}{Schritt 2: Streaming des Testsatzes}{42}
 \contentsline {paragraph}{Schritt 3: Auswertung der Ergebnisse}{42}
 \contentsline {subsubsection}{Ergebnisse}{42}
-\contentsline {section}{\numberline {5.3}Testen des IF Verfahrens}{45}
-\contentsline {chapter}{\numberline {6}Fazit}{47}
-\contentsline {chapter}{Abbildungsverzeichnis}{50}
-\contentsline {chapter}{Tabellenverzeichnis}{52}
-\contentsline {chapter}{Algorithmenverzeichnis}{53}
-\contentsline {chapter}{Literaturverzeichnis}{56}
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{56}
+\contentsline {section}{\numberline {5.3}Testen des IF Verfahrens}{44}
+\contentsline {paragraph}{Schritt 1: Konstruktion des Forests}{44}
+\contentsline {paragraph}{Schritt 2: Auswertung der Ergebnisse}{45}
+\contentsline {subsection}{\numberline {5.3.1}Ergebnisse}{45}
+\contentsline {chapter}{\numberline {6}Fazit}{49}
+\contentsline {chapter}{Abbildungsverzeichnis}{52}
+\contentsline {chapter}{Tabellenverzeichnis}{54}
+\contentsline {chapter}{Algorithmenverzeichnis}{55}
+\contentsline {chapter}{Literaturverzeichnis}{58}
+\contentsline {chapter}{Erkl\IeC {\"a}rung}{58}
